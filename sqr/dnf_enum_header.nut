@@ -1,78 +1,81 @@
-// ´øÆÄ¼Ò½º³» enum°ªÀ» squirrel script¿¡¼­µµ »ç¿ëÇÏ±â À§ÇØ º¯È¯ÇØ³õÀº °ªµéÀÔ´Ï´Ù. 
-// ¼ø¼ö ½ºÅ©¸³Æ®·Î ÀÛ¾÷ÇÏ¸é¼­ Ãß°¡ÇØ¾ßÇÒ °ªµéÀÌ ÀÖ´Ù¸é.. °¢ Á÷¾÷_header.nutÆÄÀÏ¿¡ »ðÀÔÇØÁÖ¼¼¿ä.. ÀÌ°÷¿¡ Ãß°¡±ÝÁö
+// æ­¤æ–‡ä»¶ç”¨äºŽå®šä¹‰ squirrel è„šæœ¬çš„æžšä¸¾å¸¸é‡ï¼Œä»¥æ–¹ä¾¿åŽç»­ä½¿ç”¨å’Œè½¬æ¢ã€‚
+// å¦‚æžœåœ¨ç¼–å†™è„šæœ¬æ—¶éœ€è¦æ·»åŠ æ–°çš„å¸¸é‡ï¼Œè¯·åœ¨è¿™ä¸ª _header.nut æ–‡ä»¶ä¸­è¿›è¡Œæ·»åŠ ã€‚
+// é™†åœ°ç±»åž‹æžšä¸¾
+LANDTYPE_GRASS <- 0 		  //  è‰åœ°
+LANDTYPE_WETGRASS <- 1 		  //  æ¹¿æ¶¦è‰åœ°
+LANDTYPE_SWAMP <- 2 		  //  æ²¼æ³½
+LANDTYPE_POISONSWAMP <- 3 		  //  æ¯’æ²¼æ³½
+LANDTYPE_BROWNDIRT <- 4 		  //  æ£•è‰²æ³¥åœŸ
+LANDTYPE_BLUEDIRT <- 5 		  //  è“è‰²æ³¥åœŸ
+LANDTYPE_BONEYARD <- 6 		  //  éª¨åœº
+LANDTYPE_WATER <- 7 		  //  æ°´
+LANDTYPE_MAGMA <- 8 		  //  å²©æµ†
+LANDTYPE_SNOW <- 9 		  //  é›ª
+LANDTYPE_RED_SWAMP <- 10       //  çº¢è‰²æ²¼æ³½
+LANDTYPE_PURPLE_POISONSWAMP <- 11 		  //  ç´«è‰²æ¯’æ²¼æ³½
 
-LANDTYPE_GRASS <- 0 		  //  Ç®¹ç
-LANDTYPE_WETGRASS <- 1 		  //  ¹°¿¡  •Àº Ç®¹ç
-LANDTYPE_SWAMP <- 2 		  //  ´ËÁöÀÇ À§
-LANDTYPE_POISONSWAMP <- 3 		  //  µ¶´ËÁöÀÇ À§
-LANDTYPE_BROWNDIRT <- 4 		  //  °¥»ö Èë¹ç
-LANDTYPE_BLUEDIRT <- 5 		  //  Çª¸¥ Èë¹ç
-LANDTYPE_BONEYARD <- 6 		  //  »ÀÁ¶°¢µéÀÇ À§
-LANDTYPE_WATER <- 7 		  //  ¹°¼Ó
-LANDTYPE_MAGMA <- 8 		  //  ¿ë¾Ï À§
-LANDTYPE_SNOW <- 9 		  //  ´« À§
-LANDTYPE_RED_SWAMP <- 10 
-LANDTYPE_PURPLE_POISONSWAMP <- 11 		  //  º¸¶ó»ö µ¶´Ë
-LANDPARTICLE_DOWNLARGE <- 0 
-LANDPARTICLE_DOWNSMALL <- 1 
-LANDPARTICLE_MOVE <- 2 
-LANDSOUND_JUMPSTART <- 0 
-LANDSOUND_JUMPLAND <- 1 
-LANDSOUND_MOVE <- 2 
-LANDSOUND_DASH <- 3 
-LANDSOUND_BACKSTEP <- 4 
-LANDSOUND_FASTTHROUGH <- 5 
+// é™†åœ°ç²’å­æžšä¸¾
+LANDPARTICLE_DOWNLARGE <- 0    //  å¤§ç²’å­ä¸‹è½
+LANDPARTICLE_DOWNSMALL <- 1    //  å°ç²’å­ä¸‹è½
+LANDPARTICLE_MOVE <- 2         //  ç²’å­ç§»åŠ¨
 
-CATEGORY_TRIBE_HUMAN <- 0 		  //  ÀÎ°£Çü
-CATEGORY_TRIBE_BEAST <- 1 		  //  ¾ß¼ö
-CATEGORY_TRIBE_PLANT <- 2 		  //  ½Ä¹°
-CATEGORY_TRIBE_INSECT <- 3 		  //  °ïÃæ
-CATEGORY_TRIBE_MACHINE <- 4 		  //  ±â°è
-CATEGORY_TRIBE_ORGANIC <- 5 		  //  À¯±âÃ¼
-CATEGORY_TRIBE_HYBRID <- 6 		  //  º¹ÇÕÃ¼
-CATEGORY_TRIBE_UNDEAD <- 7 		  //  ¾ðµ¥µå
-CATEGORY_TRIBE_DEVIL <- 8 		  //  ¾Ç¸¶
-CATEGORY_TRIBE_SPIRIT <- 9 		  //  Á¤·É
-CATEGORY_TRIBE_DRAGON <- 10 		  //  ¿ëÁ·
-CATEGORY_AI_MELEE_ATTACK <- 11 		  //  Á¢±ÙÀü¿ë ¸ó½ºÅÍ
-CATEGORY_AI_RANGE_ATTACK <- 12 		  //  »ç°ÝÀü¿ë ¸ó½ºÅÍ
-CATEGORY_AI_NEGATIVE <- 13 		  //  ¼Ò±ØÀûÀÎ ¸ó½ºÅÍ
-CATEGORY_AI_CAREFUL <- 14 		  //  ÁÖÀÇ±íÀº ¸ó½ºÅÍ
-CATEGORY_AI_FULLSUPERARMOR <- 15 		  //  Á¢±ÙAI Àúµ¹,À§Çù ¸ó½ºÅÍÀÏ¶§ Ç®½´ÆÛ¾Æ¸Ó (¸ó½ºÅÍ °³Æí¿¡ AI category°¡ »ç¶óÁö¹Ç·Î Àá½Ã ³Ö¾îµÐ Ç×¸ñÀÓ) `08. 02, 20 ÀÓ¼öÈ«
-CATEGORY_AI_RASH <- 16 		  //  Àúµ¹ÀûÀÎ ¸ó½ºÅÍ
-CATEGORY_AI_MANACE <- 17 		  //  À§ÇùÀûÀÎ ¸ó½ºÅÍ
-CATEGORY_ARMOR_HUMAN <- 18 		  //  ÀÎ°£ ¾Æ¸Ó (»ì»ó ¿É¼Ç Àû¿ë)
-CATEGORY_ARMOR_FORT <- 19 		  //  °Ç¹° ¾Æ¸Ó (ÆÄ±« ¿É¼Ç Àû¿ë)
-CATEGORY_ARMOR_DIVINE <- 20 		  //  ¼º·É ¾Æ¸Ó (¹æ¾î·Â ºñ¾àÀû Áõ°¡)
-CATEGORY_ETC_GOBLIN <- 21 		  //  °íºí¸°
-CATEGORY_ETC_TAU <- 22 		  //  Å¸¿ì
-CATEGORY_ETC_LUGARU <- 23 		  //  ·ç°¡·ç
-CATEGORY_ETC_FIXTURE <- 24 		  //  ºÙ¹ÚÀÌÇü (Çã¸®ÄÉÀÎ ·Ñ µî¿¡ ÀÇÇØ ²ø·Á¿ÀÁö ¾Ê´Â´Ù)
-CATEGORY_ETC_STAY <- 25 		  //  ÃÊ±â À§Ä¡¿¡¼­ ¿òÁ÷ÀÌÁö ¾ÊÀ½
-CATEGORY_PASSIVEOBJECT_TYPE_MELEE <- 26 
-CATEGORY_PASSIVEOBJECT_TYPE_MISSILE <- 27 
-CATEGORY_PASSIVEOBJECT_TYPE_ENERGY <- 28 
-CATEGORY_PASSIVEOBJECT_TYPE_PHYSICAL <- 29 
-CATEGORY_PASSIVEOBJECT_TYPE_MAGICAL <- 30 
-CATEGORY_PASSIVEOBJECT_TYPE_BULLET <- 31 
-CATEGORY_PASSIVEOBJECT_TYPE_CANON <- 32 
-CATEGORY_PASSIVEOBJECT_TYPE_EXPLOSION <- 33 
-CATEGORY_PASSIVEOBJECT_TYPE_INFLAME <- 34 
-CATEGORY_PASSIVEOBJECT_TYPE_NONINFLAME <- 35 
-CATEGORY_PASSIVEOBJECT_TYPE_LIGHT <- 36 
-CATEGORY_PASSIVEOBJECT_TYPE_DARK <- 37 
-CATEGORY_PASSIVEOBJECT_TYPE_WATER <- 38 
-CATEGORY_PASSIVEOBJECT_TYPE_FIRE <- 39 
-CATEGORY_PASSIVEOBJECT_TYPE_FORT <- 40 
-CATEGORY_ETC_UNBEATABLE <- 41 		  //  ¹«Àû, ±×·¯³ª ¾ÏÈæÀÇ ¹®Àå ¾îÆæµðÁö¿¡ °É¸° ³ðÀÌ¸é °ø°Ý°¡´É
-CATEGORY_TRIBE_ANGEL <- 42 		  //  Ãµ»ç
-CATEGORY_MAX <- 43 
+// é™†åœ°éŸ³æ•ˆæžšä¸¾
+LANDSOUND_JUMPSTART <- 0       //  è·³è·ƒå¼€å§‹éŸ³æ•ˆ
+LANDSOUND_JUMPLAND <- 1        //  è·³è·ƒè½åœ°éŸ³æ•ˆ
+LANDSOUND_MOVE <- 2            //  ç§»åŠ¨éŸ³æ•ˆ
+LANDSOUND_DASH <- 3            //  å†²åˆºéŸ³æ•ˆ
+LANDSOUND_BACKSTEP <- 4        //  åŽé€€éŸ³æ•ˆ
+LANDSOUND_FASTTHROUGH <- 5     //  å¿«é€Ÿç©¿è¿‡éŸ³æ•ˆ
 
-DOWN_PARAM_TYPE_VALUE <- 0 		  //  ¶ß´Â ³ôÀÌ¿Í ³¯¸®´Â ¼Óµµ¸¦ ³Ö´Â´Ù.
-DOWN_PARAM_TYPE_FORCE <- 1 		  //  ÈûÀ» ³Ö´Â´Ù.
-DOWN_PARAM_TYPE_BOUNCE_VALUE <- 2 		  //  ¹Ù¿î½º. °ªÀ» ³ÖÁö¸¸ ¹Ù·Î ¾²Áö ¾Ê°í ¶¥¿¡ Æ¢±æ ¶§ ¾´´Ù.
-DOWN_PARAM_TYPE_BOUNCE_FORCE <- 3 		  //  ¹Ù¿î½º. ÈûÀ» ³ÖÁö¸¸ ¹Ù·Î ¾²Áö ¾Ê°í ¶¥¿¡ Æ¢±æ ¶§ ¾´´Ù.
-DOWN_PARAM_TYPE_BOUNCE <- 4 		  //  ¹Ù¿î½º. ÈûÀ» ³ÖÁö¸¸ ¹Ù·Î ¾²Áö ¾Ê°í ¶¥¿¡ Æ¢±æ ¶§ ¾´´Ù.
+CATEGORY_TRIBE_HUMAN <- 0 		  //  äººç±»éƒ¨è½åˆ†ç±»
+CATEGORY_TRIBE_BEAST <- 1 		  //  é‡Žå…½éƒ¨è½åˆ†ç±»
+CATEGORY_TRIBE_PLANT <- 2 		  //  æ¤ç‰©éƒ¨è½åˆ†ç±»
+CATEGORY_TRIBE_INSECT <- 3 		  //  æ˜†è™«éƒ¨è½åˆ†ç±»
+CATEGORY_TRIBE_MACHINE <- 4 		  //  æœºæ¢°éƒ¨è½åˆ†ç±»
+CATEGORY_TRIBE_ORGANIC <- 5 		  //  æœ‰æœºç”Ÿç‰©éƒ¨è½åˆ†ç±»
+CATEGORY_TRIBE_HYBRID <- 6 		  //  æ··åˆç”Ÿç‰©éƒ¨è½åˆ†ç±»
+CATEGORY_TRIBE_UNDEAD <- 7 		  //  ä¸æ­»æ—éƒ¨è½åˆ†ç±»
+CATEGORY_TRIBE_DEVIL <- 8 		  //  æ¶é­”éƒ¨è½åˆ†ç±»
+CATEGORY_TRIBE_SPIRIT <- 9 		  //  çµé­‚éƒ¨è½åˆ†ç±»
+CATEGORY_TRIBE_DRAGON <- 10 		  //  é¾™æ—éƒ¨è½åˆ†ç±»
+CATEGORY_AI_MELEE_ATTACK <- 11 		  //  AI è¿‘æˆ˜æ”»å‡»åˆ†ç±»
+CATEGORY_AI_RANGE_ATTACK <- 12 		  //  AI è¿œç¨‹æ”»å‡»åˆ†ç±»
+CATEGORY_AI_NEGATIVE <- 13 		  //  AI æ¶ˆæžè¡Œä¸ºåˆ†ç±»
+CATEGORY_AI_CAREFUL <- 14 		  //  AI è°¨æ…Žè¡Œä¸ºåˆ†ç±»
+CATEGORY_AI_FULLSUPERARMOR <- 15 		  //  AI å…¨è¶…çº§æŠ¤ç”²åˆ†ç±»ï¼ŒAI å…·æœ‰å®Œæ•´è¶…çº§æŠ¤ç”²çŠ¶æ€ï¼ˆæ­¤åˆ†ç±»ç”¨äºŽåˆ¤æ–­ AI çš„æŠ¤ç”²çŠ¶æ€ï¼‰ï¼Œ08 å¹´ 02 æœˆ 20 æ—¥ç¡®è®¤
+CATEGORY_AI_RASH <- 16 		  //  AI é²èŽ½è¡Œä¸ºåˆ†ç±»
+CATEGORY_AI_MANACE <- 17 		  //  AI å¨èƒè¡Œä¸ºåˆ†ç±»
+CATEGORY_ARMOR_HUMAN <- 18 		  //  äººç±»æŠ¤ç”²åˆ†ç±»ï¼ˆæ™®é€šç±»åž‹æŠ¤ç”²ï¼‰
+CATEGORY_ARMOR_FORT <- 19 		  //  å ¡åž’æŠ¤ç”²åˆ†ç±»ï¼ˆåšå›ºç±»åž‹æŠ¤ç”²ï¼‰
+CATEGORY_ARMOR_DIVINE <- 20 		  //  ç¥žåœ£æŠ¤ç”²åˆ†ç±»ï¼ˆç‰¹æ®Šå¼ºåŠ›æŠ¤ç”²ï¼‰
+CATEGORY_ETC_GOBLIN <- 21 		  //  å“¥å¸ƒæž—ç‰¹æ®Šåˆ†ç±»
+CATEGORY_ETC_TAU <- 22 		  //  ç‰›å¤´äººç‰¹æ®Šåˆ†ç±»
+CATEGORY_ETC_LUGARU <- 23 		  //  ç‹¼äººç‰¹æ®Šåˆ†ç±»
+CATEGORY_ETC_FIXTURE <- 24 		  //  å›ºå®šè£…ç½®ç‰¹æ®Šåˆ†ç±»ï¼ˆåœºæ™¯ä¸­å›ºå®šå­˜åœ¨çš„ç‰©ä½“ï¼‰
+CATEGORY_ETC_STAY <- 25 		  //  ä¸´æ—¶åœç•™çŠ¶æ€ç‰¹æ®Šåˆ†ç±»
+CATEGORY_PASSIVEOBJECT_TYPE_MELEE <- 26  //  è¢«åŠ¨ç‰©ä½“è¿‘æˆ˜ç±»åž‹åˆ†ç±»
+CATEGORY_PASSIVEOBJECT_TYPE_MISSILE <- 27  //  è¢«åŠ¨ç‰©ä½“æŠ•å°„ç‰©ç±»åž‹åˆ†ç±»
+CATEGORY_PASSIVEOBJECT_TYPE_ENERGY <- 28  //  è¢«åŠ¨ç‰©ä½“èƒ½é‡ç±»åž‹åˆ†ç±»
+CATEGORY_PASSIVEOBJECT_TYPE_PHYSICAL <- 29  //  è¢«åŠ¨ç‰©ä½“ç‰©ç†ç±»åž‹åˆ†ç±»
+CATEGORY_PASSIVEOBJECT_TYPE_MAGICAL <- 30  //  è¢«åŠ¨ç‰©ä½“é­”æ³•ç±»åž‹åˆ†ç±»
+CATEGORY_PASSIVEOBJECT_TYPE_BULLET <- 31  //  è¢«åŠ¨ç‰©ä½“å­å¼¹ç±»åž‹åˆ†ç±»
+CATEGORY_PASSIVEOBJECT_TYPE_CANON <- 32  //  è¢«åŠ¨ç‰©ä½“åŠ å†œç‚®ç±»åž‹åˆ†ç±»
+CATEGORY_PASSIVEOBJECT_TYPE_EXPLOSION <- 33  //  è¢«åŠ¨ç‰©ä½“çˆ†ç‚¸ç±»åž‹åˆ†ç±»
+CATEGORY_PASSIVEOBJECT_TYPE_INFLAME <- 34  //  è¢«åŠ¨ç‰©ä½“ç‡ƒçƒ§ç±»åž‹åˆ†ç±»
+CATEGORY_PASSIVEOBJECT_TYPE_NONINFLAME <- 35  //  è¢«åŠ¨ç‰©ä½“éžç‡ƒçƒ§ç±»åž‹åˆ†ç±»
+CATEGORY_PASSIVEOBJECT_TYPE_LIGHT <- 36  //  è¢«åŠ¨ç‰©ä½“å…‰æ˜Žç±»åž‹åˆ†ç±»
+CATEGORY_PASSIVEOBJECT_TYPE_DARK <- 37  //  è¢«åŠ¨ç‰©ä½“é»‘æš—ç±»åž‹åˆ†ç±»
+CATEGORY_PASSIVEOBJECT_TYPE_WATER <- 38  //  è¢«åŠ¨ç‰©ä½“æ°´ç±»åž‹åˆ†ç±»
+CATEGORY_PASSIVEOBJECT_TYPE_FIRE <- 39  //  è¢«åŠ¨ç‰©ä½“ç«ç±»åž‹åˆ†ç±»
+CATEGORY_PASSIVEOBJECT_TYPE_FORT <- 40  //  è¢«åŠ¨ç‰©ä½“å ¡åž’ç±»åž‹åˆ†ç±»
+CATEGORY_ETC_UNBEATABLE <- 41 		  //  æ— æ•Œç‰¹æ®Šåˆ†ç±»ï¼Œç”¨äºŽä¸å¯è¢«å‡»è´¥çš„å¯¹è±¡
+CATEGORY_TRIBE_ANGEL <- 42 		  //  å¤©ä½¿éƒ¨è½åˆ†ç±»
+CATEGORY_MAX <- 43  //  åˆ†ç±»æœ€å¤§å€¼ï¼Œç”¨äºŽè¾¹ç•Œåˆ¤æ–­
+DOWN_PARAM_TYPE_VALUE <- 0 		  //  ï¿½ß´ï¿½ ï¿½ï¿½ï¿½Ì¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Óµï¿½ï¿½ï¿½ ï¿½Ö´Â´ï¿½.
+DOWN_PARAM_TYPE_FORCE <- 1 		  //  ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´Â´ï¿½.
+DOWN_PARAM_TYPE_BOUNCE_VALUE <- 2 		  //  ï¿½Ù¿î½º. ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù·ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê°ï¿½ ï¿½ï¿½ï¿½ï¿½ Æ¢ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
+DOWN_PARAM_TYPE_BOUNCE_FORCE <- 3 		  //  ï¿½Ù¿î½º. ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù·ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê°ï¿½ ï¿½ï¿½ï¿½ï¿½ Æ¢ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
+DOWN_PARAM_TYPE_BOUNCE <- 4 		  //  ï¿½Ù¿î½º. ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù·ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê°ï¿½ ï¿½ï¿½ï¿½ï¿½ Æ¢ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
 
 ENUM_DIRECTION_LEFT <- 0 
 ENUM_DIRECTION_RIGHT <- 1 
@@ -81,1090 +84,1086 @@ ENUM_DIRECTION_DOWN <- 3
 ENUM_DIRECTION_NEUTRAL <- 4 
 ENUM_DIRECTION_MAX <- 5 
 
-GRAPHICEFFECT_NONE <- 0 		  //  ¾øÀ½
-GRAPHICEFFECT_DODGE <- 1 		  //  ´åÁö
-GRAPHICEFFECT_LINEARDODGE <- 2 		  //  ¸®´Ï¾î ´åÁö
-GRAPHICEFFECT_DARK <- 3 		  //  ´ÙÅ©
+GRAPHICEFFECT_NONE <- 0 		  //  ï¿½ï¿½ï¿½ï¿½
+GRAPHICEFFECT_DODGE <- 1 		  //  ï¿½ï¿½ï¿½ï¿½
+GRAPHICEFFECT_LINEARDODGE <- 2 		  //  ï¿½ï¿½ï¿½Ï¾ï¿½ ï¿½ï¿½ï¿½ï¿½
+GRAPHICEFFECT_DARK <- 3 		  //  ï¿½ï¿½Å©
 GRAPHICEFFECT_XOR <- 4 		  //  XOR
-GRAPHICEFFECT_MONOCHROME <- 5 		  //  ´Ü»ö
-GRAPHICEFFECT_SPACE_DISTORT <- 6 		  //  °ø°£¿Ü°î
+GRAPHICEFFECT_MONOCHROME <- 5 		  //  ï¿½Ü»ï¿½
+GRAPHICEFFECT_SPACE_DISTORT <- 6 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½Ü°ï¿½
 GRAPHICEFFECT_MAX <- 7 
 
-ENUM_DRAWLAYER_CONTACT <- 0 		  //  Á¢°æ ·¹ÀÌ¾î
-ENUM_DRAWLAYER_NORMAL <- 1 		  //  ÀÏ¹Ý ·¹ÀÌ¾î
-ENUM_DRAWLAYER_BOTTOM <- 2 		  //  ¹Ù´Ú ·¹ÀÌ¾î
-ENUM_DRAWLAYER_CLOSEBACK <- 3 		  //  ±Ù°æ ·¹ÀÌ¾î
-ENUM_DRAWLAYER_MIDDLEBACK <- 4 		  //  Áß°æ ·¹ÀÌ¾î
-ENUM_DRAWLAYER_DISTANTBACK <- 5 		  //  ¿ø°æ ·¹ÀÌ¾î
-ENUM_DRAWLAYER_COVER <- 6 		  //  È­¸éÀ» µ¤´Â ·¹ÀÌ¾î ex : Blind
+ENUM_DRAWLAYER_CONTACT <- 0 		  //  ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì¾ï¿½
+ENUM_DRAWLAYER_NORMAL <- 1 		  //  ï¿½Ï¹ï¿½ ï¿½ï¿½ï¿½Ì¾ï¿½
+ENUM_DRAWLAYER_BOTTOM <- 2 		  //  ï¿½Ù´ï¿½ ï¿½ï¿½ï¿½Ì¾ï¿½
+ENUM_DRAWLAYER_CLOSEBACK <- 3 		  //  ï¿½Ù°ï¿½ ï¿½ï¿½ï¿½Ì¾ï¿½
+ENUM_DRAWLAYER_MIDDLEBACK <- 4 		  //  ï¿½ß°ï¿½ ï¿½ï¿½ï¿½Ì¾ï¿½
+ENUM_DRAWLAYER_DISTANTBACK <- 5 		  //  ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì¾ï¿½
+ENUM_DRAWLAYER_COVER <- 6 		  //  È­ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì¾ï¿½ ex : Blind
 ENUM_DRAWLAYER_MAX <- 7 
 
-STATE_STAND <- 0 		  //  ¼­ÀÖ±â, ÀÌµ¿
-STATE_SIT <- 1 		  //  ¾É±â (ÀÏ¾î³ª±â Àü)
-STATE_SIT_FOREVER <- 2 		  //  ¾É¾ÆÀÖ±â
-STATE_DAMAGE <- 3 		  //  ¸Â±â
-STATE_DOWN <- 4 		  //  ´Ù¿î 
-STATE_DIE <- 5 		  //  Á×±â
-STATE_JUMP <- 6 		  //  Á¡ÇÁ
-STATE_JUMP_ATTACK <- 7 		  //  Á¡ÇÁ
-STATE_ATTACK <- 8 		  //  °ø°Ý
-STATE_HOLD <- 9 		  //  µ¿ÀÛ ºÒ´É »óÅÂ
-STATE_SUMMONSTART <- 10 		  //  ¼ÒÈ¯ ½ÃÀÛ
-STATE_SUMMONEND <- 11 		  //  ¼ÒÈ¯ ¿Ï·á
-STATE_UNSUMMON <- 12 		  //  ¿ª¼ÒÈ¯µÇ¼­ »ç¶óÁü
-STATE_THROW <- 13 		  //  ÅõÃ´
-STATE_DASH <- 14 		  //  ´ë½¬ 
-STATE_DASH_ATTACK <- 15 		  //  ´ë½¬ ¾îÅÃ
-STATE_GET_ITEM <- 16 		  //  ¾ÆÀÌÅÛ ÁÝ±â
-STATE_BUFF <- 17 		  //  ¹öÇÁ
-STATE_QUICK_STANDING <- 18 		  //  Äü½ºÅÄµù							
-STATE_CROUCH <- 19 		  //  Å©¶ó¿ìÄ¡
-STATE_CROUCH_ATTACK <- 20 		  //  Å©¶ó¿ìÄ¡ ¾î±úÄ¡±â
-STATE_LOW_KICK <- 21 		  //  ·ÎÅ±, º» Å©·¯¼Å, »ç·ÎÅ±
-STATE_TRY_GRAB <- 22 		  //  Àâ±â ½Ãµµ
-STATE_SUPLEX <- 23 		  //  ¼öÇÃ·º½º
-STATE_JUMP_SUPLEX <- 24 		  //  ½ºÆÄÀÌ¾î
-STATE_JUMP_SUPLEX_LARIAT <- 25 		  //  ½ºÆÄÀÌ¾î È¸Àü Ãß°¡Å¸
-STATE_MOUNT_TRY <- 26 		  //  ¸¶¿îÆ® ½Ãµµ
-STATE_MOUNT <- 27 		  //  ¸¶¿îÆ®
-STATE_STOMP <- 28 		  //  ¹â±â
-STATE_CLOSE_PUNCH <- 29 		  //  ¿øÀÎÄ¡ ÆÝÄ¡
-STATE_LIFT_UPPER <- 30 		  //  ¹«Áî ¾îÆÛ
-STATE_GRAB_EXPLOSION <- 31 		  //  ÀÏ¹ßÈ­¾à¼º
-STATE_VIRTUAL_ATTACK <- 32 		  //  ÀÏ¹Ý °ø°Ý -> ÇØ¸ÓÅ± µîÀ» À§ÇÑ °¡»ó STATE
-STATE_SHOULDER_TACKLE <- 33 		  //  ¼ñ´õ ÅÂÅ¬
-STATE_WHIRL_WIND_KICK <- 34 		  //  ¼±Ç³°¢
-STATE_BLOCK_BUSTER <- 35 		  //  ºí·Ï ¹ö½ºÅÍ
-STATE_TRY_LEG_SUPLEX <- 36 		  //  ¿¡¾î½´Å¸ÀÌ³Ê ½Ãµµ
-STATE_LEG_SUPLEX <- 37 		  //  ¿¡¾î½´Å¸ÀÌ³Ê ½ÇÇà
-STATE_LIGHTNING_DANCE <- 38 		  //  ¶óÀÌÆ®´× ´í½º
-STATE_THROW_WEB <- 39 		  //  Ãµ¶óÁö¸Á
-STATE_HIDDEN_STING <- 40 		  //  ¹Ù´Ã ÀåÀü(È÷µç½ºÆÃ)
-STATE_VENOM_MINE <- 41 		  //  º£³ð¸¶ÀÎ
-STATE_JUNK_SPIN <- 42 		  //  Á¤Å©½ºÇÉ
-STATE_SHOULDER_CHARGE <- 43 		  //  Ã¶»ê°í
-STATE_SINGLE_KICK <- 44 		  //  ÇØ¸ÓÅ±
-STATE_NEN_FLOWER <- 45 		  //  ³ÙÈ­
-STATE_THROW_ENEMY <- 46 		  //  ·ÎÇÃ¸µ
-STATE_DASH_PUNCH <- 47 		  //  Á¤±Ç Âî¸£±â
-STATE_PUNCH_AFTER_RETURN <- 48 		  //  Å¸°ÝÈÄ µÚ·Îµ¹¸®±â
-STATE_RANDOM_KICK <- 49 		  //  ¹é¿­°¢ ³­Å¸
-STATE_RISING_UPPER <- 50 		  //  ½Â·æ±Ç
-STATE_DASH_AFTER_DASH <- 51 		  //  È£½Å¿¬°Ý
-STATE_EARTH_BREAK <- 52 		  //  ±Ý°­¼â
-STATE_HOLD_UP <- 53 		  //  È¦µå¾÷
-STATE_WILD_CANNON_SPIKE <- 54 		  //  ¿ÍÀÏµå Ä³³í ½ºÆÄÀÌÅ©
-STATE_SUPLEX_CYCLONE <- 55 		  //  ¼öÇÃ·º½º »çÀÌÅ¬·Ð
-STATE_LIGHTNING_DRAGON <- 56 		  //  ±¤Ãæ³ëµµ
-STATE_STRONGEST_LOW_KICK <- 57 		  //  »ç»ó ÃÖ°­ÀÇ ·ÎÅ±
-STATE_GROUND_KICK <- 58 		  //  ±×¶ó¿îµåÅ±
-STATE_FAST_DASH <- 59 		  //  ¼øº¸
-STATE_DESTROY_EARTH_SKY_DROP <- 60 		  //  ½ºÆ®¸®Æ® ÆÄÀÌÅÍ °¢¼º±â - ÃµºØÁö±«
-STATE_TYPHOON <- 61 		  //  ±×·¡ÇÃ·¯ °¢¼º±â
-STATE_FLAME_LEGS <- 62 		  //  ½ºÆ®¶óÀÌÄ¿ °¢¼º±â - È­¿°ÀÇ°¢
-STATE_THROW_SAND <- 63 		  //  ÇïÅÍ½º±IÅÍ
-STATE_ENCHANT_POISON <- 64 		  //  µ¶ÀåÀü
-STATE_SPIRAL_NEN_SHOOT <- 65 		  //  ³ª¼±ÀÇ ³Ù : Ãâ
-STATE_NEN_SPEAR_EX <- 66 		  //  ³Ù ½ºÇÇ¾î(Æ¯¼º) proc¿¡¼­ ÇÃ·¡±×1¿¡ ¸ö ¿À¹ö·¹ÀÌ,È­¸é ÇÃ·¡½¬    ÇÃ·¡±×2 ¿¡ ²ÈÈ÷´Â ¾îÆæµðÁö ¼ÒÈ¯ 
-STATE_HURRICANE_SPEAR <- 67 		  //  Çã¸®ÄÉÀÎ ½ºÇÇ¾î (Æ¯¼º)
-STATE_CRASH_ROPE <- 68 		  //  ±¤ÆøÇ÷»ç (Æ¯¼º)
-STATE_CHARGE_SPEAR_EX <- 69 		  //  Â÷Áö ½ºÇÇ¾î(Æ¯¼º)
-STATE_SPIRAL_COLUMN_EX <- 70 		  //  ³ª¼±È¯(Æ¯¼º)
-STATE_GLUEY_FRUIT_EX <- 71 		  //  ²öÀû²öÀû ¿­¸Å(Æ¯¼º)
-STATE_CHAIN_KICK_EX <- 72 		  //  ¿¬È¯Åð (Æ¯¼º)
-STATE_108_STAIRS_EX <- 73 		  //  108°è´Ü (Æ¯¼º)
+STATE_STAND <- 0 		  //  ï¿½ï¿½ï¿½Ö±ï¿½, ï¿½Ìµï¿½
+STATE_SIT <- 1 		  //  ï¿½É±ï¿½ (ï¿½Ï¾î³ªï¿½ï¿½ ï¿½ï¿½)
+STATE_SIT_FOREVER <- 2 		  //  ï¿½É¾ï¿½ï¿½Ö±ï¿½
+STATE_DAMAGE <- 3 		  //  ï¿½Â±ï¿½
+STATE_DOWN <- 4 		  //  ï¿½Ù¿ï¿½ 
+STATE_DIE <- 5 		  //  ï¿½×±ï¿½
+STATE_JUMP <- 6 		  //  ï¿½ï¿½ï¿½ï¿½
+STATE_JUMP_ATTACK <- 7 		  //  ï¿½ï¿½ï¿½ï¿½
+STATE_ATTACK <- 8 		  //  ï¿½ï¿½ï¿½ï¿½
+STATE_HOLD <- 9 		  //  ï¿½ï¿½ï¿½ï¿½ ï¿½Ò´ï¿½ ï¿½ï¿½ï¿½ï¿½
+STATE_SUMMONSTART <- 10 		  //  ï¿½ï¿½È¯ ï¿½ï¿½ï¿½ï¿½
+STATE_SUMMONEND <- 11 		  //  ï¿½ï¿½È¯ ï¿½Ï·ï¿½
+STATE_UNSUMMON <- 12 		  //  ï¿½ï¿½ï¿½ï¿½È¯ï¿½Ç¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
+STATE_THROW <- 13 		  //  ï¿½ï¿½Ã´
+STATE_DASH <- 14 		  //  ï¿½ë½¬ 
+STATE_DASH_ATTACK <- 15 		  //  ï¿½ë½¬ ï¿½ï¿½ï¿½ï¿½
+STATE_GET_ITEM <- 16 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ý±ï¿½
+STATE_BUFF <- 17 		  //  ï¿½ï¿½ï¿½ï¿½
+STATE_QUICK_STANDING <- 18 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½Äµï¿½							
+STATE_CROUCH <- 19 		  //  Å©ï¿½ï¿½ï¿½Ä¡
+STATE_CROUCH_ATTACK <- 20 		  //  Å©ï¿½ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½Ä¡ï¿½ï¿½
+STATE_LOW_KICK <- 21 		  //  ï¿½ï¿½Å±, ï¿½ï¿½ Å©ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½Å±
+STATE_TRY_GRAB <- 22 		  //  ï¿½ï¿½ï¿½ ï¿½Ãµï¿½
+STATE_SUPLEX <- 23 		  //  ï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½
+STATE_JUMP_SUPLEX <- 24 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½
+STATE_JUMP_SUPLEX_LARIAT <- 25 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ È¸ï¿½ï¿½ ï¿½ß°ï¿½Å¸
+STATE_MOUNT_TRY <- 26 		  //  ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Ãµï¿½
+STATE_MOUNT <- 27 		  //  ï¿½ï¿½ï¿½ï¿½Æ®
+STATE_STOMP <- 28 		  //  ï¿½ï¿½ï¿½
+STATE_CLOSE_PUNCH <- 29 		  //  ï¿½ï¿½ï¿½ï¿½Ä¡ ï¿½ï¿½Ä¡
+STATE_LIFT_UPPER <- 30 		  //  ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+STATE_GRAB_EXPLOSION <- 31 		  //  ï¿½Ï¹ï¿½È­ï¿½à¼º
+STATE_VIRTUAL_ATTACK <- 32 		  //  ï¿½Ï¹ï¿½ ï¿½ï¿½ï¿½ï¿½ -> ï¿½Ø¸ï¿½Å± ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ STATE
+STATE_SHOULDER_TACKLE <- 33 		  //  ï¿½ï¿½ï¿½ ï¿½ï¿½Å¬
+STATE_WHIRL_WIND_KICK <- 34 		  //  ï¿½ï¿½Ç³ï¿½ï¿½
+STATE_BLOCK_BUSTER <- 35 		  //  ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+STATE_TRY_LEG_SUPLEX <- 36 		  //  ï¿½ï¿½ï¿½î½´Å¸ï¿½Ì³ï¿½ ï¿½Ãµï¿½
+STATE_LEG_SUPLEX <- 37 		  //  ï¿½ï¿½ï¿½î½´Å¸ï¿½Ì³ï¿½ ï¿½ï¿½ï¿½ï¿½
+STATE_LIGHTNING_DANCE <- 38 		  //  ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+STATE_THROW_WEB <- 39 		  //  Ãµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+STATE_HIDDEN_STING <- 40 		  //  ï¿½Ù´ï¿½ ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ç½ºï¿½ï¿½)
+STATE_VENOM_MINE <- 41 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+STATE_JUNK_SPIN <- 42 		  //  ï¿½ï¿½Å©ï¿½ï¿½ï¿½ï¿½
+STATE_SHOULDER_CHARGE <- 43 		  //  Ã¶ï¿½ï¿½ï¿½
+STATE_SINGLE_KICK <- 44 		  //  ï¿½Ø¸ï¿½Å±
+STATE_NEN_FLOWER <- 45 		  //  ï¿½ï¿½È­
+STATE_THROW_ENEMY <- 46 		  //  ï¿½ï¿½ï¿½Ã¸ï¿½
+STATE_DASH_PUNCH <- 47 		  //  ï¿½ï¿½ï¿½ï¿½ ï¿½î¸£ï¿½ï¿½
+STATE_PUNCH_AFTER_RETURN <- 48 		  //  Å¸ï¿½ï¿½ï¿½ï¿½ ï¿½Ú·Îµï¿½ï¿½ï¿½ï¿½ï¿½
+STATE_RANDOM_KICK <- 49 		  //  ï¿½é¿­ï¿½ï¿½ ï¿½ï¿½Å¸
+STATE_RISING_UPPER <- 50 		  //  ï¿½Â·ï¿½ï¿½
+STATE_DASH_AFTER_DASH <- 51 		  //  È£ï¿½Å¿ï¿½ï¿½ï¿½
+STATE_EARTH_BREAK <- 52 		  //  ï¿½Ý°ï¿½ï¿½ï¿½
+STATE_HOLD_UP <- 53 		  //  È¦ï¿½ï¿½ï¿½
+STATE_WILD_CANNON_SPIKE <- 54 		  //  ï¿½ï¿½ï¿½Ïµï¿½ Ä³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å©
+STATE_SUPLEX_CYCLONE <- 55 		  //  ï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Å¬ï¿½ï¿½
+STATE_LIGHTNING_DRAGON <- 56 		  //  ï¿½ï¿½ï¿½ï¿½ëµµ
+STATE_STRONGEST_LOW_KICK <- 57 		  //  ï¿½ï¿½ï¿½ ï¿½Ö°ï¿½ï¿½ï¿½ ï¿½ï¿½Å±
+STATE_GROUND_KICK <- 58 		  //  ï¿½×¶ï¿½ï¿½ï¿½Å±
+STATE_FAST_DASH <- 59 		  //  ï¿½ï¿½ï¿½ï¿½
+STATE_DESTROY_EARTH_SKY_DROP <- 60 		  //  ï¿½ï¿½Æ®ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ - Ãµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+STATE_TYPHOON <- 61 		  //  ï¿½×·ï¿½ï¿½Ã·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+STATE_FLAME_LEGS <- 62 		  //  ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½Ä¿ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ - È­ï¿½ï¿½ï¿½Ç°ï¿½
+STATE_THROW_SAND <- 63 		  //  ï¿½ï¿½ï¿½Í½ï¿½ï¿½Iï¿½ï¿½
+STATE_ENCHANT_POISON <- 64 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+STATE_SPIRAL_NEN_SHOOT <- 65 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ : ï¿½ï¿½
+STATE_NEN_SPEAR_EX <- 66 		  //  ï¿½ï¿½ ï¿½ï¿½ï¿½Ç¾ï¿½(Æ¯ï¿½ï¿½) procï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½ï¿½1ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,È­ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½ï¿½    ï¿½Ã·ï¿½ï¿½ï¿½2 ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯ 
+STATE_HURRICANE_SPEAR <- 67 		  //  ï¿½ã¸®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ç¾ï¿½ (Æ¯ï¿½ï¿½)
+STATE_CRASH_ROPE <- 68 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ (Æ¯ï¿½ï¿½)
+STATE_CHARGE_SPEAR_EX <- 69 		  //  ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ç¾ï¿½(Æ¯ï¿½ï¿½)
+STATE_SPIRAL_COLUMN_EX <- 70 		  //  ï¿½ï¿½ï¿½ï¿½È¯(Æ¯ï¿½ï¿½)
+STATE_GLUEY_FRUIT_EX <- 71 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½(Æ¯ï¿½ï¿½)
+STATE_CHAIN_KICK_EX <- 72 		  //  ï¿½ï¿½È¯ï¿½ï¿½ (Æ¯ï¿½ï¿½)
+STATE_108_STAIRS_EX <- 73 		  //  108ï¿½ï¿½ï¿½ (Æ¯ï¿½ï¿½)
 STATE_INHERIT_START <- 74 
 STATE_MAX <- 75 
 
-SKILL_SHOULDER_CHARGE <- 1 		  //  001.Ã¶»ê°í
-SKILL_CROUCH <- 2 		  //  002.Å©¶ó¿ìÄ¡
-SKILL_GRAB_EXPLOSION <- 3 		  //  003.ÀÏ¹ßÈ­¾à¼º
-SKILL_CRASH_LOW_KICK <- 4 		  //  004.º» Å©·¯¼Å
-SKILL_LIFT_UPPER <- 5 		  //  005.¹«Áî ¾îÆÛ
-SKILL_DAMAGE_LOW_KICK <- 6 		  //  006.·ÎÅ±
-SKILL_PHYSICAL_DEFENSE_UP <- 7 		  //  007.Ã¶±Ý°­
-SKILL_CREATE_ILLUSION <- 8 		  //  008.ºÐ½Å
-SKILL_SUPLEX <- 9 		  //  009.¼öÇÃ·º½º
-SKILL_BACK_SUPLEX <- 10 		  //  010.¹éºê·¹ÀÌÄ¿
-SKILL_THUNDER_SUPLEX <- 11 		  //  011.¼öÇÃ·º½º ½ã´õ
-SKILL_ENERGY_BALL <- 12 		  //  012.³ÙÅº
-SKILL_THROW_SAND <- 13 		  //  013.ÇïÅÍ ½ºÄÌÅÍ
-SKILL_MOUNT <- 14 		  //  014.¸¶¿îÆ®
-SKILL_ROAR_STUN <- 15 		  //  015.»çÀÚÈÄ
-SKILL_ENERGY_FIELD <- 16 		  //  016.±â°øÀå
-SKILL_STOMP <- 17 		  //  017.°øÁß ¹â±â
-SKILL_JUMP_SUPLEX <- 18 		  //  018.½ºÆÄÀÌ¾î
-SKILL_CLOSE_PUNCH <- 19 		  //  019.¿øÀÎÄ¡ ÆÝÄ¡
-SKILL_SUPER_ARMOR <- 20 		  //  020.½´ÆÛ¾Æ¸Ó
-SKILL_CANCEL_ENERGY_BALL <- 21 		  //  021.Äµ½½ ³ÙÅº
-SKILL_SUPLEX_SUB_POWER_UP <- 22 		  //  022.°­·ÄÇÑ Å×ÀÌÅ© ´Ù¿î
-SKILL_CANCEL_LIFT_UPPER <- 23 		  //  023.Äµ½½ ¹«Áî ¾îÆÛ
-SKILL_CANCEL_LOW_KICK <- 24 		  //  024.Äµ½½ ·ÎÅ±
-SKILL_CANCEL_THROW_SAND <- 25 		  //  025.Äµ½½ ÇïÅÍ ½ºÄÌÅÍ
-SKILL_CANCEL_CLOSE_PUNCH <- 26 		  //  026.Äµ½½ ¿øÀÎÄ¡ ÆÝÄ¡
-SKILL_CANCEL_SUPLEX <- 27 		  //  027.Äµ½½ ¼öÇÃ·º½º
-SKILL_CANCEL_JUMP_SUPLEX <- 28 		  //  028.Äµ½½ ½ºÆÄÀÌ¾î
-SKILL_LIGHT_FRIENDSHIP <- 29 		  //  029.ºûÀÇ Ä£È­
-SKILL_LIGHT_ENCHANT_WEAPON <- 30 		  //  030.Ä«ÀÌ
-SKILL_ATTACK_SPEED_UP <- 31 		  //  031.È°¼ºÈ­ ¼û°á
-SKILL_POISON_TOLERANCE_UP <- 32 		  //  032.µ¶¿¡ ÀÍ¼÷ÇÔ
-SKILL_STUN_ON_USE_SKILL <- 33 		  //  033.ÁÖÈ­ÀÔ¸¶
-SKILL_EQUIP_BOXING_GLOVE <- 34 		  //  034.±ÇÅõ±Û·¯ºê »ç¿ë °¡´É
-SKILL_BLIND_TOLERANCE_UP <- 35 		  //  035.³ÙÀ¸·Î ´À³¤´Ù
-SKILL_LIGHT_TOLERANCE_UP <- 36 		  //  036.ÅÂ¾çÀÇ Ä¿Æ°
-SKILL_SLOW_DOWN_POWER_UP <- 37 		  //  037.°­±Ç
-SKILL_ENCHANT_POISON <- 38 		  //  038.µ¶ ÀåÀü(µ¶¹Ù¸£±â)
-SKILL_AIM_VITAL_POINT <- 39 		  //  039.±Þ¼Ò ÁöÁ¤
-SKILL_SPIRAL_NEN <- 40 		  //  040.³ª¼±ÀÇ ³Ù
-SKILL_FLAME_LEGS <- 41 		  //  041.½ºÆ®¶óÀÌÄ¿ °¢¼º±â - È­¿°ÀÇ°¢
-SKILL_NEN_GUARD <- 42 		  //  042.³Ù°¡µå
-SKILL_DOUBLE_THROW <- 43 		  //  043.ÀÌÁß ÅõÃ´
-SKILL_PROVOCATION <- 44 		  //  044.µµ¹ß
-SKILL_CLAW_MASTERY <- 45 		  //  045.Å¬·Î ¸¶½ºÅÍ¸®
-SKILL_SINGLE_KICK <- 46 		  //  046.ÇØ¸Ó Å±
-SKILL_CANCEL_SINGLE_KICK <- 47 		  //  047.Äµ½½ ÇØ¸Ó Å±
-SKILL_CANCEL_GRAB_EXPLOSION <- 48 		  //  048.Äµ½½ ÀÏ¹ßÈ­¾à¼º
-SKILL_THROW_ENEMY <- 49 		  //  049.·ÎÇÃ¸µ
-SKILL_DEFINITE_GRAB <- 50 		  //  050.¹Ýµå½Ã Àâ´Â´Ù!
-SKILL_SLIDE_GRAB <- 51 		  //  051.½½¶óÀÌµù ±×·¦
-SKILL_THROW_WEB <- 52 		  //  052.Ãµ¶óÁö¸Á
-SKILL_CANCEL_THROW_ENEMY <- 53 		  //  053.Äµ½½ ·ÎÇÃ¸µ
-SKILL_SHOULDER_TACKLE <- 54 		  //  054.¼ñ´õ ÅÂÅ¬
-SKILL_GRAB_CANNON <- 55 		  //  055.±×·¦ Ä³³í
-SKILL_ARMOR_MASTERY_LIGHT_SK <- 56 		  //  056.³ÑÄ¡´Â ÈûÀÇ °æ°© ¸¶½ºÅÍ¸®
-SKILL_ARMOR_MASTERY_LIGHT_GP <- 57 		  //  057.°­ÀÎÇÑ ±Ù¼ºÀÇ °æ°© ¸¶½ºÅÍ¸®
-SKILL_WHIRL_WIND_KICK <- 58 		  //  058.ÁúÇ³°¢
-SKILL_CANCEL_WHIRL_WIND_KICK <- 59 		  //  059.Äµ½½ ÁúÇ³°¢
-SKILL_BLOCK_BUSTER <- 60 		  //  060.ºí·Ï ¹ö½ºÅÍ
-SKILL_CANCEL_THROW <- 61 		  //  061.Äµ½½ ÅõÃ´
-SKILL_LEG_SUPLEX <- 62 		  //  062.¿¡¾î½´Å¸ÀÌ³Ê
-SKILL_TYPHOON <- 63 		  //  063.±×·¡ÇÃ·¯ °¢¼º±â
-SKILL_DUMMY <- 64 		  //  064.»ç¿ëÇÏÁö ¾ÊÀ½.
-SKILL_EFFICIENT_BURN <- 65 		  //  065.½ºÆ®¶óÀÌÅÍ °¢¼º ÆÐ½Ãºê - È¿À²ÀûÀÎ ¿¬¼Ò
-SKILL_GRAB_MASTERY <- 66 		  //  066.Àâ±â ¸¶½ºÅÍ¸®
-SKILL_NEN_FLOWER <- 67 		  //  067.³ÙÈ­
-SKILL_LIGHTNING_DANCE <- 68 		  //  068.¶óÀÌÆ®´× ´í½º
-SKILL_ILLUSION_BOMB <- 69 		  //  069.È¯¿µÆø¼â
-SKILL_POWER_UP_ON_DASH <- 70 		  //  070.½ºÅÆÇÇµå
-SKILL_STRONGEST_LOW_KICK <- 71 		  //  071.»ç»óÃÖ°­ÀÇ ·ÎÅ±
-SKILL_NEN_SHIELD <- 72 		  //  072.Èð³¯¸®´Â Ãµ¿°È­
-SKILL_ARMOR_MASTERY_HEAVY_SP <- 73 		  //  073.Áß°© ¸¶½ºÅÍ¸®
-SKILL_CRAZY_MOUNT <- 74 		  //  074.Áö¶ö ¸¶¿îÆ®
-SKILL_HIDDEN_STING <- 75 		  //  075.È÷µç½ºÆÃ
-SKILL_VENOM_MINE <- 76 		  //  076.º£³ð¸¶ÀÎ
-SKILL_JUNK_SPIN <- 77 		  //  077.Á¤Å©½ºÇÉ
-SKILL_ENERGY_BALL_CHARGE <- 78 		  //  078.³ÙÅº ¸ð¾Æ½î±â
-SKILL_NEN_MONSTER_WHITE_TIGER <- 79 		  //  079.³Ù¼ö : ¹éÈ£
-SKILL_DASH_PUNCH <- 80 		  //  080.Á¤±ÇÂî¸£±â
-SKILL_PUNCH_AFTER_RETURN <- 81 		  //  081.Å¸°ÝÈÄ µÚ·Îµ¹¸®±â
-SKILL_RANDOM_KICK <- 82 		  //  082.¹é¿­°¢ ³­Å¸
-SKILL_RISING_UPPER <- 83 		  //  083.½Â·æ±Ç
-SKILL_DASH_AFTER_DASH <- 84 		  //  084.È£½Å¿¬°Ý
-SKILL_DASH_AFTER_DASH_EXTENSION <- 85 		  //  085.È£Æ÷
-SKILL_EARTH_BREAK <- 86 		  //  086.±Ý°­¼â
-SKILL_HOLD_UP <- 87 		  //  087.È¦µå¾÷
-SKILL_WILD_CANNON_SPIKE <- 88 		  //  088.¿ÍÀÏµå Ä³³í ½ºÆÄÀÌÅ©
-SKILL_SUPLEX_CYCLONE <- 89 		  //  089.¼öÇÃ·º½º »çÀÌÅ¬·Ð
-SKILL_LIGHTNING_DRAGON <- 90 		  //  090.±¤Ãæ³ëµµ
-SKILL_MUSCLE_SHIFT <- 91 		  //  091.¸Ó½½ ½ÃÇÁÆ®	
-SKILL_CANCEL_EARTH_BREAK <- 92 		  //  092.Äµ½½ ±Ý°­¼â
-SKILL_CANCEL_DASH_PUNCH <- 93 		  //  093.Äµ½½ ºØ±Ç
-SKILL_CANCEL_SHOULDER_CHARGE <- 94 		  //  094.Äµ½½ Ã¶»ê°í
-SKILL_CANCEL_PUNCH_AFTER_RETURN <- 95 		  //  095.Äµ½½ Å¸°ÝÈÄ µÚ·Îµ¹¸®±â
-SKILL_CANCEL_SUPLEX_CYCLONE <- 96 		  //  096.Äµ½½ ¼öÇÃ·º½º »çÀÌÅ¬·Ð
-SKILL_ARMOR_MASTERY_CLOTH_NM <- 97 		  //  097.Ãµ ¸¶½ºÅÍ¸®:³Ù¸¶½ºÅÍ
-SKILL_CANCEL_NEN_GUARD <- 98 		  //  098.Äµ½½ ³Ù°¡µå
-SKILL_CANCEL_ROAR_STUN <- 99 		  //  099.Äµ½½ »çÀÚÈÄ
-SKILL_CANCEL_ENERGY_FIELD <- 100 		  //  100.Äµ½½ ±â°øÀå
-SKILL_CANCEL_ENCHANT_POISON <- 101 		  //  101.»ç¿ëÇÏÁö ¾ÊÀ½.
-SKILL_CANCEL_VENOM_MINE <- 102 		  //  102.Äµ½½ º£³ð¸¶ÀÎ
-SKILL_CANCEL_RANDOM_KICK <- 103 		  //  103.Äµ½½ ºñÆ®µå¶óÀÌºê
-SKILL_BLOCK_BUSTER_EX <- 104 		  //  104.ºí·Ï ¹ö½ºÅÍ[°­È­]
-SKILL_DESTROY_EARTH_SKY_DROP <- 105 		  //  105.½ºÆ®¸®Æ® ÆÄÀÌÅÍ °¢¼º±â - ÃµºØÁö±«
-SKILL_GROUND_KICK <- 106 		  //  106.±×¶ó¿îµåÅ±
-SKILL_CANCEL_GROUND_KICK <- 107 		  //  107.Äµ½½ ±×¶ó¿îµåÅ±
-SKILL_FAST_DASH <- 108 		  //  108.¼øº¸
-SKILL_SMART_THROW <- 109 		  //  °£ÁöÅõÃ´ ¼Ò½º ÀÛ¾÷ - Á¤Áø¼ö
-SKILL_AUTO_LOAD <- 110 		  //  110.ÀÚµ¿ÀåÀü
-SKILL_SPIRAL_NEN_SHOOT <- 111 		  //  111.³ª¼±ÀÇ ³Ù : Ãâ
-SKILL_SPIRAL_NEN_SPIN <- 112 		  //  112.³ª¼±ÀÇ ³Ù : ÁÖ
-SKILL_CANCEL_SPIRAL_NEN_SHOOT <- 113 		  //  113.Äµ½½ ³ª¼±ÀÇ ³Ù : Ãâ
-SKILL_NEN_POLE <- 114 		  //  114.³ÙÀÇ ±ØÀÇ
-SKILL_TYPHOON_COUNTER_STRIKE <- 115 		  //  115.¿ª½À : ±×·¡ÇÃ·¯ °¢¼º±â ÆÐ½Ãºê
-SKILL_1000HANDS_1000EYES <- 116 		  //  116.Ãµ¼öÃµ¾È : ½ºÆÄ °¢¼º±â ÆÐ½Ãºê
-SKILL_NEN_SPEAR_EX <- 117 		  //  117.³Ù ½ºÇÇ¾î(Æ¯¼º)
-SKILL_CHARGE_SPEAR_EX <- 118 		  //  118.Â÷Áö ½ºÇÇ¾î(Æ¯¼º)
-SKILL_GLUEY_FRUIT_EX <- 119 		  //  119.²öÀû²öÀû¿­¸Å (Æ¯¼º)
-SKILL_SPIRAL_COLUMN_EX <- 120 		  //  120.³ª¼±È¯(Æ¯¼º) Á¤Áø¼ö
-SKILL_108_STAIRS_EX <- 121 		  //  121.108°è´Ü (Æ¯¼º)
-SKILL_HURRICANE_SPEAR <- 122 		  //  122.Çã¸®ÄÉÀÎ ½ºÇÇ¾î (Æ¯¼º)
-SKILL_CRASH_ROPE <- 123 		  //  123.±¤ÆøÇ÷»ç (Æ¯¼º)
-SKILL_CHAIN_KICK_EX <- 124 		  //  124.¿¬È¯Åð (Æ¯¼º)
+SKILL_SHOULDER_CHARGE <- 1 		  //  001.Ã¶ï¿½ï¿½ï¿½
+SKILL_CROUCH <- 2 		  //  002.Å©ï¿½ï¿½ï¿½Ä¡
+SKILL_GRAB_EXPLOSION <- 3 		  //  003.ï¿½Ï¹ï¿½È­ï¿½à¼º
+SKILL_CRASH_LOW_KICK <- 4 		  //  004.ï¿½ï¿½ Å©ï¿½ï¿½ï¿½ï¿½
+SKILL_LIFT_UPPER <- 5 		  //  005.ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+SKILL_DAMAGE_LOW_KICK <- 6 		  //  006.ï¿½ï¿½Å±
+SKILL_PHYSICAL_DEFENSE_UP <- 7 		  //  007.Ã¶ï¿½Ý°ï¿½
+SKILL_CREATE_ILLUSION <- 8 		  //  008.ï¿½Ð½ï¿½
+SKILL_SUPLEX <- 9 		  //  009.ï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½
+SKILL_BACK_SUPLEX <- 10 		  //  010.ï¿½ï¿½ê·¹ï¿½ï¿½Ä¿
+SKILL_THUNDER_SUPLEX <- 11 		  //  011.ï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
+SKILL_ENERGY_BALL <- 12 		  //  012.ï¿½ï¿½Åº
+SKILL_THROW_SAND <- 13 		  //  013.ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+SKILL_MOUNT <- 14 		  //  014.ï¿½ï¿½ï¿½ï¿½Æ®
+SKILL_ROAR_STUN <- 15 		  //  015.ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+SKILL_ENERGY_FIELD <- 16 		  //  016.ï¿½ï¿½ï¿½ï¿½ï¿½
+SKILL_STOMP <- 17 		  //  017.ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
+SKILL_JUMP_SUPLEX <- 18 		  //  018.ï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½
+SKILL_CLOSE_PUNCH <- 19 		  //  019.ï¿½ï¿½ï¿½ï¿½Ä¡ ï¿½ï¿½Ä¡
+SKILL_SUPER_ARMOR <- 20 		  //  020.ï¿½ï¿½ï¿½Û¾Æ¸ï¿½
+SKILL_CANCEL_ENERGY_BALL <- 21 		  //  021.Äµï¿½ï¿½ ï¿½ï¿½Åº
+SKILL_SUPLEX_SUB_POWER_UP <- 22 		  //  022.ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Å© ï¿½Ù¿ï¿½
+SKILL_CANCEL_LIFT_UPPER <- 23 		  //  023.Äµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+SKILL_CANCEL_LOW_KICK <- 24 		  //  024.Äµï¿½ï¿½ ï¿½ï¿½Å±
+SKILL_CANCEL_THROW_SAND <- 25 		  //  025.Äµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+SKILL_CANCEL_CLOSE_PUNCH <- 26 		  //  026.Äµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ä¡ ï¿½ï¿½Ä¡
+SKILL_CANCEL_SUPLEX <- 27 		  //  027.Äµï¿½ï¿½ ï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½
+SKILL_CANCEL_JUMP_SUPLEX <- 28 		  //  028.Äµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½
+SKILL_LIGHT_FRIENDSHIP <- 29 		  //  029.ï¿½ï¿½ï¿½ï¿½ Ä£È­
+SKILL_LIGHT_ENCHANT_WEAPON <- 30 		  //  030.Ä«ï¿½ï¿½
+SKILL_ATTACK_SPEED_UP <- 31 		  //  031.È°ï¿½ï¿½È­ ï¿½ï¿½ï¿½ï¿½
+SKILL_POISON_TOLERANCE_UP <- 32 		  //  032.ï¿½ï¿½ï¿½ï¿½ ï¿½Í¼ï¿½ï¿½ï¿½
+SKILL_STUN_ON_USE_SKILL <- 33 		  //  033.ï¿½ï¿½È­ï¿½Ô¸ï¿½
+SKILL_EQUIP_BOXING_GLOVE <- 34 		  //  034.ï¿½ï¿½ï¿½ï¿½ï¿½Û·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+SKILL_BLIND_TOLERANCE_UP <- 35 		  //  035.ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+SKILL_LIGHT_TOLERANCE_UP <- 36 		  //  036.ï¿½Â¾ï¿½ï¿½ï¿½ Ä¿Æ°
+SKILL_SLOW_DOWN_POWER_UP <- 37 		  //  037.ï¿½ï¿½ï¿½ï¿½
+SKILL_ENCHANT_POISON <- 38 		  //  038.ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½Ù¸ï¿½ï¿½ï¿½)
+SKILL_AIM_VITAL_POINT <- 39 		  //  039.ï¿½Þ¼ï¿½ ï¿½ï¿½ï¿½ï¿½
+SKILL_SPIRAL_NEN <- 40 		  //  040.ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
+SKILL_FLAME_LEGS <- 41 		  //  041.ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½Ä¿ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ - È­ï¿½ï¿½ï¿½Ç°ï¿½
+SKILL_NEN_GUARD <- 42 		  //  042.ï¿½Ù°ï¿½ï¿½ï¿½
+SKILL_DOUBLE_THROW <- 43 		  //  043.ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã´
+SKILL_PROVOCATION <- 44 		  //  044.ï¿½ï¿½ï¿½ï¿½
+SKILL_CLAW_MASTERY <- 45 		  //  045.Å¬ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½
+SKILL_SINGLE_KICK <- 46 		  //  046.ï¿½Ø¸ï¿½ Å±
+SKILL_CANCEL_SINGLE_KICK <- 47 		  //  047.Äµï¿½ï¿½ ï¿½Ø¸ï¿½ Å±
+SKILL_CANCEL_GRAB_EXPLOSION <- 48 		  //  048.Äµï¿½ï¿½ ï¿½Ï¹ï¿½È­ï¿½à¼º
+SKILL_THROW_ENEMY <- 49 		  //  049.ï¿½ï¿½ï¿½Ã¸ï¿½
+SKILL_DEFINITE_GRAB <- 50 		  //  050.ï¿½Ýµï¿½ï¿½ ï¿½ï¿½Â´ï¿½!
+SKILL_SLIDE_GRAB <- 51 		  //  051.ï¿½ï¿½ï¿½ï¿½ï¿½Ìµï¿½ ï¿½×·ï¿½
+SKILL_THROW_WEB <- 52 		  //  052.Ãµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+SKILL_CANCEL_THROW_ENEMY <- 53 		  //  053.Äµï¿½ï¿½ ï¿½ï¿½ï¿½Ã¸ï¿½
+SKILL_SHOULDER_TACKLE <- 54 		  //  054.ï¿½ï¿½ï¿½ ï¿½ï¿½Å¬
+SKILL_GRAB_CANNON <- 55 		  //  055.ï¿½×·ï¿½ Ä³ï¿½ï¿½
+SKILL_ARMOR_MASTERY_LIGHT_SK <- 56 		  //  056.ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½æ°© ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½
+SKILL_ARMOR_MASTERY_LIGHT_GP <- 57 		  //  057.ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù¼ï¿½ï¿½ï¿½ ï¿½æ°© ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½
+SKILL_WHIRL_WIND_KICK <- 58 		  //  058.ï¿½ï¿½Ç³ï¿½ï¿½
+SKILL_CANCEL_WHIRL_WIND_KICK <- 59 		  //  059.Äµï¿½ï¿½ ï¿½ï¿½Ç³ï¿½ï¿½
+SKILL_BLOCK_BUSTER <- 60 		  //  060.ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+SKILL_CANCEL_THROW <- 61 		  //  061.Äµï¿½ï¿½ ï¿½ï¿½Ã´
+SKILL_LEG_SUPLEX <- 62 		  //  062.ï¿½ï¿½ï¿½î½´Å¸ï¿½Ì³ï¿½
+SKILL_TYPHOON <- 63 		  //  063.ï¿½×·ï¿½ï¿½Ã·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+SKILL_DUMMY <- 64 		  //  064.ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
+SKILL_EFFICIENT_BURN <- 65 		  //  065.ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ð½Ãºï¿½ - È¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+SKILL_GRAB_MASTERY <- 66 		  //  066.ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½
+SKILL_NEN_FLOWER <- 67 		  //  067.ï¿½ï¿½È­
+SKILL_LIGHTNING_DANCE <- 68 		  //  068.ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+SKILL_ILLUSION_BOMB <- 69 		  //  069.È¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+SKILL_POWER_UP_ON_DASH <- 70 		  //  070.ï¿½ï¿½ï¿½ï¿½ï¿½Çµï¿½
+SKILL_STRONGEST_LOW_KICK <- 71 		  //  071.ï¿½ï¿½ï¿½ï¿½Ö°ï¿½ï¿½ï¿½ ï¿½ï¿½Å±
+SKILL_NEN_SHIELD <- 72 		  //  072.ï¿½ð³¯¸ï¿½ï¿½ï¿½ Ãµï¿½ï¿½È­
+SKILL_ARMOR_MASTERY_HEAVY_SP <- 73 		  //  073.ï¿½ß°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½
+SKILL_CRAZY_MOUNT <- 74 		  //  074.ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®
+SKILL_HIDDEN_STING <- 75 		  //  075.ï¿½ï¿½ï¿½ç½ºï¿½ï¿½
+SKILL_VENOM_MINE <- 76 		  //  076.ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+SKILL_JUNK_SPIN <- 77 		  //  077.ï¿½ï¿½Å©ï¿½ï¿½ï¿½ï¿½
+SKILL_ENERGY_BALL_CHARGE <- 78 		  //  078.ï¿½ï¿½Åº ï¿½ï¿½Æ½ï¿½ï¿½
+SKILL_NEN_MONSTER_WHITE_TIGER <- 79 		  //  079.ï¿½Ù¼ï¿½ : ï¿½ï¿½È£
+SKILL_DASH_PUNCH <- 80 		  //  080.ï¿½ï¿½ï¿½ï¿½ï¿½î¸£ï¿½ï¿½
+SKILL_PUNCH_AFTER_RETURN <- 81 		  //  081.Å¸ï¿½ï¿½ï¿½ï¿½ ï¿½Ú·Îµï¿½ï¿½ï¿½ï¿½ï¿½
+SKILL_RANDOM_KICK <- 82 		  //  082.ï¿½é¿­ï¿½ï¿½ ï¿½ï¿½Å¸
+SKILL_RISING_UPPER <- 83 		  //  083.ï¿½Â·ï¿½ï¿½
+SKILL_DASH_AFTER_DASH <- 84 		  //  084.È£ï¿½Å¿ï¿½ï¿½ï¿½
+SKILL_DASH_AFTER_DASH_EXTENSION <- 85 		  //  085.È£ï¿½ï¿½
+SKILL_EARTH_BREAK <- 86 		  //  086.ï¿½Ý°ï¿½ï¿½ï¿½
+SKILL_HOLD_UP <- 87 		  //  087.È¦ï¿½ï¿½ï¿½
+SKILL_WILD_CANNON_SPIKE <- 88 		  //  088.ï¿½ï¿½ï¿½Ïµï¿½ Ä³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å©
+SKILL_SUPLEX_CYCLONE <- 89 		  //  089.ï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Å¬ï¿½ï¿½
+SKILL_LIGHTNING_DRAGON <- 90 		  //  090.ï¿½ï¿½ï¿½ï¿½ëµµ
+SKILL_MUSCLE_SHIFT <- 91 		  //  091.ï¿½Ó½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®	
+SKILL_CANCEL_EARTH_BREAK <- 92 		  //  092.Äµï¿½ï¿½ ï¿½Ý°ï¿½ï¿½ï¿½
+SKILL_CANCEL_DASH_PUNCH <- 93 		  //  093.Äµï¿½ï¿½ ï¿½Ø±ï¿½
+SKILL_CANCEL_SHOULDER_CHARGE <- 94 		  //  094.Äµï¿½ï¿½ Ã¶ï¿½ï¿½ï¿½
+SKILL_CANCEL_PUNCH_AFTER_RETURN <- 95 		  //  095.Äµï¿½ï¿½ Å¸ï¿½ï¿½ï¿½ï¿½ ï¿½Ú·Îµï¿½ï¿½ï¿½ï¿½ï¿½
+SKILL_CANCEL_SUPLEX_CYCLONE <- 96 		  //  096.Äµï¿½ï¿½ ï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Å¬ï¿½ï¿½
+SKILL_ARMOR_MASTERY_CLOTH_NM <- 97 		  //  097.Ãµ ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½:ï¿½Ù¸ï¿½ï¿½ï¿½ï¿½ï¿½
+SKILL_CANCEL_NEN_GUARD <- 98 		  //  098.Äµï¿½ï¿½ ï¿½Ù°ï¿½ï¿½ï¿½
+SKILL_CANCEL_ROAR_STUN <- 99 		  //  099.Äµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+SKILL_CANCEL_ENERGY_FIELD <- 100 		  //  100.Äµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
+SKILL_CANCEL_ENCHANT_POISON <- 101 		  //  101.ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
+SKILL_CANCEL_VENOM_MINE <- 102 		  //  102.Äµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+SKILL_CANCEL_RANDOM_KICK <- 103 		  //  103.Äµï¿½ï¿½ ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½Ìºï¿½
+SKILL_BLOCK_BUSTER_EX <- 104 		  //  104.ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½ï¿½È­]
+SKILL_DESTROY_EARTH_SKY_DROP <- 105 		  //  105.ï¿½ï¿½Æ®ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ - Ãµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+SKILL_GROUND_KICK <- 106 		  //  106.ï¿½×¶ï¿½ï¿½ï¿½Å±
+SKILL_CANCEL_GROUND_KICK <- 107 		  //  107.Äµï¿½ï¿½ ï¿½×¶ï¿½ï¿½ï¿½Å±
+SKILL_FAST_DASH <- 108 		  //  108.ï¿½ï¿½ï¿½ï¿½
+SKILL_SMART_THROW <- 109 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã´ ï¿½Ò½ï¿½ ï¿½Û¾ï¿½ - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+SKILL_AUTO_LOAD <- 110 		  //  110.ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½
+SKILL_SPIRAL_NEN_SHOOT <- 111 		  //  111.ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ : ï¿½ï¿½
+SKILL_SPIRAL_NEN_SPIN <- 112 		  //  112.ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ : ï¿½ï¿½
+SKILL_CANCEL_SPIRAL_NEN_SHOOT <- 113 		  //  113.Äµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ : ï¿½ï¿½
+SKILL_NEN_POLE <- 114 		  //  114.ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+SKILL_TYPHOON_COUNTER_STRIKE <- 115 		  //  115.ï¿½ï¿½ï¿½ï¿½ : ï¿½×·ï¿½ï¿½Ã·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ð½Ãºï¿½
+SKILL_1000HANDS_1000EYES <- 116 		  //  116.Ãµï¿½ï¿½Ãµï¿½ï¿½ : ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ð½Ãºï¿½
+SKILL_NEN_SPEAR_EX <- 117 		  //  117.ï¿½ï¿½ ï¿½ï¿½ï¿½Ç¾ï¿½(Æ¯ï¿½ï¿½)
+SKILL_CHARGE_SPEAR_EX <- 118 		  //  118.ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ç¾ï¿½(Æ¯ï¿½ï¿½)
+SKILL_GLUEY_FRUIT_EX <- 119 		  //  119.ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ (Æ¯ï¿½ï¿½)
+SKILL_SPIRAL_COLUMN_EX <- 120 		  //  120.ï¿½ï¿½ï¿½ï¿½È¯(Æ¯ï¿½ï¿½) ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+SKILL_108_STAIRS_EX <- 121 		  //  121.108ï¿½ï¿½ï¿½ (Æ¯ï¿½ï¿½)
+SKILL_HURRICANE_SPEAR <- 122 		  //  122.ï¿½ã¸®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ç¾ï¿½ (Æ¯ï¿½ï¿½)
+SKILL_CRASH_ROPE <- 123 		  //  123.ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ (Æ¯ï¿½ï¿½)
+SKILL_CHAIN_KICK_EX <- 124 		  //  124.ï¿½ï¿½È¯ï¿½ï¿½ (Æ¯ï¿½ï¿½)
 
-CUSTOM_ANI_CROUCH <- 0 		  //  Å©¶ó¿ìÄ¡ µ¿ÀÛ
-CUSTOM_ANI_CRASH_LOW_KICK <- 1 		  //  º» Å©·¯¼Å
-CUSTOM_ANI_LIFT_UPPER <- 2 		  //  ¹«Áî ¾îÆÛ
-CUSTOM_ANI_DAMAGE_LOW_KICK <- 3 		  //  ·ÎÅ±
-CUSTOM_ANI_TRY_SUPLEX <- 4 		  //  ¼öÇÃ·º½º ½Ãµµ
-CUSTOM_ANI_SUPLEX <- 5 		  //  ¼öÇÃ·º½º
-CUSTOM_ANI_BACK_SUPLEX <- 6 		  //  ¹éºê·¹ÀÌÄ¿
-CUSTOM_ANI_MOUNT_TRY <- 7 		  //  ¸¶¿îÆ® ½Ãµµ
-CUSTOM_ANI_MOUNT <- 8 		  //  ¸¶¿îÆ® - ÀûÀ» ´¯È÷°í ¶§¸®±â Àü±îÁö ¸ð¼Ç
-CUSTOM_ANI_MOUNT_PUNCH <- 9 		  //  ¸¶¿îÆ® - ÆÝÄ¡
-CUSTOM_ANI_NOT_USE <- 10 		  //  »ç¿ëÇÏÁö ¾ÊÀ½.
-CUSTOM_ANI_STOMP <- 11 		  //  °øÁß ¹â±â
-CUSTOM_ANI_TRY_JUMP_SUPLEX <- 12 		  //  ½ºÆÄÀÌ¾î ½Ãµµ
-CUSTOM_ANI_JUMP_SUPLEX <- 13 		  //  ½ºÆÄÀÌ¾î
-CUSTOM_ANI_JUMP_SUPLEX_LARIAT <- 14 		  //  ½ºÆÄÀÌ¾î È¸Àü Ãß°¡Å¸
-CUSTOM_ANI_CLOSE_PUNCH <- 15 		  //  ¿øÀÎÄ¡ ÆÝÄ¡
-CUSTOM_ANI_GRAB_EXPLOSION <- 16 		  //  ÀÏ¹ßÈ­¾à¼º
-CUSTOM_ANI_SHOULDER_TACKLE <- 17 		  //  ¼ñ´õ ÅÂÅ¬
-CUSTOM_ANI_WHIRL_WIND_KICK <- 18 		  //  ¼±Ç³°¢
-CUSTOM_ANI_BLOCK_BUSTER_READY <- 19 		  //  ºí·Ï ¹ö½ºÅÍ - ÁØºñ (°­È­ÅõÃ´ ½ÃÀüÁß ÀÏ¶§¸¸ ¹ßµ¿µÊ)
-CUSTOM_ANI_BLOCK_BUSTER_JUMP <- 20 		  //  ºí·Ï ¹ö½ºÅÍ - Á¡ÇÁ (°­È­ÅõÃ´ ½ÃÀüÁß ÀÏ¶§¸¸ ¹ßµ¿µÊ)
-CUSTOM_ANI_BLOCK_BUSTER_SHOOT <- 21 		  //  ºí·Ï ¹ö½ºÅÍ - Á¡ÇÁ (°­È­ÅõÃ´ ½ÃÀüÁß ÀÏ¶§¸¸ ¹ßµ¿µÊ)
-CUSTOM_ANI_BLOCK_BUSTER_NORMAL <- 22 		  //  ºí·Ï ¹ö½ºÅÍ - ÀÏ¹Ý º®µ¹ ´øÁö±â		
-CUSTOM_ANI_TRY_LEG_SUPLEX <- 23 		  //  ¿¡¾î½´Å¸ÀÌ³Ê ½Ãµµ
-CUSTOM_ANI_LEG_SUPLEX_THROW <- 24 		  //  ¿¡¾î½´Å¸ÀÌ³Ê : ´øÁö±â
-CUSTOM_ANI_LEG_SUPLEX_KICK <- 25 		  //  ³»·ÁÂï±â Å± ¸ð¼Ç
-CUSTOM_ANI_TYPHOON_GRAB <- 26 		  //  ±×·¡ÇÃ·¯ °¢¼º±â : Àâ±â
-CUSTOM_ANI_TYPHOON_ATTACK1 <- 27 		  //  ±×·¡ÇÃ·¯ °¢¼º±â : 1Å¸
-CUSTOM_ANI_TYPHOON_ATTACK2 <- 28 		  //  ±×·¡ÇÃ·¯ °¢¼º±â : 2Å¸
-CUSTOM_ANI_TYPHOON_ATTACK3 <- 29 		  //  ±×·¡ÇÃ·¯ °¢¼º±â : 3Å¸
-CUSTOM_ANI_TYPHOON_KICKUP <- 30 		  //  ±×·¡ÇÃ·¯ °¢¼º±â : Â÷¿Ã¸®±â
-CUSTOM_ANI_TYPHOON_JUMP <- 31 		  //  ±×·¡ÇÃ·¯ °¢¼º±â : Á¡ÇÁ
-CUSTOM_ANI_TYPHOON_LAST <- 32 		  //  ±×·¡ÇÃ·¯ °¢¼º±â : ¸·Å¸		
-CUSTOM_ANI_TYPHOON_STAY <- 33 		  //  ±×·¡ÇÃ·¯ °¢¼º±â : ¸·Å¸ ÈÄ ´ë±â
-CUSTOM_ANI_CRAZY_MOUNT_START <- 34 		  //  Áö¶ö ¸¶¿îÆ®
-CUSTOM_ANI_CRAZY_MOUNT_PUNCH <- 35 		  //  Áö¶ö ¸¶¿îÆ® ÀÏ¹Ý Å¸°Ý
-CUSTOM_ANI_CRAZY_MOUNT_NOT_USE <- 36 		  //  »ç¿ëÇÏÁö ¾ÊÀ½.
-CUSTOM_ANI_CRAZY_MOUNT_END <- 37 		  //  Áö¶ö ¸¶¿îÆ® ¸·Å¸
-CUSTOM_ANI_THROW_WEB <- 38 		  //  Ãµ¶óÁö¸Á
-CUSTOM_ANI_HIDDEN_STING <- 39 		  //  È÷µç½ºÆÃ
-CUSTOM_ANI_VENOM_MINE <- 40 		  //  º£³ð¸¶ÀÎ
-CUSTOM_ANI_FLAME_LEGS_CAST <- 41 		  //  ½ºÆ®¶óÀÌÄ¿ °¢¼º±â - È­¿°ÀÇ°¢(½ÃÀü)
-CUSTOM_ANI_JUNK_SPIN_LOOP <- 42 		  //  Á¤Å©½ºÇÉ
+CUSTOM_ANI_CROUCH <- 0 		  //  Å©ï¿½ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ANI_CRASH_LOW_KICK <- 1 		  //  ï¿½ï¿½ Å©ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ANI_LIFT_UPPER <- 2 		  //  ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ANI_DAMAGE_LOW_KICK <- 3 		  //  ï¿½ï¿½Å±
+CUSTOM_ANI_TRY_SUPLEX <- 4 		  //  ï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½ ï¿½Ãµï¿½
+CUSTOM_ANI_SUPLEX <- 5 		  //  ï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½
+CUSTOM_ANI_BACK_SUPLEX <- 6 		  //  ï¿½ï¿½ê·¹ï¿½ï¿½Ä¿
+CUSTOM_ANI_MOUNT_TRY <- 7 		  //  ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Ãµï¿½
+CUSTOM_ANI_MOUNT <- 8 		  //  ï¿½ï¿½ï¿½ï¿½Æ® - ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
+CUSTOM_ANI_MOUNT_PUNCH <- 9 		  //  ï¿½ï¿½ï¿½ï¿½Æ® - ï¿½ï¿½Ä¡
+CUSTOM_ANI_NOT_USE <- 10 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
+CUSTOM_ANI_STOMP <- 11 		  //  ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
+CUSTOM_ANI_TRY_JUMP_SUPLEX <- 12 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ ï¿½Ãµï¿½
+CUSTOM_ANI_JUMP_SUPLEX <- 13 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½
+CUSTOM_ANI_JUMP_SUPLEX_LARIAT <- 14 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ È¸ï¿½ï¿½ ï¿½ß°ï¿½Å¸
+CUSTOM_ANI_CLOSE_PUNCH <- 15 		  //  ï¿½ï¿½ï¿½ï¿½Ä¡ ï¿½ï¿½Ä¡
+CUSTOM_ANI_GRAB_EXPLOSION <- 16 		  //  ï¿½Ï¹ï¿½È­ï¿½à¼º
+CUSTOM_ANI_SHOULDER_TACKLE <- 17 		  //  ï¿½ï¿½ï¿½ ï¿½ï¿½Å¬
+CUSTOM_ANI_WHIRL_WIND_KICK <- 18 		  //  ï¿½ï¿½Ç³ï¿½ï¿½
+CUSTOM_ANI_BLOCK_BUSTER_READY <- 19 		  //  ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ - ï¿½Øºï¿½ (ï¿½ï¿½È­ï¿½ï¿½Ã´ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï¶ï¿½ï¿½ï¿½ ï¿½ßµï¿½ï¿½ï¿½)
+CUSTOM_ANI_BLOCK_BUSTER_JUMP <- 20 		  //  ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ - ï¿½ï¿½ï¿½ï¿½ (ï¿½ï¿½È­ï¿½ï¿½Ã´ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï¶ï¿½ï¿½ï¿½ ï¿½ßµï¿½ï¿½ï¿½)
+CUSTOM_ANI_BLOCK_BUSTER_SHOOT <- 21 		  //  ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ - ï¿½ï¿½ï¿½ï¿½ (ï¿½ï¿½È­ï¿½ï¿½Ã´ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï¶ï¿½ï¿½ï¿½ ï¿½ßµï¿½ï¿½ï¿½)
+CUSTOM_ANI_BLOCK_BUSTER_NORMAL <- 22 		  //  ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ - ï¿½Ï¹ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½		
+CUSTOM_ANI_TRY_LEG_SUPLEX <- 23 		  //  ï¿½ï¿½ï¿½î½´Å¸ï¿½Ì³ï¿½ ï¿½Ãµï¿½
+CUSTOM_ANI_LEG_SUPLEX_THROW <- 24 		  //  ï¿½ï¿½ï¿½î½´Å¸ï¿½Ì³ï¿½ : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ANI_LEG_SUPLEX_KICK <- 25 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å± ï¿½ï¿½ï¿½
+CUSTOM_ANI_TYPHOON_GRAB <- 26 		  //  ï¿½×·ï¿½ï¿½Ã·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ : ï¿½ï¿½ï¿½
+CUSTOM_ANI_TYPHOON_ATTACK1 <- 27 		  //  ï¿½×·ï¿½ï¿½Ã·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ : 1Å¸
+CUSTOM_ANI_TYPHOON_ATTACK2 <- 28 		  //  ï¿½×·ï¿½ï¿½Ã·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ : 2Å¸
+CUSTOM_ANI_TYPHOON_ATTACK3 <- 29 		  //  ï¿½×·ï¿½ï¿½Ã·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ : 3Å¸
+CUSTOM_ANI_TYPHOON_KICKUP <- 30 		  //  ï¿½×·ï¿½ï¿½Ã·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ : ï¿½ï¿½ï¿½Ã¸ï¿½ï¿½ï¿½
+CUSTOM_ANI_TYPHOON_JUMP <- 31 		  //  ï¿½×·ï¿½ï¿½Ã·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ : ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ANI_TYPHOON_LAST <- 32 		  //  ï¿½×·ï¿½ï¿½Ã·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ : ï¿½ï¿½Å¸		
+CUSTOM_ANI_TYPHOON_STAY <- 33 		  //  ï¿½×·ï¿½ï¿½Ã·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ : ï¿½ï¿½Å¸ ï¿½ï¿½ ï¿½ï¿½ï¿½
+CUSTOM_ANI_CRAZY_MOUNT_START <- 34 		  //  ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®
+CUSTOM_ANI_CRAZY_MOUNT_PUNCH <- 35 		  //  ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Ï¹ï¿½ Å¸ï¿½ï¿½
+CUSTOM_ANI_CRAZY_MOUNT_NOT_USE <- 36 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
+CUSTOM_ANI_CRAZY_MOUNT_END <- 37 		  //  ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½Å¸
+CUSTOM_ANI_THROW_WEB <- 38 		  //  Ãµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ANI_HIDDEN_STING <- 39 		  //  ï¿½ï¿½ï¿½ç½ºï¿½ï¿½
+CUSTOM_ANI_VENOM_MINE <- 40 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ANI_FLAME_LEGS_CAST <- 41 		  //  ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½Ä¿ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ - È­ï¿½ï¿½ï¿½Ç°ï¿½(ï¿½ï¿½ï¿½ï¿½)
+CUSTOM_ANI_JUNK_SPIN_LOOP <- 42 		  //  ï¿½ï¿½Å©ï¿½ï¿½ï¿½ï¿½
 CUSTOM_ANI_JUNK_SPIN_FINISH <- 43 
-CUSTOM_ANI_MOUNT_END <- 44 		  //  ¸¶¿îÆ® ¸¶Áö¸· ÆÝÄ¡
-CUSTOM_ANI_SHOULDER_CHARGE <- 45 		  //  Ã¶»ê°í
-CUSTOM_ANI_SINGLE_KICK <- 46 		  //  ÇØ¸ÓÅ±
-CUSTOM_ANI_NEN_FLOWER <- 47 		  //  ³ÙÈ­
-CUSTOM_ANI_TRY_THROW_ENEMY <- 48 		  //  ·ÎÇÃ¸µ ½Ãµµ
-CUSTOM_ANI_THROW_ENEMY_HOLD <- 49 		  //  ·ÎÇÃ¸µ Àâ°íÀÖ±â
-CUSTOM_ANI_THROW_ENEMY_THROW <- 50 		  //  ·ÎÇÃ¸µ ´øÁö±â
-CUSTOM_ANI_WHITE_TIGER_COMBO1 <- 51 		  //  ³Ù¼ö:¹éÈ£ 1Å¸
-CUSTOM_ANI_WHITE_TIGER_COMBO2 <- 52 		  //  ³Ù¼ö:¹éÈ£ 2Å¸
-CUSTOM_ANI_WHITE_TIGER_COMBO3 <- 53 		  //  ³Ù¼ö:¹éÈ£ 3Å¸
-CUSTOM_ANI_WHITE_TIGER_COMBO4 <- 54 		  //  ³Ù¼ö:¹éÈ£ 4Å¸
-CUSTOM_ANI_WHITE_TIGER_COMBO5 <- 55 		  //  ³Ù¼ö:¹éÈ£ 5Å¸
-CUSTOM_ANI_WHITE_TIGER_DASH_ATTACK <- 56 		  //  ³Ù¼ö:¹éÈ£ ´ë½¬°ø°Ý
-CUSTOM_ANI_WHITE_TIGER_JUMP_ATTACK <- 57 		  //  ³Ù¼ö:¹éÈ£ Á¡ÇÁ°ø°Ý
-CUSTOM_ANI_DASH_PUNCH <- 58 		  //  Á¤±Ç Âî¸£±â
-CUSTOM_ANI_PUNCH_AFTER_RETURN <- 59 		  //  Å¸°ÝÈÄ µÚ·Îµ¹¸®±â
-CUSTOM_ANI_RANDOM_KICK1 <- 60 		  //  ºñÆ® µå¶óÀÌºê 1Å¸
-CUSTOM_ANI_RANDOM_KICK2 <- 61 		  //  ºñÆ® µå¶óÀÌºê 2Å¸
-CUSTOM_ANI_RANDOM_KICK3 <- 62 		  //  ºñÆ® µå¶óÀÌºê 3Å¸
-CUSTOM_ANI_RANDOM_KICK_FINISH <- 63 		  //  ºñÆ® µå¶óÀÌºê ¸·Å¸
-CUSTOM_ANI_RISING_UPPER_DASH <- 64 		  //  ½Â·æ±Ç : ´ë½¬
-CUSTOM_ANI_RISING_UPPER <- 65 		  //  ½Â·æ±Ç : ¾îÆÛ
-CUSTOM_ANI_DASH_AFTER_DASH_COMBO1 <- 66 		  //  È£½Å¿¬°Ý : 1Å¸
-CUSTOM_ANI_DASH_AFTER_DASH_COMBO2 <- 67 		  //  È£½Å¿¬°Ý : 2Å¸
-CUSTOM_ANI_DASH_AFTER_DASH_COMBO3 <- 68 		  //  È£½Å¿¬°Ý : 3Å¸ - ³²°Ý°¡´Â È£½Å¿¬°Ý 3Å¸ ¾øÀ½ 
-CUSTOM_ANI_DASH_AFTER_DASH_COMBO4 <- 69 		  //  È£½Å¿¬°Ý : 4Å¸ - ³²°Ý°¡´Â È£½Å¿¬°Ý 4Å¸ ¾øÀ½ 
-CUSTOM_ANI_EARTH_BREAK <- 70 		  //  ±Ý°­¼â
-CUSTOM_ANI_HOLD_UP_TRY <- 71 		  //  È¦µå¾÷ : ½Ãµµ
-CUSTOM_ANI_HOLD_UP_HOLD <- 72 		  //  È¦µå¾÷ : Àâ±â
-CUSTOM_ANI_HOLD_UP_HIT <- 73 		  //  È¦µå¾÷ : ¶§¸®±â
-CUSTOM_ANI_WILD_CANNON_SPIKE_CHARGE <- 74 		  //  ¿ÍÀÏµå Ä³³í ½ºÆÄÀÌÅ© : ÃæÀü
-CUSTOM_ANI_WILD_CANNON_SPIKE_FALL <- 75 		  //  ¿ÍÀÏµå Äµ³í ½ºÆÄÀÌÅ© : ¶³¾îÁö±â
-CUSTOM_ANI_THROW_SAND <- 76 		  //  ÇïÅÍ½ºÄÌÅÍ
-CUSTOM_ANI_THROW_SAND_DOUBLE <- 77 		  //  ÇïÅÍ½ºÄÌÅÍ (ÀÌÁßÅõÃ´)
-CUSTOM_ANI_TRY_SUPLEX_CYCLONE <- 78 		  //  ¼öÇÃ·º½º »çÀÌÅ¬·Ð : ½Ãµµ
-CUSTOM_ANI_TURN_SUPLEX_CYCLONE <- 79 		  //  ¼öÇÃ·º½º »çÀÌÅ¬·Ð : Àâ°íµ¹±â
-CUSTOM_ANI_WILD_CANNON_SPIKE_EXP <- 80 		  //  ¿ÍÀÏµå Ä³³í ½ºÆÄÀÌÅ© : ¸·Å¸
-CUSTOM_ANI_FINISH_SUPLEX_CYCLONE <- 81 		  //  »ç¿ëÇÏÁö ¾ÊÀ½.
-CUSTOM_ANI_LIGHTNING_DRAGON <- 82 		  //  ±¤Ãæ³ëµµ ½ÃÀü
-CUSTOM_ANI_DESTROY_EARTH_SKY_DROP_START <- 83 		  //  ½ºÆ®¸®Æ® ÆÄÀÌÅÍ °¢¼º±â - ÃµºØÁö±« ½ÃÀÛ
-CUSTOM_ANI_DESTROY_EARTH_SKY_DROP_ON_SKY <- 84 		  //  ½ºÆ®¸®Æ® ÆÄÀÌÅÍ °¢¼º±â - ÃµºØÁö±« : °øÁß¸ð¼Ç
-CUSTOM_ANI_DESTROY_EARTH_SKY_DROP_FINISH <- 85 		  //  °­È­ ¿¡¾î½´Å¸ÀÌ³Ê 1Â÷ Âï±â
-CUSTOM_ANI_TRY_LEG_SUPLEX_EX_SECOND <- 86 		  //  °­È­ ¿¡¾î½´Å¸ÀÌ³Ê 2Â÷ ½ÃµµÇÏ·¯ Á¡ÇÁ
-CUSTOM_ANI_LEG_SUPLEX_EX_2 <- 87 		  //  °­È­ ¿¡¾î½´Å¸ÀÌ³Ê 2Â÷ Âï±â
-CUSTOM_ANI_RISING_UPPER_EX_START <- 88 		  //  °­È­ ¶óÀÌÂ¡ ³ÊÅ¬ ½ÃÀÛ
-CUSTOM_ANI_RISING_UPPER_EX <- 89 		  //  °­È­ ¶óÀÌÂ¡ ³ÊÅ¬
-CUSTOM_ANI_RISING_UPPER_EX_FINISH <- 90 		  //  °­È­ ¶óÀÌÂ¡ ³ÊÅ¬ ¸·Å¸
-CUSTOM_ANI_BLOCK_BUSTER_EX_TRY <- 91 		  //  °­È­ ºí·Ï ¹ö½ºÅÍ ½ÃÀÛ
-CUSTOM_ANI_BLOCK_BUSTER_EX_JUMP <- 92 		  //  °­È­ ºí·Ï ¹ö½ºÅÍ Á¡ÇÁ
-CUSTOM_ANI_BLOCK_BUSTER_EX_FINISH <- 93 		  //  °­È­ ºí·Ï ¹ö½ºÅÍ ¸·Å¸
-CUSTOM_ANI_SUPLEX_CYCLONE_JUMP_EX <- 94 		  //  °­È­ ¼öÇÃ·º½º »çÀÌÅ¬·Ð : Á¡ÇÁ
-CUSTOM_ANI_SUPLEX_CYCLONE_SPIN_EX <- 95 		  //  °­È­ ¼öÇÃ·º½º »çÀÌÅ¬·Ð : ½ºÇÉ
-CUSTOM_ANI_DASH_PUNCH_EX <- 96 		  //  °­È­ ºØ±Ç
-CUSTOM_ANI_STOMP_FINISH <- 97 		  //  °øÁß¹â±â ¸·Å¸
-CUSTOM_ANI_GROUND_KICK_JUMP <- 98 		  //  ±×¶ó¿îµåÅ± - Á¡ÇÁ
-CUSTOM_ANI_GROUND_KICK_ATTACK <- 99 		  //  ±×¶ó¿îµåÅ± - °ø°Ý
-CUSTOM_ANI_GROUND_KICK_FINISH <- 100 		  //  ±×¶ó¿îµåÅ± - ÇÇ´Ï½¬
-CUSTOM_ANI_FAST_DASH <- 101 		  //  ¼øº¸
-CUSTOM_ANI_CRASH_LOW_KICK_SECOND <- 102 		  //  º» Å©·¯¼Å µÎ¹øÂ° Å¸°Ý
-CUSTOM_ANI_THROW_ENEMY_SIDEKICK <- 103 		  //  ³²°Ý ·ÎÇÃ¸µ »çÀÌµåÅ±
-CUSTOM_ANI_THROW_ENEMY_DOWNKICK <- 104 		  //  ³²°Ý ·ÎÇÃ¸µ ³»·ÁÂï±âÅ±
-CUSTOM_ANI_THROW_GRAB_CANNON_ENEMY_SIDEKICK <- 105 		  //  ³²°Ý ·ÎÇÃ¸µ ±×·¦Ä³³Í »çÀÌµåÅ±
-CUSTOM_ANI_SUPLEX_FINAL_ATTACK <- 106 		  //  ³²°Ý ¼öÇÃ·º½º ±×·¦Ä³³Í ¹«¸­Âï±â
-CUSTOM_ANI_SUPLEX_THROW_FINAL_ATTACK <- 107 		  //  ³²°Ý ¼öÇÃ·º½º ÇÃ¶óÀÌ ¹«¸­Âï±â
-CUSTOM_ANI_DOUBLE_THROW_WEB <- 108 		  //  ³²°Ý ±×¹°ÅõÃ´ (ÀÌÁßÅõÃ´)
-CUSTOM_ANI_LEG_SUPLEX_FIRST_KICK <- 109 		  //  ³²°Ý ¿¡¾î½´Å¸ÀÌ³Ê ÃÊ±â Âï±â °ø°Ýµ¿ÀÛ
-CUSTOM_ANI_JUMP_SUPLEX_HOLD_IMPRESSKICK <- 110 		  //  ³²°Ý ½ºÆÄÀÌ¾î - Àâ±âºÒ°¡Àû - ³»·ÁÂï±â Å± ¸ð¼Ç 
-CUSTOM_ANI_LIGHTNING_DANCE_KICK <- 111 		  //  ³²°Ý ¶óÀÌÆ®´× ´í½º Å±
-CUSTOM_ANI_LIGHTNING_DANCE_LAST_LOW_KICK <- 112 		  //  ³²°Ý ¶óÀÌÆ®´× ´í½º ¸·Å¸ ·Î¿ìÅ±
-CUSTOM_ANI_GRAB_EXPLOSION_KICK <- 113 		  //  ³²°Ý ÀÏ¹ßÈ­¾à¼º	- Àâ°í Â÷´Â µ¿ÀÛ
-CUSTOM_ANI_NEN_FLOWER_READY <- 114 		  //  ³Ù¸¶½ºÅÍ-°¢¼º È£¶ûÀÌ Å¸´Â µ¿ÀÛ
-CUSTOM_ANI_NEN_FLOWER_ATTACK <- 115 		  //  ³Ù¸¶½ºÅÍ-°¢¼º È£¶ûÀÌ °ø°Ý
-CUSTOM_ANI_NEN_FLOWER_FINAL <- 116 		  //  ³Ù¸¶½ºÅÍ-°¢¼º È£¶ûÀÌ ¸¶Áö¸· °ø°Ý
-CUSTOM_ANI_ENCHANT_POISON <- 117 		  //  µ¶ÀåÀü ¹ß»ç
-CUSTOM_ANI_SPIRALNEN_SHOOT_PREPARE <- 118 		  //  ³ª¼±ÀÇ ³Ù:Ãâ ½¸ ÁØºñµ¿ÀÛ
-CUSTOM_ANI_SPIRALNEN_SHOOT <- 119 		  //  ³ª¼±ÀÇ ³Ù:Ãâ ½¸
-CUSTOM_ANI_BLOCK_BUSTER_DOUBLE <- 120 		  //  ºí·Ï ¹ö½ºÅÍ - ÀÌÁßÅõÃ´
-CUSTOM_ANI_ENCHANT_POISON_DOUBLE <- 121 		  //  µ¶ÀåÀü - ÀÌÁßÅõÃ´
-CUSTOM_ANI_HIDDEN_STING_DOUBLE <- 122 		  //  ¹Ù´ÃÀåÀü - ÀÌÁßÅõÃ´
-CUSTOM_ANI_DEFINITE_GRAB <- 123 		  //  ¹Ýµå½Ã Àâ´Â´Ù - Æ¯¼ö±×·¦ µ¿ÀÛ
-CUSTOM_ANI_NEN_SPEAR <- 124 		  //  ³Ù ½ºÇÇ¾î ²È±â(Æ¯¼º)
-CUSTOM_ANI_NEN_SPEAR_SUCCESS <- 125 		  //  ³Ù ½ºÇÇ¾î ²È±â ¼º°ø½Ã(Æ¯¼º)
-CUSTOM_ANI_HURRICANE_SPEAR <- 126 		  //  ³²°ÝÅõ°¡ Æ¯¼º½ºÅ³ - Çã¸®ÄÉÀÎ ½ºÇÇ¾î
-CUSTOM_ANI_CHARGE_SPEAR_RECHARGE <- 127 		  //  Â÷Áö½ºÇÇ¾î(Æ¯¼º) ÃæÀü		
-CUSTOM_ANI_CHARGE_SPEAR_RUSH <- 128 		  //  Â÷Áö½ºÇÇ¾î(Æ¯¼º) µ¹°Ý
-CUSTOM_ANI_CHARGE_SPEAR_END <- 129 		  //  Â÷Áö½ºÇÇ¾î(Æ¯¼º) µ¹°Ý ³¡
-CUSTOM_ANI_SPIRAL_COLUMN_EX <- 130 		  //  ³ª¼±È¯(Æ¯¼º)
-CUSTOM_ANI_CRASH_ROPE <- 131 		  //  ±¤ÆøÇ÷»ç (Æ¯¼º)
-CUSTOM_ANI_GLUEY_FRUIT <- 132 		  //  ²öÀû²öÀû ¿­¸Å(Æ¯¼º)
-CUSTOM_ANI_CHAIN_KICK <- 133 		  //  ¿¬È¯Åð(Æ¯¼º)
-CUSTOM_ANI_108_STAIRS_TRY_EX <- 134 		  //  108°è´Ü(Æ¯¼º)
-CUSTOM_ANI_108_STAIRS_KICK_EX <- 135 		  //  108°è´Ü(Æ¯¼º)
-CUSTOM_ANI_108_STAIRS_PUNCH_EX <- 136 		  //  108°è´Ü(Æ¯¼º)
-CUSTOM_ANI_108_STAIRS_BLOW_EX <- 137 		  //  108°è´Ü(Æ¯¼º)
-CUSTOM_ANI_108_STAIRS_THROW_EX <- 138 		  //  108°è´Ü(Æ¯¼º)
-CUSTOM_ANI_108_STAIRS_FINAL_EX <- 139 		  //  108°è´Ü(Æ¯¼º)
+CUSTOM_ANI_MOUNT_END <- 44 		  //  ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡
+CUSTOM_ANI_SHOULDER_CHARGE <- 45 		  //  Ã¶ï¿½ï¿½ï¿½
+CUSTOM_ANI_SINGLE_KICK <- 46 		  //  ï¿½Ø¸ï¿½Å±
+CUSTOM_ANI_NEN_FLOWER <- 47 		  //  ï¿½ï¿½È­
+CUSTOM_ANI_TRY_THROW_ENEMY <- 48 		  //  ï¿½ï¿½ï¿½Ã¸ï¿½ ï¿½Ãµï¿½
+CUSTOM_ANI_THROW_ENEMY_HOLD <- 49 		  //  ï¿½ï¿½ï¿½Ã¸ï¿½ ï¿½ï¿½ï¿½ï¿½Ö±ï¿½
+CUSTOM_ANI_THROW_ENEMY_THROW <- 50 		  //  ï¿½ï¿½ï¿½Ã¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ANI_WHITE_TIGER_COMBO1 <- 51 		  //  ï¿½Ù¼ï¿½:ï¿½ï¿½È£ 1Å¸
+CUSTOM_ANI_WHITE_TIGER_COMBO2 <- 52 		  //  ï¿½Ù¼ï¿½:ï¿½ï¿½È£ 2Å¸
+CUSTOM_ANI_WHITE_TIGER_COMBO3 <- 53 		  //  ï¿½Ù¼ï¿½:ï¿½ï¿½È£ 3Å¸
+CUSTOM_ANI_WHITE_TIGER_COMBO4 <- 54 		  //  ï¿½Ù¼ï¿½:ï¿½ï¿½È£ 4Å¸
+CUSTOM_ANI_WHITE_TIGER_COMBO5 <- 55 		  //  ï¿½Ù¼ï¿½:ï¿½ï¿½È£ 5Å¸
+CUSTOM_ANI_WHITE_TIGER_DASH_ATTACK <- 56 		  //  ï¿½Ù¼ï¿½:ï¿½ï¿½È£ ï¿½ë½¬ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ANI_WHITE_TIGER_JUMP_ATTACK <- 57 		  //  ï¿½Ù¼ï¿½:ï¿½ï¿½È£ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ANI_DASH_PUNCH <- 58 		  //  ï¿½ï¿½ï¿½ï¿½ ï¿½î¸£ï¿½ï¿½
+CUSTOM_ANI_PUNCH_AFTER_RETURN <- 59 		  //  Å¸ï¿½ï¿½ï¿½ï¿½ ï¿½Ú·Îµï¿½ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ANI_RANDOM_KICK1 <- 60 		  //  ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½Ìºï¿½ 1Å¸
+CUSTOM_ANI_RANDOM_KICK2 <- 61 		  //  ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½Ìºï¿½ 2Å¸
+CUSTOM_ANI_RANDOM_KICK3 <- 62 		  //  ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½Ìºï¿½ 3Å¸
+CUSTOM_ANI_RANDOM_KICK_FINISH <- 63 		  //  ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½Å¸
+CUSTOM_ANI_RISING_UPPER_DASH <- 64 		  //  ï¿½Â·ï¿½ï¿½ : ï¿½ë½¬
+CUSTOM_ANI_RISING_UPPER <- 65 		  //  ï¿½Â·ï¿½ï¿½ : ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ANI_DASH_AFTER_DASH_COMBO1 <- 66 		  //  È£ï¿½Å¿ï¿½ï¿½ï¿½ : 1Å¸
+CUSTOM_ANI_DASH_AFTER_DASH_COMBO2 <- 67 		  //  È£ï¿½Å¿ï¿½ï¿½ï¿½ : 2Å¸
+CUSTOM_ANI_DASH_AFTER_DASH_COMBO3 <- 68 		  //  È£ï¿½Å¿ï¿½ï¿½ï¿½ : 3Å¸ - ï¿½ï¿½ï¿½Ý°ï¿½ï¿½ï¿½ È£ï¿½Å¿ï¿½ï¿½ï¿½ 3Å¸ ï¿½ï¿½ï¿½ï¿½ 
+CUSTOM_ANI_DASH_AFTER_DASH_COMBO4 <- 69 		  //  È£ï¿½Å¿ï¿½ï¿½ï¿½ : 4Å¸ - ï¿½ï¿½ï¿½Ý°ï¿½ï¿½ï¿½ È£ï¿½Å¿ï¿½ï¿½ï¿½ 4Å¸ ï¿½ï¿½ï¿½ï¿½ 
+CUSTOM_ANI_EARTH_BREAK <- 70 		  //  ï¿½Ý°ï¿½ï¿½ï¿½
+CUSTOM_ANI_HOLD_UP_TRY <- 71 		  //  È¦ï¿½ï¿½ï¿½ : ï¿½Ãµï¿½
+CUSTOM_ANI_HOLD_UP_HOLD <- 72 		  //  È¦ï¿½ï¿½ï¿½ : ï¿½ï¿½ï¿½
+CUSTOM_ANI_HOLD_UP_HIT <- 73 		  //  È¦ï¿½ï¿½ï¿½ : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ANI_WILD_CANNON_SPIKE_CHARGE <- 74 		  //  ï¿½ï¿½ï¿½Ïµï¿½ Ä³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å© : ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ANI_WILD_CANNON_SPIKE_FALL <- 75 		  //  ï¿½ï¿½ï¿½Ïµï¿½ Äµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å© : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ANI_THROW_SAND <- 76 		  //  ï¿½ï¿½ï¿½Í½ï¿½ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ANI_THROW_SAND_DOUBLE <- 77 		  //  ï¿½ï¿½ï¿½Í½ï¿½ï¿½ï¿½ï¿½ï¿½ (ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã´)
+CUSTOM_ANI_TRY_SUPLEX_CYCLONE <- 78 		  //  ï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Å¬ï¿½ï¿½ : ï¿½Ãµï¿½
+CUSTOM_ANI_TURN_SUPLEX_CYCLONE <- 79 		  //  ï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Å¬ï¿½ï¿½ : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ANI_WILD_CANNON_SPIKE_EXP <- 80 		  //  ï¿½ï¿½ï¿½Ïµï¿½ Ä³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å© : ï¿½ï¿½Å¸
+CUSTOM_ANI_FINISH_SUPLEX_CYCLONE <- 81 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
+CUSTOM_ANI_LIGHTNING_DRAGON <- 82 		  //  ï¿½ï¿½ï¿½ï¿½ëµµ ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ANI_DESTROY_EARTH_SKY_DROP_START <- 83 		  //  ï¿½ï¿½Æ®ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ - Ãµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ANI_DESTROY_EARTH_SKY_DROP_ON_SKY <- 84 		  //  ï¿½ï¿½Æ®ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ - Ãµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ : ï¿½ï¿½ï¿½ß¸ï¿½ï¿½
+CUSTOM_ANI_DESTROY_EARTH_SKY_DROP_FINISH <- 85 		  //  ï¿½ï¿½È­ ï¿½ï¿½ï¿½î½´Å¸ï¿½Ì³ï¿½ 1ï¿½ï¿½ ï¿½ï¿½ï¿½
+CUSTOM_ANI_TRY_LEG_SUPLEX_EX_SECOND <- 86 		  //  ï¿½ï¿½È­ ï¿½ï¿½ï¿½î½´Å¸ï¿½Ì³ï¿½ 2ï¿½ï¿½ ï¿½Ãµï¿½ï¿½Ï·ï¿½ ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ANI_LEG_SUPLEX_EX_2 <- 87 		  //  ï¿½ï¿½È­ ï¿½ï¿½ï¿½î½´Å¸ï¿½Ì³ï¿½ 2ï¿½ï¿½ ï¿½ï¿½ï¿½
+CUSTOM_ANI_RISING_UPPER_EX_START <- 88 		  //  ï¿½ï¿½È­ ï¿½ï¿½ï¿½ï¿½Â¡ ï¿½ï¿½Å¬ ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ANI_RISING_UPPER_EX <- 89 		  //  ï¿½ï¿½È­ ï¿½ï¿½ï¿½ï¿½Â¡ ï¿½ï¿½Å¬
+CUSTOM_ANI_RISING_UPPER_EX_FINISH <- 90 		  //  ï¿½ï¿½È­ ï¿½ï¿½ï¿½ï¿½Â¡ ï¿½ï¿½Å¬ ï¿½ï¿½Å¸
+CUSTOM_ANI_BLOCK_BUSTER_EX_TRY <- 91 		  //  ï¿½ï¿½È­ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ANI_BLOCK_BUSTER_EX_JUMP <- 92 		  //  ï¿½ï¿½È­ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ANI_BLOCK_BUSTER_EX_FINISH <- 93 		  //  ï¿½ï¿½È­ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å¸
+CUSTOM_ANI_SUPLEX_CYCLONE_JUMP_EX <- 94 		  //  ï¿½ï¿½È­ ï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Å¬ï¿½ï¿½ : ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ANI_SUPLEX_CYCLONE_SPIN_EX <- 95 		  //  ï¿½ï¿½È­ ï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Å¬ï¿½ï¿½ : ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ANI_DASH_PUNCH_EX <- 96 		  //  ï¿½ï¿½È­ ï¿½Ø±ï¿½
+CUSTOM_ANI_STOMP_FINISH <- 97 		  //  ï¿½ï¿½ï¿½ß¹ï¿½ï¿½ ï¿½ï¿½Å¸
+CUSTOM_ANI_GROUND_KICK_JUMP <- 98 		  //  ï¿½×¶ï¿½ï¿½ï¿½Å± - ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ANI_GROUND_KICK_ATTACK <- 99 		  //  ï¿½×¶ï¿½ï¿½ï¿½Å± - ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ANI_GROUND_KICK_FINISH <- 100 		  //  ï¿½×¶ï¿½ï¿½ï¿½Å± - ï¿½Ç´Ï½ï¿½
+CUSTOM_ANI_FAST_DASH <- 101 		  //  ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ANI_CRASH_LOW_KICK_SECOND <- 102 		  //  ï¿½ï¿½ Å©ï¿½ï¿½ï¿½ï¿½ ï¿½Î¹ï¿½Â° Å¸ï¿½ï¿½
+CUSTOM_ANI_THROW_ENEMY_SIDEKICK <- 103 		  //  ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ã¸ï¿½ ï¿½ï¿½ï¿½Ìµï¿½Å±
+CUSTOM_ANI_THROW_ENEMY_DOWNKICK <- 104 		  //  ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ã¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å±
+CUSTOM_ANI_THROW_GRAB_CANNON_ENEMY_SIDEKICK <- 105 		  //  ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ã¸ï¿½ ï¿½×·ï¿½Ä³ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½Å±
+CUSTOM_ANI_SUPLEX_FINAL_ATTACK <- 106 		  //  ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½ ï¿½×·ï¿½Ä³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ANI_SUPLEX_THROW_FINAL_ATTACK <- 107 		  //  ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½ ï¿½Ã¶ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ANI_DOUBLE_THROW_WEB <- 108 		  //  ï¿½ï¿½ï¿½ï¿½ ï¿½×¹ï¿½ï¿½ï¿½Ã´ (ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã´)
+CUSTOM_ANI_LEG_SUPLEX_FIRST_KICK <- 109 		  //  ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½î½´Å¸ï¿½Ì³ï¿½ ï¿½Ê±ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ýµï¿½ï¿½ï¿½
+CUSTOM_ANI_JUMP_SUPLEX_HOLD_IMPRESSKICK <- 110 		  //  ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ - ï¿½ï¿½ï¿½Ò°ï¿½ï¿½ï¿½ - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å± ï¿½ï¿½ï¿½ 
+CUSTOM_ANI_LIGHTNING_DANCE_KICK <- 111 		  //  ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Å±
+CUSTOM_ANI_LIGHTNING_DANCE_LAST_LOW_KICK <- 112 		  //  ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å¸ ï¿½Î¿ï¿½Å±
+CUSTOM_ANI_GRAB_EXPLOSION_KICK <- 113 		  //  ï¿½ï¿½ï¿½ï¿½ ï¿½Ï¹ï¿½È­ï¿½à¼º	- ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ANI_NEN_FLOWER_READY <- 114 		  //  ï¿½Ù¸ï¿½ï¿½ï¿½ï¿½ï¿½-ï¿½ï¿½ï¿½ï¿½ È£ï¿½ï¿½ï¿½ï¿½ Å¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ANI_NEN_FLOWER_ATTACK <- 115 		  //  ï¿½Ù¸ï¿½ï¿½ï¿½ï¿½ï¿½-ï¿½ï¿½ï¿½ï¿½ È£ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ANI_NEN_FLOWER_FINAL <- 116 		  //  ï¿½Ù¸ï¿½ï¿½ï¿½ï¿½ï¿½-ï¿½ï¿½ï¿½ï¿½ È£ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ANI_ENCHANT_POISON <- 117 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß»ï¿½
+CUSTOM_ANI_SPIRALNEN_SHOOT_PREPARE <- 118 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½:ï¿½ï¿½ ï¿½ï¿½ ï¿½Øºï¿½ï¿½ï¿½
+CUSTOM_ANI_SPIRALNEN_SHOOT <- 119 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½:ï¿½ï¿½ ï¿½ï¿½
+CUSTOM_ANI_BLOCK_BUSTER_DOUBLE <- 120 		  //  ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã´
+CUSTOM_ANI_ENCHANT_POISON_DOUBLE <- 121 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã´
+CUSTOM_ANI_HIDDEN_STING_DOUBLE <- 122 		  //  ï¿½Ù´ï¿½ï¿½ï¿½ï¿½ï¿½ - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã´
+CUSTOM_ANI_DEFINITE_GRAB <- 123 		  //  ï¿½Ýµï¿½ï¿½ ï¿½ï¿½Â´ï¿½ - Æ¯ï¿½ï¿½ï¿½×·ï¿½ ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ANI_NEN_SPEAR <- 124 		  //  ï¿½ï¿½ ï¿½ï¿½ï¿½Ç¾ï¿½ ï¿½È±ï¿½(Æ¯ï¿½ï¿½)
+CUSTOM_ANI_NEN_SPEAR_SUCCESS <- 125 		  //  ï¿½ï¿½ ï¿½ï¿½ï¿½Ç¾ï¿½ ï¿½È±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(Æ¯ï¿½ï¿½)
+CUSTOM_ANI_HURRICANE_SPEAR <- 126 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Æ¯ï¿½ï¿½ï¿½ï¿½Å³ - ï¿½ã¸®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ç¾ï¿½
+CUSTOM_ANI_CHARGE_SPEAR_RECHARGE <- 127 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½(Æ¯ï¿½ï¿½) ï¿½ï¿½ï¿½ï¿½		
+CUSTOM_ANI_CHARGE_SPEAR_RUSH <- 128 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½(Æ¯ï¿½ï¿½) ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ANI_CHARGE_SPEAR_END <- 129 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½(Æ¯ï¿½ï¿½) ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
+CUSTOM_ANI_SPIRAL_COLUMN_EX <- 130 		  //  ï¿½ï¿½ï¿½ï¿½È¯(Æ¯ï¿½ï¿½)
+CUSTOM_ANI_CRASH_ROPE <- 131 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ (Æ¯ï¿½ï¿½)
+CUSTOM_ANI_GLUEY_FRUIT <- 132 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½(Æ¯ï¿½ï¿½)
+CUSTOM_ANI_CHAIN_KICK <- 133 		  //  ï¿½ï¿½È¯ï¿½ï¿½(Æ¯ï¿½ï¿½)
+CUSTOM_ANI_108_STAIRS_TRY_EX <- 134 		  //  108ï¿½ï¿½ï¿½(Æ¯ï¿½ï¿½)
+CUSTOM_ANI_108_STAIRS_KICK_EX <- 135 		  //  108ï¿½ï¿½ï¿½(Æ¯ï¿½ï¿½)
+CUSTOM_ANI_108_STAIRS_PUNCH_EX <- 136 		  //  108ï¿½ï¿½ï¿½(Æ¯ï¿½ï¿½)
+CUSTOM_ANI_108_STAIRS_BLOW_EX <- 137 		  //  108ï¿½ï¿½ï¿½(Æ¯ï¿½ï¿½)
+CUSTOM_ANI_108_STAIRS_THROW_EX <- 138 		  //  108ï¿½ï¿½ï¿½(Æ¯ï¿½ï¿½)
+CUSTOM_ANI_108_STAIRS_FINAL_EX <- 139 		  //  108ï¿½ï¿½ï¿½(Æ¯ï¿½ï¿½)
 
-CUSTOM_ATTACKINFO_CRASH_LOW_KICK <- 0 		  //  º» Å©·¯¼Å
-CUSTOM_ATTACKINFO_LIFT_UPPER <- 1 		  //  ¹«Áî ¾îÆÛ
-CUSTOM_ATTACKINFO_DAMAGE_LOW_KICK <- 2 		  //  ·ÎÅ±
-CUSTOM_ATTACKINFO_TRY_GRAB <- 3 		  //  Àâ±â ½Ãµµ
-CUSTOM_ATTACKINFO_SUPLEX <- 4 		  //  ¼öÇÃ·º½ºÀÇ °£Á¢ µ¥¹ÌÁö
-CUSTOM_ATTACKINFO_MOUNT <- 5 		  //  ¸¶¿îÆ® ÆÝÄ¡
-CUSTOM_ATTACKINFO_STOMP <- 6 		  //  °øÁß ¹â±â
-CUSTOM_ATTACKINFO_JUMP_SUPLEX <- 7 		  //  ½ºÆÄÀÌ¾î (ÃÖÃÊ Å±)
-CUSTOM_ATTACKINFO_JUMP_SUPLEX_HEADING <- 8 		  //  ½ºÆÄÀÌ¾î ¸¶Áö¸· È¸ÀüÅ±
-CUSTOM_ATTACKINFO_JUMP_SUPLEX_LARIAT <- 9 		  //  ±×·¦Ä³³Í ½ºÆÄÀÌ¾î ¸¶Áö¸· È¸ÀüÅ± (Àâ±âºÒ°¡Àû)
-CUSTOM_ATTACKINFO_CLOSE_PUNCH <- 10 		  //  ¿øÀÎÄ¡ ÆÝÄ¡
-CUSTOM_ATTACKINFO_SHOULDER_CHARGE <- 11 		  //  Ã¶»ê°í
-CUSTOM_ATTACKINFO_SINGLE_KICK <- 12 		  //  ÇØ¸Ó Å±
-CUSTOM_ATTACKINFO_GRAB_EXPLOSION <- 13 		  //  ÀÏ¹ßÈ­¾à¼º Å¸°Ý
-CUSTOM_ATTACKINFO_SHOULDER_TACKLE <- 14 		  //  ¼ñ´õ ÅÂÅ¬
-CUSTOM_ATTACKINFO_GRAB_CANNON <- 15 		  //  ±×·¦ Ä³³í
-CUSTOM_ATTACKINFO_WHIRL_WIND_KICK <- 16 		  //  ¼±Ç³°¢
-CUSTOM_ATTACKINFO_JUNK_SPIN <- 17 		  //  ¹Ù´Ã½ºÇÉ (Á¤Å©½ºÇÉ)
-CUSTOM_ATTACKINFO_LEG_SUPLEX_KICK <- 18 		  //  ¿¡¾î½´Å¸ÀÌ³Ê : Â÷±â
-CUSTOM_ATTACKINFO_LIGHTNING_DANCE <- 19 		  //  ¶óÀÌÆ®´× ´í½º
-CUSTOM_ATTACKINFO_STRONGEST_LOW_KICK <- 20 		  //  »ç»óÃÖ°­ÀÇ ·ÎÅ±
-CUSTOM_ATTACKINFO_CRAZY_MOUNT <- 21 		  //  Áö¶ö ¸¶¿îÆ®
-CUSTOM_ATTACKINFO_THROW_WEB <- 22 		  //  Ãµ¶óÁö¸Á
-CUSTOM_ATTACKINFO_HIDDEN_STING <- 23 		  //  È÷µç½ºÆÃ
-CUSTOM_ATTACKINFO_DASH_PUNCH <- 24 		  //  Á¤±Ç Âî¸£±â
-CUSTOM_ATTACKINFO_PUNCH_AFTER_RETURN <- 25 		  //  Å¸°ÝÈÄ µÚ·Îµ¹¸®±â
-CUSTOM_ATTACKINFO_RANDOM_KICK_1 <- 26 		  //  ºñÆ® µå¶óÀÌºê 1Å¸
-CUSTOM_ATTACKINFO_RANDOM_KICK_2 <- 27 		  //  ºñÆ® µå¶óÀÌºê 2Å¸
-CUSTOM_ATTACKINFO_RANDOM_KICK_3 <- 28 		  //  ºñÆ® µå¶óÀÌºê 3Å¸
-CUSTOM_ATTACKINFO_RANDOM_KICK_FINISH <- 29 		  //  ºñÆ® µå¶óÀÌºê ¸·Å¸
-CUSTOM_ATTACKINFO_DUMMY_4 <- 30 		  //  »ç¿ëµÇÁö ¾Ê°íÀÖÀ½.
-CUSTOM_ATTACKINFO_RISING_UPPER <- 31 		  //  ½Â·æ±Ç : ¾îÆÛ
-CUSTOM_ATTACKINFO_DASH_AFTER_DASH_COMBO1 <- 32 		  // 	È£½Å¿¬°Ý : 1Å¸
-CUSTOM_ATTACKINFO_DASH_AFTER_DASH_COMBO2 <- 33 		  // 	È£½Å¿¬°Ý : 2Å¸
-CUSTOM_ATTACKINFO_VENOM_MINE <- 34 		  // 	º£³ð¸¶ÀÎ °ø°Ý·Â
-CUSTOM_ATTACKINFO_DUMMY_2 <- 35 		  // 	»ç¿ëµÇÁö ¾Ê°íÀÖÀ½
-CUSTOM_ATTACKINFO_HOLD_UP_TRY <- 36 		  //  È¦µå¾÷ : ½Ãµµ
-CUSTOM_ATTACKINFO_HOLD_UP_HIT <- 37 		  //  È¦µå¾÷ : ¶§¸®±â
-CUSTOM_ATTACKINFO_WILD_CANNON_SPIKE_FALL <- 38 		  //  ¿ÍÀÏµå Ä³³í ½ºÆÄÀÌÅ© : °øÁß¿¡¼­ ¶³¾îÁú¶§
-CUSTOM_ATTACKINFO_WILD_CANNON_SPIKE_HIT <- 39 		  //  ¿ÍÀÏµå Ä³³í ½ºÆÄÀÌÅ© : ¹Ù´Ú¿¡¼­ Àû¿¡°Ô µ¥¹ÌÁöÁÙ¶§
-CUSTOM_ATTACKINFO_WHITE_TIGER_COMBO1 <- 40 		  //  ³Ù¼ö:¹éÈ£ 1Å¸
-CUSTOM_ATTACKINFO_WHITE_TIGER_COMBO2 <- 41 		  //  ³Ù¼ö:¹éÈ£ 2Å¸
-CUSTOM_ATTACKINFO_WHITE_TIGER_COMBO3 <- 42 		  //  ³Ù¼ö:¹éÈ£ 3Å¸
-CUSTOM_ATTACKINFO_WHITE_TIGER_COMBO4 <- 43 		  //  ³Ù¼ö:¹éÈ£ 4Å¸
-CUSTOM_ATTACKINFO_WHITE_TIGER_COMBO5 <- 44 		  //  ³Ù¼ö:¹éÈ£ 5Å¸
-CUSTOM_ATTACKINFO_WHITE_TIGER_DASH_ATTACK <- 45 		  //  ³Ù¼ö:¹éÈ£ ´ë½¬°ø°Ý
-CUSTOM_ATTACKINFO_WHITE_TIGER_JUMP_ATTACK <- 46 		  //  ³Ù¼ö:¹éÈ£ Á¡ÇÁ°ø°Ý
-CUSTOM_ATTACKINFO_SUPLEX_CYCLONE_CRASH <- 47 		  //  ¼öÇÃ·º½º »çÀÌÅ¬·Ð : Àâ°íÂï±â
-CUSTOM_ATTACKINFO_SUPLEX_CYCLONE_FINISH <- 48 		  //  ¼öÇÃ·º½º »çÀÌÅ¬·Ð : ¸¶Áö¸· Å¸°Ý
-CUSTOM_ATTACKINFO_LEG_SUPLEX_EX_SPIN <- 49 		  //  °­È­ ¿¡¾î½´Å¸ÀÌ³Ê ½ºÇÉ
-CUSTOM_ATTACKINFO_DASH_PUNCH_EX <- 50 		  //  °­È­ ºØ±Ç
-CUSTOM_ATTACKINFO_BLOCK_BUSTER_FINISH_EX <- 51 		  //  °­È­ ºí·Ï ¹ö½ºÅÍ ¸·Å¸
-CUSTOM_ATTACKINFO_RISING_UPPER_START_EX <- 52 		  //  °­È­ ½Â·æ±Ç : ½ÃÀÛ
-CUSTOM_ATTACKINFO_RISING_UPPER_EX <- 53 		  //  °­È­ ½Â·æ±Ç : ¾îÆÛ
-CUSTOM_ATTACKINFO_RISING_UPPER_FINISH_EX <- 54 		  //  °­È­ ½Â·æ±Ç : ÇÇ´Ï½Ã
-CUSTOM_ATTACKINFO_SUPLEX_CYCLONE_EX <- 55 		  //  °­È­ ¼öÇÃ·º½º »çÀÌÅ¬·Ð
-CUSTOM_ATTACKINFO_SUPLEX_CYCLONE_SPIN_EX <- 56 		  //  °­È­ ¼öÇÃ·º½º »çÀÌÅ¬·Ð : È¸Àü	
-CUSTOM_ATTACKINFO_STOMP_FINISH <- 57 		  //  °øÁß¹â±â ¸·Å¸
-CUSTOM_ATTACKINFO_GROUND_KICK <- 58 		  //  ±×¶ó¿îµåÅ±
-CUSTOM_ATTACKINFO_LIGHTNING_DRAGON <- 59 		  //  ±¤Ãæ³ëµµ
-CUSTOM_ATTACKINFO_CRASH_LOW_KICK_SECOND <- 60 		  //  º» Å©·¯¼Å µÎ¹øÂ° Å¸°Ý
-CUSTOM_ATTACKINFO_THROW_ENEMY_UPKICK <- 61 		  //  ³²°Ý ·ÎÇÃ¸µ UPÅ±
-CUSTOM_ATTACKINFO_THROW_ENEMY_SIDEKICK <- 62 		  //  ³²°Ý ·ÎÇÃ¸µ SIDEÅ±
-CUSTOM_ATTACKINFO_THROW_ENEMY_DOWNKICK <- 63 		  //  ³²°Ý ·ÎÇÃ¸µ DOWNÅ±
-CUSTOM_ATTACKINFO_TRY_GRAB_THROW_ENEMY <- 64 		  //  ·ÎÇ®¸µ 
-CUSTOM_ATTACKINFO_THROW_WEB_DOUBLE <- 65 		  //  ±×¹°ÅõÃ´ (ÀÌÁßÅõÃ´ÀÏ¶§)
-CUSTOM_ATTACKINFO_LIGHTNING_LOW_KICK <- 66 		  //  ±×¹°ÅõÃ´ (ÀÌÁßÅõÃ´ÀÏ¶§)
-CUSTOM_ATTACKINFO_SUPLEX_GRABCANNON <- 67 		  //  ¼öÇÃ·º½º ±×·¦Ä³³Í 
-CUSTOM_ATTACKINFO_NEN_FLOWER <- 68 		  //  ³Ù¸¶½ºÅÍ-°¢¼º
-CUSTOM_ATTACKINFO_TYPHOON <- 69 		  //  ±×·¡ÇÃ·¯ °¢¼º±â
-CUSTOM_ATTACKINFO_TYPHOON_LAST <- 70 		  //  ±×·¡ÇÃ·¯ °¢¼º±â
-CUSTOM_ATTACKINFO_SPIRAL_NEN_SHOOT <- 71 		  //  ³ª¼±ÀÇ ³Ù:Ãâ
-CUSTOM_ATTACKINFO_NEN_SPEAR <- 72 		  //  ³Ù½ºÇÇ¾î(Æ¯¼º)	
-CUSTOM_ATTACKINFO_CHARGE_SPEAR <- 73 		  //  Â÷Áö½ºÇÇ¾î(Æ¯¼º)	
-CUSTOM_ATTACKINFO_HURRICANE_SPEAR <- 74 		  // 	Çã¸®ÄÉÀÎ ½ºÇÇ¾î (Æ¯¼º)
-CUSTOM_ATTACKINFO_CRASH_ROPE <- 75 		  //  ±¤ÆøÇ÷»ç (Æ¯¼º)
-CUSTOM_ATTACKINFO_CHAIN_KICK1 <- 76 		  //  ¿¬È¯Åð 1Å¸(Æ¯¼º)
-CUSTOM_ATTACKINFO_CHAIN_KICK2 <- 77 		  //  ¿¬È¯Åð 2Å¸(Æ¯¼º)
-CUSTOM_ATTACKINFO_CHAIN_KICK3 <- 78 		  //  ¿¬È¯Åð 3Å¸(Æ¯¼º)
-CUSTOM_ATTACKINFO_108_STAIRS_KICK_EX <- 79 		  //  108°è´Ü(Æ¯¼º)
-CUSTOM_ATTACKINFO_108_STAIRS_PUNCH_EX <- 80 		  //  108°è´Ü(Æ¯¼º)
-CUSTOM_ATTACKINFO_108_STAIRS_BLOW_1_EX <- 81 		  //  108°è´Ü(Æ¯¼º)
-CUSTOM_ATTACKINFO_108_STAIRS_BLOW_2_EX <- 82 		  //  108°è´Ü(Æ¯¼º)
-CUSTOM_ATTACKINFO_108_STAIRS_BLOW_3_EX <- 83 		  //  108°è´Ü(Æ¯¼º)
+CUSTOM_ATTACKINFO_CRASH_LOW_KICK <- 0 		  //  ï¿½ï¿½ Å©ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ATTACKINFO_LIFT_UPPER <- 1 		  //  ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ATTACKINFO_DAMAGE_LOW_KICK <- 2 		  //  ï¿½ï¿½Å±
+CUSTOM_ATTACKINFO_TRY_GRAB <- 3 		  //  ï¿½ï¿½ï¿½ ï¿½Ãµï¿½
+CUSTOM_ATTACKINFO_SUPLEX <- 4 		  //  ï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ATTACKINFO_MOUNT <- 5 		  //  ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½Ä¡
+CUSTOM_ATTACKINFO_STOMP <- 6 		  //  ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
+CUSTOM_ATTACKINFO_JUMP_SUPLEX <- 7 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ (ï¿½ï¿½ï¿½ï¿½ Å±)
+CUSTOM_ATTACKINFO_JUMP_SUPLEX_HEADING <- 8 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È¸ï¿½ï¿½Å±
+CUSTOM_ATTACKINFO_JUMP_SUPLEX_LARIAT <- 9 		  //  ï¿½×·ï¿½Ä³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È¸ï¿½ï¿½Å± (ï¿½ï¿½ï¿½Ò°ï¿½ï¿½ï¿½)
+CUSTOM_ATTACKINFO_CLOSE_PUNCH <- 10 		  //  ï¿½ï¿½ï¿½ï¿½Ä¡ ï¿½ï¿½Ä¡
+CUSTOM_ATTACKINFO_SHOULDER_CHARGE <- 11 		  //  Ã¶ï¿½ï¿½ï¿½
+CUSTOM_ATTACKINFO_SINGLE_KICK <- 12 		  //  ï¿½Ø¸ï¿½ Å±
+CUSTOM_ATTACKINFO_GRAB_EXPLOSION <- 13 		  //  ï¿½Ï¹ï¿½È­ï¿½à¼º Å¸ï¿½ï¿½
+CUSTOM_ATTACKINFO_SHOULDER_TACKLE <- 14 		  //  ï¿½ï¿½ï¿½ ï¿½ï¿½Å¬
+CUSTOM_ATTACKINFO_GRAB_CANNON <- 15 		  //  ï¿½×·ï¿½ Ä³ï¿½ï¿½
+CUSTOM_ATTACKINFO_WHIRL_WIND_KICK <- 16 		  //  ï¿½ï¿½Ç³ï¿½ï¿½
+CUSTOM_ATTACKINFO_JUNK_SPIN <- 17 		  //  ï¿½Ù´Ã½ï¿½ï¿½ï¿½ (ï¿½ï¿½Å©ï¿½ï¿½ï¿½ï¿½)
+CUSTOM_ATTACKINFO_LEG_SUPLEX_KICK <- 18 		  //  ï¿½ï¿½ï¿½î½´Å¸ï¿½Ì³ï¿½ : ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ATTACKINFO_LIGHTNING_DANCE <- 19 		  //  ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ATTACKINFO_STRONGEST_LOW_KICK <- 20 		  //  ï¿½ï¿½ï¿½ï¿½Ö°ï¿½ï¿½ï¿½ ï¿½ï¿½Å±
+CUSTOM_ATTACKINFO_CRAZY_MOUNT <- 21 		  //  ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®
+CUSTOM_ATTACKINFO_THROW_WEB <- 22 		  //  Ãµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ATTACKINFO_HIDDEN_STING <- 23 		  //  ï¿½ï¿½ï¿½ç½ºï¿½ï¿½
+CUSTOM_ATTACKINFO_DASH_PUNCH <- 24 		  //  ï¿½ï¿½ï¿½ï¿½ ï¿½î¸£ï¿½ï¿½
+CUSTOM_ATTACKINFO_PUNCH_AFTER_RETURN <- 25 		  //  Å¸ï¿½ï¿½ï¿½ï¿½ ï¿½Ú·Îµï¿½ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ATTACKINFO_RANDOM_KICK_1 <- 26 		  //  ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½Ìºï¿½ 1Å¸
+CUSTOM_ATTACKINFO_RANDOM_KICK_2 <- 27 		  //  ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½Ìºï¿½ 2Å¸
+CUSTOM_ATTACKINFO_RANDOM_KICK_3 <- 28 		  //  ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½Ìºï¿½ 3Å¸
+CUSTOM_ATTACKINFO_RANDOM_KICK_FINISH <- 29 		  //  ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½Å¸
+CUSTOM_ATTACKINFO_DUMMY_4 <- 30 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê°ï¿½ï¿½ï¿½ï¿½ï¿½.
+CUSTOM_ATTACKINFO_RISING_UPPER <- 31 		  //  ï¿½Â·ï¿½ï¿½ : ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ATTACKINFO_DASH_AFTER_DASH_COMBO1 <- 32 		  // 	È£ï¿½Å¿ï¿½ï¿½ï¿½ : 1Å¸
+CUSTOM_ATTACKINFO_DASH_AFTER_DASH_COMBO2 <- 33 		  // 	È£ï¿½Å¿ï¿½ï¿½ï¿½ : 2Å¸
+CUSTOM_ATTACKINFO_VENOM_MINE <- 34 		  // 	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ý·ï¿½
+CUSTOM_ATTACKINFO_DUMMY_2 <- 35 		  // 	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê°ï¿½ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ATTACKINFO_HOLD_UP_TRY <- 36 		  //  È¦ï¿½ï¿½ï¿½ : ï¿½Ãµï¿½
+CUSTOM_ATTACKINFO_HOLD_UP_HIT <- 37 		  //  È¦ï¿½ï¿½ï¿½ : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ATTACKINFO_WILD_CANNON_SPIKE_FALL <- 38 		  //  ï¿½ï¿½ï¿½Ïµï¿½ Ä³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å© : ï¿½ï¿½ï¿½ß¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ATTACKINFO_WILD_CANNON_SPIKE_HIT <- 39 		  //  ï¿½ï¿½ï¿½Ïµï¿½ Ä³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å© : ï¿½Ù´Ú¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ù¶ï¿½
+CUSTOM_ATTACKINFO_WHITE_TIGER_COMBO1 <- 40 		  //  ï¿½Ù¼ï¿½:ï¿½ï¿½È£ 1Å¸
+CUSTOM_ATTACKINFO_WHITE_TIGER_COMBO2 <- 41 		  //  ï¿½Ù¼ï¿½:ï¿½ï¿½È£ 2Å¸
+CUSTOM_ATTACKINFO_WHITE_TIGER_COMBO3 <- 42 		  //  ï¿½Ù¼ï¿½:ï¿½ï¿½È£ 3Å¸
+CUSTOM_ATTACKINFO_WHITE_TIGER_COMBO4 <- 43 		  //  ï¿½Ù¼ï¿½:ï¿½ï¿½È£ 4Å¸
+CUSTOM_ATTACKINFO_WHITE_TIGER_COMBO5 <- 44 		  //  ï¿½Ù¼ï¿½:ï¿½ï¿½È£ 5Å¸
+CUSTOM_ATTACKINFO_WHITE_TIGER_DASH_ATTACK <- 45 		  //  ï¿½Ù¼ï¿½:ï¿½ï¿½È£ ï¿½ë½¬ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ATTACKINFO_WHITE_TIGER_JUMP_ATTACK <- 46 		  //  ï¿½Ù¼ï¿½:ï¿½ï¿½È£ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ATTACKINFO_SUPLEX_CYCLONE_CRASH <- 47 		  //  ï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Å¬ï¿½ï¿½ : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ATTACKINFO_SUPLEX_CYCLONE_FINISH <- 48 		  //  ï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Å¬ï¿½ï¿½ : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å¸ï¿½ï¿½
+CUSTOM_ATTACKINFO_LEG_SUPLEX_EX_SPIN <- 49 		  //  ï¿½ï¿½È­ ï¿½ï¿½ï¿½î½´Å¸ï¿½Ì³ï¿½ ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ATTACKINFO_DASH_PUNCH_EX <- 50 		  //  ï¿½ï¿½È­ ï¿½Ø±ï¿½
+CUSTOM_ATTACKINFO_BLOCK_BUSTER_FINISH_EX <- 51 		  //  ï¿½ï¿½È­ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å¸
+CUSTOM_ATTACKINFO_RISING_UPPER_START_EX <- 52 		  //  ï¿½ï¿½È­ ï¿½Â·ï¿½ï¿½ : ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ATTACKINFO_RISING_UPPER_EX <- 53 		  //  ï¿½ï¿½È­ ï¿½Â·ï¿½ï¿½ : ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ATTACKINFO_RISING_UPPER_FINISH_EX <- 54 		  //  ï¿½ï¿½È­ ï¿½Â·ï¿½ï¿½ : ï¿½Ç´Ï½ï¿½
+CUSTOM_ATTACKINFO_SUPLEX_CYCLONE_EX <- 55 		  //  ï¿½ï¿½È­ ï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Å¬ï¿½ï¿½
+CUSTOM_ATTACKINFO_SUPLEX_CYCLONE_SPIN_EX <- 56 		  //  ï¿½ï¿½È­ ï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Å¬ï¿½ï¿½ : È¸ï¿½ï¿½	
+CUSTOM_ATTACKINFO_STOMP_FINISH <- 57 		  //  ï¿½ï¿½ï¿½ß¹ï¿½ï¿½ ï¿½ï¿½Å¸
+CUSTOM_ATTACKINFO_GROUND_KICK <- 58 		  //  ï¿½×¶ï¿½ï¿½ï¿½Å±
+CUSTOM_ATTACKINFO_LIGHTNING_DRAGON <- 59 		  //  ï¿½ï¿½ï¿½ï¿½ëµµ
+CUSTOM_ATTACKINFO_CRASH_LOW_KICK_SECOND <- 60 		  //  ï¿½ï¿½ Å©ï¿½ï¿½ï¿½ï¿½ ï¿½Î¹ï¿½Â° Å¸ï¿½ï¿½
+CUSTOM_ATTACKINFO_THROW_ENEMY_UPKICK <- 61 		  //  ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ã¸ï¿½ UPÅ±
+CUSTOM_ATTACKINFO_THROW_ENEMY_SIDEKICK <- 62 		  //  ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ã¸ï¿½ SIDEÅ±
+CUSTOM_ATTACKINFO_THROW_ENEMY_DOWNKICK <- 63 		  //  ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ã¸ï¿½ DOWNÅ±
+CUSTOM_ATTACKINFO_TRY_GRAB_THROW_ENEMY <- 64 		  //  ï¿½ï¿½Ç®ï¿½ï¿½ 
+CUSTOM_ATTACKINFO_THROW_WEB_DOUBLE <- 65 		  //  ï¿½×¹ï¿½ï¿½ï¿½Ã´ (ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã´ï¿½Ï¶ï¿½)
+CUSTOM_ATTACKINFO_LIGHTNING_LOW_KICK <- 66 		  //  ï¿½×¹ï¿½ï¿½ï¿½Ã´ (ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã´ï¿½Ï¶ï¿½)
+CUSTOM_ATTACKINFO_SUPLEX_GRABCANNON <- 67 		  //  ï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½ ï¿½×·ï¿½Ä³ï¿½ï¿½ 
+CUSTOM_ATTACKINFO_NEN_FLOWER <- 68 		  //  ï¿½Ù¸ï¿½ï¿½ï¿½ï¿½ï¿½-ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ATTACKINFO_TYPHOON <- 69 		  //  ï¿½×·ï¿½ï¿½Ã·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ATTACKINFO_TYPHOON_LAST <- 70 		  //  ï¿½×·ï¿½ï¿½Ã·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ATTACKINFO_SPIRAL_NEN_SHOOT <- 71 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½:ï¿½ï¿½
+CUSTOM_ATTACKINFO_NEN_SPEAR <- 72 		  //  ï¿½Ù½ï¿½ï¿½Ç¾ï¿½(Æ¯ï¿½ï¿½)	
+CUSTOM_ATTACKINFO_CHARGE_SPEAR <- 73 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½(Æ¯ï¿½ï¿½)	
+CUSTOM_ATTACKINFO_HURRICANE_SPEAR <- 74 		  // 	ï¿½ã¸®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ç¾ï¿½ (Æ¯ï¿½ï¿½)
+CUSTOM_ATTACKINFO_CRASH_ROPE <- 75 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ (Æ¯ï¿½ï¿½)
+CUSTOM_ATTACKINFO_CHAIN_KICK1 <- 76 		  //  ï¿½ï¿½È¯ï¿½ï¿½ 1Å¸(Æ¯ï¿½ï¿½)
+CUSTOM_ATTACKINFO_CHAIN_KICK2 <- 77 		  //  ï¿½ï¿½È¯ï¿½ï¿½ 2Å¸(Æ¯ï¿½ï¿½)
+CUSTOM_ATTACKINFO_CHAIN_KICK3 <- 78 		  //  ï¿½ï¿½È¯ï¿½ï¿½ 3Å¸(Æ¯ï¿½ï¿½)
+CUSTOM_ATTACKINFO_108_STAIRS_KICK_EX <- 79 		  //  108ï¿½ï¿½ï¿½(Æ¯ï¿½ï¿½)
+CUSTOM_ATTACKINFO_108_STAIRS_PUNCH_EX <- 80 		  //  108ï¿½ï¿½ï¿½(Æ¯ï¿½ï¿½)
+CUSTOM_ATTACKINFO_108_STAIRS_BLOW_1_EX <- 81 		  //  108ï¿½ï¿½ï¿½(Æ¯ï¿½ï¿½)
+CUSTOM_ATTACKINFO_108_STAIRS_BLOW_2_EX <- 82 		  //  108ï¿½ï¿½ï¿½(Æ¯ï¿½ï¿½)
+CUSTOM_ATTACKINFO_108_STAIRS_BLOW_3_EX <- 83 		  //  108ï¿½ï¿½ï¿½(Æ¯ï¿½ï¿½)
 
-WEAPON_SUBTYPE_KNUCKLE <- 0 		  //  ³ÊÅ¬
-WEAPON_SUBTYPE_GAUNTLET <- 1 		  //  °ÇÆ²·¿
-WEAPON_SUBTYPE_CLAW <- 2 		  //  Å¬·Î
-WEAPON_SUBTYPE_BOXING_GLOVE <- 3 		  //  ±ÇÅõ±Û·¯ºê
+WEAPON_SUBTYPE_KNUCKLE <- 0 		  //  ï¿½ï¿½Å¬
+WEAPON_SUBTYPE_GAUNTLET <- 1 		  //  ï¿½ï¿½Æ²ï¿½ï¿½
+WEAPON_SUBTYPE_CLAW <- 2 		  //  Å¬ï¿½ï¿½
+WEAPON_SUBTYPE_BOXING_GLOVE <- 3 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½Û·ï¿½ï¿½ï¿½
 WEAPON_SUBTYPE_DUMMY <- 4 		  //  UNKNOWN
-WEAPON_SUBTYPE_TONFA <- 5 		  //  ÅëÆÄ
+WEAPON_SUBTYPE_TONFA <- 5 		  //  ï¿½ï¿½ï¿½ï¿½
 WEAPON_SUBTYPE_MAX <- 6 
 
-SOUND_ID_STATIC <- 0 		  //  ¸Ê¿¡ ÀÖ´Â µ¿¾È °è¼Ó ÇÃ·¹ÀÌ
-SOUND_ID_MOVE <- 1 		  //  °È´Â ¼Ò¸®
-SOUND_ID_ACTIVESTATUS_POISON <- 2 		  //  Æ÷ÀÌÁð °É·ÈÀ» ¶§
-SOUND_ID_ACTIVESTATUS_BURN <- 3 		  //  ¹ø °É·ÈÀ» ¶§
-SOUND_ID_ACTIVESTATUS_LIGHTNING <- 4 		  //  ¶óÀÌÆ®´× °É·ÈÀ» ¶§
-SOUND_ID_AURA_SHIELD <- 5 		  //  Appendage : ¿À¶ó ½Çµå
-SOUND_ID_MAGICAL_TEMPO_UP <- 6 		  //  Appendage : ¼îÅ¸ÀÓ
-SOUND_ID_DOT_AREA <- 7 		  //  Appendage : Áøµ¿ÆÄ
-SOUND_ID_DOT_AREA_DAMAGE <- 8 		  //  Appendage : Áøµ¿ÆÄ ÇÇ°Ý
-SOUND_ID_DIVINE_LIGHT <- 9 		  //  Appendage : ½Å¼ºÇÑ ºû
-SOUND_ID_SHADOW_BOXER <- 10 		  //  Appendage : ¼¨µµ¿ì ¹Ú¼­
-SOUND_ID_GUARD <- 11 		  //  °¡µå »óÅÂÀÏ¶§
-SOUND_ID_CHAKRA_OF_PASSION <- 12 		  //  Appendage : ¿­Á¤ÀÇ Ã­Å©¶ó
-SOUND_ID_CHAKRA_OF_CALMNESS <- 13 		  //  Appendage : ³ÃÁ¤ÀÇ Ã­Å©¶ó
-SOUND_ID_WAVE_MARK <- 14 		  //  Appendage : ÆÄµ¿ÀÎ
-SOUND_ID_KEIGA <- 15 		  //  Appendage : ÀÜ¿µÀÇ ÄÉÀÌ°¡
+SOUND_ID_STATIC <- 0 		  //  ï¿½Ê¿ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½ï¿½
+SOUND_ID_MOVE <- 1 		  //  ï¿½È´ï¿½ ï¿½Ò¸ï¿½
+SOUND_ID_ACTIVESTATUS_POISON <- 2 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½É·ï¿½ï¿½ï¿½ ï¿½ï¿½
+SOUND_ID_ACTIVESTATUS_BURN <- 3 		  //  ï¿½ï¿½ ï¿½É·ï¿½ï¿½ï¿½ ï¿½ï¿½
+SOUND_ID_ACTIVESTATUS_LIGHTNING <- 4 		  //  ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½É·ï¿½ï¿½ï¿½ ï¿½ï¿½
+SOUND_ID_AURA_SHIELD <- 5 		  //  Appendage : ï¿½ï¿½ï¿½ï¿½ ï¿½Çµï¿½
+SOUND_ID_MAGICAL_TEMPO_UP <- 6 		  //  Appendage : ï¿½ï¿½Å¸ï¿½ï¿½
+SOUND_ID_DOT_AREA <- 7 		  //  Appendage : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+SOUND_ID_DOT_AREA_DAMAGE <- 8 		  //  Appendage : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ç°ï¿½
+SOUND_ID_DIVINE_LIGHT <- 9 		  //  Appendage : ï¿½Å¼ï¿½ï¿½ï¿½ ï¿½ï¿½
+SOUND_ID_SHADOW_BOXER <- 10 		  //  Appendage : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ú¼ï¿½
+SOUND_ID_GUARD <- 11 		  //  ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¶ï¿½
+SOUND_ID_CHAKRA_OF_PASSION <- 12 		  //  Appendage : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã­Å©ï¿½ï¿½
+SOUND_ID_CHAKRA_OF_CALMNESS <- 13 		  //  Appendage : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã­Å©ï¿½ï¿½
+SOUND_ID_WAVE_MARK <- 14 		  //  Appendage : ï¿½Äµï¿½ï¿½ï¿½
+SOUND_ID_KEIGA <- 15 		  //  Appendage : ï¿½Ü¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì°ï¿½
 SOUND_ID_END <- 16 
 
-STATE_PRIORITY_AUTO <- 0 		  //  ½Ã°£ÀÌ³ª Á¶°Ç¿¡ ÀÇÇØ ÀÚµ¿À¸·Î µÇ´Â °Íµé (°ø°Ý Á¾·á, ¹ß»ç -> ÀåÀü µîµî)
-STATE_PRIORITY_USER <- 1 		  //  À¯ÀúÀÇ Ä¿¸Çµå¿¡ ÀÇÇØ ³ª°¡´Â °Íµé (½ºÅ³, °ø°Ý µî)
-STATE_PRIORITY_HALF_FORCE <- 2 		  //  ¿øÇØ¼­ ³ª°¡´Â °ÍÀº ¾Æ´ÏÁö¸¸, ¿ÏÀü °­Á¦º¸´Ù´Â ³·Àº °Íµé. (ÀÌ¸é µÚÁý±â µî)
-STATE_PRIORITY_FORCE <- 3 		  //  °­Á¦·Î ÇÏ°Ô µÇ´Â °Íµé. (´Ù¿î, µ¥¹ÌÁö, »ç¸Á, È¦µå µî)
-STATE_PRIORITY_IGNORE_FORCE <- 4 		  //  °­Á¦ º¯°æÀ» ¹«½ÃÇÏ´Â °Íµé. (¼öÇÃ·º½º·Î »ó´ë Àâ±â µî)
+STATE_PRIORITY_AUTO <- 0 		  //  ï¿½Ã°ï¿½ï¿½Ì³ï¿½ ï¿½ï¿½ï¿½Ç¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ç´ï¿½ ï¿½Íµï¿½ (ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½ß»ï¿½ -> ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½)
+STATE_PRIORITY_USER <- 1 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ä¿ï¿½Çµå¿¡ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Íµï¿½ (ï¿½ï¿½Å³, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½)
+STATE_PRIORITY_HALF_FORCE <- 2 		  //  ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Æ´ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ù´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Íµï¿½. (ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½)
+STATE_PRIORITY_FORCE <- 3 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï°ï¿½ ï¿½Ç´ï¿½ ï¿½Íµï¿½. (ï¿½Ù¿ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½, È¦ï¿½ï¿½ ï¿½ï¿½)
+STATE_PRIORITY_IGNORE_FORCE <- 4 		  //  ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Íµï¿½. (ï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½)
 
-STATE_VIRTUAL_ATTACK <- 19 		  //  ÀÏ¹Ý °ø°Ý -> °ø°Ý½ºÅ³ µîÀ» À§ÇÑ °¡»ó STATE
-STATE_ANTIAIR_UPPER <- 20 		  //  ¾îÆÛ
-STATE_DUCKING <- 21 		  //  ´õÅ·
-STATE_SWAY <- 22 		  //  ½º¿þÀÌ
-STATE_GIANT_SWING <- 23 		  //  ´ëÈ¸Àü°Ý
-STATE_REPEATED_SMASH <- 24 		  //  ³­°Ý
-STATE_SMASHER <- 25 		  //  ½º¸Å¼Å
-STATE_QUAKE_AREA <- 26 		  //  ³«ºÀÃß
-STATE_WILL_DRIVER <- 27 		  //  Àª µå¶óÀÌ¹ö
-STATE_DUCKING_SKILL <- 28 		  //  ´õÅ·»óÅÂÀÇ ½ºÅ³º° È®Àå
-STATE_LUCKY_STRAIGHT <- 29 		  //  ·°Å° ½ºÆ®·¹ÀÌÆ®
-STATE_SECOND_UPPER <- 30 		  //  ¼¼ÄÁµå¾îÆÛ
-STATE_HOLY_COUNTER <- 31 		  //  È¦¸® Ä«¿îÅÍ
-STATE_GORGEOUS_COMBINATION <- 32 		  //  °íÀú½º ÄÄºñ³×ÀÌ¼Ç
-STATE_CHOPPING_HAMMER <- 33 		  //  ÃÊÇÎ ÇØ¸Ó
-STATE_HURRICANE_OF_JUDGEMENT <- 34 		  //  ½ÉÆÇÀÇ È¸¿À¸®
-STATE_HOME_RUN <- 35 		  //  È¨·±
-STATE_BLADE_OF_PURE_WHITE <- 36 		  //  ¼ø¹éÀÇ Ä®³¯
-STATE_HURRICANE_ROLL <- 37 		  //  Çã¸®ÄÉÀÎ ·Ñ
-STATE_THROW_WEAPON <- 38 		  //  °Å¼±Ç³
-STATE_DEFLECT_WALL <- 39 		  //  µðÇÃ·ºÆ® ¿ù
-STATE_SPEAR_OF_VICTORY <- 40 		  //  ½Â¸®ÀÇ Ã¢
-STATE_HAMMER_OF_CONTRITION <- 41 		  //  ÂüÈ¸ÀÇ ¸ÁÄ¡
-STATE_HEAVENLY_COMBINATION <- 42 		  //  Çìºì¸® ÄÄºñ³×ÀÌ¼Ç
-STATE_DIVINE_CRUSH <- 43 		  //  µð¹ÙÀÎ Å©·¯½Ã
-STATE_SIDEWIND <- 44 		  //  »çÀÌµå¿ÍÀÎµå
-STATE_MACHINE_GUN_JAB <- 45 		  //  ¸Ó½Å°Ç Àì
-STATE_THROW_TALISMAN <- 46 		  //  ¼ººÒ
-STATE_APOCALYPSE <- 47 		  //  ¾ÆÆ÷Ä®¸³½º
-STATE_GALE_SMASH <- 48 		  //  ÁúÇ³Å¸
-STATE_ATOMIC_SMASH <- 49 		  //  ¹«½Ö°Ý
-STATE_BIG_BANG_PUNCH <- 50 		  //  ºò¹ð ÆÝÄ¡
-STATE_BLUE_DRAGON <- 51 		  //  Ã¢·æ°Ý
-STATE_HEAL_WIND <- 52 		  //  Èú À©µå
-STATE_CUTTING_DARKNESS <- 53 		  //  ¾îµÒ°¡¸£±â
-STATE_MACHINE_GUN_JAB_EX <- 54 		  //  °­È­ ¸Ó½Å°Ç Àì
-STATE_HEAVENLY_COMBINATION_EX <- 55 		  //  Çìºì¸® ÄÄºñ³×ÀÌ¼Ç[°­È­]
-STATE_REPEATED_SMASH_EX <- 56 		  //  °­È­ ³­°Ý
-STATE_DEFLECT_WALL_EX <- 57 		  //  µðÇÃ·ºÆ® ¿ù[°­È­]
+STATE_VIRTUAL_ATTACK <- 19 		  //  ï¿½Ï¹ï¿½ ï¿½ï¿½ï¿½ï¿½ -> ï¿½ï¿½ï¿½Ý½ï¿½Å³ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ STATE
+STATE_ANTIAIR_UPPER <- 20 		  //  ï¿½ï¿½ï¿½ï¿½
+STATE_DUCKING <- 21 		  //  ï¿½ï¿½Å·
+STATE_SWAY <- 22 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+STATE_GIANT_SWING <- 23 		  //  ï¿½ï¿½È¸ï¿½ï¿½ï¿½ï¿½
+STATE_REPEATED_SMASH <- 24 		  //  ï¿½ï¿½ï¿½ï¿½
+STATE_SMASHER <- 25 		  //  ï¿½ï¿½ï¿½Å¼ï¿½
+STATE_QUAKE_AREA <- 26 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+STATE_WILL_DRIVER <- 27 		  //  ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ì¹ï¿½
+STATE_DUCKING_SKILL <- 28 		  //  ï¿½ï¿½Å·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å³ï¿½ï¿½ È®ï¿½ï¿½
+STATE_LUCKY_STRAIGHT <- 29 		  //  ï¿½ï¿½Å° ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½Æ®
+STATE_SECOND_UPPER <- 30 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+STATE_HOLY_COUNTER <- 31 		  //  È¦ï¿½ï¿½ Ä«ï¿½ï¿½ï¿½ï¿½
+STATE_GORGEOUS_COMBINATION <- 32 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Äºï¿½ï¿½ï¿½Ì¼ï¿½
+STATE_CHOPPING_HAMMER <- 33 		  //  ï¿½ï¿½ï¿½ï¿½ ï¿½Ø¸ï¿½
+STATE_HURRICANE_OF_JUDGEMENT <- 34 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È¸ï¿½ï¿½ï¿½ï¿½
+STATE_HOME_RUN <- 35 		  //  È¨ï¿½ï¿½
+STATE_BLADE_OF_PURE_WHITE <- 36 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ä®ï¿½ï¿½
+STATE_HURRICANE_ROLL <- 37 		  //  ï¿½ã¸®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
+STATE_THROW_WEAPON <- 38 		  //  ï¿½Å¼ï¿½Ç³
+STATE_DEFLECT_WALL <- 39 		  //  ï¿½ï¿½ï¿½Ã·ï¿½Æ® ï¿½ï¿½
+STATE_SPEAR_OF_VICTORY <- 40 		  //  ï¿½Â¸ï¿½ï¿½ï¿½ Ã¢
+STATE_HAMMER_OF_CONTRITION <- 41 		  //  ï¿½ï¿½È¸ï¿½ï¿½ ï¿½ï¿½Ä¡
+STATE_HEAVENLY_COMBINATION <- 42 		  //  ï¿½ï¿½ì¸® ï¿½Äºï¿½ï¿½ï¿½Ì¼ï¿½
+STATE_DIVINE_CRUSH <- 43 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ Å©ï¿½ï¿½ï¿½ï¿½
+STATE_SIDEWIND <- 44 		  //  ï¿½ï¿½ï¿½Ìµï¿½ï¿½ï¿½Îµï¿½
+STATE_MACHINE_GUN_JAB <- 45 		  //  ï¿½Ó½Å°ï¿½ ï¿½ï¿½
+STATE_THROW_TALISMAN <- 46 		  //  ï¿½ï¿½ï¿½ï¿½
+STATE_APOCALYPSE <- 47 		  //  ï¿½ï¿½ï¿½ï¿½Ä®ï¿½ï¿½ï¿½ï¿½
+STATE_GALE_SMASH <- 48 		  //  ï¿½ï¿½Ç³Å¸
+STATE_ATOMIC_SMASH <- 49 		  //  ï¿½ï¿½ï¿½Ö°ï¿½
+STATE_BIG_BANG_PUNCH <- 50 		  //  ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡
+STATE_BLUE_DRAGON <- 51 		  //  Ã¢ï¿½ï¿½ï¿½
+STATE_HEAL_WIND <- 52 		  //  ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+STATE_CUTTING_DARKNESS <- 53 		  //  ï¿½ï¿½Ò°ï¿½ï¿½ï¿½ï¿½ï¿½
+STATE_MACHINE_GUN_JAB_EX <- 54 		  //  ï¿½ï¿½È­ ï¿½Ó½Å°ï¿½ ï¿½ï¿½
+STATE_HEAVENLY_COMBINATION_EX <- 55 		  //  ï¿½ï¿½ì¸® ï¿½Äºï¿½ï¿½ï¿½Ì¼ï¿½[ï¿½ï¿½È­]
+STATE_REPEATED_SMASH_EX <- 56 		  //  ï¿½ï¿½È­ ï¿½ï¿½ï¿½ï¿½
+STATE_DEFLECT_WALL_EX <- 57 		  //  ï¿½ï¿½ï¿½Ã·ï¿½Æ® ï¿½ï¿½[ï¿½ï¿½È­]
 
-SKILL_ANTIAIR_UPPER <- 1 		  //  °øÂüÅ¸
-SKILL_DUCKING <- 2 		  //  ´õÅ· ´ë½Ã
-SKILL_SWAY <- 3 		  //  ½º¿þÀÌ
-SKILL_HURRICANE_ROLL <- 4 		  //  Çã¸®ÄÉÀÎ ·Ñ
-SKILL_GIANT_SWING <- 5 		  //  ´ëÈ¸Àü°Ý
-SKILL_CANCEL_ANTIAIR_UPPER <- 6 		  //  Äµ½½ °øÂüÅ¸
-SKILL_STRIKING <- 7 		  //  ½ºÆ®¶óÀÌÅ·
-SKILL_SMASHER <- 8 		  //  ½º¸Å¼Å
-SKILL_CANCEL_SMASHER <- 9 		  //  Äµ½½ ½º¸Å¼Å
-SKILL_CHANGE_HP_TO_MP <- 10 		  // 	°íÅëÀÇ Èñ¿­
-SKILL_QUAKE_AREA <- 11 		  //  ³«ºÀÃß
-SKILL_CANCEL_QUAKE_AREA <- 12 		  //  Äµ½½ ³«ºÀÃß
-SKILL_WILL_DRIVER <- 13 		  //  Àª µå¶óÀÌ¹ö
-SKILL_TECHNICAL_MASTERY <- 14 		  //  Å×Å©´ÏÄÃ ¸¶½ºÅÍ¸®
-SKILL_BATTLE_AURA_MASTERY <- 15 		  //  ¹èÆ² ¿À¶ó ¸¶½ºÅÍ¸®
-SKILL_CORKSCREW_MASTERY <- 16 		  //  ÄÚÅ©½ºÅ©·ù ¸¶½ºÅÍ¸®
-SKILL_COMBINATION_MASTERY <- 17 		  //  ÄÄºñ³×ÀÌ¼Ç ¸¶½ºÅÍ¸®
-SKILL_HARD_PUNCH_MASTERY <- 18 		  //  ÇÏµå ÆÝÄ¡ ¸¶½ºÅÍ¸®
-SKILL_HP_MAX_UP_PERSONAL <- 19 		  //  Ãµ»óÀÇ ¸á·Îµð
-SKILL_EMBLEM_OF_SAFEGUARD <- 20 		  //  º¸È£ÀÇ Â¡Ç¥
-SKILL_FOUNTAIN_OF_LIFE <- 21 		  //  »ý¸íÀÇ ¿øÃµ
-SKILL_DIVINE_LIGHT <- 22 		  //  ½Å¼ºÇÑ ºû
-SKILL_REVENGE_OF_LIGHT <- 23 		  //  ºûÀÇ º¹¼ö
-SKILL_HP_MAX_UP_PARTY <- 24 		  //  Ãµ»óÀÇ ÇÏ¸ð´Ï
-SKILL_SACRIFICE_OF_SOUL <- 25 		  //  ¿µÈ¥ÀÇ Èñ»ý
-SKILL_HEAL_WIND <- 26 		  //  Èú À©µå
-SKILL_DEFLECT_WALL <- 27 		  //  µðÇÃ·ºÆ® ¿ù
-SKILL_FLASH_GLOBE <- 28 		  //  ÇÃ·¡½Ã ±Û·Îºê
-SKILL_EXTENDED_PUNCH <- 29 		  //  ±Ç±â¹æÃâ
-SKILL_HOLY_COUNTER <- 30 		  //  È¦¸® Ä«¿îÅÍ
-SKILL_GORGEOUS_COMBINATION <- 31 		  //  °íÀú½º ÄÄºñ³×ÀÌ¼Ç
-SKILL_CANCEL_GORGEOUS_COMBINATION <- 32 		  //  Äµ½½ °íÀú½º ÄÄºñ³×ÀÌ¼Ç
-SKILL_CHOPPING_HAMMER <- 33 		  //  ÃÊÇÎ ÇØ¸Ó
-SKILL_ARMOR_MASTERY_PLATE_CS <- 34 		  //  Å©·ç¼¼ÀÌ´õ ÆÇ±Ý ¸¶½ºÅÍ¸®
-SKILL_SHADOW_BOXER <- 35 		  //  ¼¨µµ¿ì ¹Ú¼­
-SKILL_DOUBLE_SHADOW_BOXER <- 36 		  //  ´õºí ¼¨µµ¿ì ¹Ú¼­
-SKILL_HURRICANE_OF_JUDGEMENT <- 37 		  //  ½ÉÆÇÀÇ È¸¿À¸®
-SKILL_ENTERING_NIRVANA <- 38 		  //  ¼ººÒ
-SKILL_OPPRESSION_TALISMAN <- 39 		  //  Á¦¾ÐºÎ (ÀÌÆåÆ®)
-SKILL_THUNDERBOLT_TALISMAN <- 40 		  //  ³«·ÚºÎ (ÀÌÆåÆ®)
-SKILL_HOME_RUN <- 41 		  //  Àú ÇÏ´ÃÀÇ º°
-SKILL_QUICK_PARRY <- 42 		  //  Äü ÆÐ¸®
-SKILL_BLADE_OF_PURE_WHITE <- 43 		  //  ¼ø¹éÀÇ Ä®³¯
-SKILL_CANCEL_BLADE_OF_PURE_WHITE <- 44 		  //  Äµ½½ ¼ø¹éÀÇ Ä®³¯
-SKILL_GLORIOUS_BLESS <- 45 		  //  ¿µ±¤ÀÇ Ãàº¹
-SKILL_CANCEL_HURRICANE_ROLL <- 46 		  //  Äµ½½ Çã¸®ÄÉÀÎ ·Ñ
-SKILL_CHAKRA_OF_PASSION <- 47 		  //  ¿­Á¤ÀÇ Ã­Å©¶ó
-SKILL_CHAKRA_OF_CALMNESS <- 48 		  //  ³ÃÁ¤ÀÇ Ã­Å©¶ó
-SKILL_REPEATED_SMASH <- 49 		  //  ³­°Ý
-SKILL_THROW_WEAPON <- 50 		  //  °Å¼±Ç³
-SKILL_SLOW_HEAL <- 51 		  //  ½½·Î¿ì Èú
-SKILL_CURE <- 52 		  //  Å¥¾î
-SKILL_BLESS <- 53 		  //  ÁöÇýÀÇ Ãàº¹
-SKILL_GRACE_OF_GOD <- 54 		  //  ½ÅÀÇ ÀºÃÑ
-SKILL_FAST_HEAL <- 55 		  //  ÆÐ½ºÆ® Èú
-SKILL_DUCKING_STRAIGHT <- 56 		  //  ´õÅ· ½ºÆ®·¹ÀÌÆ®
-SKILL_DUCKING_BODYBLOW <- 57 		  //  ´õÅ· º¸µðºí·Î
-SKILL_DUCKING_UPPER <- 58 		  //  ´õÅ· ¾îÆÛ
-SKILL_CANCEL_DUCKING <- 59 		  //  Äµ½½ ´õÅ·
-SKILL_CANCEL_SWAY <- 60 		  //  Äµ½½ ½º¿þÀÌ
-SKILL_LUCKY_STRAIGHT <- 61 		  //  ·°Å° ½ºÆ®·¹ÀÌÆ®
-SKILL_CANCEL_LUCKY_STRAIGHT <- 62 		  //  Äµ½½ ·°Å° ½ºÆ®·¹ÀÌÆ®
-SKILL_SECOND_UPPER <- 63 		  //  ¼¼ÄÁµå ¾îÆÛ
-SKILL_GRASP_HAND_OF_ANGER <- 64 		  //  ºÐ³ëÀÇ ¿òÄÑÁç
-SKILL_CANCEL_GRASP_HAND_OF_ANGER <- 65 		  //  Äµ½½ ºÐ³ëÀÇ ¿òÄÑÁç
-SKILL_CHARGE_WEAPON <- 66 		  //  Àá·æ
-SKILL_FORCE_OF_EXORCISM <- 67 		  //  Åð¸¶ÀÇ ±â¿î
+SKILL_ANTIAIR_UPPER <- 1 		  //  ï¿½ï¿½ï¿½ï¿½Å¸
+SKILL_DUCKING <- 2 		  //  ï¿½ï¿½Å· ï¿½ï¿½ï¿½
+SKILL_SWAY <- 3 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+SKILL_HURRICANE_ROLL <- 4 		  //  ï¿½ã¸®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
+SKILL_GIANT_SWING <- 5 		  //  ï¿½ï¿½È¸ï¿½ï¿½ï¿½ï¿½
+SKILL_CANCEL_ANTIAIR_UPPER <- 6 		  //  Äµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Å¸
+SKILL_STRIKING <- 7 		  //  ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½Å·
+SKILL_SMASHER <- 8 		  //  ï¿½ï¿½ï¿½Å¼ï¿½
+SKILL_CANCEL_SMASHER <- 9 		  //  Äµï¿½ï¿½ ï¿½ï¿½ï¿½Å¼ï¿½
+SKILL_CHANGE_HP_TO_MP <- 10 		  // 	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
+SKILL_QUAKE_AREA <- 11 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+SKILL_CANCEL_QUAKE_AREA <- 12 		  //  Äµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+SKILL_WILL_DRIVER <- 13 		  //  ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ì¹ï¿½
+SKILL_TECHNICAL_MASTERY <- 14 		  //  ï¿½ï¿½Å©ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½
+SKILL_BATTLE_AURA_MASTERY <- 15 		  //  ï¿½ï¿½Æ² ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½
+SKILL_CORKSCREW_MASTERY <- 16 		  //  ï¿½ï¿½Å©ï¿½ï¿½Å©ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½
+SKILL_COMBINATION_MASTERY <- 17 		  //  ï¿½Äºï¿½ï¿½ï¿½Ì¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½
+SKILL_HARD_PUNCH_MASTERY <- 18 		  //  ï¿½Ïµï¿½ ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½
+SKILL_HP_MAX_UP_PERSONAL <- 19 		  //  Ãµï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Îµï¿½
+SKILL_EMBLEM_OF_SAFEGUARD <- 20 		  //  ï¿½ï¿½È£ï¿½ï¿½ Â¡Ç¥
+SKILL_FOUNTAIN_OF_LIFE <- 21 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ãµ
+SKILL_DIVINE_LIGHT <- 22 		  //  ï¿½Å¼ï¿½ï¿½ï¿½ ï¿½ï¿½
+SKILL_REVENGE_OF_LIGHT <- 23 		  //  ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+SKILL_HP_MAX_UP_PARTY <- 24 		  //  Ãµï¿½ï¿½ï¿½ï¿½ ï¿½Ï¸ï¿½ï¿½
+SKILL_SACRIFICE_OF_SOUL <- 25 		  //  ï¿½ï¿½È¥ï¿½ï¿½ ï¿½ï¿½ï¿½
+SKILL_HEAL_WIND <- 26 		  //  ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+SKILL_DEFLECT_WALL <- 27 		  //  ï¿½ï¿½ï¿½Ã·ï¿½Æ® ï¿½ï¿½
+SKILL_FLASH_GLOBE <- 28 		  //  ï¿½Ã·ï¿½ï¿½ï¿½ ï¿½Û·Îºï¿½
+SKILL_EXTENDED_PUNCH <- 29 		  //  ï¿½Ç±ï¿½ï¿½ï¿½ï¿½
+SKILL_HOLY_COUNTER <- 30 		  //  È¦ï¿½ï¿½ Ä«ï¿½ï¿½ï¿½ï¿½
+SKILL_GORGEOUS_COMBINATION <- 31 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Äºï¿½ï¿½ï¿½Ì¼ï¿½
+SKILL_CANCEL_GORGEOUS_COMBINATION <- 32 		  //  Äµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Äºï¿½ï¿½ï¿½Ì¼ï¿½
+SKILL_CHOPPING_HAMMER <- 33 		  //  ï¿½ï¿½ï¿½ï¿½ ï¿½Ø¸ï¿½
+SKILL_ARMOR_MASTERY_PLATE_CS <- 34 		  //  Å©ï¿½ç¼¼ï¿½Ì´ï¿½ ï¿½Ç±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½
+SKILL_SHADOW_BOXER <- 35 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ú¼ï¿½
+SKILL_DOUBLE_SHADOW_BOXER <- 36 		  //  ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ú¼ï¿½
+SKILL_HURRICANE_OF_JUDGEMENT <- 37 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È¸ï¿½ï¿½ï¿½ï¿½
+SKILL_ENTERING_NIRVANA <- 38 		  //  ï¿½ï¿½ï¿½ï¿½
+SKILL_OPPRESSION_TALISMAN <- 39 		  //  ï¿½ï¿½ï¿½Ðºï¿½ (ï¿½ï¿½ï¿½ï¿½Æ®)
+SKILL_THUNDERBOLT_TALISMAN <- 40 		  //  ï¿½ï¿½ï¿½Úºï¿½ (ï¿½ï¿½ï¿½ï¿½Æ®)
+SKILL_HOME_RUN <- 41 		  //  ï¿½ï¿½ ï¿½Ï´ï¿½ï¿½ï¿½ ï¿½ï¿½
+SKILL_QUICK_PARRY <- 42 		  //  ï¿½ï¿½ ï¿½Ð¸ï¿½
+SKILL_BLADE_OF_PURE_WHITE <- 43 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ä®ï¿½ï¿½
+SKILL_CANCEL_BLADE_OF_PURE_WHITE <- 44 		  //  Äµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ä®ï¿½ï¿½
+SKILL_GLORIOUS_BLESS <- 45 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½àº¹
+SKILL_CANCEL_HURRICANE_ROLL <- 46 		  //  Äµï¿½ï¿½ ï¿½ã¸®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
+SKILL_CHAKRA_OF_PASSION <- 47 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã­Å©ï¿½ï¿½
+SKILL_CHAKRA_OF_CALMNESS <- 48 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã­Å©ï¿½ï¿½
+SKILL_REPEATED_SMASH <- 49 		  //  ï¿½ï¿½ï¿½ï¿½
+SKILL_THROW_WEAPON <- 50 		  //  ï¿½Å¼ï¿½Ç³
+SKILL_SLOW_HEAL <- 51 		  //  ï¿½ï¿½ï¿½Î¿ï¿½ ï¿½ï¿½
+SKILL_CURE <- 52 		  //  Å¥ï¿½ï¿½
+SKILL_BLESS <- 53 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½àº¹
+SKILL_GRACE_OF_GOD <- 54 		  //  ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+SKILL_FAST_HEAL <- 55 		  //  ï¿½Ð½ï¿½Æ® ï¿½ï¿½
+SKILL_DUCKING_STRAIGHT <- 56 		  //  ï¿½ï¿½Å· ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½Æ®
+SKILL_DUCKING_BODYBLOW <- 57 		  //  ï¿½ï¿½Å· ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+SKILL_DUCKING_UPPER <- 58 		  //  ï¿½ï¿½Å· ï¿½ï¿½ï¿½ï¿½
+SKILL_CANCEL_DUCKING <- 59 		  //  Äµï¿½ï¿½ ï¿½ï¿½Å·
+SKILL_CANCEL_SWAY <- 60 		  //  Äµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+SKILL_LUCKY_STRAIGHT <- 61 		  //  ï¿½ï¿½Å° ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½Æ®
+SKILL_CANCEL_LUCKY_STRAIGHT <- 62 		  //  Äµï¿½ï¿½ ï¿½ï¿½Å° ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½Æ®
+SKILL_SECOND_UPPER <- 63 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+SKILL_GRASP_HAND_OF_ANGER <- 64 		  //  ï¿½Ð³ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+SKILL_CANCEL_GRASP_HAND_OF_ANGER <- 65 		  //  Äµï¿½ï¿½ ï¿½Ð³ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+SKILL_CHARGE_WEAPON <- 66 		  //  ï¿½ï¿½ï¿½
+SKILL_FORCE_OF_EXORCISM <- 67 		  //  ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 SKILL_ARMOR_MASTERY_CLOTH_EC <- 68 
-SKILL_HYUN_MOO <- 69 		  //  ÁöÀÇ ½Ä½Å - Çö¹«
-SKILL_BAEK_HO <- 70 		  //  °øÀÇ ½Ä½Å - ¹éÈ£
-SKILL_CANCEL_REPEATED_SMASH <- 71 		  //  Äµ½½ ³­°Ý
-SKILL_CANCEL_HOME_RUN <- 72 		  //  Äµ½½ È¨·±
-SKILL_SPEAR_OF_VICTORY <- 73 		  //  ½Â¸®ÀÇ Ã¢
-SKILL_HAMMER_OF_CONTRITION <- 74 		  //  ÂüÈ¸ÀÇ ¸ÁÄ¡
-SKILL_HEAVENLY_COMBINATION <- 75 		  //  Çìºì¸® ÄÄºñ³×ÀÌ¼Ç
-SKILL_DIVINE_CRUSH <- 76 		  //  µð¹ÙÀÎ Å©·¯½Ã
-SKILL_SIDEWIND <- 77 		  //  »çÀÌµå¿ÍÀÎµå
-SKILL_MACHINE_GUN_JAB <- 78 		  //  ¸Ó½Å°Ç Àì
-SKILL_CANCEL_SIDEWIND <- 79 		  //  Äµ½½ »çÀÌµå¿ÍÀÎµå
-SKILL_CANCEL_MACHINE_GUN_JAB <- 80 		  //  Äµ½½ ¸Ó½Å°Ç Àì
-SKILL_JUDGEMENT <- 81 		  //  Á¤ÀÇÀÇ ½ÉÆÇ
-SKILL_BIG_WEAPON_MASTERY <- 82 		  //  °Åº´¸¶½ºÅÍ¸® »ý¼º
-SKILL_BATTLE_AXE_MASTERY <- 83 		  //  ¹èÆ²¾×½º ¸¶½ºÅÍ¸®
-SKILL_APOCALYPSE <- 84 		  //  ¾ÆÆ÷Ä®¸³½º
-SKILL_GALE_SMASH <- 85 		  //  ÁúÇ³Å¸
-SKILL_AURA_OF_FAITH <- 86 		  //  ½Å³äÀÇ ¿À¶ó
-SKILL_DRYOUT <- 87 		  //  µå¶óÀÌ¾Æ¿ô
-SKILL_ATOMIC_SMASH <- 88 		  //  ¹«½Ö°Ý
-SKILL_RADIATE_FIGHTING_AURA <- 89 		  //  Åõ±â ¹ß»ê
-SKILL_BIG_BANG_PUNCH <- 90 		  //  ºò¹ð ÆÝÄ¡
-SKILL_ARMOR_MASTERY_LIGHT_IF <- 91 		  //  °æ°© ¸¶½ºÅÍ¸®:ÀÎÆÄÀÌÅÍ
-SKILL_ARMOR_MASTERY_PLATE_EC <- 92 		  //  ÆÇ±Ý ¸¶½ºÅÍ¸®:Åð¸¶»ç
-SKILL_BLUE_DRAGON <- 93 		  //  Ã¢·æ°Ý
-SKILL_CANCEL_ENTERING_NIRVANA <- 94 		  //  Äµ½½ ¼ººÒ
-SKILL_CANCEL_GALE_SMASH <- 95 		  //  Äµ½½ ÁúÇ³Å¸
-SKILL_ARMOR_MASTERY_HEAVY_EC <- 96 		  //  Áß°© ¸¶½ºÅÍ¸®:Åð¸¶»ç
-SKILL_GRACE_OF_COURAGE <- 97 		  //  ¿ë±âÀÇ ÀºÃÑ
-SKILL_GRACE_OF_PROTECTION <- 98 		  //  ¼öÈ£ÀÇ ÀºÃÑ
-SKILL_RISING_AREA <- 99 		  //  ½ÂÃµÁø
-SKILL_CUTTING_DARKNESS <- 100 		  //  ¾îµÒ°¡¸£±â
-SKILL_SHIKIGAMI <- 101 		  //  ½Ä½ÅÀÇ ±º
-SKILL_CANCEL_RISING_AREA <- 102 		  //  Äµ½½ ½ÂÃµÁø
-SKILL_MACHINE_GUN_JAB_EX <- 103 		  //  °­È­ ¸Ó½Å°Ç Àì
-SKILL_HEAVENLY_COMBINATION_EX <- 104 		  //  Çìºì¸® ÄÄºñ³×¹Ì¼Ç[°­È­]
-SKILL_REPEATED_SMASH_EX <- 105 		  //  °­È­ ³­°Ý
-SKILL_VERMILIONBIRD_TALISMAN <- 106 		  //  ÁÖÀÛºÎ
-SKILL_CROSS_CRASH <- 107 		  //  Å©·Î½º Å©·¡½¬, °³¹ß¸í : ¶ß°Å¿î ½ÊÀÚ°¡, HotCross µî
-SKILL_FLASH_GLOBE_EX <- 108 		  //  ÇÃ·¡½Ã ±Û·Îºê[°­È­]
-SKILL_DEFLECT_WALL_EX <- 109 		  //  µðÇÃ·ºÆ® ¿ù[°­È­]
-SKILL_HYUN_MOO_EX <- 110 		  //  Çö¹«[°­È­]
-SKILL_GROUND_CRASH <- 111 		  //  ±×¶ó¿îµå ½º¸Å½Ã, °³¹ß¸í ox crash (ÇÑ¿ìµ¹ÆÄ)
-SKILL_CANCEL_GROUND_CRASH <- 112 		  //  Äµ½½ ±×¶ó¿îµå ½º¸Å½Ã
-SKILL_SLOW_HEAL_EX <- 140 		  //  ½½·Î¿ì Èú ÆÐ½Ãºê
-SKILL_LUCKY_STRAIGHT_EX <- 141 		  //  ·°Å° ½ºÆ®·¹ÀÌÆ® ÆÐ½Ãºê
-SKILL_QUAKE_AREA_EX <- 142 		  //  ³«ºÀÃß ÆÐ½Ãºê
-SKILL_GRASP_HAND_OF_ANGER_EX <- 143 		  //  ºÐ³ëÀÇ ¿òÄÑÁç
-SKILL_SPEAR_OF_VICTORY_EX <- 144 		  //  ½Â¸®ÀÇ Ã¢ ÆÐ½Ãºê
-SKILL_REVENGE_OF_LIGHT_EX <- 145 		  //  ºûÀÇ º¹¼ö ÆÐ½Ãºê
-SKILL_DUCKING_STRAIGHT_EX <- 146 		  //  ´õÅ· ½ºÆ®·¹ÀÌÆ® ÆÐ½Ãºê
-SKILL_WILL_DRIVER_EX <- 147 		  //  Àª µå¶óÀÌ¹ö ÆÐ½Ãºê
-SKILL_OPPRESSION_TALISMAN_EX <- 148 		  //  Á¦¾ÐºÎ ÆÐ½Ãºê
-SKILL_THROW_WEAPON_EX <- 149 		  //  °Å¼±Ç³ ÆÐ½Ãºê
+SKILL_HYUN_MOO <- 69 		  //  ï¿½ï¿½ï¿½ï¿½ ï¿½Ä½ï¿½ - ï¿½ï¿½ï¿½ï¿½
+SKILL_BAEK_HO <- 70 		  //  ï¿½ï¿½ï¿½ï¿½ ï¿½Ä½ï¿½ - ï¿½ï¿½È£
+SKILL_CANCEL_REPEATED_SMASH <- 71 		  //  Äµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+SKILL_CANCEL_HOME_RUN <- 72 		  //  Äµï¿½ï¿½ È¨ï¿½ï¿½
+SKILL_SPEAR_OF_VICTORY <- 73 		  //  ï¿½Â¸ï¿½ï¿½ï¿½ Ã¢
+SKILL_HAMMER_OF_CONTRITION <- 74 		  //  ï¿½ï¿½È¸ï¿½ï¿½ ï¿½ï¿½Ä¡
+SKILL_HEAVENLY_COMBINATION <- 75 		  //  ï¿½ï¿½ì¸® ï¿½Äºï¿½ï¿½ï¿½Ì¼ï¿½
+SKILL_DIVINE_CRUSH <- 76 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ Å©ï¿½ï¿½ï¿½ï¿½
+SKILL_SIDEWIND <- 77 		  //  ï¿½ï¿½ï¿½Ìµï¿½ï¿½ï¿½Îµï¿½
+SKILL_MACHINE_GUN_JAB <- 78 		  //  ï¿½Ó½Å°ï¿½ ï¿½ï¿½
+SKILL_CANCEL_SIDEWIND <- 79 		  //  Äµï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ï¿½ï¿½Îµï¿½
+SKILL_CANCEL_MACHINE_GUN_JAB <- 80 		  //  Äµï¿½ï¿½ ï¿½Ó½Å°ï¿½ ï¿½ï¿½
+SKILL_JUDGEMENT <- 81 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+SKILL_BIG_WEAPON_MASTERY <- 82 		  //  ï¿½Åºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½ï¿½ï¿½ï¿½
+SKILL_BATTLE_AXE_MASTERY <- 83 		  //  ï¿½ï¿½Æ²ï¿½×½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½
+SKILL_APOCALYPSE <- 84 		  //  ï¿½ï¿½ï¿½ï¿½Ä®ï¿½ï¿½ï¿½ï¿½
+SKILL_GALE_SMASH <- 85 		  //  ï¿½ï¿½Ç³Å¸
+SKILL_AURA_OF_FAITH <- 86 		  //  ï¿½Å³ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+SKILL_DRYOUT <- 87 		  //  ï¿½ï¿½ï¿½ï¿½Ì¾Æ¿ï¿½
+SKILL_ATOMIC_SMASH <- 88 		  //  ï¿½ï¿½ï¿½Ö°ï¿½
+SKILL_RADIATE_FIGHTING_AURA <- 89 		  //  ï¿½ï¿½ï¿½ï¿½ ï¿½ß»ï¿½
+SKILL_BIG_BANG_PUNCH <- 90 		  //  ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡
+SKILL_ARMOR_MASTERY_LIGHT_IF <- 91 		  //  ï¿½æ°© ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½:ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+SKILL_ARMOR_MASTERY_PLATE_EC <- 92 		  //  ï¿½Ç±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½:ï¿½ð¸¶»ï¿½
+SKILL_BLUE_DRAGON <- 93 		  //  Ã¢ï¿½ï¿½ï¿½
+SKILL_CANCEL_ENTERING_NIRVANA <- 94 		  //  Äµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+SKILL_CANCEL_GALE_SMASH <- 95 		  //  Äµï¿½ï¿½ ï¿½ï¿½Ç³Å¸
+SKILL_ARMOR_MASTERY_HEAVY_EC <- 96 		  //  ï¿½ß°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½:ï¿½ð¸¶»ï¿½
+SKILL_GRACE_OF_COURAGE <- 97 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+SKILL_GRACE_OF_PROTECTION <- 98 		  //  ï¿½ï¿½È£ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+SKILL_RISING_AREA <- 99 		  //  ï¿½ï¿½Ãµï¿½ï¿½
+SKILL_CUTTING_DARKNESS <- 100 		  //  ï¿½ï¿½Ò°ï¿½ï¿½ï¿½ï¿½ï¿½
+SKILL_SHIKIGAMI <- 101 		  //  ï¿½Ä½ï¿½ï¿½ï¿½ ï¿½ï¿½
+SKILL_CANCEL_RISING_AREA <- 102 		  //  Äµï¿½ï¿½ ï¿½ï¿½Ãµï¿½ï¿½
+SKILL_MACHINE_GUN_JAB_EX <- 103 		  //  ï¿½ï¿½È­ ï¿½Ó½Å°ï¿½ ï¿½ï¿½
+SKILL_HEAVENLY_COMBINATION_EX <- 104 		  //  ï¿½ï¿½ì¸® ï¿½Äºï¿½×¹Ì¼ï¿½[ï¿½ï¿½È­]
+SKILL_REPEATED_SMASH_EX <- 105 		  //  ï¿½ï¿½È­ ï¿½ï¿½ï¿½ï¿½
+SKILL_VERMILIONBIRD_TALISMAN <- 106 		  //  ï¿½ï¿½ï¿½Ûºï¿½
+SKILL_CROSS_CRASH <- 107 		  //  Å©ï¿½Î½ï¿½ Å©ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ß¸ï¿½ : ï¿½ß°Å¿ï¿½ ï¿½ï¿½ï¿½Ú°ï¿½, HotCross ï¿½ï¿½
+SKILL_FLASH_GLOBE_EX <- 108 		  //  ï¿½Ã·ï¿½ï¿½ï¿½ ï¿½Û·Îºï¿½[ï¿½ï¿½È­]
+SKILL_DEFLECT_WALL_EX <- 109 		  //  ï¿½ï¿½ï¿½Ã·ï¿½Æ® ï¿½ï¿½[ï¿½ï¿½È­]
+SKILL_HYUN_MOO_EX <- 110 		  //  ï¿½ï¿½ï¿½ï¿½[ï¿½ï¿½È­]
+SKILL_GROUND_CRASH <- 111 		  //  ï¿½×¶ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Å½ï¿½, ï¿½ï¿½ï¿½ß¸ï¿½ ox crash (ï¿½Ñ¿ìµ¹ï¿½ï¿½)
+SKILL_CANCEL_GROUND_CRASH <- 112 		  //  Äµï¿½ï¿½ ï¿½×¶ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Å½ï¿½
+SKILL_SLOW_HEAL_EX <- 140 		  //  ï¿½ï¿½ï¿½Î¿ï¿½ ï¿½ï¿½ ï¿½Ð½Ãºï¿½
+SKILL_LUCKY_STRAIGHT_EX <- 141 		  //  ï¿½ï¿½Å° ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Ð½Ãºï¿½
+SKILL_QUAKE_AREA_EX <- 142 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ð½Ãºï¿½
+SKILL_GRASP_HAND_OF_ANGER_EX <- 143 		  //  ï¿½Ð³ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+SKILL_SPEAR_OF_VICTORY_EX <- 144 		  //  ï¿½Â¸ï¿½ï¿½ï¿½ Ã¢ ï¿½Ð½Ãºï¿½
+SKILL_REVENGE_OF_LIGHT_EX <- 145 		  //  ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ð½Ãºï¿½
+SKILL_DUCKING_STRAIGHT_EX <- 146 		  //  ï¿½ï¿½Å· ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Ð½Ãºï¿½
+SKILL_WILL_DRIVER_EX <- 147 		  //  ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ì¹ï¿½ ï¿½Ð½Ãºï¿½
+SKILL_OPPRESSION_TALISMAN_EX <- 148 		  //  ï¿½ï¿½ï¿½Ðºï¿½ ï¿½Ð½Ãºï¿½
+SKILL_THROW_WEAPON_EX <- 149 		  //  ï¿½Å¼ï¿½Ç³ ï¿½Ð½Ãºï¿½
 
-CUSTOM_ANI_JUMP_PUNCH <- 0 		  //  Á¡ÇÁ ÆÝÄ¡ (°Åº´ ¾øÀ»¶§ Á¡ÇÁ°ø°Ý)
-CUSTOM_ANI_ANTIAIR_UPPER <- 1 		  //  ¾îÆÛ
-CUSTOM_ANI_DUCKING <- 2 		  //  ´õÅ·
-CUSTOM_ANI_SWAY <- 3 		  //  ½º¿þÀÌ
-CUSTOM_ANI_GIANT_SWING_READY <- 4 		  //  ´ëÈ¸Àü°Ý : ÁØºñ
-CUSTOM_ANI_GIANT_SWING <- 5 		  //  ´ëÈ¸Àü°Ý : È¸Àü
-CUSTOM_ANI_GIANT_SWING_FINAL <- 6 		  //  ´ëÈ¸Àü°Ý : ¸·Å¸
-CUSTOM_ANI_SMASHER_TRY_GRAB <- 7 		  //  ½º¸Å¼Å : Àâ±â ±âµµ
-CUSTOM_ANI_SMASHER_SUCCESS_GRAB <- 8 		  //  ½º¸Å¼Å : Àâ±â ¼º°ø
-CUSTOM_ANI_SMASHER_DASH <- 9 		  //  ½º¸Å¼Å : ´ë½Ã ÈÄ ´øÁö±â
-CUSTOM_ANI_DUCKING_BODYBLOW <- 10 		  //  º¸µðºí·Î
-CUSTOM_ANI_QUAKE_AREA <- 11 		  //  ³«ºÀÃß
-CUSTOM_ANI_WILL_DRIVER <- 12 		  //  Àª µå¶óÀÌ¹ö
-CUSTOM_ANI_WILL_DRIVER_SECOND <- 13 		  //  Àª µå¶óÀÌ¹ö : ÀÌ¹Ì ²ÈÈù »óÅÂ
-CUSTOM_ANI_LUCKY_STRAIGHT <- 14 		  //  ·°Å°½ºÆ®·¹ÀÌÆ®
-CUSTOM_ANI_DUCKING_STRAIGHT <- 15 		  //  ´õÅ· ½ºÆ®·¹ÀÌÆ®
-CUSTOM_ANI_SECOND_UPPER <- 16 		  //  ¼¼ÄÁµå ¾îÆÛ
-CUSTOM_ANI_DUCKING_UPPER <- 17 		  //  ´õÅ· ¾îÆÛ
-CUSTOM_ANI_HOLY_COUNTER_PRAY <- 18 		  //  È¦¸® Ä«¿îÅÍ : ±âµµ
-CUSTOM_ANI_HOLY_COUNTER_BODYBLOW <- 19 		  //  È¦¸® Ä«¿îÅÍ : ¹Ùµðºí·Î
-CUSTOM_ANI_GORGEOUS_COMBINATION <- 20 		  //  °íÀú½º ÄÄºñ³×ÀÌ¼Ç
-CUSTOM_ANI_CHOPPING_HAMMER <- 21 		  //  ÃÊÇÎ ÇØ¸Ó
-CUSTOM_ANI_HURRICANE_OF_JUDGEMENT <- 22 		  //  ½ÉÆÇÀÇ È¸¿À¸®
-CUSTOM_ANI_HURRICANE_OF_JUDGEMENT2 <- 23 		  //  ½ÉÆÇÀÇ È¸¿À¸® 2Å¸
-CUSTOM_ANI_HOME_RUN_GRAB <- 24 		  //  È¨·± : Àâ±â ½Ãµµ
-CUSTOM_ANI_HOME_RUN_CHARGE <- 25 		  //  È¨·± : Àâ±â & Â÷Áö
-CUSTOM_ANI_HOME_RUN_SMASH <- 26 		  //  È¨·± : ½ºÀ®
-CUSTOM_ANI_BLADE_OF_PURE_WHITE <- 27 		  //  ¼ø¹éÀÇ Ä®³¯
-CUSTOM_ANI_HURRICANE_ROLL_HOOK <- 28 		  //  Çã¸®ÄÉÀÎ ·Ñ : ÈÅ
-CUSTOM_ANI_HURRICANE_ROLL_UPPER <- 29 		  //  Çã¸®ÄÉÀÎ ·Ñ : ¾îÆÛ
-CUSTOM_ANI_REPEATED_SMASH_START <- 30 		  //  ³­°Ý : Ã¹Å¸
-CUSTOM_ANI_REPEATED_SMASH <- 31 		  //  ³­°Ý : ³­Å¸
-CUSTOM_ANI_REPEATED_SMASH_FINAL <- 32 		  //  ³­°Ý : ¸·Å¸
-CUSTOM_ANI_THROW_WEAPON_READY <- 33 		  //  °Å¼±Ç³ : ÁØºñ
-CUSTOM_ANI_THROW_WEAPON_SWING <- 34 		  //  °Å¼±Ç³ : È¸Àü (Ç®Â÷Áö½Ã 1È¸Àü Ãß°¡ ¸ð¼Ç)
-CUSTOM_ANI_THROW_WEAPON_THROW <- 35 		  //  °Å¼±Ç³ : ÅõÃ´ (Ç®Â÷Áö°¡ ¾Æ´Ï¸é ÁØºñ -> ÅõÃ´)
-CUSTOM_ANI_DEFLECT_WALL <- 36 		  //  µðÇÃ·ºÆ® ¿ù
-CUSTOM_ANI_SPEAR_OF_VICTORY_READY <- 37 		  //  ½Â¸®ÀÇ Ã¢ : ÁØºñ&ÃæÀü
-CUSTOM_ANI_SPEAR_OF_VICTORY_THROW <- 38 		  //  ½Â¸®ÀÇ Ã¢ : ÅõÃ´
-CUSTOM_ANI_HAMMER_OF_CONTRITION <- 39 		  //  ÂüÈ¸ÀÇ ¸ÁÄ¡
-CUSTOM_ANI_HEAVENLY_COMBINATION <- 40 		  //  Çìºì¸® ÄÄºñ³×ÀÌ¼Ç
-CUSTOM_ANI_DIVINE_CRUSH <- 41 		  //  µð¹ÙÀÎ Å©·¯½Ã
-CUSTOM_ANI_INFIGHTER_ATTACK12 <- 42 		  //  ÀÎÆÄÀÌÅÍ ÆòÅ¸ 1,2Å¸
-CUSTOM_ANI_INFIGHTER_ATTACK3 <- 43 		  //  ÀÎÆÄÀÌÅÍ ÆòÅ¸ 3Å¸
-CUSTOM_ANI_INFIGHTER_ATTACK4 <- 44 		  //  ÀÎÆÄÀÌÅÍ ÆòÅ¸ 4Å¸
-CUSTOM_ANI_INFIGHTER_ATTACK5 <- 45 		  //  ÀÎÆÄÀÌÅÍ ÆòÅ¸ 5Å¸
-CUSTOM_ANI_EXORCIST_ATTACK1 <- 46 		  //  Åð¸¶»ç ÆòÅ¸ 1Å¸
-CUSTOM_ANI_EXORCIST_ATTACK2 <- 47 		  //  Åð¸¶»ç ÆòÅ¸ 2Å¸
-CUSTOM_ANI_EXORCIST_ATTACK3 <- 48 		  //  Åð¸¶»ç ÆòÅ¸ 3Å¸
-CUSTOM_ANI_SIDEWIND <- 49 		  //  »çÀÌµå¿ÍÀÎµå ±âº»
-CUSTOM_ANI_SIDEWIND_SECOND <- 50 		  //  »çÀÌµå¿ÍÀÎµå Ãß°¡Å¸
-CUSTOM_ANI_MACHINE_GUN_JAB <- 51 		  //  ¸Ó½Å°Ç Àì : ¿¬Å¸
-CUSTOM_ANI_MACHINE_GUN_JAB_FINISH <- 52 		  //  ¸Ó½Å°Ç Àì : ÇÇ´Ï½Ã
-CUSTOM_ANI_MACHINE_GUN_JAB_APPEND <- 53 		  //  ¸Ó½Å°Ç Àì : Ãß°¡Å¸
-CUSTOM_ANI_THROW_TALISMAN1 <- 54 		  //  ¼ººÒ : ´øÁö±â1
-CUSTOM_ANI_THROW_TALISMAN2 <- 55 		  //  ¼ººÒ : ´øÁö±â2
-CUSTOM_ANI_APOCALYPSE <- 56 		  //  ¾ÆÆ÷Ä®¸³½º
-CUSTOM_ANI_GALE_SMASH1 <- 57 		  //  ÁúÇ³Å¸ : ¾î±úÄ¡±â
-CUSTOM_ANI_GALE_SMASH2 <- 58 		  //  ÁúÇ³Å¸ : ÈÖµÎ¸£±â
-CUSTOM_ANI_ATOMIC_SMASH <- 59 		  //  ¹«½Ö°Ý
-CUSTOM_ANI_BIG_BANG_PUNCH_READY <- 60 		  //  ºò¹ð ÆÝÄ¡ : ÁØºñ
-CUSTOM_ANI_BIG_BANG_PUNCH1 <- 61 		  //  ºò¹ð ÆÝÄ¡ : 1Å¸
-CUSTOM_ANI_BIG_BANG_PUNCH2 <- 62 		  //  ºò¹ð ÆÝÄ¡ : 2Å¸
-CUSTOM_ANI_BIG_BANG_PUNCH3 <- 63 		  //  ºò¹ð ÆÝÄ¡ : 3Å¸
-CUSTOM_ANI_BIG_BANG_PUNCH4 <- 64 		  //  ºò¹ð ÆÝÄ¡ : 4Å¸
-CUSTOM_ANI_HEAL_WIND_CAST <- 65 		  //  Èú À©µå : Ä³½ºÆÃ
-CUSTOM_ANI_HEAL_WIND_BLAST <- 66 		  //  Èú À©µå : ¹ßµ¿
-CUSTOM_ANI_BLUE_DRAGON1 <- 67 		  //  Ã¢·æ°Ý : »ý¼º
-CUSTOM_ANI_BLUE_DRAGON2 <- 68 		  //  Ã¢·æ°Ý : ÅõÃ´ÁØºñ
-CUSTOM_ANI_BLUE_DRAGON3 <- 69 		  //  Ã¢·æ°Ý : ÅõÃ´
-CUSTOM_ANI_CUTTING_DARKNESS_CHARGE <- 70 		  //  ¾îµÒ°¡¸£±â : ÃæÀü
-CUSTOM_ANI_CUTTING_DARKNESS_SMASH <- 71 		  //  ¾îµÒ°¡¸£±â : ÈÖµÎ¸£±â
-CUSTOM_ANI_CUTTING_DARKNESS_FULL_SMASH <- 72 		  //  ¾îµÒ °¡¸£±â : ÃæÀü ÈÖµÎ¸£±â
-CUSTOM_ANI_MACHINE_GUN_JAB_EX_LEFT <- 73 		  //  °­È­ ¸Ó½Å°Ç Àì ¿¬Å¸ ÁÂ
-CUSTOM_ANI_MACHINE_GUN_JAB_EX_RIGHT <- 74 		  //  °­È­ ¸Ó½Å°Ç Àì ¿¬Å¸ ¿ì
-CUSTOM_ANI_MACHINE_GUN_JAB_EX_FINISH <- 75 		  //  °­È­ ¸Ó½Å°Ç Àì ÇÇ´Ï½¬
-CUSTOM_ANI_HEAVENLY_COMBINATION_EX <- 76 		  //  Çìºì¸® ÄÄºñ³×ÀÌ¼Ç[°­È­]
-CUSTOM_ANI_REPEATED_SMASH_EX_FINISH <- 77 		  //  °­È­ ³­°Ý ³¯¸®±â
-CUSTOM_ANI_GROUND_CRASH <- 78 		  //  ±×¶ó¿îµå ½º¸Å½Ã
+CUSTOM_ANI_JUMP_PUNCH <- 0 		  //  ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ (ï¿½Åºï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)
+CUSTOM_ANI_ANTIAIR_UPPER <- 1 		  //  ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ANI_DUCKING <- 2 		  //  ï¿½ï¿½Å·
+CUSTOM_ANI_SWAY <- 3 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ANI_GIANT_SWING_READY <- 4 		  //  ï¿½ï¿½È¸ï¿½ï¿½ï¿½ï¿½ : ï¿½Øºï¿½
+CUSTOM_ANI_GIANT_SWING <- 5 		  //  ï¿½ï¿½È¸ï¿½ï¿½ï¿½ï¿½ : È¸ï¿½ï¿½
+CUSTOM_ANI_GIANT_SWING_FINAL <- 6 		  //  ï¿½ï¿½È¸ï¿½ï¿½ï¿½ï¿½ : ï¿½ï¿½Å¸
+CUSTOM_ANI_SMASHER_TRY_GRAB <- 7 		  //  ï¿½ï¿½ï¿½Å¼ï¿½ : ï¿½ï¿½ï¿½ ï¿½âµµ
+CUSTOM_ANI_SMASHER_SUCCESS_GRAB <- 8 		  //  ï¿½ï¿½ï¿½Å¼ï¿½ : ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ANI_SMASHER_DASH <- 9 		  //  ï¿½ï¿½ï¿½Å¼ï¿½ : ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ANI_DUCKING_BODYBLOW <- 10 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ANI_QUAKE_AREA <- 11 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ANI_WILL_DRIVER <- 12 		  //  ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ì¹ï¿½
+CUSTOM_ANI_WILL_DRIVER_SECOND <- 13 		  //  ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ì¹ï¿½ : ï¿½Ì¹ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ANI_LUCKY_STRAIGHT <- 14 		  //  ï¿½ï¿½Å°ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½Æ®
+CUSTOM_ANI_DUCKING_STRAIGHT <- 15 		  //  ï¿½ï¿½Å· ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½Æ®
+CUSTOM_ANI_SECOND_UPPER <- 16 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ANI_DUCKING_UPPER <- 17 		  //  ï¿½ï¿½Å· ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ANI_HOLY_COUNTER_PRAY <- 18 		  //  È¦ï¿½ï¿½ Ä«ï¿½ï¿½ï¿½ï¿½ : ï¿½âµµ
+CUSTOM_ANI_HOLY_COUNTER_BODYBLOW <- 19 		  //  È¦ï¿½ï¿½ Ä«ï¿½ï¿½ï¿½ï¿½ : ï¿½Ùµï¿½ï¿½ï¿½ï¿½
+CUSTOM_ANI_GORGEOUS_COMBINATION <- 20 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Äºï¿½ï¿½ï¿½Ì¼ï¿½
+CUSTOM_ANI_CHOPPING_HAMMER <- 21 		  //  ï¿½ï¿½ï¿½ï¿½ ï¿½Ø¸ï¿½
+CUSTOM_ANI_HURRICANE_OF_JUDGEMENT <- 22 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È¸ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ANI_HURRICANE_OF_JUDGEMENT2 <- 23 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È¸ï¿½ï¿½ï¿½ï¿½ 2Å¸
+CUSTOM_ANI_HOME_RUN_GRAB <- 24 		  //  È¨ï¿½ï¿½ : ï¿½ï¿½ï¿½ ï¿½Ãµï¿½
+CUSTOM_ANI_HOME_RUN_CHARGE <- 25 		  //  È¨ï¿½ï¿½ : ï¿½ï¿½ï¿½ & ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ANI_HOME_RUN_SMASH <- 26 		  //  È¨ï¿½ï¿½ : ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ANI_BLADE_OF_PURE_WHITE <- 27 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ä®ï¿½ï¿½
+CUSTOM_ANI_HURRICANE_ROLL_HOOK <- 28 		  //  ï¿½ã¸®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ : ï¿½ï¿½
+CUSTOM_ANI_HURRICANE_ROLL_UPPER <- 29 		  //  ï¿½ã¸®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ : ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ANI_REPEATED_SMASH_START <- 30 		  //  ï¿½ï¿½ï¿½ï¿½ : Ã¹Å¸
+CUSTOM_ANI_REPEATED_SMASH <- 31 		  //  ï¿½ï¿½ï¿½ï¿½ : ï¿½ï¿½Å¸
+CUSTOM_ANI_REPEATED_SMASH_FINAL <- 32 		  //  ï¿½ï¿½ï¿½ï¿½ : ï¿½ï¿½Å¸
+CUSTOM_ANI_THROW_WEAPON_READY <- 33 		  //  ï¿½Å¼ï¿½Ç³ : ï¿½Øºï¿½
+CUSTOM_ANI_THROW_WEAPON_SWING <- 34 		  //  ï¿½Å¼ï¿½Ç³ : È¸ï¿½ï¿½ (Ç®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 1È¸ï¿½ï¿½ ï¿½ß°ï¿½ ï¿½ï¿½ï¿½)
+CUSTOM_ANI_THROW_WEAPON_THROW <- 35 		  //  ï¿½Å¼ï¿½Ç³ : ï¿½ï¿½Ã´ (Ç®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Æ´Ï¸ï¿½ ï¿½Øºï¿½ -> ï¿½ï¿½Ã´)
+CUSTOM_ANI_DEFLECT_WALL <- 36 		  //  ï¿½ï¿½ï¿½Ã·ï¿½Æ® ï¿½ï¿½
+CUSTOM_ANI_SPEAR_OF_VICTORY_READY <- 37 		  //  ï¿½Â¸ï¿½ï¿½ï¿½ Ã¢ : ï¿½Øºï¿½&ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ANI_SPEAR_OF_VICTORY_THROW <- 38 		  //  ï¿½Â¸ï¿½ï¿½ï¿½ Ã¢ : ï¿½ï¿½Ã´
+CUSTOM_ANI_HAMMER_OF_CONTRITION <- 39 		  //  ï¿½ï¿½È¸ï¿½ï¿½ ï¿½ï¿½Ä¡
+CUSTOM_ANI_HEAVENLY_COMBINATION <- 40 		  //  ï¿½ï¿½ì¸® ï¿½Äºï¿½ï¿½ï¿½Ì¼ï¿½
+CUSTOM_ANI_DIVINE_CRUSH <- 41 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ Å©ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ANI_INFIGHTER_ATTACK12 <- 42 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å¸ 1,2Å¸
+CUSTOM_ANI_INFIGHTER_ATTACK3 <- 43 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å¸ 3Å¸
+CUSTOM_ANI_INFIGHTER_ATTACK4 <- 44 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å¸ 4Å¸
+CUSTOM_ANI_INFIGHTER_ATTACK5 <- 45 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å¸ 5Å¸
+CUSTOM_ANI_EXORCIST_ATTACK1 <- 46 		  //  ï¿½ð¸¶»ï¿½ ï¿½ï¿½Å¸ 1Å¸
+CUSTOM_ANI_EXORCIST_ATTACK2 <- 47 		  //  ï¿½ð¸¶»ï¿½ ï¿½ï¿½Å¸ 2Å¸
+CUSTOM_ANI_EXORCIST_ATTACK3 <- 48 		  //  ï¿½ð¸¶»ï¿½ ï¿½ï¿½Å¸ 3Å¸
+CUSTOM_ANI_SIDEWIND <- 49 		  //  ï¿½ï¿½ï¿½Ìµï¿½ï¿½ï¿½Îµï¿½ ï¿½âº»
+CUSTOM_ANI_SIDEWIND_SECOND <- 50 		  //  ï¿½ï¿½ï¿½Ìµï¿½ï¿½ï¿½Îµï¿½ ï¿½ß°ï¿½Å¸
+CUSTOM_ANI_MACHINE_GUN_JAB <- 51 		  //  ï¿½Ó½Å°ï¿½ ï¿½ï¿½ : ï¿½ï¿½Å¸
+CUSTOM_ANI_MACHINE_GUN_JAB_FINISH <- 52 		  //  ï¿½Ó½Å°ï¿½ ï¿½ï¿½ : ï¿½Ç´Ï½ï¿½
+CUSTOM_ANI_MACHINE_GUN_JAB_APPEND <- 53 		  //  ï¿½Ó½Å°ï¿½ ï¿½ï¿½ : ï¿½ß°ï¿½Å¸
+CUSTOM_ANI_THROW_TALISMAN1 <- 54 		  //  ï¿½ï¿½ï¿½ï¿½ : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½1
+CUSTOM_ANI_THROW_TALISMAN2 <- 55 		  //  ï¿½ï¿½ï¿½ï¿½ : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½2
+CUSTOM_ANI_APOCALYPSE <- 56 		  //  ï¿½ï¿½ï¿½ï¿½Ä®ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ANI_GALE_SMASH1 <- 57 		  //  ï¿½ï¿½Ç³Å¸ : ï¿½ï¿½ï¿½Ä¡ï¿½ï¿½
+CUSTOM_ANI_GALE_SMASH2 <- 58 		  //  ï¿½ï¿½Ç³Å¸ : ï¿½ÖµÎ¸ï¿½ï¿½ï¿½
+CUSTOM_ANI_ATOMIC_SMASH <- 59 		  //  ï¿½ï¿½ï¿½Ö°ï¿½
+CUSTOM_ANI_BIG_BANG_PUNCH_READY <- 60 		  //  ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ : ï¿½Øºï¿½
+CUSTOM_ANI_BIG_BANG_PUNCH1 <- 61 		  //  ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ : 1Å¸
+CUSTOM_ANI_BIG_BANG_PUNCH2 <- 62 		  //  ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ : 2Å¸
+CUSTOM_ANI_BIG_BANG_PUNCH3 <- 63 		  //  ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ : 3Å¸
+CUSTOM_ANI_BIG_BANG_PUNCH4 <- 64 		  //  ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ : 4Å¸
+CUSTOM_ANI_HEAL_WIND_CAST <- 65 		  //  ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ : Ä³ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ANI_HEAL_WIND_BLAST <- 66 		  //  ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ : ï¿½ßµï¿½
+CUSTOM_ANI_BLUE_DRAGON1 <- 67 		  //  Ã¢ï¿½ï¿½ï¿½ : ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ANI_BLUE_DRAGON2 <- 68 		  //  Ã¢ï¿½ï¿½ï¿½ : ï¿½ï¿½Ã´ï¿½Øºï¿½
+CUSTOM_ANI_BLUE_DRAGON3 <- 69 		  //  Ã¢ï¿½ï¿½ï¿½ : ï¿½ï¿½Ã´
+CUSTOM_ANI_CUTTING_DARKNESS_CHARGE <- 70 		  //  ï¿½ï¿½Ò°ï¿½ï¿½ï¿½ï¿½ï¿½ : ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ANI_CUTTING_DARKNESS_SMASH <- 71 		  //  ï¿½ï¿½Ò°ï¿½ï¿½ï¿½ï¿½ï¿½ : ï¿½ÖµÎ¸ï¿½ï¿½ï¿½
+CUSTOM_ANI_CUTTING_DARKNESS_FULL_SMASH <- 72 		  //  ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ : ï¿½ï¿½ï¿½ï¿½ ï¿½ÖµÎ¸ï¿½ï¿½ï¿½
+CUSTOM_ANI_MACHINE_GUN_JAB_EX_LEFT <- 73 		  //  ï¿½ï¿½È­ ï¿½Ó½Å°ï¿½ ï¿½ï¿½ ï¿½ï¿½Å¸ ï¿½ï¿½
+CUSTOM_ANI_MACHINE_GUN_JAB_EX_RIGHT <- 74 		  //  ï¿½ï¿½È­ ï¿½Ó½Å°ï¿½ ï¿½ï¿½ ï¿½ï¿½Å¸ ï¿½ï¿½
+CUSTOM_ANI_MACHINE_GUN_JAB_EX_FINISH <- 75 		  //  ï¿½ï¿½È­ ï¿½Ó½Å°ï¿½ ï¿½ï¿½ ï¿½Ç´Ï½ï¿½
+CUSTOM_ANI_HEAVENLY_COMBINATION_EX <- 76 		  //  ï¿½ï¿½ì¸® ï¿½Äºï¿½ï¿½ï¿½Ì¼ï¿½[ï¿½ï¿½È­]
+CUSTOM_ANI_REPEATED_SMASH_EX_FINISH <- 77 		  //  ï¿½ï¿½È­ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ANI_GROUND_CRASH <- 78 		  //  ï¿½×¶ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Å½ï¿½
 
-CUSTOM_ATTACKINFO_JUMP_PUNCH <- 0 		  //  Á¡ÇÁ ÆÝÄ¡ (°øº´ ¾øÀ»¶§ Á¡ÇÁ°ø°Ý)
-CUSTOM_ATTACKINFO_DASH_ATTACK_SMASH <- 1 		  //  ´ë½Ã °ø°Ý 2Å¸Â°
-CUSTOM_ATTACKINFO_ANTIAIR_UPPER <- 2 		  //  °øÂüÅ¸
-CUSTOM_ATTACKINFO_GIANT_SWING <- 3 		  //  ´ëÈ¸Àü°Ý : È¸Àü
-CUSTOM_ATTACKINFO_GIANT_SWING_FINAL <- 4 		  //  ´ëÈ¸Àü°Ý : ¸·Å¸
-CUSTOM_ATTACKINFO_SMASHER_TRY <- 5 		  //  ½º¸Å¼Å Àâ±â ½Ãµµ
-CUSTOM_ATTACKINFO_SMASHER_DASH <- 6 		  //  ½º¸Å¼Å ´ë½Ã
-CUSTOM_ATTACKINFO_SMASHER_THROW <- 7 		  //  ½º¸Å¼Å ´øÁö±â
-CUSTOM_ATTACKINFO_QUAKE_AREA <- 8 		  //  ³«ºÀÃß
-CUSTOM_ATTACKINFO_LUCKY_STRAIGHT <- 9 		  //  ·°Å° ½ºÆ®·¹ÀÌÆ®
-CUSTOM_ATTACKINFO_SECOND_UPPER <- 10 		  //  ¼¼ÄÁµå ¾îÆÛ
-CUSTOM_ATTACKINFO_DUCKING_STRAIGHT <- 11 		  //  ´õÅ· ½ºÆ®·¹ÀÌÆ®
-CUSTOM_ATTACKINFO_DUCKING_BODYBLOW <- 12 		  //  ´õÅ· º¸µðºí·Î
-CUSTOM_ATTACKINFO_DUCKING_UPPER <- 13 		  //  ´õÅ· ¾îÆÛ
-CUSTOM_ATTACKINFO_HOLY_COUNTER <- 14 		  //  È¦¸® Ä«¿îÅÍ
-CUSTOM_ATTACKINFO_GORGEOUS_COMBINATION1 <- 15 		  //  °íÀú½º ÄÄºñ³×ÀÌ¼Ç : Àì
-CUSTOM_ATTACKINFO_GORGEOUS_COMBINATION2 <- 16 		  //  °íÀú½º ÄÄºñ³×ÀÌ¼Ç : ½ºÆ®·¹ÀÌÆ®
-CUSTOM_ATTACKINFO_GORGEOUS_COMBINATION3 <- 17 		  //  °íÀú½º ÄÄºñ³×ÀÌ¼Ç : ÈÅ
-CUSTOM_ATTACKINFO_CHOPPING_HAMMER <- 18 		  //  ÃÊÇÎ ÇØ¸Ó
-CUSTOM_ATTACKINFO_HURRICANE_OF_JUDGEMENT <- 19 		  //  ½ÉÆÇÀÇ È¸¿À¸®
-CUSTOM_ATTACKINFO_HOME_RUN_GRAB <- 20 		  //  È¨·± : Àâ±â ½Ãµµ
-CUSTOM_ATTACKINFO_HOME_RUN_HIT <- 21 		  //  È¨·± : Àâ±â ¼º°ø ÈÄ 1Å¸
-CUSTOM_ATTACKINFO_HOME_RUN_SMASH <- 22 		  //  È¨·± : ÈÖµÎ¸£±â
-CUSTOM_ATTACKINFO_BLADE_OF_PURE_WHITE <- 23 		  //  ¼ø¹éÀÇ Ä®³¯
-CUSTOM_ATTACKINFO_HURRICANE_ROLL_HOOK <- 24 		  //  Çã¸®ÄÉÀÎ ·Ñ : ÈÅ
-CUSTOM_ATTACKINFO_HURRICANE_ROLL_UPPER <- 25 		  //  Çã¸®ÄÉÀÎ ·Ñ : ¾îÆÛ
-CUSTOM_ATTACKINFO_REPEATED_SMASH <- 26 		  //  ³­°Ý : ³­Å¸
-CUSTOM_ATTACKINFO_REPEATED_SMASH_FINAL <- 27 		  //  ³­°Ý : ¸·Å¸
-CUSTOM_ATTACKINFO_THROW_WEAPON <- 28 		  //  °Å¼±Ç³ : ±Ù°Å¸® Å¸°Ý
-CUSTOM_ATTACKINFO_HAMMER_OF_CONTRITION <- 29 		  //  ÂüÈ¸ÀÇ ¸ÁÄ¡
-CUSTOM_ATTACKINFO_HEAVENLY_COMBINATION1 <- 30 		  //  Çìºì¸® ÄÄºñ³×ÀÌ¼Ç : 1Å¸
-CUSTOM_ATTACKINFO_HEAVENLY_COMBINATION2 <- 31 		  //  Çìºì¸® ÄÄºñ³×ÀÌ¼Ç : 2Å¸
-CUSTOM_ATTACKINFO_HEAVENLY_COMBINATION3 <- 32 		  //  Çìºì¸® ÄÄºñ³×ÀÌ¼Ç : 3Å¸
-CUSTOM_ATTACKINFO_DIVINE_CRUSH <- 33 		  //  µð¹ÙÀÎ Å©·¯½Ã
-CUSTOM_ATTACKINFO_INFIGHTER_ATTACK1 <- 34 		  //  ÀÎÆÄÀÌÅÍ ÆòÅ¸ 1Å¸
-CUSTOM_ATTACKINFO_INFIGHTER_ATTACK2 <- 35 		  //  ÀÎÆÄÀÌÅÍ ÆòÅ¸ 2Å¸
-CUSTOM_ATTACKINFO_INFIGHTER_ATTACK3 <- 36 		  //  ÀÎÆÄÀÌÅÍ ÆòÅ¸ 3Å¸
-CUSTOM_ATTACKINFO_INFIGHTER_ATTACK4 <- 37 		  //  ÀÎÆÄÀÌÅÍ ÆòÅ¸ 4Å¸
-CUSTOM_ATTACKINFO_INFIGHTER_ATTACK5 <- 38 		  //  ÀÎÆÄÀÌÅÍ ÆòÅ¸ 5Å¸
-CUSTOM_ATTACKINFO_EXORCIST_ATTACK1 <- 39 		  //  Åð¸¶»ç ÆòÅ¸ 1Å¸
-CUSTOM_ATTACKINFO_EXORCIST_ATTACK2 <- 40 		  //  Åð¸¶»ç ÆòÅ¸ 2Å¸
-CUSTOM_ATTACKINFO_EXORCIST_ATTACK3 <- 41 		  //  Åð¸¶»ç ÆòÅ¸ 3Å¸
-CUSTOM_ATTACKINFO_SIDEWIND <- 42 		  //  »çÀÌµå¿ÍÀÎµå
-CUSTOM_ATTACKINFO_SIDEWIND_SECOND <- 43 		  //  »çÀÌµå¿ÍÀÎµå Ãß°¡Å¸
-CUSTOM_ATTACKINFO_MACHINE_GUN_JAB <- 44 		  //  ¸Ó½Å°Ç Àì : ¿¬Å¸
-CUSTOM_ATTACKINFO_MACHINE_GUN_JAB_FINISH <- 45 		  //  ¸Ó½Å°Ç Àì : ÇÇ´Ï½Ã
-CUSTOM_ATTACKINFO_MACHINE_GUN_JAB_APPEND <- 46 		  //  ¸Ó½Å°Ç Àì : Ãß°¡Å¸
-CUSTOM_ATTACKINFO_THROW_TALISMAN1 <- 47 		  //  ¼ººÒ : ´øÁö±â1
-CUSTOM_ATTACKINFO_THROW_TALISMAN2 <- 48 		  //  ¼ººÒ : ´øÁö±â2
-CUSTOM_ATTACKINFO_GALE_SMASH1 <- 49 		  //  ÁúÇ³Å¸ : ¾î±úÄ¡±â
-CUSTOM_ATTACKINFO_GALE_SMASH2 <- 50 		  //  ÁúÇ³Å¸ : ÈÖµÎ¸£±â
-CUSTOM_ATTACKINFO_ATOMIC_SMASH_SWING <- 51 		  //  ¹«½Ö°Ý : ÈÖµÎ¸£±â
-CUSTOM_ATTACKINFO_ATOMIC_SMASH_SMASH <- 52 		  //  ¹«½Ö°Ý : ³»·ÁÄ¡±â
-CUSTOM_ATTACKINFO_BIG_BANG_PUNCH_READY <- 53 		  //  ºò¹ð ÆÝÄ¡ : ÁØºñ
-CUSTOM_ATTACKINFO_BIG_BANG_PUNCH1 <- 54 		  //  ºò¹ð ÆÝÄ¡ : 1Å¸
-CUSTOM_ATTACKINFO_BIG_BANG_PUNCH2 <- 55 		  //  ºò¹ð ÆÝÄ¡ : 2Å¸
-CUSTOM_ATTACKINFO_BIG_BANG_PUNCH3 <- 56 		  //  ºò¹ð ÆÝÄ¡ : 3Å¸
-CUSTOM_ATTACKINFO_BIG_BANG_PUNCH4 <- 57 		  //  ºò¹ð ÆÝÄ¡ : 4Å¸
-CUSTOM_ATTACKINFO_BLUE_DRAGON <- 58 		  //  Ã¢·æ°Ý
-CUSTOM_ATTACKINFO_CUTTING_DARKNESS <- 59 		  //  ¾îµÒ°¡¸£±â
-CUSTOM_ATTACKINFO_MACHINE_GUN_JAB_EX <- 60 		  //  °­È­ ¸Ó½Å°Ç Àì : ¿¬Å¸
-CUSTOM_ATTACKINFO_MACHINE_GUN_JAB_EX_FINISH <- 61 		  //  °­È­ ¸Ó½Å°Ç Àì : ÇÇ´Ï½Ã
-CUSTOM_ATTACKINFO_HEAVENLY_COMBINATION_EX2 <- 62 		  //  Çìºì¸® ÄÄºñ³×ÀÌ¼Ç : 2Å¸
-CUSTOM_ATTACKINFO_HEAVENLY_COMBINATION_EX3 <- 63 		  //  Çìºì¸® ÄÄºñ³×ÀÌ¼Ç : 3Å¸
-CUSTOM_ATTACKINFO_HEAVENLY_COMBINATION_EX4 <- 64 		  //  Çìºì¸® ÄÄºñ³×ÀÌ¼Ç : 4Å¸
-CUSTOM_ATTACKINFO_HEAVENLY_COMBINATION_EX5 <- 65 		  //  Çìºì¸® ÄÄºñ³×ÀÌ¼Ç : 5Å¸
-CUSTOM_ATTACKINFO_REPEATED_SMASH_EX_LIFT <- 66 		  //  °­È­ ³­°Ý ¶ç¿ì±â
-CUSTOM_ATTACKINFO_REPEATED_SMASH_EX_FINAL <- 67 		  //  °­È­ ³­°Ý ³¯¸®±â
-CUSTOM_ATTACKINFO_GROUND_CRASH1 <- 68 		  //  ±×¶ó¿îµå ½º¸Å½Ã 1Å¸
-CUSTOM_ATTACKINFO_GROUND_CRASH2 <- 69 		  //  ±×¶ó¿îµå ½º¸Å½Ã 2Å¸
+CUSTOM_ATTACKINFO_JUMP_PUNCH <- 0 		  //  ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ (ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)
+CUSTOM_ATTACKINFO_DASH_ATTACK_SMASH <- 1 		  //  ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 2Å¸Â°
+CUSTOM_ATTACKINFO_ANTIAIR_UPPER <- 2 		  //  ï¿½ï¿½ï¿½ï¿½Å¸
+CUSTOM_ATTACKINFO_GIANT_SWING <- 3 		  //  ï¿½ï¿½È¸ï¿½ï¿½ï¿½ï¿½ : È¸ï¿½ï¿½
+CUSTOM_ATTACKINFO_GIANT_SWING_FINAL <- 4 		  //  ï¿½ï¿½È¸ï¿½ï¿½ï¿½ï¿½ : ï¿½ï¿½Å¸
+CUSTOM_ATTACKINFO_SMASHER_TRY <- 5 		  //  ï¿½ï¿½ï¿½Å¼ï¿½ ï¿½ï¿½ï¿½ ï¿½Ãµï¿½
+CUSTOM_ATTACKINFO_SMASHER_DASH <- 6 		  //  ï¿½ï¿½ï¿½Å¼ï¿½ ï¿½ï¿½ï¿½
+CUSTOM_ATTACKINFO_SMASHER_THROW <- 7 		  //  ï¿½ï¿½ï¿½Å¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ATTACKINFO_QUAKE_AREA <- 8 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ATTACKINFO_LUCKY_STRAIGHT <- 9 		  //  ï¿½ï¿½Å° ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½Æ®
+CUSTOM_ATTACKINFO_SECOND_UPPER <- 10 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ATTACKINFO_DUCKING_STRAIGHT <- 11 		  //  ï¿½ï¿½Å· ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½Æ®
+CUSTOM_ATTACKINFO_DUCKING_BODYBLOW <- 12 		  //  ï¿½ï¿½Å· ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ATTACKINFO_DUCKING_UPPER <- 13 		  //  ï¿½ï¿½Å· ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ATTACKINFO_HOLY_COUNTER <- 14 		  //  È¦ï¿½ï¿½ Ä«ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ATTACKINFO_GORGEOUS_COMBINATION1 <- 15 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Äºï¿½ï¿½ï¿½Ì¼ï¿½ : ï¿½ï¿½
+CUSTOM_ATTACKINFO_GORGEOUS_COMBINATION2 <- 16 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Äºï¿½ï¿½ï¿½Ì¼ï¿½ : ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½Æ®
+CUSTOM_ATTACKINFO_GORGEOUS_COMBINATION3 <- 17 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Äºï¿½ï¿½ï¿½Ì¼ï¿½ : ï¿½ï¿½
+CUSTOM_ATTACKINFO_CHOPPING_HAMMER <- 18 		  //  ï¿½ï¿½ï¿½ï¿½ ï¿½Ø¸ï¿½
+CUSTOM_ATTACKINFO_HURRICANE_OF_JUDGEMENT <- 19 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È¸ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ATTACKINFO_HOME_RUN_GRAB <- 20 		  //  È¨ï¿½ï¿½ : ï¿½ï¿½ï¿½ ï¿½Ãµï¿½
+CUSTOM_ATTACKINFO_HOME_RUN_HIT <- 21 		  //  È¨ï¿½ï¿½ : ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ 1Å¸
+CUSTOM_ATTACKINFO_HOME_RUN_SMASH <- 22 		  //  È¨ï¿½ï¿½ : ï¿½ÖµÎ¸ï¿½ï¿½ï¿½
+CUSTOM_ATTACKINFO_BLADE_OF_PURE_WHITE <- 23 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ä®ï¿½ï¿½
+CUSTOM_ATTACKINFO_HURRICANE_ROLL_HOOK <- 24 		  //  ï¿½ã¸®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ : ï¿½ï¿½
+CUSTOM_ATTACKINFO_HURRICANE_ROLL_UPPER <- 25 		  //  ï¿½ã¸®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ : ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ATTACKINFO_REPEATED_SMASH <- 26 		  //  ï¿½ï¿½ï¿½ï¿½ : ï¿½ï¿½Å¸
+CUSTOM_ATTACKINFO_REPEATED_SMASH_FINAL <- 27 		  //  ï¿½ï¿½ï¿½ï¿½ : ï¿½ï¿½Å¸
+CUSTOM_ATTACKINFO_THROW_WEAPON <- 28 		  //  ï¿½Å¼ï¿½Ç³ : ï¿½Ù°Å¸ï¿½ Å¸ï¿½ï¿½
+CUSTOM_ATTACKINFO_HAMMER_OF_CONTRITION <- 29 		  //  ï¿½ï¿½È¸ï¿½ï¿½ ï¿½ï¿½Ä¡
+CUSTOM_ATTACKINFO_HEAVENLY_COMBINATION1 <- 30 		  //  ï¿½ï¿½ì¸® ï¿½Äºï¿½ï¿½ï¿½Ì¼ï¿½ : 1Å¸
+CUSTOM_ATTACKINFO_HEAVENLY_COMBINATION2 <- 31 		  //  ï¿½ï¿½ì¸® ï¿½Äºï¿½ï¿½ï¿½Ì¼ï¿½ : 2Å¸
+CUSTOM_ATTACKINFO_HEAVENLY_COMBINATION3 <- 32 		  //  ï¿½ï¿½ì¸® ï¿½Äºï¿½ï¿½ï¿½Ì¼ï¿½ : 3Å¸
+CUSTOM_ATTACKINFO_DIVINE_CRUSH <- 33 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ Å©ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ATTACKINFO_INFIGHTER_ATTACK1 <- 34 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å¸ 1Å¸
+CUSTOM_ATTACKINFO_INFIGHTER_ATTACK2 <- 35 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å¸ 2Å¸
+CUSTOM_ATTACKINFO_INFIGHTER_ATTACK3 <- 36 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å¸ 3Å¸
+CUSTOM_ATTACKINFO_INFIGHTER_ATTACK4 <- 37 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å¸ 4Å¸
+CUSTOM_ATTACKINFO_INFIGHTER_ATTACK5 <- 38 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å¸ 5Å¸
+CUSTOM_ATTACKINFO_EXORCIST_ATTACK1 <- 39 		  //  ï¿½ð¸¶»ï¿½ ï¿½ï¿½Å¸ 1Å¸
+CUSTOM_ATTACKINFO_EXORCIST_ATTACK2 <- 40 		  //  ï¿½ð¸¶»ï¿½ ï¿½ï¿½Å¸ 2Å¸
+CUSTOM_ATTACKINFO_EXORCIST_ATTACK3 <- 41 		  //  ï¿½ð¸¶»ï¿½ ï¿½ï¿½Å¸ 3Å¸
+CUSTOM_ATTACKINFO_SIDEWIND <- 42 		  //  ï¿½ï¿½ï¿½Ìµï¿½ï¿½ï¿½Îµï¿½
+CUSTOM_ATTACKINFO_SIDEWIND_SECOND <- 43 		  //  ï¿½ï¿½ï¿½Ìµï¿½ï¿½ï¿½Îµï¿½ ï¿½ß°ï¿½Å¸
+CUSTOM_ATTACKINFO_MACHINE_GUN_JAB <- 44 		  //  ï¿½Ó½Å°ï¿½ ï¿½ï¿½ : ï¿½ï¿½Å¸
+CUSTOM_ATTACKINFO_MACHINE_GUN_JAB_FINISH <- 45 		  //  ï¿½Ó½Å°ï¿½ ï¿½ï¿½ : ï¿½Ç´Ï½ï¿½
+CUSTOM_ATTACKINFO_MACHINE_GUN_JAB_APPEND <- 46 		  //  ï¿½Ó½Å°ï¿½ ï¿½ï¿½ : ï¿½ß°ï¿½Å¸
+CUSTOM_ATTACKINFO_THROW_TALISMAN1 <- 47 		  //  ï¿½ï¿½ï¿½ï¿½ : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½1
+CUSTOM_ATTACKINFO_THROW_TALISMAN2 <- 48 		  //  ï¿½ï¿½ï¿½ï¿½ : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½2
+CUSTOM_ATTACKINFO_GALE_SMASH1 <- 49 		  //  ï¿½ï¿½Ç³Å¸ : ï¿½ï¿½ï¿½Ä¡ï¿½ï¿½
+CUSTOM_ATTACKINFO_GALE_SMASH2 <- 50 		  //  ï¿½ï¿½Ç³Å¸ : ï¿½ÖµÎ¸ï¿½ï¿½ï¿½
+CUSTOM_ATTACKINFO_ATOMIC_SMASH_SWING <- 51 		  //  ï¿½ï¿½ï¿½Ö°ï¿½ : ï¿½ÖµÎ¸ï¿½ï¿½ï¿½
+CUSTOM_ATTACKINFO_ATOMIC_SMASH_SMASH <- 52 		  //  ï¿½ï¿½ï¿½Ö°ï¿½ : ï¿½ï¿½ï¿½ï¿½Ä¡ï¿½ï¿½
+CUSTOM_ATTACKINFO_BIG_BANG_PUNCH_READY <- 53 		  //  ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ : ï¿½Øºï¿½
+CUSTOM_ATTACKINFO_BIG_BANG_PUNCH1 <- 54 		  //  ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ : 1Å¸
+CUSTOM_ATTACKINFO_BIG_BANG_PUNCH2 <- 55 		  //  ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ : 2Å¸
+CUSTOM_ATTACKINFO_BIG_BANG_PUNCH3 <- 56 		  //  ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ : 3Å¸
+CUSTOM_ATTACKINFO_BIG_BANG_PUNCH4 <- 57 		  //  ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ : 4Å¸
+CUSTOM_ATTACKINFO_BLUE_DRAGON <- 58 		  //  Ã¢ï¿½ï¿½ï¿½
+CUSTOM_ATTACKINFO_CUTTING_DARKNESS <- 59 		  //  ï¿½ï¿½Ò°ï¿½ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ATTACKINFO_MACHINE_GUN_JAB_EX <- 60 		  //  ï¿½ï¿½È­ ï¿½Ó½Å°ï¿½ ï¿½ï¿½ : ï¿½ï¿½Å¸
+CUSTOM_ATTACKINFO_MACHINE_GUN_JAB_EX_FINISH <- 61 		  //  ï¿½ï¿½È­ ï¿½Ó½Å°ï¿½ ï¿½ï¿½ : ï¿½Ç´Ï½ï¿½
+CUSTOM_ATTACKINFO_HEAVENLY_COMBINATION_EX2 <- 62 		  //  ï¿½ï¿½ì¸® ï¿½Äºï¿½ï¿½ï¿½Ì¼ï¿½ : 2Å¸
+CUSTOM_ATTACKINFO_HEAVENLY_COMBINATION_EX3 <- 63 		  //  ï¿½ï¿½ì¸® ï¿½Äºï¿½ï¿½ï¿½Ì¼ï¿½ : 3Å¸
+CUSTOM_ATTACKINFO_HEAVENLY_COMBINATION_EX4 <- 64 		  //  ï¿½ï¿½ì¸® ï¿½Äºï¿½ï¿½ï¿½Ì¼ï¿½ : 4Å¸
+CUSTOM_ATTACKINFO_HEAVENLY_COMBINATION_EX5 <- 65 		  //  ï¿½ï¿½ì¸® ï¿½Äºï¿½ï¿½ï¿½Ì¼ï¿½ : 5Å¸
+CUSTOM_ATTACKINFO_REPEATED_SMASH_EX_LIFT <- 66 		  //  ï¿½ï¿½È­ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ATTACKINFO_REPEATED_SMASH_EX_FINAL <- 67 		  //  ï¿½ï¿½È­ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+CUSTOM_ATTACKINFO_GROUND_CRASH1 <- 68 		  //  ï¿½×¶ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Å½ï¿½ 1Å¸
+CUSTOM_ATTACKINFO_GROUND_CRASH2 <- 69 		  //  ï¿½×¶ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Å½ï¿½ 2Å¸
 
 
-ATTACK_DIRECTION_UP <- 0 		  //  ¿Ã·ÁÄ¡±â
-ATTACK_DIRECTION_HORIZON <- 1 		  //  ¼öÆòÄ¡±â
-ATTACK_DIRECTION_DOWN <- 2 		  //  ³»·ÁÄ¡±â
+ATTACK_DIRECTION_UP <- 0 		  //  ï¿½Ã·ï¿½Ä¡ï¿½ï¿½
+ATTACK_DIRECTION_HORIZON <- 1 		  //  ï¿½ï¿½ï¿½ï¿½Ä¡ï¿½ï¿½
+ATTACK_DIRECTION_DOWN <- 2 		  //  ï¿½ï¿½ï¿½ï¿½Ä¡ï¿½ï¿½
 ATTACK_DIRECTION_MAX <- 3 
 
-ATTACKTYPE_PHYSICAL <- 0 		  //  µ¶¸³ ¹°¸® °ø°Ý
-ATTACKTYPE_MAGICAL <- 1 		  //  µ¶¸³ ¸¶¹ý °ø°Ý  
-ATTACKTYPE_ABSOLUTE <- 2 		  //  ¹æ¾î ¹«½Ã °ø°Ý
+ATTACKTYPE_PHYSICAL <- 0 		  //  ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+ATTACKTYPE_MAGICAL <- 1 		  //  ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½  
+ATTACKTYPE_ABSOLUTE <- 2 		  //  ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 ATTACKTYPE_MAX <- 3 
 
-ATTACKTARGET_OWN <- 0 		  //  ÀÚ½Å
-ATTACKTARGET_FRIEND <- 1 		  //  ¾Æ±º
-ATTACKTARGET_ENEMY <- 2 		  //  (ÀÚ½Å°ú ¾Æ±º ÀÌ¿ÜÀÇ) Àû
+ATTACKTARGET_OWN <- 0 		  //  ï¿½Ú½ï¿½
+ATTACKTARGET_FRIEND <- 1 		  //  ï¿½Æ±ï¿½
+ATTACKTARGET_ENEMY <- 2 		  //  (ï¿½Ú½Å°ï¿½ ï¿½Æ±ï¿½ ï¿½Ì¿ï¿½ï¿½ï¿½) ï¿½ï¿½
 
-DAMAGEACT_NONE <- 0 		  //  ¹ÝÀÀ ¾øÀ½
-DAMAGEACT_DAMAGE <- 1 		  //  µ¥¹ÌÁö ¸ð¼Ç
-DAMAGEACT_DOWN <- 2 		  //  ´Ù¿î
-DAMAGEACT_DAMAGE_EXCEPT_HUMAN <- 3 		  //  ±âº» µ¥¹ÌÁö, ÈÞ¸Õ¾Æ¸Ó´Â ¹ÝÀÀ¾øÀ½
+DAMAGEACT_NONE <- 0 		  //  ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+DAMAGEACT_DAMAGE <- 1 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
+DAMAGEACT_DOWN <- 2 		  //  ï¿½Ù¿ï¿½
+DAMAGEACT_DAMAGE_EXCEPT_HUMAN <- 3 		  //  ï¿½âº» ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½Þ¸Õ¾Æ¸Ó´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-KNOCK_BACK_TYPE_NORMAL <- 0 		  //  ÀÏ¹Ý
-KNOCK_BACK_TYPE_KNOCK_BACK <- 1 		  //  µÚ·Î ¸¹ÀÌ ¹Ð¸² (³Ë¹é)
-KNOCK_BACK_TYPE_SHORT_KNOCK_BACK_ <- 2 		  //  µÚ·Î ¾à°£ ¹Ð¸² (³Ë¹é)
-KNOCK_BACK_TYPE_PIXEL_WITHOUT_DAMAGE_TIME <- 3 		  //  NORMAL_DAMAGE_BACK_TIME ½Ã°£µ¿¾È ÁöÁ¤ÇÑ ÇÈ¼¿¸¸Å­ µÚ·Î ¹Ð¸², ÀÌµ¿Áß °æÁ÷ÀÌ Ç®¸®¸é ÀÌµ¿µµ ¸ØÃã
-KNOCK_BACK_TYPE_NOT_BACK <- -1 		  //  µÚ·Î ¾È¹Ð¸²
+KNOCK_BACK_TYPE_NORMAL <- 0 		  //  ï¿½Ï¹ï¿½
+KNOCK_BACK_TYPE_KNOCK_BACK <- 1 		  //  ï¿½Ú·ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ð¸ï¿½ (ï¿½Ë¹ï¿½)
+KNOCK_BACK_TYPE_SHORT_KNOCK_BACK_ <- 2 		  //  ï¿½Ú·ï¿½ ï¿½à°£ ï¿½Ð¸ï¿½ (ï¿½Ë¹ï¿½)
+KNOCK_BACK_TYPE_PIXEL_WITHOUT_DAMAGE_TIME <- 3 		  //  NORMAL_DAMAGE_BACK_TIME ï¿½Ã°ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½È¼ï¿½ï¿½ï¿½Å­ ï¿½Ú·ï¿½ ï¿½Ð¸ï¿½, ï¿½Ìµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ç®ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+KNOCK_BACK_TYPE_NOT_BACK <- -1 		  //  ï¿½Ú·ï¿½ ï¿½È¹Ð¸ï¿½
 
-HIT_DIRECTION_AUTO <- 0 		  //  ÀÚµ¿ ÆÇº°
-HIT_DIRECTION_FRONT <- 1 		  //  ¾ÕÀ¸·Î
-HIT_DIRECTION_BACK <- 2 		  //  µÚ·Î
-HIT_DIRECTION_OUTER <- 3 		  //  ¹Ù±ùÂÊÀ¸·Î
-HIT_DIRECTION_INNER <- 4 		  //  ¾ÈÂÊÀ¸·Î
+HIT_DIRECTION_AUTO <- 0 		  //  ï¿½Úµï¿½ ï¿½Çºï¿½
+HIT_DIRECTION_FRONT <- 1 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+HIT_DIRECTION_BACK <- 2 		  //  ï¿½Ú·ï¿½
+HIT_DIRECTION_OUTER <- 3 		  //  ï¿½Ù±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+HIT_DIRECTION_INNER <- 4 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-WEAPON_SUBTYPE_CROSS <- 0 		  //  ½ÊÀÚ°¡
-WEAPON_SUBTYPE_ROSARY <- 1 		  //  ¿°ÁÖ
-WEAPON_SUBTYPE_TOTEM <- 2 		  //  ÅäÅÛ
-WEAPON_SUBTYPE_SCYTHE <- 3 		  //  ³´
-WEAPON_SUBTYPE_BATTLE_AXE <- 4 		  //  ¹èÆ² ¾×½º
+WEAPON_SUBTYPE_CROSS <- 0 		  //  ï¿½ï¿½ï¿½Ú°ï¿½
+WEAPON_SUBTYPE_ROSARY <- 1 		  //  ï¿½ï¿½ï¿½ï¿½
+WEAPON_SUBTYPE_TOTEM <- 2 		  //  ï¿½ï¿½ï¿½ï¿½
+WEAPON_SUBTYPE_SCYTHE <- 3 		  //  ï¿½ï¿½
+WEAPON_SUBTYPE_BATTLE_AXE <- 4 		  //  ï¿½ï¿½Æ² ï¿½×½ï¿½
 WEAPON_SUBTYPE_MAX <- 5 
 
-GROW_TYPE_PRIEST <- 0 		  //  ÇÁ¸®½ºÆ®
-GROW_TYPE_CRUSADER <- 1 		  //  Å©·ç¼¼ÀÌ´õ
-GROW_TYPE_INFIGHTER <- 2 		  //  ÀÎÆÄÀÌÅÍ
-GROW_TYPE_EXORCIST <- 3 		  //  Åð¸¶»ç
-GROW_TYPE_AVENGER <- 4 		  //  ¾îº¥Àú
-GROW_TYPE_PRIEST_G <- 5 		  //  ÇÁ¸®½ºÆ®G
+GROW_TYPE_PRIEST <- 0 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
+GROW_TYPE_CRUSADER <- 1 		  //  Å©ï¿½ç¼¼ï¿½Ì´ï¿½
+GROW_TYPE_INFIGHTER <- 2 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+GROW_TYPE_EXORCIST <- 3 		  //  ï¿½ð¸¶»ï¿½
+GROW_TYPE_AVENGER <- 4 		  //  ï¿½îº¥ï¿½ï¿½
+GROW_TYPE_PRIEST_G <- 5 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®G
 
-EXTENDED_PUNCH_MOTION_DASH_ATTACK <- 0 		  //  ´ë½Ã °ø°Ý
-EXTENDED_PUNCH_MOTION_SECOND_UPPER <- 1 		  //  ¼¼ÄÁµå ¾îÆÛ
+EXTENDED_PUNCH_MOTION_DASH_ATTACK <- 0 		  //  ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+EXTENDED_PUNCH_MOTION_SECOND_UPPER <- 1 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 EXTENDED_PUNCH_MOTION_MAX <- 2 
 
-BASE_ATTACK_TYPE_DEFAULT <- 0 		  //  ±âº»
-BASE_ATTACK_TYPE_INFIGHTER <- 1 		  //  ÀÎÆÄÀÌÅÍ ÁÖ¸Ô
-BASE_ATTACK_TYPE_EXORCIST <- 2 		  //  Åð¸¶»ç °Åº´
+BASE_ATTACK_TYPE_DEFAULT <- 0 		  //  ï¿½âº»
+BASE_ATTACK_TYPE_INFIGHTER <- 1 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö¸ï¿½
+BASE_ATTACK_TYPE_EXORCIST <- 2 		  //  ï¿½ð¸¶»ï¿½ ï¿½Åºï¿½
 
-BATTLE_AURA_MOTION_ATTACK_12 <- 0 		  //  ÆòÅ¸1,2 (Àì)
-BATTLE_AURA_MOTION_ATTACK_3 <- 1 		  //  ÆòÅ¸3 (½ºÆ®·¹ÀÌÆ®)
-BATTLE_AURA_MOTION_ATTACK_4 <- 2 		  //  ÆòÅ¸4 (¾îÆÛ)
-BATTLE_AURA_MOTION_ATTACK_5 <- 3 		  //  ÆòÅ¸5 (³»·ÁÂï±â)
-BATTLE_AURA_MOTION_GORGEOUS_COMBINATION <- 4 		  //  °íÀú½º ÄÄºñ³×ÀÌ¼Ç
-BATTLE_AURA_MOTION_SIDEWIND <- 5 		  //  »çÀÌµå¿ÍÀÎµå
-BATTLE_AURA_MOTION_SIDEWIND_SECOND <- 6 		  //  »çÀÌµå¿ÍÀÎµå Ãß°¡Å¸
+BATTLE_AURA_MOTION_ATTACK_12 <- 0 		  //  ï¿½ï¿½Å¸1,2 (ï¿½ï¿½)
+BATTLE_AURA_MOTION_ATTACK_3 <- 1 		  //  ï¿½ï¿½Å¸3 (ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½Æ®)
+BATTLE_AURA_MOTION_ATTACK_4 <- 2 		  //  ï¿½ï¿½Å¸4 (ï¿½ï¿½ï¿½ï¿½)
+BATTLE_AURA_MOTION_ATTACK_5 <- 3 		  //  ï¿½ï¿½Å¸5 (ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)
+BATTLE_AURA_MOTION_GORGEOUS_COMBINATION <- 4 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Äºï¿½ï¿½ï¿½Ì¼ï¿½
+BATTLE_AURA_MOTION_SIDEWIND <- 5 		  //  ï¿½ï¿½ï¿½Ìµï¿½ï¿½ï¿½Îµï¿½
+BATTLE_AURA_MOTION_SIDEWIND_SECOND <- 6 		  //  ï¿½ï¿½ï¿½Ìµï¿½ï¿½ï¿½Îµï¿½ ï¿½ß°ï¿½Å¸
 BATTLE_AURA_MOTION_MAX <- 7 
 
 
-
-CHANGE_STATUS_TYPE_PHYSICAL_ATTACK <- 0 		  //  ¹°¸® °ø°Ý
-CHANGE_STATUS_TYPE_MAGICAL_ATTACK <- 1 		  //  ¸¶¹ý °ø°Ý
-CHANGE_STATUS_TYPE_MAGICAL_DEFENSE <- 2 		  //  ¸¶¹ý ¹æ¾î·Â
-CHANGE_STATUS_TYPE_PHYSICAL_DEFENSE <- 3 		  //  ¹°¸® ¹æ¾î
-CHANGE_STATUS_TYPE_EQUIPMENT_PHYSICAL_ATTACK <- 4 		  //  Àåºñ µ¥¹ÌÁö
-CHANGE_STATUS_TYPE_EQUIPMENT_PHYSICAL_DEFENSE <- 5 		  //  Àåºñ ¹°¸® ¹æ¾î
-CHANGE_STATUS_TYPE_PHYSICAL_ATTACK_BONUS <- 6 		  //  ¹°¸® °ø°Ý º¸³Ê½º
-CHANGE_STATUS_TYPE_MAGICAL_ATTACK_BONUS <- 7 		  //  ¸¶¹ý °ø°Ý º¸³Ê½º
-CHANGE_STATUS_TYPE_JUMP_POWER <- 8 		  //  Á¡ÇÁ·Â
-CHANGE_STATUS_TYPE_JUMP_SPEED_RATE <- 9 		  //  Á¡ÇÁ ¼Óµµ
-CHANGE_STATUS_TYPE_ATTACK_SPEED <- 10 		  //  °ø°Ý ¼Óµµ
-CHANGE_STATUS_TYPE_MOVE_SPEED <- 11 		  //  ÀÌµ¿ ¼Óµµ
-CHANGE_STATUS_TYPE_CAST_SPEED <- 12 		  //  Ä³½ºÆ® ¼Óµµ
-CHANGE_STATUS_TYPE_HP_MAX <- 13 		  //  HP MAX
-CHANGE_STATUS_TYPE_HP_REGEN_RATE <- 14 		  //  HP È¸º¹¼Óµµ
-CHANGE_STATUS_TYPE_PHYSICAL_CRITICAL_HIT_RATE <- 15 		  //  ¹°¸® Å©¸®Æ¼ÄÃ È÷Æ® È®·ü
-CHANGE_STATUS_TYPE_MAGICAL_CRITICAL_HIT_RATE <- 16 		  //  ¸¶¹ý Å©¸®Æ¼ÄÃ È÷Æ® È®·ü
-CHANGE_STATUS_TYPE_PHYSICAL_BACK_ATTACK_CRITICAL <- 17 		  //  ¹é¾îÅÃ Å©¸®Æ¼ÄÃ È÷Æ® È®·ü
-CHANGE_STATUS_TYPE_MAGICAL_BACK_ATTACK_CRITICAL <- 18 		  //  ¹é¾îÅÃ Å©¸®Æ¼ÄÃ È÷Æ® È®·ü
-CHANGE_STATUS_TYPE_CRITICAL_TOLERANCE_RATE <- 19 		  //  Å©¸®Æ¼ÄÃ ³»¼º
-CHANGE_STATUS_TYPE_ELEMENT_TOLERANCE_FIRE <- 20 		  //  È­¼Ó¼ºÀúÇ×
-CHANGE_STATUS_TYPE_ELEMENT_TOLERANCE_WATER <- 21 		  //  ¼ö¼Ó¼ºÀúÇ×
-CHANGE_STATUS_TYPE_ELEMENT_TOLERANCE_DARK <- 22 		  //  ¾Ï¼Ó¼ºÀúÇ×
-CHANGE_STATUS_TYPE_ELEMENT_TOLERANCE_LIGHT <- 23 		  //  ¸í¼Ó¼ºÀúÇ×
-CHANGE_STATUS_TYPE_ELEMENT_TOLERANCE_ALL <- 24 		  //  ¸ðµç ¼Ó¼ºÀúÇ×
-CHANGE_STATUS_TYPE_ELEMENT_TOLERANCE_ZERO <- 25 		  //  ¼Ó¼ºÀúÇ×·Â 0
-CHANGE_STATUS_TYPE_ACTIVESTATUS_TOLERANCE_ALL <- 26 		  //  ¸ðµç »óÅÂ
-CHANGE_STATUS_TYPE_ACTIVEPROPERTY_STUCK <- 27 		  //  ½ºÅÎ(È¸ÇÇ)
-CHANGE_STATUS_TYPE_BACK_ATTACK_STUCK_TOLERANCE <- 28 		  //  ¹é¾îÅÃ ½ºÅÎ ³»¼º [³»°¡ ¸ÂÀ»¶§] (% ´ÜÀ§)
-CHANGE_STATUS_TYPE_MP_REGEN_RATE <- 29 		  //  MP È¸º¹ ¼Óµµ
-CHANGE_STATUS_TYPE_EXTRA_SPEED_RATE <- 30 		  //  È÷Æ®½Ã °æÁ÷
-CHANGE_STATUS_TYPE_EQUIPMENT_MAGICAL_ATTACK <- 31 		  //  Àåºñ ¸¶¹ý °ø°Ý
-CHANGE_STATUS_TYPE_EQUIPMENT_MAGICAL_DEFENSE <- 32 		  //  Àåºñ ¸¶¹ý ¹æ¾î
-CHANGE_STATUS_TYPE_STUCK <- 33 		  //  ½ºÅÎ [³»°¡ ¶§¸±¶§](ÀûÁß)
-CHANGE_STATUS_TYPE_HIT_RECOVERY <- 34 		  //  È÷Æ® ¸®Ä¿¹ö¸®
-CHANGE_STATUS_TYPE_MELEE_HIT_DELAY <- 35 		  //  ±Ù°Å¸® Å¸°Ý½Ã Èý µô·¹ÀÌ
-CAHNGE_STATUS_TYPE_EQUIPMENT_ALL_STAT <- 36 		  //  ÀåºñÀÇ ¸ðµç ´É·ÂÄ¡¸¦ ¿Ã·ÁÁÙ ¶§.
+CHANGE_STATUS_TYPE_PHYSICAL_ATTACK <- 0 		  //  ç‰©ç†æ”»å‡»
+CHANGE_STATUS_TYPE_MAGICAL_ATTACK <- 1 		  //  é­”æ³•æ”»å‡»
+CHANGE_STATUS_TYPE_MAGICAL_DEFENSE <- 2 		  //  é­”æ³•é˜²å¾¡
+CHANGE_STATUS_TYPE_PHYSICAL_DEFENSE <- 3 		  //  ç‰©ç†é˜²å¾¡
+CHANGE_STATUS_TYPE_EQUIPMENT_PHYSICAL_ATTACK <- 4 		  //  è£…å¤‡ç‰©ç†æ”»å‡»
+CHANGE_STATUS_TYPE_EQUIPMENT_PHYSICAL_DEFENSE <- 5 		  //  è£…å¤‡ç‰©ç†é˜²å¾¡
+CHANGE_STATUS_TYPE_PHYSICAL_ATTACK_BONUS <- 6 		  //  ç‰©ç†æ”»å‡»åŠ æˆ
+CHANGE_STATUS_TYPE_MAGICAL_ATTACK_BONUS <- 7 		  //  é­”æ³•æ”»å‡»åŠ æˆ
+CHANGE_STATUS_TYPE_JUMP_POWER <- 8 		  //  è·³è·ƒåŠ›é‡
+CHANGE_STATUS_TYPE_JUMP_SPEED_RATE <- 9 		  //  è·³è·ƒé€Ÿåº¦æ¯”çŽ‡
+CHANGE_STATUS_TYPE_ATTACK_SPEED <- 10 		  //  æ”»å‡»é€Ÿåº¦
+CHANGE_STATUS_TYPE_MOVE_SPEED <- 11 		  //  ç§»åŠ¨é€Ÿåº¦
+CHANGE_STATUS_TYPE_CAST_SPEED <- 12 		  //  æ–½æ³•é€Ÿåº¦
+CHANGE_STATUS_TYPE_HP_MAX <- 13 		  //  æœ€å¤§ç”Ÿå‘½å€¼
+CHANGE_STATUS_TYPE_HP_REGEN_RATE <- 14 		  //  ç”Ÿå‘½å€¼æ¢å¤é€ŸçŽ‡
+CHANGE_STATUS_TYPE_PHYSICAL_CRITICAL_HIT_RATE <- 15 		  //  ç‰©ç†æš´å‡»çŽ‡
+CHANGE_STATUS_TYPE_MAGICAL_CRITICAL_HIT_RATE <- 16 		  //  é­”æ³•æš´å‡»çŽ‡
+CHANGE_STATUS_TYPE_PHYSICAL_BACK_ATTACK_CRITICAL <- 17 		  //  ç‰©ç†èƒŒå‡»æš´å‡»çŽ‡
+CHANGE_STATUS_TYPE_MAGICAL_BACK_ATTACK_CRITICAL <- 18 		  //  é­”æ³•èƒŒå‡»æš´å‡»çŽ‡
+CHANGE_STATUS_TYPE_CRITICAL_TOLERANCE_RATE <- 19 		  //  æš´å‡»æŠ—æ€§
+CHANGE_STATUS_TYPE_ELEMENT_TOLERANCE_FIRE <- 20 		  //  ç«å…ƒç´ æŠ—æ€§
+CHANGE_STATUS_TYPE_ELEMENT_TOLERANCE_WATER <- 21 		  //  æ°´å…ƒç´ æŠ—æ€§
+CHANGE_STATUS_TYPE_ELEMENT_TOLERANCE_DARK <- 22 		  //  æš—å…ƒç´ æŠ—æ€§
+CHANGE_STATUS_TYPE_ELEMENT_TOLERANCE_LIGHT <- 23 		  //  å…‰å…ƒç´ æŠ—æ€§
+CHANGE_STATUS_TYPE_ELEMENT_TOLERANCE_ALL <- 24 		  //  æ‰€æœ‰å…ƒç´ æŠ—æ€§
+CHANGE_STATUS_TYPE_ELEMENT_TOLERANCE_ZERO <- 25 		  //  å…ƒç´ æŠ—æ€§å½’é›¶
+CHANGE_STATUS_TYPE_ACTIVESTATUS_TOLERANCE_ALL <- 26 		  //  æ‰€æœ‰çŠ¶æ€æŠ—æ€§
+CHANGE_STATUS_TYPE_ACTIVEPROPERTY_STUCK <- 27 		  //  ç¡¬ç›´ï¼ˆçŠ¶æ€ï¼‰
+CHANGE_STATUS_TYPE_BACK_ATTACK_STUCK_TOLERANCE <- 28 		  //  èƒŒå‡»ç¡¬ç›´æŠ—æ€§ [ä¼¤å®³å‡å…] (% æ•°å€¼)
+CHANGE_STATUS_TYPE_MP_REGEN_RATE <- 29 		  //  é­”æ³•å€¼æ¢å¤é€ŸçŽ‡
+CHANGE_STATUS_TYPE_EXTRA_SPEED_RATE <- 30 		  //  é¢å¤–é€Ÿåº¦æ¯”çŽ‡
+CHANGE_STATUS_TYPE_EQUIPMENT_MAGICAL_ATTACK <- 31 		  //  è£…å¤‡é­”æ³•æ”»å‡»
+CHANGE_STATUS_TYPE_EQUIPMENT_MAGICAL_DEFENSE <- 32 		  //  è£…å¤‡é­”æ³•é˜²å¾¡
+CHANGE_STATUS_TYPE_STUCK <- 33 		  //  ç¡¬ç›´ [ä¼¤å®³å‡å…]ï¼ˆæ•°å€¼ï¼‰
+CHANGE_STATUS_TYPE_HIT_RECOVERY <- 34 		  //  å—å‡»æ¢å¤
+CHANGE_STATUS_TYPE_MELEE_HIT_DELAY <- 35 		  //  è¿‘æˆ˜å—å‡»å»¶è¿Ÿæ—¶é—´
+CHANGE_STATUS_TYPE_EQUIPMENT_ALL_STAT <- 36 		  //  è£…å¤‡æ‰€æœ‰å±žæ€§æå‡ç±»åž‹ã€‚
 CHANGE_STATUS_TYPE_CUSTOM <- 37 
-CHANGE_STATUS_TYPE_EXP_DOUBLE <- 38 		  //  °æÇèÄ¡ 2¹è
-CHANGE_STATUS_TYPE_EVIL_UP <- 39 		  //  Ç×¸¶·Â ³ôÀ½
-CHANGE_STATUS_TYPE_EVIL_DOWN <- 40 		  //  92 Ç×¸¶·Â ³·À½ 
-CHANGE_STATUS_TYPE_RIGIDITY <- 41 		  //  °æÁ÷µµ
-CHANGE_STATUS_TYPE_ELEMENT_ATTACK_FIRE <- 42 		  //  È­¼Ó¼º °­È­
-CHANGE_STATUS_TYPE_ELEMENT_ATTACK_WATER <- 43 		  //  ¼ö¼Ó¼º °­È­
-CHANGE_STATUS_TYPE_ELEMENT_ATTACK_DARK <- 44 		  //  ¾Ï¼Ó¼º °­È­
-CHANGE_STATUS_TYPE_ELEMENT_ATTACK_LIGHT <- 45 		  //  ¸í¼Ó¼º °­È­
-CHANGE_STATUS_TYPE_ELEMENT_ATTACK_ALL <- 46 		  //  ¸ðµç ¼Ó¼º °­È­
-CHANGE_STATUS_TYPE_DISEASE <- 47 		  //  Áúº´
-CHANGE_STATUS_TYPE_MP_MAX <- 48 		  //  MP MAX
-CHANGE_STATUS_TYPE_COOLTIME_DECLINE <- 49 		  //  ½ºÅ³ ÄðÅ¸ÀÓ
-CHANGE_STATUS_TYPE_PHYSICAL_CRITICAL_DAMAGE_RATE <- 50 		  //  ¹°¸® Å©¸®Æ¼ÄÃ µ¥¹ÌÁö Áõ°¡ ºñÀ²
-CHANGE_STATUS_TYPE_MAGICAL_CRITICAL_DAMAGE_RATE <- 51 		  //  ¸¶¹ý Å©¸®Æ¼ÄÃ µ¥¹ÌÁö Áõ°¡ ºñÀ²
-CHANGE_STATUS_TYPE_BLOODWAR_GROW_ABILITY <- 52 		  //  ºí·¯µå ´øÀü(Ç÷ÅõÀÇÅ¾) ¼ºÀå 
-CHANGE_STATUS_TYPE_ADDITIONAL_PHYSICAL_GENUINE_ATTACK <- 53 		  //  µ¶¸³ µ¥¹ÌÁö ¹°¸® °ø°Ý·Â º¯È­
-CHANGE_STATUS_TYPE_ADDITIONAL_MAGICAL_GENUINE_ATTACK <- 54 		  //  µ¶¸³ µ¥¹ÌÁö ¸¶¹ý °ø°Ý·Â º¯È­
-CHANGE_STATUS_TYPE_SUMMON_SKILL_POWER_BONUS_RATE <- 55 		  //  ¸¶¹ý»ç ¼ÒÈ¯¼öÀÇ ½ºÅ³ °ø°Ý·Â Áõ°¡
-CHANGE_STATUS_TYPE_ANTIEVIL <- 56 		  //  ½ÇÁ¦ Ç×¸¶·Â ¼öÄ¡ Á¶Á¤
-CHANGE_STATUS_TYPE_PHYSICAL_ABSOLUTE_DAMAGE <- 57 		  //  ¹°¸® Àý´ë µ¥¹ÌÁö or ¹°¸® ¹æ¾î¹«½Ã µ¥¹ÌÁö
-CHANGE_STATUS_GHOST_TRAIN_NO_BREATH_TIME <- 58 		  //  À¯·É¿­Â÷ Áú½Ä ½Ã°£ º¯°æ
-CHANGE_STATUS_CHARACTER_LINK <- 59 		  //  Ä³¸¯ÅÍ ¸µÅ©
+CHANGE_STATUS_TYPE_EXP_DOUBLE <- 38 		  //  ç»éªŒå€¼åŠ å€
+CHANGE_STATUS_TYPE_EVIL_UP <- 39 		  //  é‚ªæ¶å€¼æå‡
+CHANGE_STATUS_TYPE_EVIL_DOWN <- 40 		  //  é‚ªæ¶å€¼é™ä½Ž 
+CHANGE_STATUS_TYPE_RIGIDITY <- 41 		  //  åˆšæ€§
+CHANGE_STATUS_TYPE_ELEMENT_ATTACK_FIRE <- 42 		  //  ç«å…ƒç´ æ”»å‡»å¼ºåŒ–
+CHANGE_STATUS_TYPE_ELEMENT_ATTACK_WATER <- 43 		  //  æ°´å…ƒç´ æ”»å‡»å¼ºåŒ–
+CHANGE_STATUS_TYPE_ELEMENT_ATTACK_DARK <- 44 		  //  æš—å…ƒç´ æ”»å‡»å¼ºåŒ–
+CHANGE_STATUS_TYPE_ELEMENT_ATTACK_LIGHT <- 45 		  //  å…‰å…ƒç´ æ”»å‡»å¼ºåŒ–
+CHANGE_STATUS_TYPE_ELEMENT_ATTACK_ALL <- 46 		  //  æ‰€æœ‰å…ƒç´ æ”»å‡»å¼ºåŒ–
+CHANGE_STATUS_TYPE_DISEASE <- 47 		  //  ç–¾ç—…
+CHANGE_STATUS_TYPE_MP_MAX <- 48 		  //  æœ€å¤§é­”æ³•å€¼
+CHANGE_STATUS_TYPE_COOLTIME_DECLINE <- 49 		  //  æŠ€èƒ½å†·å´æ—¶é—´å‡å°‘
+CHANGE_STATUS_TYPE_PHYSICAL_CRITICAL_DAMAGE_RATE <- 50 		  //  ç‰©ç†æš´å‡»ä¼¤å®³æ¯”çŽ‡
+CHANGE_STATUS_TYPE_MAGICAL_CRITICAL_DAMAGE_RATE <- 51 		  //  é­”æ³•æš´å‡»ä¼¤å®³æ¯”çŽ‡
+CHANGE_STATUS_TYPE_BLOODWAR_GROW_ABILITY <- 52 		  //  è¡€ä¹‹æˆ˜äº‰æˆé•¿èƒ½åŠ›ï¼ˆè¡€ä¹‹å¡”ï¼‰ 
+CHANGE_STATUS_TYPE_ADDITIONAL_PHYSICAL_GENUINE_ATTACK <- 53 		  //  ç‰©ç†çœŸå®žä¼¤å®³é¢å¤–åŠ æˆ
+CHANGE_STATUS_TYPE_ADDITIONAL_MAGICAL_GENUINE_ATTACK <- 54 		  //  é­”æ³•çœŸå®žä¼¤å®³é¢å¤–åŠ æˆ
+CHANGE_STATUS_TYPE_SUMMON_SKILL_POWER_BONUS_RATE <- 55 		  //  å¬å”¤æŠ€èƒ½å¨åŠ›é¢å¤–åŠ æˆæ¯”çŽ‡
+CHANGE_STATUS_TYPE_ANTIEVIL <- 56 		  //  åé‚ªæ¶å€¼æå‡
+CHANGE_STATUS_TYPE_PHYSICAL_ABSOLUTE_DAMAGE <- 57 		  //  ç‰©ç†ç»å¯¹ä¼¤å®³æˆ–å›ºå®šä¼¤å®³
+CHANGE_STATUS_GHOST_TRAIN_NO_BREATH_TIME <- 58 		  //  å¹½çµåˆ—è½¦æ— æ¯æ—¶é—´
+CHANGE_STATUS_CHARACTER_LINK <- 59 		  //  è§’è‰²é“¾æŽ¥
 CHANGE_STATUS_GOLD_INCREASE <- 60 
-CHANGE_STATUS_TYPE_MAX <- 61 
+CHANGE_STATUS_TYPE_MAX <- 61
 
+OBJECTTYPE_OBJECT <- 0 		  //  æ™®é€šå¯¹è±¡
+OBJECTTYPE_COLLISION <- 1 		  //  ç¢°æ’žå¯¹è±¡ (ç»§æ‰¿è‡ª OBJECTTYPE_OBJECT)
+OBJECTTYPE_ACTIVE <- 17 		  //  æ¿€æ´»å¯¹è±¡ (ç»§æ‰¿è‡ª OBJECTTYPE_COLLISION)
+OBJECTTYPE_CHARACTER <- 273 		  //  è§’è‰²å¯¹è±¡ (ç»§æ‰¿è‡ª OBJECTTYPE_ACTIVE)
+OBJECTTYPE_MONSTER <- 529 		  //  æ€ªç‰©å¯¹è±¡ (ç»§æ‰¿è‡ª OBJECTTYPE_ACTIVE)
+OBJECTTYPE_RIDABLEOBJECT <- 4625 		  //  å¯éª‘ä¹˜å¯¹è±¡ (ç»§æ‰¿è‡ª OBJECTTYPE_MONSTER)
+OBJECTTYPE_PASSIVE <- 33 		  //  è¢«åŠ¨å¯¹è±¡ (ç»§æ‰¿è‡ª OBJECTTYPE_COLLISION)
+OBJECTTYPE_ITEM <- 289 		  //  ç‰©å“å¯¹è±¡ (ç»§æ‰¿è‡ª OBJECTTYPE_PASSIVE)
+OBJECTTYPE_TRAP <- 545 		  //  é™·é˜±å¯¹è±¡ (ç»§æ‰¿è‡ª OBJECTTYPE_PASSIVE)
+OBJECTTYPE_BREAKABLE <- 1057 		  //  å¯ç ´åå¯¹è±¡(ä¾‹å¦‚å¯ç ´åçš„åœºæ™¯ç‰©ä»¶) (ç»§æ‰¿è‡ª OBJECTTYPE_PASSIVE)
+OBJECTTYPE_PET <- 65 		  //  å® ç‰© (ç»§æ‰¿è‡ª OBJECTTYPE_COLLISION)
+OBJECTTYPE_CREATURE <- 129 		  //  ç”Ÿç‰© (ç»§æ‰¿è‡ª OBJECTTYPE_COLLISION)
+OBJECTTYPE_DRAWONLY <- 2 		  //  ä»…ç»˜åˆ¶å¯¹è±¡ (ç»§æ‰¿è‡ª OBJECTTYPE_OBJECT)
+OBJECTTYPE_VIRTUALCHARACTER <- 18 		  //  è™šæ‹Ÿè§’è‰² (ç»§æ‰¿è‡ª OBJECTTYPE_DRAWONLY)
+OBJECTTYPE_NPC <- 34 		  //  éžçŽ©å®¶è§’è‰² (ç»§æ‰¿è‡ª OBJECTTYPE_DRAWONLY)
+OBJECTTYPE_DONKEY <- 66 		  //  é©´å­ (ç»§æ‰¿è‡ª OBJECTTYPE_DRAWONLY)
+OBJECTTYPE_VIRTUALCREATURE <- 130 		  //  è™šæ‹Ÿç”Ÿç‰© (ç»§æ‰¿è‡ª OBJECTTYPE_DRAWONLY)
+OBJECTTYPE_DISJOINTSHOP <- 258 		  //  åˆ†ç¦»å•†åº—å¯¹è±¡ (ç»§æ‰¿è‡ª OBJECTTYPE_DRAWONLY)
+OBJECTTYPE_VIRTUALMONSTER <- 514 		  //  è™šæ‹Ÿæ€ªç‰© (ç»§æ‰¿è‡ª OBJECTTYPE_DRAWONLY)
+OBJECTTYPE_NONE_DELETE <- 1026 		  //  ä¸ä¼šè¢«åˆ é™¤çš„å¯¹è±¡ (ç»§æ‰¿è‡ª OBJECTTYPE_DRAWONLY) 
+OBJECTTYPE_DEFINE_END <- 61440
 
-OBJECTTYPE_OBJECT <- 0 		  //  ÃÖ»óÀ§ ¿ÀºêÁ§Æ®
-OBJECTTYPE_COLLISION <- 1 		  //  Ãæµ¹ ¿ÀºêÁ§Æ® (OBJECTTYPE_OBJECT ÇÏÀ§)
-OBJECTTYPE_ACTIVE <- 17 		  //  ´Éµ¿ ¿ÀºêÁ§Æ® (OBJECTTYPE_COLLISION ÇÏÀ§)
-OBJECTTYPE_CHARACTER <- 273 		  //  Ä³¸¯ÅÍ ¿ÀºêÁ§Æ® (OBJECTTYPE_ACTIVE ÇÏÀ§)
-OBJECTTYPE_MONSTER <- 529 		  //  ¸ó½ºÅÍ ¿ÀºêÁ§Æ® (OBJECTTYPE_ACTIVE ÇÏÀ§)
-OBJECTTYPE_RIDABLEOBJECT <- 4625 		  //  Å»°Í °ü·Ã ¿ÀºêÁ§Æ® (OBJECTTYPE_MONSTER ÇÏÀ§)
-OBJECTTYPE_PASSIVE <- 33 		  //  ¼öµ¿ ¿ÀºêÁ§Æ® (OBJECTTYPE_COLLISION ÇÏÀ§)
-OBJECTTYPE_ITEM <- 289 		  //  ¾ÆÀÌÅÛ ¿ÀºêÁ§Æ® (OBJECTTYPE_PASSIVE ÇÏÀ§)
-OBJECTTYPE_TRAP <- 545 		  //  Æ®·¦ ¿ÀºêÁ§Æ® (OBJECTTYPE_PASSIVE ÇÏÀ§)
-OBJECTTYPE_BREAKABLE <- 1057 		  //  ÆÄ±« °¡´ÉÇÑ ¿ÀºêÁ§Æ®(º¸¹°»óÀÚ °âÇÔ) (OBJECTTYPE_PASSIVE ÇÏÀ§)
-OBJECTTYPE_PET <- 65 		  //  ½Å¼ö (OBJCTTYPE_COLLISION ÇÏÀ§)
-OBJECTTYPE_CREATURE <- 129 		  //  Å©¸®ÃÄ (OBJCTTYPE_COLLISION ÇÏÀ§)
-OBJECTTYPE_DRAWONLY <- 2 		  //  ±×¸®±â Àü¿ë ¿ÀºêÁ§Æ® (OBJECTTYPE_OBJECT ÇÏÀ§)
-OBJECTTYPE_VIRTUALCHARACTER <- 18 		  //  ´ë±â½Ç¿¡¼­ ¾²´Â °¡»ó Ä³¸¯ÅÍ (OBJECTTYPE_DRAWONLY ÇÏÀ§)
-OBJECTTYPE_NPC <- 34 		  //  ´ë±â½ÇÀÇ NPC (OBJECTTYPE_DRAWONLY ÇÏÀ§)
-OBJECTTYPE_DONKEY <- 66 		  //  ´ë±â½ÇÀÇ °³ÀÎ»óÁ¡ (OBJECTTYPE_DRAWONLY ÇÏÀ§)
-OBJECTTYPE_VIRTUALCREATURE <- 130 		  //  ´ë±â½Ç¿¡¼­ ¾²´Â °¡»ó Å©¸®ÃÄ(OBJECTTYPE_DRAWONLY ÇÏÀ§)
-OBJECTTYPE_DISJOINTSHOP <- 258 		  //  ´ë±â½ÇÀÇ ÇØÃ¼°¡ ÇØÃ¼ »óÁ¡(OBJECTTYPE_DRAWONLY ÇÏÀ§)
-OBJECTTYPE_VIRTUALMONSTER <- 514 		  //  ´ë±â½Ç¿¡¼­ ¾²´Â °¡»ó ¸ó½ºÅÍ (OBJECTTYPE_DRAWONLEY ÇÏÀ§)
-OBJECTTYPE_NONE_DELETE <- 1026 		  //  ¿ÀºêÁ§Æ® »èÁ¦ ½Ã »èÁ¦µÇÁö ¾Ê´Â ¿ÀºêÁ§Æ® (OBJECTTYPE_DRAWONLEY ÇÏÀ§) 
-OBJECTTYPE_DEFINE_END <- 61440 
-
-
-CONVERT_TABLE_TYPE_DAMAGE <- 0 		  //  µ¥¹ÌÁö
-CONVERT_TABLE_TYPE_DEFENSE <- 1 		  //  ¹æ¾î·Â
+CONVERT_TABLE_TYPE_DAMAGE <- 0 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+CONVERT_TABLE_TYPE_DEFENSE <- 1 		  //  ï¿½ï¿½ï¿½ï¿½
 CONVERT_TABLE_TYPE_HP <- 2 		  //  HP MAX
-CONVERT_TABLE_TYPE_PHYSICAL_ATTACK <- 3 		  //  Èû
-CONVERT_TABLE_TYPE_PHYSICAL_DEFENSE <- 4 		  //  Ã¼·Â
-CONVERT_TABLE_TYPE_MAGICAL_ATTACK <- 5 		  //  Áö´É
-CONVERT_TABLE_TYPE_MAGICAL_DEFENSE <- 6 		  //  Á¤½Å·Â
-CONVERT_TABLE_TYPE_PHYSICAL_ABSOLUTE_DAMAGE <- 7 		  //  ¹°¸® Àý´ë µ¥¹ÌÁö
-CONVERT_TABLE_TYPE_PHYSICAL_DAMAGE_REDUCE <- 8 		  //  ¹°¸® µ¥¹ÌÁö º¸Á¤
-CONVERT_TABLE_TYPE_MAGICAL_ABSOLUTE_DAMAGE <- 9 		  //  ¸¶¹ý Àý´ë µ¥¹ÌÁö
-CONVERT_TABLE_TYPE_MAGICAL_DAMAGE_REDUCE <- 10 		  //  ¸¶¹ý µ¥¹ÌÁö º¸Á¤
-CONVERT_TABLE_TYPE_ACTIVESTATUS_DAMAGE_REDUCE <- 11 		  //  »óÅÂÀÌ»ó µ¥¹ÌÁö º¸Á¤.
+CONVERT_TABLE_TYPE_PHYSICAL_ATTACK <- 3 		  //  ï¿½ï¿½
+CONVERT_TABLE_TYPE_PHYSICAL_DEFENSE <- 4 		  //  Ã¼ï¿½ï¿½
+CONVERT_TABLE_TYPE_MAGICAL_ATTACK <- 5 		  //  ï¿½ï¿½ï¿½ï¿½
+CONVERT_TABLE_TYPE_MAGICAL_DEFENSE <- 6 		  //  ï¿½ï¿½ï¿½Å·ï¿½
+CONVERT_TABLE_TYPE_PHYSICAL_ABSOLUTE_DAMAGE <- 7 		  //  ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+CONVERT_TABLE_TYPE_PHYSICAL_DAMAGE_REDUCE <- 8 		  //  ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+CONVERT_TABLE_TYPE_MAGICAL_ABSOLUTE_DAMAGE <- 9 		  //  ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+CONVERT_TABLE_TYPE_MAGICAL_DAMAGE_REDUCE <- 10 		  //  ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+CONVERT_TABLE_TYPE_ACTIVESTATUS_DAMAGE_REDUCE <- 11 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½Ì»ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
 CONVERT_TABLE_TYPE_MP <- 12 		  //  MP MAX
-CONVERT_TABLE_TYPE_SKILL_POWER <- 13 		  //  ½ºÅ³ µ¶¸³µ¥¹ÌÁö
+CONVERT_TABLE_TYPE_SKILL_POWER <- 13 		  //  ï¿½ï¿½Å³ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 CONVERT_TABLE_TYPE_MAX <- 14 
 
-ENUM_EQUIPMENTTYPE_AVATAR_HEADGEAR <- 0 		  //  ¸ðÀÚ ¾Æ¹ÙÅ¸
-ENUM_EQUIPMENTTYPE_AVATAR_HAIR <- 1 		  //  ¸Ó¸® ¾Æ¹ÙÅ¸
-ENUM_EQUIPMENTTYPE_AVATAR_FACE <- 2 		  //  ¾ó±¼ ¾Æ¹ÙÅ¸
-ENUM_EQUIPMENTTYPE_AVATAR_JACKET <- 3 		  //  »óÀÇ ¾Æ¹ÙÅ¸
-ENUM_EQUIPMENTTYPE_AVATAR_PANTS <- 4 		  //  ÇÏÀÇ ¾Æ¹ÙÅ¸
-ENUM_EQUIPMENTTYPE_AVATAR_SHOES <- 5 		  //  ½Å¹ß ¾Æ¹ÙÅ¸
-ENUM_EQUIPMENTTYPE_AVATAR_BREAST <- 6 		  //  ¸ñ°¡½¿ ¾Æ¹ÙÅ¸
-ENUM_EQUIPMENTTYPE_AVATAR_WAIST <- 7 		  //  Çã¸® ¾Æ¹ÙÅ¸
-ENUM_EQUIPMENTTYPE_AVATAR_SKIN <- 8 		  //  ¸ö»ö±ò ¾Æ¹ÙÅ¸
-ENUM_EQUIPMENTTYPE_AVATAR_AURORA <- 9 		  //  ¿À·Î¶ó ¾Æ¹ÙÅ¸
-ENUM_EQUIPMENTTYPE_WEAPON <- 10 		  //  ¹«±â
+ENUM_EQUIPMENTTYPE_AVATAR_HEADGEAR <- 0 		  //  ï¿½ï¿½ï¿½ï¿½ ï¿½Æ¹ï¿½Å¸
+ENUM_EQUIPMENTTYPE_AVATAR_HAIR <- 1 		  //  ï¿½Ó¸ï¿½ ï¿½Æ¹ï¿½Å¸
+ENUM_EQUIPMENTTYPE_AVATAR_FACE <- 2 		  //  ï¿½ï¿½ ï¿½Æ¹ï¿½Å¸
+ENUM_EQUIPMENTTYPE_AVATAR_JACKET <- 3 		  //  ï¿½ï¿½ï¿½ï¿½ ï¿½Æ¹ï¿½Å¸
+ENUM_EQUIPMENTTYPE_AVATAR_PANTS <- 4 		  //  ï¿½ï¿½ï¿½ï¿½ ï¿½Æ¹ï¿½Å¸
+ENUM_EQUIPMENTTYPE_AVATAR_SHOES <- 5 		  //  ï¿½Å¹ï¿½ ï¿½Æ¹ï¿½Å¸
+ENUM_EQUIPMENTTYPE_AVATAR_BREAST <- 6 		  //  ï¿½ñ°¡½ï¿½ ï¿½Æ¹ï¿½Å¸
+ENUM_EQUIPMENTTYPE_AVATAR_WAIST <- 7 		  //  ï¿½ã¸® ï¿½Æ¹ï¿½Å¸
+ENUM_EQUIPMENTTYPE_AVATAR_SKIN <- 8 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Æ¹ï¿½Å¸
+ENUM_EQUIPMENTTYPE_AVATAR_AURORA <- 9 		  //  ï¿½ï¿½ï¿½Î¶ï¿½ ï¿½Æ¹ï¿½Å¸
+ENUM_EQUIPMENTTYPE_WEAPON <- 10 		  //  ï¿½ï¿½ï¿½ï¿½
 ENUM_EQUIPMENTTYPE_TITLE <- 11 		  //  ÄªÈ£
-ENUM_EQUIPMENTTYPE_JACKET <- 12 		  //  »óÀÇ
-ENUM_EQUIPMENTTYPE_SHOULDER <- 13 		  //  ¾î±ú
-ENUM_EQUIPMENTTYPE_PANTS <- 14 		  //  ÇÏÀÇ
-ENUM_EQUIPMENTTYPE_SHOES <- 15 		  //  ½Å¹ß
-ENUM_EQUIPMENTTYPE_WAIST <- 16 		  //  Çã¸®
-ENUM_EQUIPMENTTYPE_AMULET <- 17 		  //  ¸ñ°ÉÀÌ
-ENUM_EQUIPMENTTYPE_WRIST <- 18 		  //  ÆÈÂî
-ENUM_EQUIPMENTTYPE_RING <- 19 		  //  ¹ÝÁö
-ENUM_EQUIPMENTTYPE_SUPPORT <- 20 		  //  º¸Á¶
-ENUM_EQUIPMENTTYPE_MAGIC_STONE <- 21 		  //  ¸¶¹ý¼®
+ENUM_EQUIPMENTTYPE_JACKET <- 12 		  //  ï¿½ï¿½ï¿½ï¿½
+ENUM_EQUIPMENTTYPE_SHOULDER <- 13 		  //  ï¿½ï¿½ï¿½
+ENUM_EQUIPMENTTYPE_PANTS <- 14 		  //  ï¿½ï¿½ï¿½ï¿½
+ENUM_EQUIPMENTTYPE_SHOES <- 15 		  //  ï¿½Å¹ï¿½
+ENUM_EQUIPMENTTYPE_WAIST <- 16 		  //  ï¿½ã¸®
+ENUM_EQUIPMENTTYPE_AMULET <- 17 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½
+ENUM_EQUIPMENTTYPE_WRIST <- 18 		  //  ï¿½ï¿½ï¿½ï¿½
+ENUM_EQUIPMENTTYPE_RING <- 19 		  //  ï¿½ï¿½ï¿½ï¿½
+ENUM_EQUIPMENTTYPE_SUPPORT <- 20 		  //  ï¿½ï¿½ï¿½ï¿½
+ENUM_EQUIPMENTTYPE_MAGIC_STONE <- 21 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 ENUM_EQUIPMENTTYPE_MAX <- 22 
-ENUM_EQUIPMENTTYPE_AVATAR_START <- 0 		  //  ¾Æ¹ÙÅ¸ ½ÃÀÛ
-ENUM_EQUIPMENTTYPE_AVATAR_END <- 8 		  //  ¾Æ¹ÙÅ¸ ³¡
-ENUM_EQUIPMENTTYPE_AVATAR_SELL_END <- 8 		  //  ¼¼¶ó¼¥ ÆÇ¸Å ¾Æ¹ÙÅ¸ ³¡
-ENUM_EQUIPMENTTYPE_AVATAR_MAX <- 9 		  //  ¾Æ¹ÙÅ¸ °³¼ö
-ENUM_EQUIPMENTTYPE_ITEM_START <- 10 		  //  (¾Æ¹ÙÅ¸°¡ ¾Æ´Ñ) ¾ÆÀÌÅÛ ½ÃÀÛ
-ENUM_EQUIPMENTTYPE_VISIBLE_END <- 11 		  //  ¿ÜÇü º¯È­ Àåºñ ³¡
-ENUM_EQUIPMENTTYPE_CREATURE <- 22 		  //  Å©¸®ÃÄ
-ENUM_EQUIPMENTTYPE_ARTIFACT_RED <- 23 		  //  ¾ÆÆ¼ÆÑÆ® Ã¹¹øÂ° ½½·Ô
-ENUM_EQUIPMENTTYPE_ARTIFACT_BLUE <- 24 		  //  ¾ÆÆ¼ÆÑÆ® µÎ¹øÂ° ½½·Ô
-ENUM_EQUIPMENTTYPE_ARTIFACT_GREEN <- 25 		  //  ¾ÆÆ¼ÆÑÆ® ¼¼¹øÂ° ½½·Ô
+ENUM_EQUIPMENTTYPE_AVATAR_START <- 0 		  //  ï¿½Æ¹ï¿½Å¸ ï¿½ï¿½ï¿½ï¿½
+ENUM_EQUIPMENTTYPE_AVATAR_END <- 8 		  //  ï¿½Æ¹ï¿½Å¸ ï¿½ï¿½
+ENUM_EQUIPMENTTYPE_AVATAR_SELL_END <- 8 		  //  ï¿½ï¿½ï¿½ï¿½ ï¿½Ç¸ï¿½ ï¿½Æ¹ï¿½Å¸ ï¿½ï¿½
+ENUM_EQUIPMENTTYPE_AVATAR_MAX <- 9 		  //  ï¿½Æ¹ï¿½Å¸ ï¿½ï¿½ï¿½ï¿½
+ENUM_EQUIPMENTTYPE_ITEM_START <- 10 		  //  (ï¿½Æ¹ï¿½Å¸ï¿½ï¿½ ï¿½Æ´ï¿½) ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+ENUM_EQUIPMENTTYPE_VISIBLE_END <- 11 		  //  ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È­ ï¿½ï¿½ï¿½ ï¿½ï¿½
+ENUM_EQUIPMENTTYPE_CREATURE <- 22 		  //  Å©ï¿½ï¿½ï¿½ï¿½
+ENUM_EQUIPMENTTYPE_ARTIFACT_RED <- 23 		  //  ï¿½ï¿½Æ¼ï¿½ï¿½Æ® Ã¹ï¿½ï¿½Â° ï¿½ï¿½ï¿½ï¿½
+ENUM_EQUIPMENTTYPE_ARTIFACT_BLUE <- 24 		  //  ï¿½ï¿½Æ¼ï¿½ï¿½Æ® ï¿½Î¹ï¿½Â° ï¿½ï¿½ï¿½ï¿½
+ENUM_EQUIPMENTTYPE_ARTIFACT_GREEN <- 25 		  //  ï¿½ï¿½Æ¼ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½Â° ï¿½ï¿½ï¿½ï¿½
 ENUM_EQUIPMENTTYPE_ARTIFACT_END <- 26 
 ENUM_EQUIPMENTTYPE_CREATURE_END <- 25 
 ENUM_EQUIPMENTTYPE_CREATURE_MAX <- 24 
-ENUM_EQUIPMENTTYPE_ARTIFACT <- 0 		  //  ¾ÆÆ¼ÆÑÆ® ´ëÇ¥ÀÎµ¦½º
+ENUM_EQUIPMENTTYPE_ARTIFACT <- 0 		  //  ï¿½ï¿½Æ¼ï¿½ï¿½Æ® ï¿½ï¿½Ç¥ï¿½Îµï¿½ï¿½ï¿½
 ENUM_EQUIPMENTTYPE_TOTAL_MAX <- 24 
-ENUM_EQUIPMENTTYPE_VISIBLE_MAX <- 13 		  //  ¿ÜÇü º¯È­ Àåºñ °³¼ö
+ENUM_EQUIPMENTTYPE_VISIBLE_MAX <- 13 		  //  ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È­ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 ENUM_EQUIPMENTTYPE_ARMOR_START <- 12 
 ENUM_EQUIPMENTTYPE_ARMOR_END <- 21 
 ENUM_EQUIPMENTTYPE_ARMOR_NUM <- 10 
-ENUM_EQUIPMENTTYPE_EXPAND_EQUIPSLOT_REVISE <- 10 		  //  ÀÏ¹ÝÀåÂø ½½·Ô°ú °ø°áÀåÂø ½½·Ô°£ÀÇ º¸Á¤Ä¡
+ENUM_EQUIPMENTTYPE_EXPAND_EQUIPSLOT_REVISE <- 10 		  //  ï¿½Ï¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ô°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ô°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ä¡
 
-SKILL_BACK_STEP <- 169 		  //  ¹é½ºÅÜ
-SKILL_CANCEL_BACK_STEP <- 170 		  //  Äµ½½ ¹é½ºÅÜ
-SKILL_CANCEL_THROW_ITEM <- 171 		  //  Äµ½½ ¾ÆÀÌÅÛ ÅõÃ´
-SKILL_ARMOR_MASTERY_LIGHT <- 172 		  //  °æ°© ¸¶½ºÅÍ¸®
-SKILL_ARMOR_MASTERY_HEAVY <- 173 		  //  Áß°© ¸¶½ºÅÍ¸®
-SKILL_BASIC_ATTACK_UP <- 174 		  // ÆòÅ¸ °­È­
-SKILL_JUMP_POWER_UP <- 175 		  //  µµ¾à
-SKILL_MAGICAL_ATTACK_UP <- 176 		  //  °í´ëÀÇ ±â¾ï
-SKILL_THROW_MASTERY <- 177 		  //  ÅõÃ´ ¸¶½ºÅÍ¸®
-SKILL_PHYSICAL_BACK_ATTACK_CRITICAL <- 178 		  //  ¹°¸® ¹é ¾îÅÃ
-SKILL_DISJOINT_ITEM <- 179 		  //  ¾ÆÀÌÅÛ ÇØÃ¼
-SKILL_SUPER_ARMOR_ON_CAST <- 180 		  //  ºÒ±¼ÀÇ ÀÇÁö
-SKILL_COMPOUND_CRAFT <- 181 		  //  Á¶ÇÕ:¼¼°ø
-SKILL_COMPOUND_WEAVING <- 182 		  //  Á¶ÇÕ:¹æÁ÷
-SKILL_COMPOUND_MACHINE <- 183 		  //  Á¶ÇÕ:±â°è
-SKILL_COMPOUND_CHEMISTRY <- 184 		  //  Á¶ÇÕ:È­ÇÐ
-SKILL_ARMOR_MASTERY_LEATHER <- 185 		  //  °¡Á× °©¿Ê ¸¶½ºÅÍ¸®
-SKILL_PHYSICAL_CRITICAL_HIT_UP <- 186 		  //  ¹°¸® Å©¸®Æ¼ÄÃ È÷Æ®
-SKILL_ARMOR_MASTERY_CLOTH <- 187 		  //  Ãµ ¹æ¾î±¸ ¸¶½ºÅÍ¸®
-SKILL_MAGICAL_CRITICAL_HIT_UP <- 188 		  //  ¸¶¹ý Å©¸®Æ¼ÄÃ È÷Æ®
-SKILL_MAGICAL_BACK_ATTACK_CRITICAL <- 189 		  //  ¸¶¹ý ¹é ¾îÅÃ
-SKILL_QUICK_STANDING <- 190 		  //  Äü ½ºÅÄµù
-SKILL_BASIC_HP_MAX_UP <- 195 		  //  °øÆòÇÑ °áÅõÀå Àü¿ë ½ºÅ³ - »ý¸í·Â ¼÷·Ã
-SKILL_ARMOR_MASTERY_PLATE <- 196 		  //  ÆÇ±Ý ¸¶½ºÅÍ¸®
-SKILL_GUILD_STATUS_UP <- 200 		  //  ±æµå ½ºÅ³
-SKILL_FEATURE_STAT_PHYSICAL_ATTACK_UP <- 210 		  //  Èû Æ¯¼º
-SKILL_FEATURE_STAT_PHYSICAL_DEFENCE_UP <- 211 		  //  Ã¼·Â Æ¯¼º
-SKILL_FEATURE_STAT_MAGICAL_ATTACK_UP <- 212 		  //  Áö´É Æ¯¼º
-SKILL_FEATURE_STAT_MAGICAL_DEFENCE_UP <- 213 		  //  Á¤½Å Æ¯¼º
-SKILL_FEATURE_STAT_STUCK_UP <- 214 		  //  ÀûÁß·ü Æ¯¼º
-SKILL_FEATURE_STAT_ACTIVEPROPERTY_STUCK_UP <- 215 		  //  È¸ÇÇÀ² Æ¯¼º
-SKILL_FEATURE_STAT_HP_REGEN_RATE_UP <- 216 		  //  HP ¸®Á¨ Æ¯¼º
-SKILL_FEATURE_STAT_MP_REGEN_RATE_UP <- 217 		  //  MP ¸®Á¨ Æ¯¼º
-SKILL_FEATURE_STAT_ELEMENT_ATTACK_ALL_UP <- 218 		  // 	¸ðµç ¼Ó¼º °­È­
-SKILL_FEATURE_STAT_ELEMENT_TOLERANCE_ALL_UP <- 219 		  //  ¸ðµç ¼Ó¼º ÀúÇ×
+SKILL_BACK_STEP <- 169 		  // åŽé€€æŠ€èƒ½
+SKILL_CANCEL_BACK_STEP <- 170 		  // å–æ¶ˆåŽé€€æŠ€èƒ½
+SKILL_CANCEL_THROW_ITEM <- 171 		  // å–æ¶ˆæŠ•æŽ·ç‰©å“æŠ€èƒ½
+SKILL_ARMOR_MASTERY_LIGHT <- 172 		  // è½»åž‹æŠ¤ç”²ç²¾é€šæŠ€èƒ½
+SKILL_ARMOR_MASTERY_HEAVY <- 173 		  // é‡åž‹æŠ¤ç”²ç²¾é€šæŠ€èƒ½
+SKILL_BASIC_ATTACK_UP <- 174 		  // åŸºç¡€æ”»å‡»å¼ºåŒ–æŠ€èƒ½
+SKILL_JUMP_POWER_UP <- 175 		  // è·³è·ƒèƒ½åŠ›æå‡æŠ€èƒ½
+SKILL_MAGICAL_ATTACK_UP <- 176 		  // é­”æ³•æ”»å‡»æå‡æŠ€èƒ½
+SKILL_THROW_MASTERY <- 177 		  // æŠ•æŽ·ç²¾é€šæŠ€èƒ½
+SKILL_PHYSICAL_BACK_ATTACK_CRITICAL <- 178 		  // ç‰©ç†èƒŒå‡»æš´å‡»æŠ€èƒ½
+SKILL_DISJOINT_ITEM <- 179 		  // åˆ†è§£ç‰©å“æŠ€èƒ½
+SKILL_SUPER_ARMOR_ON_CAST <- 180 		  // æ–½æ³•æ—¶èŽ·å¾—è¶…çº§æŠ¤ç”²æŠ€èƒ½
+SKILL_COMPOUND_CRAFT <- 181 		  // å¤åˆåˆ¶ä½œæŠ€èƒ½
+SKILL_COMPOUND_WEAVING <- 182 		  // å¤åˆç¼–ç»‡æŠ€èƒ½
+SKILL_COMPOUND_MACHINE <- 183 		  // å¤åˆæœºæ¢°æŠ€èƒ½
+SKILL_COMPOUND_CHEMISTRY <- 184 		  // å¤åˆåŒ–å­¦æŠ€èƒ½
+SKILL_ARMOR_MASTERY_LEATHER <- 185 		  // çš®é©æŠ¤ç”²ç²¾é€šæŠ€èƒ½
+SKILL_PHYSICAL_CRITICAL_HIT_UP <- 186 		  // ç‰©ç†æš´å‡»æå‡æŠ€èƒ½
+SKILL_ARMOR_MASTERY_CLOTH <- 187 		  // å¸ƒç”²æŠ¤ç”²ç²¾é€šæŠ€èƒ½
+SKILL_MAGICAL_CRITICAL_HIT_UP <- 188 		  // é­”æ³•æš´å‡»æå‡æŠ€èƒ½
+SKILL_MAGICAL_BACK_ATTACK_CRITICAL <- 189 		  // é­”æ³•èƒŒå‡»æš´å‡»æŠ€èƒ½
+SKILL_QUICK_STANDING <- 190 		  // å¿«é€Ÿèµ·èº«æŠ€èƒ½
+SKILL_BASIC_HP_MAX_UP <- 195 		  // åŸºç¡€æœ€å¤§ç”Ÿå‘½å€¼æå‡æŠ€èƒ½
+SKILL_ARMOR_MASTERY_PLATE <- 196 		  // æ¿ç”²æŠ¤ç”²ç²¾é€šæŠ€èƒ½
+SKILL_GUILD_STATUS_UP <- 200 		  // å…¬ä¼šçŠ¶æ€æå‡æŠ€èƒ½
+SKILL_FEATURE_STAT_PHYSICAL_ATTACK_UP <- 210 		  // ç‰¹è‰²ç‰©ç†æ”»å‡»æå‡å±žæ€§æŠ€èƒ½
+SKILL_FEATURE_STAT_PHYSICAL_DEFENCE_UP <- 211 		  // ç‰¹è‰²ç‰©ç†é˜²å¾¡æå‡å±žæ€§æŠ€èƒ½
+SKILL_FEATURE_STAT_MAGICAL_ATTACK_UP <- 212 		  // ç‰¹è‰²é­”æ³•æ”»å‡»æå‡å±žæ€§æŠ€èƒ½
+SKILL_FEATURE_STAT_MAGICAL_DEFENCE_UP <- 213 		  // ç‰¹è‰²é­”æ³•é˜²å¾¡æå‡å±žæ€§æŠ€èƒ½
+SKILL_FEATURE_STAT_STUCK_UP <- 214 		  // ç‰¹è‰²ç¡¬ç›´æå‡å±žæ€§æŠ€èƒ½
+SKILL_FEATURE_STAT_ACTIVEPROPERTY_STUCK_UP <- 215 		  // ç‰¹è‰²ä¸»åŠ¨å±žæ€§ç¡¬ç›´æå‡æŠ€èƒ½
+SKILL_FEATURE_STAT_HP_REGEN_RATE_UP <- 216 		  // ç‰¹è‰²ç”Ÿå‘½å€¼æ¢å¤é€ŸçŽ‡æå‡å±žæ€§æŠ€èƒ½
+SKILL_FEATURE_STAT_MP_REGEN_RATE_UP <- 217 		  // ç‰¹è‰²é­”æ³•å€¼æ¢å¤é€ŸçŽ‡æå‡å±žæ€§æŠ€èƒ½
+SKILL_FEATURE_STAT_ELEMENT_ATTACK_ALL_UP <- 218 		  // ç‰¹è‰²å…¨å…ƒç´ æ”»å‡»å¼ºåŒ–å±žæ€§æŠ€èƒ½
+SKILL_FEATURE_STAT_ELEMENT_TOLERANCE_ALL_UP <- 219 		  // ç‰¹è‰²å…¨å…ƒç´ æŠ—æ€§æå‡å±žæ€§æŠ€èƒ½
 SKILL_MAX <- 220 
 SKILL_FEATURE_STAT_START <- 210 
-SKILL_FEATURE_STAT_MAX <- 10 		  // ½ºÅÈ Æ¯¼º °³¼ö
+SKILL_FEATURE_STAT_MAX <- 10 		  // ç‰¹è‰²å±žæ€§æŠ€èƒ½æ•°é‡ä¸Šé™
 
-
-ACTIVESTATUS_SLOW <- 0 		  //  ½½·Î¿ì
-ACTIVESTATUS_FREEZE <- 1 		  //  ÇÁ¸®Áî
-ACTIVESTATUS_POISON <- 2 		  //  Æ÷ÀÌÁð
-ACTIVESTATUS_STUN <- 3 		  //  ½ºÅÏ
-ACTIVESTATUS_CURSE <- 4 		  //  Ä¿½º
-ACTIVESTATUS_BLIND <- 5 		  //  ºí¶óÀÎµå
-ACTIVESTATUS_LIGHTNING <- 6 		  //  ¶óÀÌÆ®´×
-ACTIVESTATUS_STONE <- 7 		  //  ½ºÅæ
-ACTIVESTATUS_SLEEP <- 8 		  //  ½½¸³
-ACTIVESTATUS_BURN <- 9 		  //  È­»ó
-ACTIVESTATUS_WEAPON_BREAK <- 10 		  //  ¹«±â ÆÄ±«
-ACTIVESTATUS_BLEEDING <- 11 		  //  ºí¸®µù
-ACTIVESTATUS_HASTE <- 12 		  //  ÇìÀÌ½ºÆ®
-ACTIVESTATUS_BLESS <- 13 		  //  ºí·¹½º
-ACTIVESTATUS_ELEMENT <- 14 		  //  ¿¤·¹¸ÕÆ®
-ACTIVESTATUS_CONFUSE <- 15 		  //  È¥¶õ
-ACTIVESTATUS_HOLD <- 16 		  //  È¦µå
-ACTIVESTATUS_ARMOR_BREAK <- 17 		  //  °©¿Ê ÆÄ±«
+ACTIVESTATUS_SLOW <- 0 		  //  ï¿½ï¿½ï¿½Î¿ï¿½
+ACTIVESTATUS_FREEZE <- 1 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ACTIVESTATUS_POISON <- 2 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ACTIVESTATUS_STUN <- 3 		  //  ï¿½ï¿½ï¿½ï¿½
+ACTIVESTATUS_CURSE <- 4 		  //  Ä¿ï¿½ï¿½
+ACTIVESTATUS_BLIND <- 5 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½Îµï¿½
+ACTIVESTATUS_LIGHTNING <- 6 		  //  ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½
+ACTIVESTATUS_STONE <- 7 		  //  ï¿½ï¿½ï¿½ï¿½
+ACTIVESTATUS_SLEEP <- 8 		  //  ï¿½ï¿½ï¿½ï¿½
+ACTIVESTATUS_BURN <- 9 		  //  È­ï¿½ï¿½
+ACTIVESTATUS_WEAPON_BREAK <- 10 		  //  ï¿½ï¿½ï¿½ï¿½ ï¿½Ä±ï¿½
+ACTIVESTATUS_BLEEDING <- 11 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ACTIVESTATUS_HASTE <- 12 		  //  ï¿½ï¿½ï¿½Ì½ï¿½Æ®
+ACTIVESTATUS_BLESS <- 13 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ACTIVESTATUS_ELEMENT <- 14 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
+ACTIVESTATUS_CONFUSE <- 15 		  //  È¥ï¿½ï¿½
+ACTIVESTATUS_HOLD <- 16 		  //  È¦ï¿½ï¿½
+ACTIVESTATUS_ARMOR_BREAK <- 17 		  //  ï¿½ï¿½ï¿½ï¿½ ï¿½Ä±ï¿½
 ACTIVESTATUS_MAX <- 18 
 
 
-GROW_TYPE_PRIEST <- 0		/// ÇÁ¸®½ºÆ®
-GROW_TYPE_CRUSADER <- 1		/// Å©·ç¼¼ÀÌ´õ
-GROW_TYPE_INFIGHTER <- 2	/// ÀÎÆÄÀÌÅÍ
-GROW_TYPE_EXORCIST <- 3		/// Åð¸¶»ç
-GROW_TYPE_AVENGER <- 4		/// ¾îº¥Àú
+GROW_TYPE_PRIEST <- 0		/// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
+GROW_TYPE_CRUSADER <- 1		/// Å©ï¿½ç¼¼ï¿½Ì´ï¿½
+GROW_TYPE_INFIGHTER <- 2	/// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+GROW_TYPE_EXORCIST <- 3		/// ï¿½ð¸¶»ï¿½
+GROW_TYPE_AVENGER <- 4		/// ï¿½îº¥ï¿½ï¿½
 
 
-ENUM_CHARACTERJOB_SWORDMAN <- 0     /// °Ë»ç
-ENUM_CHARACTERJOB_FIGHTER <- 1      /// °ÝÅõ°¡
-ENUM_CHARACTERJOB_GUNNER <- 2       /// °Å³Ê
-ENUM_CHARACTERJOB_MAGE <- 3			/// ¸¶¹ý»ç
-ENUM_CHARACTERJOB_PRIEST <- 4		/// ÇÁ¸®½ºÆ®
-ENUM_CHARACTERJOB_AT_GUNNER <- 5	/// ¿©¼º °Å³Ê
-ENUM_CHARACTERJOB_THIEF <- 6		/// µµµÏ
-ENUM_CHARACTERJOB_AT_FIGHTER <- 7	/// ³²¼º °ÝÅõ°¡
-ENUM_CHARACTERJOB_AT_MAGE <- 8		/// ³²¼º ¸¶¹ý»ç
-ENUM_CHARACTERJOB_DEMONIC_SWORDMAN <- 9	/// ¸¶°Ë»ç
-ENUM_CHARACTERJOB_CREATOR_MAGE <- 10	/// Å©¸®¿¡ÀÌÅÍ
-ENUM_CHARACTERJOB_MAX <- 11	/// 
+ENUM_CHARACTERJOB_SWORDMAN <- 0     /// å‰‘å£«
+ENUM_CHARACTERJOB_FIGHTER <- 1      /// æ ¼æ–—å®¶
+ENUM_CHARACTERJOB_GUNNER <- 2       /// ç¥žæžªæ‰‹
+ENUM_CHARACTERJOB_MAGE <- 3			/// é­”æ³•å¸ˆ
+ENUM_CHARACTERJOB_PRIEST <- 4		/// åœ£èŒè€…
+ENUM_CHARACTERJOB_AT_GUNNER <- 5	/// æš—å¤œç¥žæžªæ‰‹
+ENUM_CHARACTERJOB_THIEF <- 6		/// ç›—è´¼
+ENUM_CHARACTERJOB_AT_FIGHTER <- 7	/// æš—å¤œæ ¼æ–—å®¶
+ENUM_CHARACTERJOB_AT_MAGE <- 8		/// æš—å¤œé­”æ³•å¸ˆ
+ENUM_CHARACTERJOB_DEMONIC_SWORDMAN <- 9	/// é­”å‰‘å£«
+ENUM_CHARACTERJOB_CREATOR_MAGE <- 10	/// ç¼”é€ è€…é­”æ³•å¸ˆ
+ENUM_CHARACTERJOB_MAX <- 11	/// è§’è‰²èŒä¸šæžšä¸¾æœ€å¤§å€¼
 
 
 ENUM_IS_REVERSE <- 0
@@ -1179,96 +1178,96 @@ ENUM_ANIMATION_BOOL_MAX <- 7
 
 MODULE_TYPE_NONE <- -1
 MODULE_TYPE_ENTRANCE <- 0
-MODULE_TYPE_ROOM_LIST <- 1	// ¸¶À»
-MODULE_TYPE_SELECT_DUNGEON <- 2				// ´øÀü ¼±ÅÃÈ­¸é
-MODULE_TYPE_MAIN_GAME <- 3					// ÀÏ¹Ý´øÀü(ÀÌ°è Æ÷ÇÔ)
-MODULE_TYPE_PVP <- 4						// °áÀå
-MODULE_TYPE_FAIR_PVP <- 5					// °ø°á
-//MODULE_TYPE_LABYRINTH <- 7				// »ç¶óÁü
+MODULE_TYPE_ROOM_LIST <- 1	// ï¿½ï¿½ï¿½ï¿½
+MODULE_TYPE_SELECT_DUNGEON <- 2				// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½È­ï¿½ï¿½
+MODULE_TYPE_MAIN_GAME <- 3					// ï¿½Ï¹Ý´ï¿½ï¿½ï¿½(ï¿½Ì°ï¿½ ï¿½ï¿½ï¿½ï¿½)
+MODULE_TYPE_PVP <- 4						// ï¿½ï¿½ï¿½ï¿½
+MODULE_TYPE_FAIR_PVP <- 5					// ï¿½ï¿½ï¿½ï¿½
+//MODULE_TYPE_LABYRINTH <- 7				// ï¿½ï¿½ï¿½ï¿½ï¿½
 MODULE_TYPE_SELECT_CHANNEL <- 6             
-MODULE_TYPE_WARROOM <- 7					// ÀüÀïÁö¿ª
+MODULE_TYPE_WARROOM <- 7					// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 //MODULE_TYPE_CHAOS <- 8					
 MODULE_TYPE_LOGIN <- 8
-MODULE_TYPE_ASSAULT <- 9					// ½Î¿ìÀÚ
-MODULE_TYPE_DEAD_TOWER <- 10					// »çÅ¾
-MODULE_TYPE_BLOOD_SYSTEM <- 11				// ¹«ÇÑÀÇ Á¦´Ü
-MODULE_TYPE_DESPAIR_TOWER <- 12			//Àý¸ÁÀÇÅ¾
+MODULE_TYPE_ASSAULT <- 9					// ï¿½Î¿ï¿½ï¿½ï¿½
+MODULE_TYPE_DEAD_TOWER <- 10					// ï¿½ï¿½Å¾
+MODULE_TYPE_BLOOD_SYSTEM <- 11				// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+MODULE_TYPE_DESPAIR_TOWER <- 12			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å¾
 
-// ±Û·Î¹ú½Ç ÄÁÅÙÃ÷
-MODULE_TYPE_BOSS_TOWER <- 13			//½É¿¬ÀÇ Åõ±âÀå
-MODULE_TYPE_ADVANCE_ALTAR <- 14			//Áø°ÝÀÇ Á¦´Ü
+// ï¿½Û·Î¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+MODULE_TYPE_BOSS_TOWER <- 13			//ï¿½É¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+MODULE_TYPE_ADVANCE_ALTAR <- 14			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
 MODULE_TYPE_LOAD <- 15
 MODULE_TYPE_TOURNAMENT <- 16
 MODULE_TYPE_MAX <- 17
-MODULE_TYPE_PVP_TYPE <- 18			// °áÅõÀå, ½Î¿ìÀÚ, ÀüÀïÁö¿ªÀ» ÇÕÃÄ ÁöÄª
-MODULE_TYPE_DUNGEON_TYPE <- 19		// ´øÀü, »çÅ¾, ¹«Á¦¸¦ ÇÕÃÄ ÁöÄª
+MODULE_TYPE_PVP_TYPE <- 18			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½Î¿ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Äª
+MODULE_TYPE_DUNGEON_TYPE <- 19		// ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½Å¾, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Äª
 MODULE_TYPE_ALL <- 20			
 
 //MODULE_TYPE_LOAD <- 13
 //MODULE_TYPE_TOURNAMENT <- 14
 //MODULE_TYPE_MAX <- 15
-//MODULE_TYPE_PVP_TYPE <- 16			// °áÅõÀå, ½Î¿ìÀÚ, ÀüÀïÁö¿ªÀ» ÇÕÃÄ ÁöÄª
-//MODULE_TYPE_DUNGEON_TYPE <- 17		// ´øÀü, »çÅ¾, ¹«Á¦¸¦ ÇÕÃÄ ÁöÄª
-//MODULE_TYPE_ALL <- 18				// ¸ðµç ¸ðµâÀ» ÁöÄª
+//MODULE_TYPE_PVP_TYPE <- 16			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½Î¿ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Äª
+//MODULE_TYPE_DUNGEON_TYPE <- 17		// ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½Å¾, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Äª
+//MODULE_TYPE_ALL <- 18				// ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Äª
 
 
-ATTACKTYPE_PHYSICAL <- 0		/// µ¶¸³ ¹°¸® °ø°Ý
-ATTACKTYPE_MAGICAL  <- 1       /// µ¶¸³ ¸¶¹ý °ø°Ý  
-ATTACKTYPE_ABSOLUTE <- 2      /// ¹æ¾î ¹«½Ã °ø°Ý
+ATTACKTYPE_PHYSICAL <- 0		/// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+ATTACKTYPE_MAGICAL  <- 1       /// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½  
+ATTACKTYPE_ABSOLUTE <- 2      /// ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 ATTACKTYPE_LIGHT	<- 3
 ATTACKTYPE_DARK		<- 4
 ATTACKTYPE_WATER	<- 5
 ATTACKTYPE_FIRE		<- 6
 ATTACKTYPE_MAX		<- 7
 
-BUFF_CAUSE_NORMAL <- 0// ÀÏ¹Ý ¾îÆæµðÁö °°Àº Å¸ÀÔ
-BUFF_CAUSE_ACTIVE_STATUS <- 1// »óÅÂÀÌ»ó
-BUFF_CAUSE_SKILL <- 2		// ½ºÅ³
-BUFF_CAUSE_EXCEPTIONAL <- 3	// ¿¹¿ÜÃ³¸®¸¦ À§ÇÔ(¸¶À»¿¡¼­µµ À¯ÁöµÇ´Â ¹öÇÁ ¾ÆÀÌÄÜ °°Àº °Í)
-BUFF_NONE <- 4				// ¾Æ¹«·±°Íµµ ÇÏÁö ¾ÊÀ½
+BUFF_CAUSE_NORMAL <- 0// ï¿½Ï¹ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Å¸ï¿½ï¿½
+BUFF_CAUSE_ACTIVE_STATUS <- 1// ï¿½ï¿½ï¿½ï¿½ï¿½Ì»ï¿½
+BUFF_CAUSE_SKILL <- 2		// ï¿½ï¿½Å³
+BUFF_CAUSE_EXCEPTIONAL <- 3	// ï¿½ï¿½ï¿½ï¿½Ã³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ç´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½)
+BUFF_NONE <- 4				// ï¿½Æ¹ï¿½ï¿½ï¿½ï¿½Íµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 BUFF_CAUSE_MAX <- 5
 
 
 
-PAUSETYPE_NONE		<- 0	/// ÀÏ½ÃÁ¤Áö ¾ÈÇÔ
-PAUSETYPE_OBJECT	<- 1	/// ¿ÀºêÁ§Æ®¸¸ ÀÏ½ÃÁ¤Áö (Appendage, »óÅÂ º¯È­, ÀÌÆåÆ®´Â °è¼Ó µ¹¾Æ°¨, Áß·Â ¹ÌÀû¿ë)
-PAUSETYPE_WORLD		<- 2	/// Àü ¼¼°è°¡ ÀÏ½ÃÁ¤Áö (Appendage, »óÅÂ º¯È­, ÀÌÆåÆ®µµ Á¤Áö)
+PAUSETYPE_NONE		<- 0	/// ï¿½Ï½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+PAUSETYPE_OBJECT	<- 1	/// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Ï½ï¿½ï¿½ï¿½ï¿½ï¿½ (Appendage, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È­, ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Æ°ï¿½, ï¿½ß·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)
+PAUSETYPE_WORLD		<- 2	/// ï¿½ï¿½ ï¿½ï¿½ï¿½è°¡ ï¿½Ï½ï¿½ï¿½ï¿½ï¿½ï¿½ (Appendage, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È­, ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)
 
 ENUM_ELEMENT_FIRE	<- 0	/// È­
-ENUM_ELEMENT_WATER	<- 1	/// ¼ö
-ENUM_ELEMENT_DARK	<- 2	/// ¾Ï
-ENUM_ELEMENT_LIGHT	<- 3	/// ¸í
-ENUM_ELEMENT_NONE	<- 4	/// ¹«
+ENUM_ELEMENT_WATER	<- 1	/// ï¿½ï¿½
+ENUM_ELEMENT_DARK	<- 2	/// ï¿½ï¿½
+ENUM_ELEMENT_LIGHT	<- 3	/// ï¿½ï¿½
+ENUM_ELEMENT_NONE	<- 4	/// ï¿½ï¿½
 ENUM_ELEMENT_MAX	<- 4	/// == ENUM_ELEMENT_NONE
 
 
-//  ´øÁö´Â ´ë»óÀÇ Å¸ÀÔ
-THROW_TYPE_SKILL	<- 0	/// ½ºÅ³
-THROW_TYPE_ITEM		<- 1	/// ÅõÃ´ ¾ÆÀÌÅÛ
-SETUP_TYPE_ITEM		<- 2	/// ¼³Ä¡ ¾ÆÀÌÅÛ
+//  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ Å¸ï¿½ï¿½
+THROW_TYPE_SKILL	<- 0	/// ï¿½ï¿½Å³
+THROW_TYPE_ITEM		<- 1	/// ï¿½ï¿½Ã´ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+SETUP_TYPE_ITEM		<- 2	/// ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-SPEED_TYPE_CONST						<- 0	/// »ó¼ö°ª. º¯°æÇØµµ setStaticSpeedInfo¸¦ ÀçÈ£ÃâÇÏ±â Àü±îÁö´Â Àû¿ë ¾ÈµÊ
-SPEED_TYPE_MOVE_SPEED					<- 1	/// ÀÌµ¿ ¼Óµµ
-SPEED_TYPE_ATTACK_SPEED					<- 2	/// °ø°Ý ¼Óµµ
-SPEED_TYPE_EXCEPT_WEAPON_ATTACK_SPEED	<- 3	/// ¹«±â ºüÁø °ø°Ý ¼Óµµ
-SPEED_TYPE_CAST_SPEED					<- 4	/// Ä³½ºÆ® ¼Óµµ
+SPEED_TYPE_CONST						<- 0	/// ï¿½ï¿½ï¿½ï¿½ï¿½. ï¿½ï¿½ï¿½ï¿½ï¿½Øµï¿½ setStaticSpeedInfoï¿½ï¿½ ï¿½ï¿½È£ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Èµï¿½
+SPEED_TYPE_MOVE_SPEED					<- 1	/// ï¿½Ìµï¿½ ï¿½Óµï¿½
+SPEED_TYPE_ATTACK_SPEED					<- 2	/// ï¿½ï¿½ï¿½ï¿½ ï¿½Óµï¿½
+SPEED_TYPE_EXCEPT_WEAPON_ATTACK_SPEED	<- 3	/// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Óµï¿½
+SPEED_TYPE_CAST_SPEED					<- 4	/// Ä³ï¿½ï¿½Æ® ï¿½Óµï¿½
 
-Z_ACCEL_TYPE_CONST				<- 0	/// ÀÓÀÇÀÇ »ó¼ö
-Z_ACCEL_TYPE_GRAVITY_WORLD		<- 1	/// Áß·Â : ¼¼°èÀÇ °­Á¦ Áß·Â
-Z_ACCEL_TYPE_GRAVITY_OBJECT		<- 2	/// Áß·Â : Ä³¸¯ÅÍº° Áß·Â
-Z_ACCEL_TYPE_ANTIGRAVITY_OBJECT	<- 3	/// ¹ÝÁß·Â : Áß·Â¿¡ ¹Ý´ëµÇ´Â Èû. ¶Ç´Â ¾ç·Â.
+Z_ACCEL_TYPE_CONST				<- 0	/// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
+Z_ACCEL_TYPE_GRAVITY_WORLD		<- 1	/// ï¿½ß·ï¿½ : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ß·ï¿½
+Z_ACCEL_TYPE_GRAVITY_OBJECT		<- 2	/// ï¿½ß·ï¿½ : Ä³ï¿½ï¿½ï¿½Íºï¿½ ï¿½ß·ï¿½
+Z_ACCEL_TYPE_ANTIGRAVITY_OBJECT	<- 3	/// ï¿½ï¿½ï¿½ß·ï¿½ : ï¿½ß·Â¿ï¿½ ï¿½Ý´ï¿½Ç´ï¿½ ï¿½ï¿½. ï¿½Ç´ï¿½ ï¿½ï¿½ï¿½.
 
-STATICINFO_DEPTH				<- 4	/// Static InfoÀÇ ÃÖ´ë ÀúÀå ±íÀÌ. (±âº» -> Àåºñ Àû¿ë -> »óÅÂº¯È­ Àû¿ë -> ¾ÆÀÌÅÛ, ½ºÅ³ Àû¿ë)
-X_NORMALMOVE_VELOCITY			<- 143	/// °¡·Î ÀÌµ¿½Ã °¡·Î·Î 1ÃÊµ¿¾È ÀÌµ¿ ÇÈ¼¿ ¼ö
-X_SLANTMOVE_VELOCITY			<- 119	/// ´ë°¢¼± ÀÌµ¿½Ã °¡·Î·Î 1ÃÊµ¿¾È ÀÌµ¿ ÇÈ¼¿ ¼ö
-Y_NORMALMOVE_VELOCITY			<- 114	/// ¼¼·Î ÀÌµ¿½Ã ¼¼·Î·Î 1ÃÊµ¿¾È ÀÌµ¿ ÇÈ¼¿ ¼ö
-Y_SLANTMOVE_VELOCITY			<- 95	/// ´ë°¢¼± ÀÌµ¿½Ã ¼¼·Î·Î 1ÃÊµ¿¾È ÀÌµ¿ ÇÈ¼¿ ¼ö
-FORCE_TO_VELOCITY_CONST			<- 4000	/// Èû¿¡ ÀÇÇÑ ¼Óµµ¸¦ °è»êÇÏ´Â »ó¼ö. ¼Óµµ = »ó¼ö * Èû / ¹«°Ô
-SPEED_VALUE_DEFAULT				<- 1000	/// ÀÌµ¿ ¼Óµµ, °ø°Ý ¼ÓµµµîÀÇ ¼Óµµ°ª ±âº»Ä¡. ÀÌ °ªÀÌ¸é 100%ÀÓ.
-LIGHT_OBJECT_MAX_WEIGHT			<- 60000	/// È¿°úÀ½¿¡¼­ °¡º­¿î ¹«°ÔÀÇ »óÇÑ¼±
-MIDDLE_OBJECT_MAX_WEIGHT		<- 100000	/// È¿°úÀ½¿¡¼­ Áß°£ ¹«°ÔÀÇ »óÇÑ¼±
-DEFAULT_GRAVITY_ACCEL			<- -1500	/// ±âº» Áß·Â °¡¼Óµµ
+STATICINFO_DEPTH				<- 4	/// Static Infoï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½. (ï¿½âº» -> ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ -> ï¿½ï¿½ï¿½Âºï¿½È­ ï¿½ï¿½ï¿½ï¿½ -> ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½Å³ ï¿½ï¿½ï¿½ï¿½)
+X_NORMALMOVE_VELOCITY			<- 143	/// ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Î·ï¿½ 1ï¿½Êµï¿½ï¿½ï¿½ ï¿½Ìµï¿½ ï¿½È¼ï¿½ ï¿½ï¿½
+X_SLANTMOVE_VELOCITY			<- 119	/// ï¿½ë°¢ï¿½ï¿½ ï¿½Ìµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Î·ï¿½ 1ï¿½Êµï¿½ï¿½ï¿½ ï¿½Ìµï¿½ ï¿½È¼ï¿½ ï¿½ï¿½
+Y_NORMALMOVE_VELOCITY			<- 114	/// ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Î·ï¿½ 1ï¿½Êµï¿½ï¿½ï¿½ ï¿½Ìµï¿½ ï¿½È¼ï¿½ ï¿½ï¿½
+Y_SLANTMOVE_VELOCITY			<- 95	/// ï¿½ë°¢ï¿½ï¿½ ï¿½Ìµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Î·ï¿½ 1ï¿½Êµï¿½ï¿½ï¿½ ï¿½Ìµï¿½ ï¿½È¼ï¿½ ï¿½ï¿½
+FORCE_TO_VELOCITY_CONST			<- 4000	/// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Óµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½. ï¿½Óµï¿½ = ï¿½ï¿½ï¿½ * ï¿½ï¿½ / ï¿½ï¿½ï¿½ï¿½
+SPEED_VALUE_DEFAULT				<- 1000	/// ï¿½Ìµï¿½ ï¿½Óµï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½Óµï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Óµï¿½ï¿½ï¿½ ï¿½âº»Ä¡. ï¿½ï¿½ ï¿½ï¿½ï¿½Ì¸ï¿½ 100%ï¿½ï¿½.
+LIGHT_OBJECT_MAX_WEIGHT			<- 60000	/// È¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ñ¼ï¿½
+MIDDLE_OBJECT_MAX_WEIGHT		<- 100000	/// È¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ñ¼ï¿½
+DEFAULT_GRAVITY_ACCEL			<- -1500	/// ï¿½âº» ï¿½ß·ï¿½ ï¿½ï¿½ï¿½Óµï¿½
 
 
 OBJECT_MESSAGE_INVINCIBLE		<- 0
@@ -1295,19 +1294,19 @@ OPTION_HOTKEY_MOVE_RIGHT <- 3
 ENUM_SUBKEY_TYPE_ALL <- 7
 
 
-GROW_TYPE_AT_MAGE			<- 0	//  ³²¹ý»ç
-GROW_TYPE_ELEMENTAL_BOMBER	<- 1	//  ¿¤·¹¸àÅ» ¹Ù¸Ó
-GROW_TYPE_GRACIAL_MASTER	<- 2	//  ºù°á»ç
+GROW_TYPE_AT_MAGE			<- 0	//  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+GROW_TYPE_ELEMENTAL_BOMBER	<- 1	//  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å» ï¿½Ù¸ï¿½
+GROW_TYPE_GRACIAL_MASTER	<- 2	//  ï¿½ï¿½ï¿½ï¿½ï¿½
 
-PARTICLE_CREATER_LARGE_HIT			<- 0		/// Å« Å¸°Ý¿ë
-PARTICLE_CREATER_SMALL_HIT			<- 1		/// ÀÛÀº Å¸°Ý¿ë
-PARTICLE_CREATER_FIRE_HIT			<- 2		/// È­ ¼Ó¼º Å¸°Ý¿ë
-PARTICLE_CREATER_FIRE_HIT_LIGHT		<- 3		/// È­ ¼Ó¼º Å¸°Ý¿ë
-PARTICLE_CREATER_WATER_HIT			<- 4		/// ¼ö ¼Ó¼º Å¸°Ý¿ë
-PARTICLE_CREATER_WATER_HIT_LIGHT	<- 5		/// ¼ö ¼Ó¼º Å¸°Ý¿ë
-PARTICLE_CREATER_WATER_HIT_ICE		<- 6		/// ¼ö ¼Ó¼º Å¸°Ý¿ë
+PARTICLE_CREATER_LARGE_HIT			<- 0		/// Å« Å¸ï¿½Ý¿ï¿½
+PARTICLE_CREATER_SMALL_HIT			<- 1		/// ï¿½ï¿½ï¿½ï¿½ Å¸ï¿½Ý¿ï¿½
+PARTICLE_CREATER_FIRE_HIT			<- 2		/// È­ ï¿½Ó¼ï¿½ Å¸ï¿½Ý¿ï¿½
+PARTICLE_CREATER_FIRE_HIT_LIGHT		<- 3		/// È­ ï¿½Ó¼ï¿½ Å¸ï¿½Ý¿ï¿½
+PARTICLE_CREATER_WATER_HIT			<- 4		/// ï¿½ï¿½ ï¿½Ó¼ï¿½ Å¸ï¿½Ý¿ï¿½
+PARTICLE_CREATER_WATER_HIT_LIGHT	<- 5		/// ï¿½ï¿½ ï¿½Ó¼ï¿½ Å¸ï¿½Ý¿ï¿½
+PARTICLE_CREATER_WATER_HIT_ICE		<- 6		/// ï¿½ï¿½ ï¿½Ó¼ï¿½ Å¸ï¿½Ý¿ï¿½
 
-OPTION_HOTKEY__UNDEFINED <- -1 		  //  Á¤ÀÇµÇÁö ¾ÊÀ½
+OPTION_HOTKEY__UNDEFINED <- -1 		  //  ï¿½ï¿½ï¿½Çµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 OPTION_HOTKEY_MOVE_UP <- 0 		  //  (Up arrow)
 OPTION_HOTKEY_MOVE_LEFT <- 1 		  //  (Left arrow)
 OPTION_HOTKEY_MOVE_DOWN <- 2 		  //  (Down arrow)
@@ -1315,7 +1314,7 @@ OPTION_HOTKEY_MOVE_RIGHT <- 3 		  //  (Right arrow)
 OPTION_HOTKEY_ATTACK <- 4 		  //  (X)
 OPTION_HOTKEY_JUMP <- 5 		  //  (C)
 OPTION_HOTKEY_SKILL <- 6 		  //  (Z)
-OPTION_HOTKEY_SKILL2 <- 7 		  //  buff¿ë Å°(space)
+OPTION_HOTKEY_SKILL2 <- 7 		  //  buffï¿½ï¿½ Å°(space)
 OPTION_HOTKEY_CREATURE_SKILL <- 8 		  //  (V)
 OPTION_HOTKEY_STATUS_WINDOW <- 9 		  //  (M)
 OPTION_HOTKEY_SKILL_WINDOW <- 10 		  //  (K)
@@ -1324,59 +1323,59 @@ OPTION_HOTKEY_OPTION_WINDOW <- 12 		  //  (O)
 OPTION_HOTKEY_NORMAL_QUEST_WINDOW <- 13 		  //  (Q)
 OPTION_HOTKEY_AVATAR_INVENTORY <- 14 		  //  (U)
 OPTION_HOTKEY_CERASHOP <- 15 		  //  (T)
-OPTION_HOTKEY_MINIMAP <- 16 		  // ´øÀü ¹Ì´Ï¸Ê(N)
+OPTION_HOTKEY_MINIMAP <- 16 		  // ï¿½ï¿½ï¿½ï¿½ ï¿½Ì´Ï¸ï¿½(N)
 OPTION_HOTKEY_CREATURE_WINDOW <- 17 		  //  (Y)
-OPTION_HOTKEY_TOOLTIP_ <- 18 		  // »ó¼¼º¸±â ÀüÈ¯Å°(R)
+OPTION_HOTKEY_TOOLTIP_ <- 18 		  // ï¿½ó¼¼ºï¿½ï¿½ï¿½ ï¿½ï¿½È¯Å°(R)
 OPTION_HOTKEY_EPIC_QUEST_WINDOW <- 19 		  //  (W)
-OPTION_HOTKEY_QUICK_SKILL1 <- 20 		  //  ½ºÅ³ ½½·Ô(A, S, D, F, G, H)
+OPTION_HOTKEY_QUICK_SKILL1 <- 20 		  //  ï¿½ï¿½Å³ ï¿½ï¿½ï¿½ï¿½(A, S, D, F, G, H)
 OPTION_HOTKEY_QUICK_SKILL2 <- 21 
 OPTION_HOTKEY_QUICK_SKILL3 <- 22 
 OPTION_HOTKEY_QUICK_SKILL4 <- 23 
 OPTION_HOTKEY_QUICK_SKILL5 <- 24 
 OPTION_HOTKEY_QUICK_SKILL6 <- 25 
-OPTION_HOTKEY_EXSKILL1 <- 26 		  //  È®Àå½ºÅ³ ½½·Ô(F1 - F6)
+OPTION_HOTKEY_EXSKILL1 <- 26 		  //  È®ï¿½å½ºÅ³ ï¿½ï¿½ï¿½ï¿½(F1 - F6)
 OPTION_HOTKEY_EXSKILL2 <- 27 
 OPTION_HOTKEY_EXSKILL3 <- 28 
 OPTION_HOTKEY_EXSKILL4 <- 29 
 OPTION_HOTKEY_EXSKILL5 <- 30 
 OPTION_HOTKEY_EXSKILL6 <- 31 
-OPTION_HOTKEY_ITEM_QUICKSLOT1 <- 32 		  //  ¾ÆÀÌÅÛ Äü ½½·Ô(1 - 6)
+OPTION_HOTKEY_ITEM_QUICKSLOT1 <- 32 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½(1 - 6)
 OPTION_HOTKEY_ITEM_QUICKSLOT2 <- 33 
 OPTION_HOTKEY_ITEM_QUICKSLOT3 <- 34 
 OPTION_HOTKEY_ITEM_QUICKSLOT4 <- 35 
 OPTION_HOTKEY_ITEM_QUICKSLOT5 <- 36 
 OPTION_HOTKEY_ITEM_QUICKSLOT6 <- 37 
-OPTION_HOTKEY_TOGGLE_ITEM_NAME_IN_DUNGEON <- 38 		  //  ´øÀü¿¡¼­ ¾ÆÀÌÅÛ ÀÌ¸§º¸±â(ctrl)
-OPTION_HOTKEY_HIDE_MAIN_HUD <- 39 		  //  ÀÎÅÍÆäÀÌ½º ¼û±â±â(Tab)
-OPTION_HOTKEY_TOGGLE_TITLE_ANIMATION <- 40 		  //  ´Ð³×ÀÓ Á¤º¸ ¸ðµå º¯È¯(E)
-OPTION_HOTKEY_TOGGLE_SKILL_INFORMATION <- 41 		  //  ½ºÅ³ ÅøÆÁ ¼³¸í ¸ðµå ÀüÈ¯(F7)
-OPTION_HOTKEY_PAUSE_IN_TOWER <- 42 		  //  »ç¸ÁÀÇ Å¾ ÀÏ½ÃÁ¤Áö
-OPTION_HOTKEY_CAPTURE_MOVING_PICTURE <- 43 		  //  µ¿¿µ»ó Ä¸ÃÄ(Pause)
-OPTION_HOTKEY_MENU_MY_INFO <- 44 		  //  ³»º¸°üÇÔ ¸Þ´º(7)
-OPTION_HOTKEY_MENU_COMMUNITY <- 45 		  //  Ä¿¹Â´ÏÆ¼ ¸Þ´º(8)
-OPTION_HOTKEY_MENU_CONTENTS <- 46 		  //  ÄÁÅÙÃ÷ ¸Þ´º(9)
-OPTION_HOTKEY_MENU_SERVICE <- 47 		  //  ¼­ºñ½º ¸Þ´º(0)
-OPTION_HOTKEY_MENU_SYSTEM__CLOSE_ALL_WINDOW <- 48 		  // ¸ðµçÃ¢´Ý±â(Esc)
-OPTION_HOTKEY_PVP <- 49 		  //  °áÅõÀå(P)
-OPTION_HOTKEY_RECOMMEND_USER <- 50 		  //  ÃßÃµµ¿·á([)
-OPTION_HOTKEY_PARTY_MATCHING <- 51 		  //  ÆÄÆ¼¸ÅÄª(])
-OPTION_HOTKEY_FRIEND <- 52 		  //  Ä£±¸(L)
-OPTION_HOTKEY_GUILD <- 53 		  //  ±æµå(;)
-OPTION_HOTKEY_MEMBER <- 54 		  //  ¸â¹ö(')
-OPTION_HOTKEY_BLACKLIST <- 55 		  //  Â÷´Ü
-OPTION_HOTKEY_PVP_BUDDY <- 56 		  //  °áÅõÄ£±¸
-OPTION_HOTKEY_WAR_AREA_LIST <- 57 		  //  ÀüÀïÁö¿ª¸ñ·ÏÃ¢(,)
-OPTION_HOTKEY_AUCTION_WINDOW <- 58 		  //  °æ¸ÅÀå(B)
-OPTION_HOTKEY_GOBLIN_PAD <- 59 		  //  °íºí¸°ÆÐµå
-OPTION_HOTKEY_HOTKEY_SETTING_WINDOW <- 60 		  //  ´ÜÃàÅ° ¼³Á¤Ã¢
-OPTION_HOTKEY_WAR_AREA_INFORMATION <- 61 		  //  ÀüÀïÁö¿ª Á¤º¸Ã¢(End)
-OPTION_HOTKEY_HELLMODE_INFORMATION <- 62 		  //  ´õ ÀÌ»ó »ç¿ëµÇÁö ¾ÊÀ½
-OPTION_HOTKEY_FAVOR_CHECK_WINDOW <- 63 		  //  ´õ ÀÌ»ó »ç¿ëµÇÁö ¾ÊÀ½
-OPTION_HOTKEY_EXPERT_JOB <- 64 		  //  Àü¹®Á÷¾÷ ±â´É
-OPTION_HOTKEY_EMOTION_EXPRESSION <- 65 		  //  °¨Á¤Ç¥Çö ±â´É
-OPTION_HOTKEY_EVENT <- 66 		  //  ÀÌº¥Æ®Å°(shift)
-OPTION_HOTKEY_PVP_MSSION <- 67 		  //  ¹Ì¼ÇÀ©µµ¿ì
-OPTION_HOTKEY_PVP_RECORD <- 68 		  //  ÀüÀûº¸±âÃ¢
+OPTION_HOTKEY_TOGGLE_ITEM_NAME_IN_DUNGEON <- 38 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ï¿½ï¿½(ctrl)
+OPTION_HOTKEY_HIDE_MAIN_HUD <- 39 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½(Tab)
+OPTION_HOTKEY_TOGGLE_TITLE_ANIMATION <- 40 		  //  ï¿½Ð³ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½È¯(E)
+OPTION_HOTKEY_TOGGLE_SKILL_INFORMATION <- 41 		  //  ï¿½ï¿½Å³ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½È¯(F7)
+OPTION_HOTKEY_PAUSE_IN_TOWER <- 42 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ Å¾ ï¿½Ï½ï¿½ï¿½ï¿½ï¿½ï¿½
+OPTION_HOTKEY_CAPTURE_MOVING_PICTURE <- 43 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ä¸ï¿½ï¿½(Pause)
+OPTION_HOTKEY_MENU_MY_INFO <- 44 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ´ï¿½(7)
+OPTION_HOTKEY_MENU_COMMUNITY <- 45 		  //  Ä¿ï¿½Â´ï¿½Æ¼ ï¿½Þ´ï¿½(8)
+OPTION_HOTKEY_MENU_CONTENTS <- 46 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ´ï¿½(9)
+OPTION_HOTKEY_MENU_SERVICE <- 47 		  //  ï¿½ï¿½ï¿½ï¿½ ï¿½Þ´ï¿½(0)
+OPTION_HOTKEY_MENU_SYSTEM__CLOSE_ALL_WINDOW <- 48 		  // ï¿½ï¿½ï¿½Ã¢ï¿½Ý±ï¿½(Esc)
+OPTION_HOTKEY_PVP <- 49 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(P)
+OPTION_HOTKEY_RECOMMEND_USER <- 50 		  //  ï¿½ï¿½Ãµï¿½ï¿½ï¿½ï¿½([)
+OPTION_HOTKEY_PARTY_MATCHING <- 51 		  //  ï¿½ï¿½Æ¼ï¿½ï¿½Äª(])
+OPTION_HOTKEY_FRIEND <- 52 		  //  Ä£ï¿½ï¿½(L)
+OPTION_HOTKEY_GUILD <- 53 		  //  ï¿½ï¿½ï¿½(;)
+OPTION_HOTKEY_MEMBER <- 54 		  //  ï¿½ï¿½ï¿½(')
+OPTION_HOTKEY_BLACKLIST <- 55 		  //  ï¿½ï¿½ï¿½ï¿½
+OPTION_HOTKEY_PVP_BUDDY <- 56 		  //  ï¿½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½
+OPTION_HOTKEY_WAR_AREA_LIST <- 57 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¢(,)
+OPTION_HOTKEY_AUCTION_WINDOW <- 58 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½(B)
+OPTION_HOTKEY_GOBLIN_PAD <- 59 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½
+OPTION_HOTKEY_HOTKEY_SETTING_WINDOW <- 60 		  //  ï¿½ï¿½ï¿½ï¿½Å° ï¿½ï¿½ï¿½ï¿½Ã¢
+OPTION_HOTKEY_WAR_AREA_INFORMATION <- 61 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ã¢(End)
+OPTION_HOTKEY_HELLMODE_INFORMATION <- 62 		  //  ï¿½ï¿½ ï¿½Ì»ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+OPTION_HOTKEY_FAVOR_CHECK_WINDOW <- 63 		  //  ï¿½ï¿½ ï¿½Ì»ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+OPTION_HOTKEY_EXPERT_JOB <- 64 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
+OPTION_HOTKEY_EMOTION_EXPRESSION <- 65 		  //  ï¿½ï¿½ï¿½ï¿½Ç¥ï¿½ï¿½ ï¿½ï¿½ï¿½
+OPTION_HOTKEY_EVENT <- 66 		  //  ï¿½Ìºï¿½Æ®Å°(shift)
+OPTION_HOTKEY_PVP_MSSION <- 67 		  //  ï¿½Ì¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+OPTION_HOTKEY_PVP_RECORD <- 68 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¢
 OPTION_HOTKEY_QUICK_CHAT_0 <- 69 
 OPTION_HOTKEY_QUICK_CHAT_1 <- 70 
 OPTION_HOTKEY_QUICK_CHAT_2 <- 71 
@@ -1387,20 +1386,20 @@ OPTION_HOTKEY_QUICK_CHAT_6 <- 75
 OPTION_HOTKEY_QUICK_CHAT_7 <- 76 
 OPTION_HOTKEY_QUICK_CHAT_8 <- 77 
 OPTION_HOTKEY_QUICK_CHAT_9 <- 78 
-OPTION_HOTKEY_TOGGLE_ITEMINFO_COMPARE <- 79 		  //  ¾ÆÀÌÅÛ ºñ±³Ã¢ ÀüÈ¯Å° (Default: F8)
-OPTION_HOTKEY_TITLEBOOK <- 80 		  //  ÄªÈ£ºÏ
-OPTION_HOTKEY_THIS_DUNGEON <- 81 		  //  ÀçµµÀü
-OPTION_HOTKEY_ANOTHER_DUNGEON <- 82 		  //  ´Ù¸¥ ´øÀü µµÀü
-OPTION_HOTKEY_RETURN_TO_TOWN <- 83 		  //  ¸¶À»·Î µ¹¾Æ°¡±â
-OPTION_HOTKEY_MERCENARY_SYSTEM <- 84 		  //  ¿ëº´ ½Ã½ºÅÛ
+OPTION_HOTKEY_TOGGLE_ITEMINFO_COMPARE <- 79 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¢ ï¿½ï¿½È¯Å° (Default: F8)
+OPTION_HOTKEY_TITLEBOOK <- 80 		  //  ÄªÈ£ï¿½ï¿½
+OPTION_HOTKEY_THIS_DUNGEON <- 81 		  //  ï¿½çµµï¿½ï¿½
+OPTION_HOTKEY_ANOTHER_DUNGEON <- 82 		  //  ï¿½Ù¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+OPTION_HOTKEY_RETURN_TO_TOWN <- 83 		  //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Æ°ï¿½ï¿½ï¿½
+OPTION_HOTKEY_MERCENARY_SYSTEM <- 84 		  //  ï¿½ëº´ ï¿½Ã½ï¿½ï¿½ï¿½
 OPTION_HOTKEY_ITEM_DICTIONARY <- 85 
-OPTION_HOTKEY_QUICK_PARTY_REGISTER <- 86 		  //  ºü¸¥ ÆÄÆ¼ µî·Ï ¿äÃ»
+OPTION_HOTKEY_QUICK_PARTY_REGISTER <- 86 		  //  ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ¼ ï¿½ï¿½ï¿½ ï¿½ï¿½Ã»
 
 
-STATE_BURSTER				<- 100	// °øÅë½ºÅ³ state ¹ö½ºÅÍ
-// °øÅë skill°ü·Ã ºÎºÐÀÔ´Ï´Ù.
-// 198	`ATMage/Buster.skl`				// ¹ö½ºÅÍ
-SKILL_BURSTER				<- 198	// °øÅë½ºÅ³ ¹ö½ºÅÍ
+STATE_BURSTER				<- 100	// ï¿½ï¿½ï¿½ë½ºÅ³ state ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+// ï¿½ï¿½ï¿½ï¿½ skillï¿½ï¿½ï¿½ï¿½ ï¿½Îºï¿½ï¿½Ô´Ï´ï¿½.
+// 198	`ATMage/Buster.skl`				// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+SKILL_BURSTER				<- 198	// ï¿½ï¿½ï¿½ë½ºÅ³ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 
 SKILL_LATENTABILITY				<- 254

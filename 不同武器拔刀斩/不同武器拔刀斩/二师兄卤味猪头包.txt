@@ -1,0 +1,68 @@
+
+巨剑蓄力   钝器溜溜球  短剑剑气  光太追加攻击
+
+
+有问题联系1741449942
+有问题联系1741449942
+有问题联系1741449942
+
+skill/swordmanskill.lst
+
+
+
+————————————————————————————————————————————————————————————————————————————————
+
+clientonly/skilltree/swordman_sp.co
+
+————————————————————————————————————————————————————————————————————————————————
+
+sqr/character/swordman/swordman_header.nut
+
+STATE_MOMENTARYSLASHRE										<- 249
+
+CUSTOM_ANI_MOMENTARYSLASHRE_READY							<- 226
+CUSTOM_ANI_MOMENTARYSLASHRE_ATTACK						<- 227
+————————————————————————————————————————————————————————————————————————————————
+
+sqr/character/swordman_load_state.nut
+
+IRDSQRCharacter.pushPassiveObj("Second_passive_object/po_swordman_qq1741449942.nut", 243370);
+
+
+IRDSQRCharacter.pushState(ENUM_CHARACTERJOB_SWORDMAN, "character/swordman/1_weaponmaster/momentaryslash/momentaryslash.nut", "swordman_momentaryslash", 23, -1);
+IRDSQRCharacter.pushState(ENUM_CHARACTERJOB_SWORDMAN, "character/swordman/1_weaponmaster/momentaryslash/momentaryslash.nut", "swordman_momentaryslashre", STATE_MOMENTARYSLASHRE, -1);
+IRDSQRCharacter.pushState(ENUM_CHARACTERJOB_SWORDMAN, "character/swordman/1_weaponmaster/momentaryslashex/momentaryslashex.nut", "swordman_momentaryslashex", 56, -1);
+
+————————————————————————————————————————————————————————————————————————————————
+
+passiveobject/passiveobject.lst
+
+243370	`Awakening_pass_obj/swordman/swordman_qq1741449942.obj`
+————————————————————————————————————————————————————————————————————————————————
+
+character/swordman/swordman.chr
+
+[etc motion]
+
+	`Animation/momentaryslashre_ready.ani`
+	`Animation/momentaryslashre_attack.ani`
+
+[/etc motion]
+
+[etc attack info]
+
+[/etc attack info]
+————————————————————————————————————————————————————————————————————————————————
+equipment/character/swordman.lay
+
+[etc motion]
+
+	`%s/momentaryslashre_ready.ani`
+	`%s/momentaryslashre_attack.ani`
+
+[/etc motion]
+
+————————————————————————————————————————————————————————————————————————————————
+
+公共函数挂载
+

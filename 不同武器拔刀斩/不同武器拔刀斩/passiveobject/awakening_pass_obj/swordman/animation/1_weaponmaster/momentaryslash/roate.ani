@@ -1,0 +1,73 @@
+#PVF_File
+
+[SHADOW]
+	0
+[LOOP]
+	1
+[FRAME MAX]
+	5
+
+[FRAME000]
+	[IMAGE]
+		`character/swordman/effect/momentaryslash/circle.img`
+		0
+	[IMAGE POS]
+		-99	-104
+	[DELAY]
+		80
+	[GRAPHIC EFFECT]
+		`LINEARDODGE`
+	[IMAGE ROTATE]
+		0
+
+[FRAME001]
+	[IMAGE]
+		`character/swordman/effect/momentaryslash/circle.img`
+		0
+	[IMAGE POS]
+		-99	-104
+	[DELAY]
+		80
+	[GRAPHIC EFFECT]
+		`LINEARDODGE`
+	[IMAGE ROTATE]
+		0.3775
+
+[FRAME002]
+	[IMAGE]
+		`character/swordman/effect/momentaryslash/circle.img`
+		0
+	[IMAGE POS]
+		-99	-104
+	[DELAY]
+		80
+	[GRAPHIC EFFECT]
+		`LINEARDODGE`
+	[IMAGE ROTATE]
+		1.57
+
+[FRAME003]
+	[IMAGE]
+		`character/swordman/effect/momentaryslash/circle.img`
+		0
+	[IMAGE POS]
+		-99	-104
+	[DELAY]
+		80
+	[GRAPHIC EFFECT]
+		`LINEARDODGE`
+	[IMAGE ROTATE]
+		2.325
+
+[FRAME004]
+	[IMAGE]
+		`character/swordman/effect/momentaryslash/circle.img`
+		0
+	[IMAGE POS]
+		-99	-104
+	[DELAY]
+		80
+	[GRAPHIC EFFECT]
+		`LINEARDODGE`
+	[IMAGE ROTATE]
+		3.08

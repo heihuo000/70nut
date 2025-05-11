@@ -1,22 +1,31 @@
 
-// °øÅë½ºÅ³ ¹ö½ºÅÍ¸ğµå¿¡¼­ µ¥¹ÌÁöÀ²À» Á¶Á¤ÇÕ´Ï´Ù. ¹ö½ºÅÍ¸ğµå È¤Àº ´Ù¸¥ ½ºÅ³¿¡¼­ µ¥¹ÌÁö·¹ÀÌÆ®¸¦ Á¶Á¤ÇÒ¶§ ÀÌ°÷¿¡¼­ Á¶Á¤À» ÇÕ´Ï´Ù.
+// è·å–å½“å‰æ¨¡å—çš„ä¼¤å®³å€ç‡ã€‚å¦‚æœä½¿ç”¨äº†å…¶ä»–æ¨¡å—ï¼Œä¹Ÿä¼šè€ƒè™‘å…¶å½±å“ã€‚
 function getCurrentModuleDamageRate(obj)
 {	
+	// å¦‚æœå¯¹è±¡ä¸ºç©ºï¼Œè¿”å›é»˜è®¤ä¼¤å®³å€ç‡ 1.0
 	if (!obj)
 		return 1.0;
 
+	// åˆå§‹åŒ–ä¼¤å®³å€ç‡ä¸º 1.0
 	local rate = 1.0;
 	
-		if (sq_getJob(obj) == 7) {
+	// å¦‚æœè§’è‰²èŒä¸šä¸º 7
+	if (sq_getJob(obj) == 7) {
+		// åˆå§‹åŒ–æˆ˜æ–—èŒä¸šçš„ä¼¤å®³å€ç‡ä¸º 100
 		local rate_atfighter = 100;
+		// æ£€æŸ¥æ˜¯å¦é™„åŠ äº†ç‰¹å®šçš„é™„å±æ¨¡å—
 		if (CNSquirrelAppendage.sq_IsAppendAppendage(obj, "character/atfighter/lieyanfenbu/ap_lieyanfenbuzengshang_1.nut")) {
-
-		local skillLevel = sq_GetSkillLevel(obj, 41);
-		local addRate = sq_GetLevelData(obj, 41, 9, skillLevel);
-		local pSkillIndex = obj.getCurrentSkillIndex();
-		if (pSkillIndex == 82) 
-		rate_atfighter = rate_atfighter * (100 + addRate) / 100;
-	}
+			// è·å–æŠ€èƒ½ç­‰çº§
+			local skillLevel = sq_GetSkillLevel(obj, 41);
+			// æ ¹æ®æŠ€èƒ½ç­‰çº§è·å–é™„åŠ å€ç‡
+			local addRate = sq_GetLevelData(obj, 41, 9, skillLevel);
+			// è·å–å½“å‰ä½¿ç”¨çš„æŠ€èƒ½ç´¢å¼•
+			local pSkillIndex = obj.getCurrentSkillIndex();
+			// å¦‚æœå½“å‰æŠ€èƒ½ç´¢å¼•ä¸º 82ï¼Œåˆ™è°ƒæ•´æˆ˜æ–—èŒä¸šçš„ä¼¤å®³å€ç‡
+			if (pSkillIndex == 82) 
+				rate_atfighter = rate_atfighter * (100 + addRate) / 100;
+		}
+		// æ›´æ–°æ€»ä¼¤å®³å€ç‡
 		rate = rate * rate_atfighter.tofloat() / 100.0;
 
 	}
@@ -29,11 +38,11 @@ function getCurrentModuleDamageRate(obj)
 		{
 			local skillIndex = obj.getCurrentSkillIndex();
 
-			// ¹ö½ºÅÍ¸ğµå¿¡ ÇØ´çÇÏ´Â °ø°İÀÌ¶ó¸é µ¥¹ÌÁöÀ²À» ³·Ãßµµ·Ï °ªÀ» ¾ò¾î¿É´Ï´Ù.
+			// ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½å¿¡ ï¿½Ø´ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì¶ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ßµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½É´Ï´ï¿½.
 			if (isEnableBursterSkill(obj, skillIndex))
 			{
 				local level = sq_GetSkillLevel(obj, SKILL_BURSTER);
-				// (4) µ¥¹ÌÁöÀ² (%) (100%°¡ ±âº»)
+				// (4) ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ (%) (100%ï¿½ï¿½ ï¿½âº»)
 				local value = obj.sq_GetLevelData(SKILL_BURSTER, SKL_LVL_COLUMN_IDX_4, level);
 
 				rate = value.tofloat() / 100.0;
