@@ -130,6 +130,7 @@
 [skill data up]
 	`[swordman]`	9	`[dungeon type]`	`[cooltime]`	0	`%`	-14
 	`[swordman]`	9	`[dungeon type]`	`[mp]`	0	`%`	-14
+	`[swordman]`	9	`[dungeon type]`	`[static]`	6	`%`	90
 [/skill data up]
 
 [emancipate]
