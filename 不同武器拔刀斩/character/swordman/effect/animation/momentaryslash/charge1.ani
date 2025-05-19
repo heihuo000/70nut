@@ -1,22 +1,30 @@
 #PVF_File
-
+// 动画循环标志，1为循环，0为不循环
 [LOOP]
 	1
+// 是否显示阴影，0为不显示，1为显示
 [SHADOW]
 	0
+// 帧的最大数量，本动画共9帧
 [FRAME MAX]
 	9
 
+// 每一帧的详细配置，FRAME000表示第0帧
 [FRAME000]
+	// 使用的图片资源路径及索引
 	[IMAGE]
 		`Character/Swordman/Effect/MomentarySlashEx/ChargeDodge1.img`
 		0
+	// 图片在画布上的坐标偏移
 	[IMAGE POS]
 		-104	-225
+	// 图片缩放比例，0.5表示缩小一半
 	[IMAGE RATE]
 		0.5	0.5
+	// 图像混合特效，LINEARDODGE为线性闪避效果
 	[GRAPHIC EFFECT]
 		`LINEARDODGE`
+	// 当前帧持续时间，单位为毫秒
 	[DELAY]
 		70
 

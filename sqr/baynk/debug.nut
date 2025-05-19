@@ -1,5 +1,5 @@
 DEBUG_ANI <- 0	//ani??
-DEBUG_SUBSTATE <- 1	//1?����substate
+DEBUG_SUBSTATE <- 1	//1?����substate
 
 function addSubState(obj, state, datas){
 	if(DEBUG_SUBSTATE==1)obj.getVar("allSubState").clear_vector();
@@ -13,6 +13,7 @@ function addSubState(obj, state, datas){
 }
 
 function drwaMainCustomUI_DeBug(obj){
+	// 此函数在以下情况下起效果：当前用户是GM，并且当前模块类型是房间列表模块
 	if(sqx_isGM() == 0)return;
 	if(sq_GetCurrentModuleType() == MODULE_TYPE_ROOM_LIST){
 		local x = 310;
@@ -26,6 +27,7 @@ function drwaMainCustomUI_DeBug(obj){
 }
 
 function drawCustomUI_DeBug(obj){
+	// 此函数在以下情况下起效果：当前用户是GM
 	if(sqx_isGM() == 0)return;
 	local stage = sq_GetGlobaludpModuleStage();
 	local dungeon = sq_GetDungeonByStage(stage);
@@ -68,12 +70,13 @@ function drawCustomUI_DeBug(obj){
 
 function objcount(obj)
 {
-    local objectManager = obj.getObjectManager();//??ͤ?��?��
-    local objectcount = objectManager.getCollisionObjectNumber();//??ͤ?��?��??ɺ??
-    obj.getVar("debugnums2").clear_vector();//?���??ɺ??ӷ?
+	// 此函数在调用时起效果，用于统计不同类型对象的数量
+    local objectManager = obj.getObjectManager();//??ͤ?��?��
+    local objectcount = objectManager.getCollisionObjectNumber();//??ͤ?��?��??ɺ??
+    obj.getVar("debugnums2").clear_vector();//?���??ɺ??ӷ?
 	obj.getVar("debugtext2").clear_vector();
-    local AiCharacter = 0;//?��
-    local Monster = 0;//��ɫ
+    local AiCharacter = 0;//?��
+    local Monster = 0;//��ɫ
     local Character =0;//a?
     local PASSIVE = 0;//??
     for(local i=0;i<objectcount;i++)

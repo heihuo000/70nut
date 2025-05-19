@@ -1197,13 +1197,12 @@ MODULE_TYPE_DESPAIR_TOWER <- 12			//������ž
 MODULE_TYPE_BOSS_TOWER <- 13			//�ɿ��� ������
 MODULE_TYPE_ADVANCE_ALTAR <- 14			//������ ����
 
-MODULE_TYPE_LOAD <- 15
-MODULE_TYPE_TOURNAMENT <- 16
-MODULE_TYPE_MAX <- 17
-MODULE_TYPE_PVP_TYPE <- 18			// ������, �ο���, ���������� ���� ��Ī
-MODULE_TYPE_DUNGEON_TYPE <- 19		// ����, ��ž, ������ ���� ��Ī
-MODULE_TYPE_ALL <- 20			
-
+MODULE_TYPE_LOAD <- 15  // 模块类型：加载模块，用于处理游戏中的加载相关操作
+MODULE_TYPE_TOURNAMENT <- 16  // 模块类型：锦标赛模块，用于处理锦标赛相关的功能
+MODULE_TYPE_MAX <- 17  // 模块类型的最大值，用于边界判断
+MODULE_TYPE_PVP_TYPE <- 18  // 模块类型：PVP类型，包括对战、决斗、竞技场等PVP相关场景
+MODULE_TYPE_DUNGEON_TYPE <- 19  // 模块类型：地下城类型，包括副本、迷宫、洞穴等地下城相关场景
+MODULE_TYPE_ALL <- 20  // 模块类型：所有类型，代表包含所有模块类型的集合
 //MODULE_TYPE_LOAD <- 13
 //MODULE_TYPE_TOURNAMENT <- 14
 //MODULE_TYPE_MAX <- 15

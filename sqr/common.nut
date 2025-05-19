@@ -226,7 +226,7 @@ SKILL_TRIPLE_STAB		<- 112;
 SKILL_GHOST_SIDE_WIND	<- 111;
 	
 	
-// ���˻� ��ų ����Ʈ ���ϸ��̼� �ε�
+// 加载魔剑士技能效果列表的事件
 function sq_LoadSkillEffect_DemonicSwordman(obj, skillIndex)
 {
 	if (skillIndex == SKILL_GHOST_SIDE_WIND)
@@ -341,8 +341,8 @@ function sq_LoadSkillEffect_DemonicSwordman(obj, skillIndex)
 	}
 	else if (skillIndex == SKILL_MOONLIGHT_SLASH)
 	{
-		// �޺�����
-		// ���� �޺����� : MoonlightSlashFull.ani : ���˻�� ������� ����.
+		// 月光斩技能
+		// 完整的月光斩动画：MoonlightSlashFull.ani ，用于技能释放时的完整效果展示。
 		obj.sq_LoadSkillEffectAni(skillIndex, "Effect/Animation/MoonlightSlash1_DS.ani");
 		obj.sq_LoadSkillEffectAni(skillIndex, "Effect/Animation/MoonlightSlash2_DS.ani");
 		obj.sq_LoadSkillEffectAni(skillIndex, "Effect/Animation/MoonlightSlashFull.ani");

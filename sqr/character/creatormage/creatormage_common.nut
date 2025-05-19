@@ -1,12 +1,10 @@
+// èŒä¸šè§’è‰² - ä»£ç ç¼–å†™è¯´æ˜
+// æ­¤éƒ¨åˆ†ä¸»è¦å¯¹ç‰¹å®šèŒä¸šè§’è‰²çš„ç›¸å…³ä»£ç è¿›è¡Œç¼–å†™å’Œè¯´æ˜ã€‚
+// ä»¥ä¸‹å†…å®¹ä»¥ç›—è´¼ï¼ˆThiefï¼‰èŒä¸šè§’è‰² - æŠ€èƒ½æŒ‰é’®ç›¸å…³é€»è¾‘ä¸ºä¾‹è¿›è¡Œè¯´æ˜ã€‚
+// è‹¥ä¸æ˜¯ç›—è´¼èŒä¸šçš„è§’è‰²ï¼Œç›¸å…³é€»è¾‘ä¼šè¿›è¡Œç›¸åº”ä¿®æ”¹ã€‚
+// å‡½æ•°çš„ä¸»è¦è°ƒç”¨å¯¹è±¡æ˜¯å¤§å¸ˆï¼ˆMasterï¼‰ç­‰çº§çš„è§’è‰²ï¼Œæˆ–è€…æ˜¯ä¸»è§’è‰²ï¼ˆMainCharacterï¼‰ã€‚
 
-// ½Å±Ô Ä³¸¯ÅÍ - ÇÁ·ÎÅäÅ¸ÀÔ ÀÛ¾÷
-// ÇöÀç·Î¼­ Ä³¸¯ÅÍ Á÷¾÷ ¿µ¹®¸íÀ» ¾Ë ¼ö ¾ø´Â °ü°è·Î ¿©¹ı»ç¸¦ ´ë»óÀ¸·Î ÀÛ¾÷À» ÇÏ¿´½À´Ï´Ù.
-// ´çºĞ°£ Thief°¡ ½Å±Ô Ä³¸¯ÅÍ - ¸¶¿ì½ºÄÜÆ®·Ñ Á÷¾÷ÀÌ¶ó°í °£ÁÖÇÕ´Ï´Ù.
-// ÇâÈÄ Thief°¡ ¾Æ´Ñ ½Å±Ô Á÷¾÷ ¿µ¹®¸íÀ¸·Î ¹Ù²Ù¾î¾ß ÇÕ´Ï´Ù.
-// ¹Ø¿¡ ÁÖ¼®¹®¿¡ Master¶ó°í ¸íÄªµÇ´Â°ÍÀº ÄÜÆ®·Ñ µÇ´Â ¿ÀºêÁ§Æ®µéÀÇ MainCharacterÀÔ´Ï´Ù.
-
-
-// Å©¸®¿¡ÀÌÅÍ ÀüÅõ»óÈ²ÀÎÁö Ã¼Å©ÇÏ´Â ÇÔ¼öÀÔ´Ï´Ù.
+// è¿™æ˜¯ä¸€ä¸ªç”¨äºæ£€æŸ¥è§’è‰²æˆ˜æ–—çŠ¶æ€çš„å‡½æ•°ã€‚
 function IsInBattleCreator(obj)
 {
 	if (!obj)
@@ -25,7 +23,7 @@ function IsInBattleCreator(obj)
 	if (sq_IsInBattle() && !sq_IsPauseTypeWorld(obj))
 	{
 		if (!obj.isInActiveSkillBlockedMap())
-		{ // ¾×Æ¼ºê ½ºÅ³À» ¾µ ¼ö ÀÖ´Â ¸ÊÀÎÁö Ã¼Å©ÇÕ´Ï´Ù.
+		{ // ï¿½ï¿½Æ¼ï¿½ï¿½ ï¿½ï¿½Å³ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã¼Å©ï¿½Õ´Ï´ï¿½.
 			if (obj.isInBattle())
 				return true;
 		}
@@ -58,7 +56,7 @@ function unLockMouse(obj)
 	if (sq_IsMyControlObject(obj) && sq_getJob(obj) == ENUM_CHARACTERJOB_CREATOR_MAGE)
 	{
 		sq_SetClipCursor(false);
-		setEnableBattleInUI(true);	
+		setEnableBattleInUI(true);
 		obj.getVar("MouseLock").clear_vector();
 		obj.getVar("MouseLock").push_vector(0);
 
@@ -75,12 +73,12 @@ function getCreatorTypeGaugeRate(obj)
 	{
 		local max_gaugeValue = appendage.sq_var.get_vector(I_MAX_COUNT);
 		local gaugeValue = appendage.sq_var.get_vector(I_REMAIN_COUNT);
-		
+
 		local rate = (gaugeValue.tofloat() * 100.0) / max_gaugeValue.tofloat();
-		
+
 		return rate;
 	}
-	
+
 	return 0.0;
 }
 
@@ -105,7 +103,7 @@ function getCreatorTypeColor(obj, type)
 		rgb = sq_RGB(255,250,150);
 		break;
 	}
-	
+
 	return rgb;
 
 }
@@ -132,7 +130,7 @@ function getCreatorTypeAlphaColor(obj, type, alpha)
 		rgba = sq_RGBA(255,250,150,alpha);
 		break;
 	}
-	
+
 	return rgba;
 
 }
@@ -140,7 +138,7 @@ function getCreatorTypeAlphaColor(obj, type, alpha)
 
 
 
-// Å©¸®¿¡ÀÌÅÍÀÇ Å¸ÀÔ¿¡ µû¶ó ¼Ó¼º¾îÆæµğÁö¸¦ ¸®ÅÏÇÕ´Ï´Ù.
+// Å©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å¸ï¿½Ô¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ó¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.
 function getCreatorMageAppendageByType(obj, type)
 {
 	local appendage = null;
@@ -163,11 +161,11 @@ function getCreatorMageAppendageByType(obj, type)
 	case CREATOR_TYPE_WIND:
 		appendageName = "Character/CreatorMage/ap_creatormage_wind.nut";
 		break;
-	}	
-	
+	}
+
 	if (appendageName != null)
 		appendage = CNSquirrelAppendage.sq_GetAppendage(obj,appendageName);
-	
+
 	return appendage;
 }
 
@@ -175,9 +173,9 @@ function getAniCreatorSkillOn(obj, type)
 {
 	if (!obj)
 		return null;
-		
+
 	local sq_var = obj.getVar();
-	
+
 	local ani = null;
 	switch (type)
 	{
@@ -196,8 +194,8 @@ function getAniCreatorSkillOn(obj, type)
 	case CREATOR_TYPE_WIND:
 		 ani = sq_var.GetAnimationMap("hud_skillicon_creator_wind", "Character/Mage/CreatorAnimation/ui/hud_skillicon/hud_skillicon_creator_wind.ani");
 		break;
-	}	
-	
+	}
+
 	return ani;
 }
 
@@ -206,9 +204,9 @@ function getAniCreatorSkillOff(obj, type)
 {
 	if (!obj)
 		return null;
-		
+
 	local sq_var = obj.getVar();
-	
+
 	local ani = null;
 	switch (type)
 	{
@@ -227,15 +225,15 @@ function getAniCreatorSkillOff(obj, type)
 	case CREATOR_TYPE_WIND:
 		 ani = sq_var.GetAnimationMap("hud_skillicon_creator_wind02", "Character/Mage/CreatorAnimation/ui/hud_skillicon/hud_skillicon_creator_wind02.ani");
 		break;
-	}	
+	}
 
 	if (ani)
 	{
-		
+
 		local rate = getCreatorTypeGaugeRate(obj);
-		
+
 		local currentFrameIndex = ani.GetCurrentFrameIndex();
-		
+
 		if (rate < 50.0 && rate > 30.0)
 		{
 			if (currentFrameIndex > 3)
@@ -252,95 +250,95 @@ function getAniCreatorSkillOff(obj, type)
 				ani.setCurrentFrameWithChildLayer(5);
 			}
 		}
-			
-	
+
+
 	}
 
-	
+
 	return ani;
 }
 
 
-// Å©¸®¿¡ÅÍÀÇ ÃæÀü±â´ÉÀ» ¼¼ÆÃÇÕ´Ï´Ù.
+// Å©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.
 function setChargeCreatorMageGauge(obj, type, value)
 {
 	local appendage = getCreatorMageAppendageByType(obj, type);
-	
+
 	if (appendage)
 	{
 		if (value)
-		{ // ÃæÀü½ÃÀÛÀÌ¶ó¸é Å¸ÀÌ¸Ó¸¦ »õ·Î ¼¼ÆÃÇÕ´Ï´Ù.
+		{ // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¶ï¿½ï¿½ Å¸ï¿½Ì¸Ó¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.
 			appendage.getTimer().Reset();
 			appendage.getTimer().Start(10000,0);
-			
-			// ³²¾ÆÀÖ´Â °¹¼ö¸¦ ÆÄ¾ÇÇØ¼­ Ç®·Î Ã¤¿öÁú¶§±îÁöÀÇ ½Ã°£À» ±¸ÇØ³À´Ï´Ù.
+
+			// ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ä¾ï¿½ï¿½Ø¼ï¿½ Ç®ï¿½ï¿½ Ã¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ø³ï¿½ï¿½Ï´ï¿½.
 			local initRemainCnt = appendage.sq_var.get_vector(I_REMAIN_COUNT);
 			appendage.sq_var.set_vector(I_CHARGE_INIT_COUNT, initRemainCnt);
 		}
-			
+
 		appendage.sq_var.set_vector(l_CHARGE_ON, value);
 	}
 }
 
 
-// Å©¸®¿¡ÅÍÀÇ °¢ ¼¼ºÎ½ºÅ³¿¡ ´ëÇÑ °ÔÀÌÁö ¼Ò¸ğ·®À» ±¸ÇÕ´Ï´Ù.
+// Å©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Î½ï¿½Å³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ò¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Õ´Ï´ï¿½.
 function getCreatorSkillConsumeValue(obj, skillIndex)
 {
 	local consumeValue = 10;
 	local staticRowIndex = -1;
-	
+
 	switch (skillIndex)
 	{
 	case SKILL_FIREWALL:
-		// 1. ¼Ò¸ğ·®
+		// 1. ï¿½Ò¸ï¿½
 		staticRowIndex = 1;
 		break;
 	case SKILL_WOODFENCE:
-		// 1. ¼Ò¸ğ·®
+		// 1. ï¿½Ò¸ï¿½
 		staticRowIndex = 1;
 		break;
 	case SKILL_ICEROCK:
-		// 2. ¼Ò¸ğ·®
+		// 2. ï¿½Ò¸ï¿½
 		staticRowIndex = 2;
 		break;
 	case SKILL_FIREHURRICANE:
-		// 1. ¼Ò¸ğ·®
+		// 1. ï¿½Ò¸ï¿½
 		staticRowIndex = 1;
 		break;
 	case SKILL_ICESHIELD:
-		// 1. ¼Ò¸ğ·®
+		// 1. ï¿½Ò¸ï¿½
 		staticRowIndex = 1;
 		break;
 	case SKILL_ICEPLATE:
-		// 1. ¼Ò¸ğ·®
+		// 1. ï¿½Ò¸ï¿½
 		staticRowIndex = 1;
 		break;
 	case SKILL_MGRAB:
-		// 2. ¼Ò¸ğ·®
+		// 2. ï¿½Ò¸ï¿½
 		staticRowIndex = 2;
 		break;
 	case SKILL_FIREMETEO:
-		// 2. ¼Ò¸ğ·®
+		// 2. ï¿½Ò¸ï¿½
 		staticRowIndex = 2;
 		break;
 	case SKILL_WINDPRESS:
-		// 2. ¼Ò¸ğ·®
+		// 2. ï¿½Ò¸ï¿½
 		staticRowIndex = 2;
 		break;
 	case SKILL_WINDSTORM:
-		// 2. ¼Ò¸ğ·®
+		// 2. ï¿½Ò¸ï¿½
 		staticRowIndex = 1;
 		break;
 	}
-	
+
 	if (staticRowIndex != -1)
 		consumeValue = sq_GetIntData(obj, skillIndex, staticRowIndex);
-	
+
 	return consumeValue;
-	
+
 }
 
-// Å©·¹ÀÌÅÍÀÇ ¸ğµç ¼Ó¼º °ÔÀÌÁö ÃæÀüÀ» ½ÃÀÛÇÕ´Ï´Ù.
+// Å©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ó¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.
 function onAllChargeCreatorMageGauge(obj)
 {
 	for (local i = CREATOR_TYPE_FLAME; i < CREATOR_TYPE_MAX; i++)
@@ -353,55 +351,55 @@ function onAllChargeCreatorMageGauge(obj)
 
 function getCreatorMageStateAppendage(obj)
 {
-	// Å©¸®¿¡ÀÌÅÍ state ¾îÆæµğÁö ÀÔ´Ï´Ù.
-	// ½ºÅ³À» ¾²¸é ÀÌµ¿ÇÏ¸é¼­ ÇÑ¹ø¿¡ ÇÏ³ªÀÇ ½ºÅ³¸¸ ¾µ ¼ö ÀÖ±â¶§¹®¿¡ ¾îÆæµğÁö¸¦ µÎ´Â°ÍÀÔ´Ï´Ù.
+	// Å©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ state ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô´Ï´ï¿½.
+	// ï¿½ï¿½Å³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ï¿½Ï¸é¼­ ï¿½Ñ¹ï¿½ï¿½ï¿½ ï¿½Ï³ï¿½ï¿½ï¿½ ï¿½ï¿½Å³ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö±â¶§ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Î´Â°ï¿½ï¿½Ô´Ï´ï¿½.
 	// ap_creatormage_flame.nut
 	// ap_creatormage_disturb.nut
 	// ap_creatormage_guardian.nut
 	// ap_creatormage_ice.nut
-	
-	// Å©¸®¿¡ÀÌÅÍÀÇ °ø°İÅ¸ÀÔÀ» ¾ò¾î¿É´Ï´Ù.
+
+	// Å©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Å¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½É´Ï´ï¿½.
 	local type = obj.getVar("state").get_vector(0);
-	
+
 	if (type < 0)
 		return null;
-		
+
 	local appendage = getCreatorMageAppendageByType(obj, type);
-	
+
 	if (!appendage)
 		return null;
-	
-	
+
+
 	if (appendage.sq_var.size_vector() == 0)
 	{
 		for (local i = 0; i < I_SIZE; i++)
 			appendage.sq_var.push_vector(-1);
 	}
-	
+
 	return appendage;
 }
 
 function getCreatorBeforePosX(obj)
 {
 	local appendage = getCreatorMageStateAppendage(obj);
-	
+
 	if(appendage)
 	{
 		return appendage.sq_var.get_vector(I_BEFORE_X);
 	}
-	
+
 	return -1;
 }
 
 function getCreatorBeforePosY(obj)
 {
 	local appendage = getCreatorMageStateAppendage(obj);
-	
+
 	if(appendage)
 	{
 		return appendage.sq_var.get_vector(I_BEFORE_Y);
 	}
-	
+
 	return -1;
 }
 
@@ -409,7 +407,7 @@ function getCreatorBeforePosY(obj)
 function setCreatorBeforePos(obj, x, y)
 {
 	local appendage = getCreatorMageStateAppendage(obj);
-	
+
 	if(appendage)
 	{
 		if (appendage.sq_var.size_vector() == 0)
@@ -417,7 +415,7 @@ function setCreatorBeforePos(obj, x, y)
 			for (local i = 0; i < I_SIZE; i++)
 				appendage.sq_var.push_vector(0);
 		}
-	
+
 		appendage.sq_var.set_vector(I_BEFORE_X, x);
 		appendage.sq_var.set_vector(I_BEFORE_Y, y);
 	}
@@ -426,7 +424,7 @@ function setCreatorBeforePos(obj, x, y)
 function setCreatorBeforeCount(obj, cnt)
 {
 	local appendage = getCreatorMageStateAppendage(obj);
-	
+
 	if(appendage)
 	{
 		if (appendage.sq_var.size_vector() == 0)
@@ -434,7 +432,7 @@ function setCreatorBeforeCount(obj, cnt)
 			for (local i = 0; i < I_SIZE; i++)
 				appendage.sq_var.push_vector(0);
 		}
-	
+
 		appendage.sq_var.set_vector(I_BEFORE_COUNT, cnt);
 	}
 }
@@ -442,9 +440,9 @@ function setCreatorBeforeCount(obj, cnt)
 
 
 
-// Å©¸®¿¡ÀÌÅÍÀÇ ½ºÅ³ÀÎµ¦½º¸¦ ¼¼ÆÃÇÕ´Ï´Ù.
+// Å©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å³ï¿½Îµï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.
 function setCreatorSkillStateSkillIndex(obj, index)
-{	
+{
 	if (!obj)
 		return;
 
@@ -452,8 +450,8 @@ function setCreatorSkillStateSkillIndex(obj, index)
 
 	if (oldStateIndex == CREATOR_TYPE_DISTURB)
 	{
-		// ¹æÇØ¸ğµå¿¡¼­ µå·Î¿ì¸¦ ³öÁÖ´Â°ÍÀ» ÇÑ¹ø È£ÃâÇØÁİ´Ï´Ù.
-		// ´©¸¥»óÅÂ¿¡¼­ ½ºÅ³ÀÎµ¦½º¸¦ º¯°æÇÏ¸é ¸ØÃçÀÖ´Â ¹ö±×¹ß»ı
+		// ï¿½ï¿½ï¿½Ø¸ï¿½å¿¡ï¿½ï¿½ ï¿½ï¿½Î¿ì¸¦ ï¿½ï¿½ï¿½Ö´Â°ï¿½ï¿½ï¿½ ï¿½Ñ¹ï¿½ È£ï¿½ï¿½ï¿½ï¿½ï¿½İ´Ï´ï¿½.
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¿ï¿½ï¿½ï¿½ ï¿½ï¿½Å³ï¿½Îµï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½×¹ß»ï¿½
 		onMouseButtonUp_Mgrab(obj);
 	}
 
@@ -464,12 +462,12 @@ function setCreatorSkillStateSkillIndex(obj, index)
 	if (index != -1)
 	{
 		local ani = getAniCreatorSkillOn(obj, index);
-		
+
 		if (obj.getVar("gauge_ani").size_vector() == 0)
 			obj.getVar("gauge_ani").push_vector(1);
 		else
 			obj.getVar("gauge_ani").set_vector(0, 1);
-			
+
 		if (ani)
 		{
 			obj.sq_PlaySound("PCHANGE");
@@ -478,12 +476,12 @@ function setCreatorSkillStateSkillIndex(obj, index)
 	}
 }
 
-// Å©¸®¿¡ÀÌÅÍÀÇ ½ºÅ³°¹¼ö¸¦ ¼¼ÆÃÇÕ´Ï´Ù.
+// Å©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.
 function setCreatorSkillCount(obj, cnt)
 {
 
 	local appendage = getCreatorMageStateAppendage(obj);
-	
+
 	if (appendage)
 	{
 		if (appendage.sq_var.size_vector() == 0)
@@ -491,7 +489,7 @@ function setCreatorSkillCount(obj, cnt)
 			for (local i = 0; i < I_SIZE; i++)
 				appendage.sq_var.push_vector(0);
 		}
-		
+
 		appendage.sq_var.set_vector(I_REMAIN_COUNT, cnt);
 	}
 }
@@ -499,27 +497,27 @@ function setCreatorSkillCount(obj, cnt)
 
 
 
-// ÇöÀç¾²°í ÀÖ´Â ½ºÅ³ÀÎµ¦½º ÀÔ´Ï´Ù.
+// ï¿½ï¿½ï¿½ç¾²ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½Å³ï¿½Îµï¿½ï¿½ï¿½ ï¿½Ô´Ï´ï¿½.
 function getCreatorSkillStateSkillIndex(obj)
 {
 	if (!obj)
 		return -1;
-		
+
 	if (obj.getVar("state").size_vector() == 0)
 	{
 		obj.getVar("state").push_vector(-1);
 	}
-	
+
 	return obj.getVar("state").get_vector(0);
 }
 
-// ³²¾ÆÀÖ´Â ½ºÅ³°¹¼ö
+// ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½ï¿½Å³ï¿½ï¿½ï¿½ï¿½
 function getCreatorRemainSkillCount(obj)
 {
 	local remainCount = 0;
-	
+
 	local appendage = getCreatorMageStateAppendage(obj);
-	
+
 	if(appendage)
 	{
 		if (appendage.sq_var.size_vector() == 0)
@@ -527,14 +525,14 @@ function getCreatorRemainSkillCount(obj)
 			for (local i = 0; i < I_SIZE; i++)
 				appendage.sq_var.push_vector(0);
 		}
-	
+
 		remainCount = appendage.sq_var.get_vector(I_REMAIN_COUNT);
 	}
-	
+
 	return remainCount;
 }
 
-// Å©·¹ÀÌÅÍÀÇ ½ÃÀü»ç¿îµå¸¦ ¹ßµ¿ÇÕ´Ï´Ù.
+// Å©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½å¸¦ ï¿½ßµï¿½ï¿½Õ´Ï´ï¿½.
 function playCreatorCastSound(obj, skillIndex)
 {
 	switch (skillIndex)
@@ -566,7 +564,7 @@ function playCreatorCastSound(obj, skillIndex)
 function useCreatorSkill(obj, skillIndex, x, y, consumeValue)
 {
 	local appendage = getCreatorMageStateAppendage(obj);
-	
+
 	if(appendage)
 	{
 		switch (skillIndex)
@@ -577,25 +575,25 @@ function useCreatorSkill(obj, skillIndex, x, y, consumeValue)
 		case SKILL_FIREMETEO:
 		case SKILL_ICEPLATE:
 			{
-				// »ó±â ½ºÅ³µéÀº ¹Ù´ÚyÃà°Ë»öÀ» ÇØºÁ¾ß ÇÕ´Ï´Ù.
+				// ï¿½ï¿½ï¿½ ï¿½ï¿½Å³ï¿½ï¿½ï¿½ï¿½ ï¿½Ù´ï¿½yï¿½ï¿½Ë»ï¿½ï¿½ï¿½ ï¿½Øºï¿½ï¿½ï¿½ ï¿½Õ´Ï´ï¿½.
 				if (y < TILE_FLOOR_START_Y)
 					return false;
 			}
 			break;
 		}
-		
+
 
 		local cnt = getCreatorRemainSkillCount(obj);
-		
+
 		local remainCnt = (cnt - consumeValue);
-		
+
 		if(remainCnt < 0)
 		{
 			remainCnt = 0;
 
 			if (obj.isMessage())
 			{
-				//29004>°ÔÀÌÁö°¡ ºÎÁ·ÇÏ¿© %s½ºÅ³ÀÌ ÇØÁ¦µË´Ï´Ù.
+				//29004>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ %sï¿½ï¿½Å³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ë´Ï´ï¿½.
 
 				local type = getCreatorSkillStateSkillIndex(obj);
 
@@ -618,7 +616,7 @@ function useCreatorSkill(obj, skillIndex, x, y, consumeValue)
 				case CREATOR_TYPE_WIND:
 					typeStrIndex = 29009;
 					break;
-				}	
+				}
 
 				if (typeStrIndex)
 				{
@@ -627,7 +625,7 @@ function useCreatorSkill(obj, skillIndex, x, y, consumeValue)
 			}
 
 			setCreatorSkillStateSkillIndex(obj, -1);
-			// ¸ğµç Å©·¹ÀÌÅÍÀÇ ¼Ó¼º ÃæÀüÀ» ½ÃÀÛÇÕ´Ï´Ù.
+			// ï¿½ï¿½ï¿½ Å©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ó¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.
 			//setCreatorBeforeCount(obj, remainCnt);
 			onAllChargeCreatorMageGauge(obj);
 
@@ -639,19 +637,19 @@ function useCreatorSkill(obj, skillIndex, x, y, consumeValue)
 		setCreatorBeforeCount(obj, cnt);
 		setCreatorSkillCount(obj, remainCnt);
 
-		// 
+		//
 		appendage.getTimer().Reset();
 		appendage.getTimer().Start(10000,0);
 
 
-		// ½è´ø ±â¼úÀ» ºñ±³ÇØ¼­ ÃÖÃÊ·Î ¾²´Â°ÍÀÌ¶ó¸é..½ÃÀü»ç¿îµå Ãâ·Â
+		// ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½ï¿½ï¿½Ê·ï¿½ ï¿½ï¿½ï¿½Â°ï¿½ï¿½Ì¶ï¿½ï¿½..ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 		if (obj.getVar("useskill").size_vector() == 0)
 		{
 			obj.getVar("useskill").push_vector(skillIndex);
 			playCreatorCastSound(obj, skillIndex);
 		}
 		else
-		{		
+		{
 			if (obj.getVar("useskill").get_vector(0) != skillIndex)
 			{
 				obj.getVar("useskill").set_vector(0, skillIndex);
@@ -659,22 +657,22 @@ function useCreatorSkill(obj, skillIndex, x, y, consumeValue)
 			}
 		}
 		//
-		
+
 
 		local rate = getCreatorTypeGaugeRate(obj);
-		
+
 		if (rate < 50)
 		{
 			if (obj.getVar("gauge_ani").get_vector(0) != 2)
 			{
 				local type = getCreatorSkillStateSkillIndex(obj);
 				local ani = getAniCreatorSkillOff(obj, type);
-				
+
 				if (ani)
 				{
 					sq_Rewind(ani);
 				}
-				
+
 				if (obj.getVar("gauge_ani").size_vector() == 0)
 					obj.getVar("gauge_ani").push_vector(2);
 				else
@@ -682,21 +680,21 @@ function useCreatorSkill(obj, skillIndex, x, y, consumeValue)
 			}
 		}
 	}
-	
+
 	return true;
 }
 
 
 
-// ÇöÀç ¿äÃ»ÇÑ Å¸ÀÔ ¸¶¿ì½º ¿ŞÅ¬¸¯À» ÇßÀ» ¶§ ¾î¶² ½ºÅ³ÀÎÁö ¾ò¾î³À´Ï´Ù.
+// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã»ï¿½ï¿½ Å¸ï¿½ï¿½ ï¿½ï¿½ï¿½ì½º ï¿½ï¿½Å¬ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½î¶² ï¿½ï¿½Å³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.
 function getLButtonSkillByType(obj, type)
 {
 	if (type < 0 || type >= CREATOR_TYPE_MAX)
 		return -1;
-		
-	local size = CREATOR_TYPE_MAX; // ÇÏ³ª ´õ Ãß°¡ÇØ¾ßÇÔ
+
+	local size = CREATOR_TYPE_MAX; // ï¿½Ï³ï¿½ ï¿½ï¿½ ï¿½ß°ï¿½ï¿½Ø¾ï¿½ï¿½ï¿½
 	local skill_l =[];
-	
+
 	skill_l.resize(size);
 
 	skill_l[CREATOR_TYPE_NONE] = -1;
@@ -709,17 +707,17 @@ function getLButtonSkillByType(obj, type)
 	return 	skill_l[type];
 }
 
-// ÇöÀç ¿äÃ»ÇÑ Å¸ÀÔ ¸¶¿ì½º ¿À¸¥Å¬¸¯À» ÇßÀ» ¶§ ¾î¶² ½ºÅ³ÀÎÁö ¾ò¾î³À´Ï´Ù.
+// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã»ï¿½ï¿½ Å¸ï¿½ï¿½ ï¿½ï¿½ï¿½ì½º ï¿½ï¿½ï¿½ï¿½Å¬ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½î¶² ï¿½ï¿½Å³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.
 function getRButtonSkillByType(obj, type)
 {
-	
+
 	if (type < 0 || type >= CREATOR_TYPE_MAX)
 		return -1;
-	
-	
-	local size = CREATOR_TYPE_MAX; // ÇÏ³ª ´õ Ãß°¡ÇØ¾ßÇÔ
+
+
+	local size = CREATOR_TYPE_MAX; // ï¿½Ï³ï¿½ ï¿½ï¿½ ï¿½ß°ï¿½ï¿½Ø¾ï¿½ï¿½ï¿½
 	local skill_l =[];
-	
+
 	skill_l.resize(size);
 
 	skill_l[CREATOR_TYPE_NONE] = -1;
@@ -728,59 +726,59 @@ function getRButtonSkillByType(obj, type)
 	skill_l[CREATOR_TYPE_DISTURB] = SKILL_MGRAB;
 	skill_l[CREATOR_TYPE_GUARDIAN] = SKILL_ICESHIELD;
 	skill_l[CREATOR_TYPE_WIND] = SKILL_WINDSTORM;
-	
+
 	return 	skill_l[type];
 }
 
 
 
-// ÇöÀç ¸¶¿ì½º ¿ŞÅ¬¸¯ ¹öÆ°À» ´­·¶À» ¶§ ³ª¿À´Â ½ºÅ³À» ¸®ÅÏÇÕ´Ï´Ù.
+// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ì½º ï¿½ï¿½Å¬ï¿½ï¿½ ï¿½ï¿½Æ°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.
 function getLButtonSkill(obj)
 {
 	if (!obj)
 		return -1;
-		
+
 	local type = obj.getVar("state").get_vector(0);
-	
+
 	local skillIndex = getLButtonSkillByType(obj, type);
-	
-	
+
+
 	if (skillIndex != -1)
 	{
 		local level = sq_GetSkillLevel(obj, skillIndex);
-		
+
 		if (level <= 0)
 			return -1;
 	}
-	
+
 	return skillIndex;
 }
 
-// ÇöÀç ¸¶¿ì½º ¿À¸¥Å¬¸¯ ¹öÆ°À» ´­·¶À» ¶§ ³ª¿À´Â ½ºÅ³À» ¾ò½À´Ï´Ù.
+// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ì½º ï¿½ï¿½ï¿½ï¿½Å¬ï¿½ï¿½ ï¿½ï¿½Æ°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.
 function getRButtonSkill(obj)
 {
 	if (!obj)
 		return -1;
-		
+
 	local type = obj.getVar("state").get_vector(0);
-	
-	
+
+
 	local skillIndex = getRButtonSkillByType(obj, type);
-	
+
 	if (skillIndex != -1)
 	{
 		local level = sq_GetSkillLevel(obj, skillIndex);
-		
+
 		if (level <= 0)
 			return -1;
 	}
-	
+
 	return skillIndex;
 }
 
 
-// ÇöÀç Å©¸®¿¡ÀÌÅÍ ÀüÅõ ui È°¼ºÈ­ »óÅÂÀÎÁö Ã¼Å©ÇØº¾´Ï´Ù.
-// ÀÏ¹İ ui°¡ È°¼ºÈ­ÀÎÁö Ã¼Å©ÇÏ¸é µË´Ï´Ù.
+// ï¿½ï¿½ï¿½ï¿½ Å©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ui È°ï¿½ï¿½È­ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã¼Å©ï¿½Øºï¿½ï¿½Ï´ï¿½.
+// ï¿½Ï¹ï¿½ uiï¿½ï¿½ È°ï¿½ï¿½È­ï¿½ï¿½ï¿½ï¿½ Ã¼Å©ï¿½Ï¸ï¿½ ï¿½Ë´Ï´ï¿½.
 function isEnableCreatorBattleInUI()
 {
 	local mainControl = sq_GetGlobalMainControl();
@@ -789,9 +787,9 @@ function isEnableCreatorBattleInUI()
 	{
 		return mainControl.IsEnable();
 	}
-	
+
 	return false;
-	
+
 }
 
 
@@ -828,7 +826,7 @@ function setEnableBattleInUI(enable)
 		mainControl.SetEnable(enable);
 		mainControl.SetVisible(true);
 	}
-	
+
 	local strikerUI = sq_GetStrikerSkillUi();
 
 	if (strikerUI)
@@ -836,13 +834,13 @@ function setEnableBattleInUI(enable)
 		strikerUI.SetEnable(enable);
 	//	strikerUI.SetVisible(enable);
 	}
-	
+
 }
 
 
 
-// ½Å±Ô Ä³¸¯ÅÍ - Å©¸®¿¡ÀÌÅÍ¿¡¼­ ÀüÅõ ½Ã ¸¶¿ì½º ±â´ÉÀ» ±Ø´ëÈ­ÇÏ±â À§ÇØ 
-// È­¸é³» uiµé ¸¶¿ì½º È°¼ºÈ­°¡ µÇ´ÂÁö ¾ÈµÇ´ÂÁö ±âÁØÀÌ µÇ´Â À§Ä¡ÀÔ´Ï´Ù. ÀÌ°÷¿¡ Äİ¹éor sqr ¹ÙÀÎµùÀ» ÇÕ´Ï´Ù.
+// ï¿½Å±ï¿½ Ä³ï¿½ï¿½ï¿½ï¿½ - Å©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ì½º ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ø´ï¿½È­ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½
+// È­ï¿½é³» uiï¿½ï¿½ ï¿½ï¿½ï¿½ì½º È°ï¿½ï¿½È­ï¿½ï¿½ ï¿½Ç´ï¿½ï¿½ï¿½ ï¿½ÈµÇ´ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ç´ï¿½ ï¿½ï¿½Ä¡ï¿½Ô´Ï´ï¿½. ï¿½Ì°ï¿½ï¿½ï¿½ ï¿½İ¹ï¿½or sqr ï¿½ï¿½ï¿½Îµï¿½ï¿½ï¿½ ï¿½Õ´Ï´ï¿½.
 function onOpenPopupWindow_CreatorMage(obj, popupType, windowTileType)
 {
 	if (!obj)
@@ -852,20 +850,20 @@ function onOpenPopupWindow_CreatorMage(obj, popupType, windowTileType)
 	{
 		return;
 	}
-	
-	// ÀÎÆ÷ À©µµ¿ì¿Í ±âÅ¸ ÇÏ³ªÇÏ³ª ÆË¾÷À» ¹«½ÃÇÕ´Ï´Ù.
+
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å¸ ï¿½Ï³ï¿½ï¿½Ï³ï¿½ ï¿½Ë¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.
 	if (sq_IsIgnoreOpenPopupCreator(popupType, windowTileType))
 		return;
-		
+
 
 
 	local isEsc = sq_IsESCClosableWindow(popupType);
-	
-	local windowsNum = sq_GetPopupWindows();	
-	
-	
-	// ½Å±Ô Ä³¸¯ÅÍ - Å©¸®¿¡ÀÌÅÍ¿¡¼­ ÀüÅõ ½Ã ¸¶¿ì½º ±â´ÉÀ» ±Ø´ëÈ­ÇÏ±â À§ÇØ 
-	// È­¸é³» uiµé ¸¶¿ì½º È°¼ºÈ­°¡ µÇ´ÂÁö ¾ÈµÇ´ÂÁö ±âÁØÀÌ µÇ´Â À§Ä¡ÀÔ´Ï´Ù. ÀÌ°÷¿¡ Äİ¹éor sqr ¹ÙÀÎµùÀ» ÇÕ´Ï´Ù.
+
+	local windowsNum = sq_GetPopupWindows();
+
+
+	// ï¿½Å±ï¿½ Ä³ï¿½ï¿½ï¿½ï¿½ - Å©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ì½º ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ø´ï¿½È­ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½
+	// È­ï¿½é³» uiï¿½ï¿½ ï¿½ï¿½ï¿½ì½º È°ï¿½ï¿½È­ï¿½ï¿½ ï¿½Ç´ï¿½ï¿½ï¿½ ï¿½ÈµÇ´ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ç´ï¿½ ï¿½ï¿½Ä¡ï¿½Ô´Ï´ï¿½. ï¿½Ì°ï¿½ï¿½ï¿½ ï¿½İ¹ï¿½or sqr ï¿½ï¿½ï¿½Îµï¿½ï¿½ï¿½ ï¿½Õ´Ï´ï¿½.
 	unLockMouse(obj);
 }
 
@@ -873,66 +871,66 @@ function onClosePopupWindow_CreatorMage(obj, popupType, windowTileType)
 {
 	if (!obj)
 		return;
-		
+
 	if (!IsInBattleCreator(obj))
 		return;
-	
-		
-	// ÀÎÆ÷ À©µµ¿ì¿Í ±âÅ¸ ÇÏ³ªÇÏ³ª ÆË¾÷À» ¹«½ÃÇÕ´Ï´Ù.
+
+
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å¸ ï¿½Ï³ï¿½ï¿½Ï³ï¿½ ï¿½Ë¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.
 	if (sq_IsIgnoreOpenPopupCreator(popupType, windowTileType))
 		return;
 
 	local isEsc = sq_IsESCClosableWindow(popupType);
-	
-	// ¿­¸° À©µµ¿ì°¡ ÇÏ³ª¶óµµ ÀÖÀ¸¸é ¹«½ÃÇÕ´Ï´Ù.	
-	
+
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ì°¡ ï¿½Ï³ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.
+
 	//if (!isEsc)
 		//return;
 
-	local windowsNum = sq_GetPopupWindows();	
+	local windowsNum = sq_GetPopupWindows();
 	//
-	
-	// Å©¸®¿¡ÀÌÅÍ°¡ ¹«½ÃÇÒ ¼ö ¾ø´Â ÄÜÆ®·ÑÇØ¾ßÇÏ´Â ÆË¾÷ÀÌ ¿­·ÁÀÖ´ÂÁö Ã¼Å©ÇÏ´Â ÇÔ¼öÀÔ´Ï´Ù.
+
+	// Å©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ®ï¿½ï¿½ï¿½Ø¾ï¿½ï¿½Ï´ï¿½ ï¿½Ë¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ï¿½ï¿½ Ã¼Å©ï¿½Ï´ï¿½ ï¿½Ô¼ï¿½ï¿½Ô´Ï´ï¿½.
 	if (sq_IsOpenCreatorControlPopupWindows())
 		return;
-	
+
 	print(" onClose popupType:" + popupType + " windowTileType:" + windowTileType);
 	//print(" clip on");
 	lockMouse(obj);
 }
 
-// ´ë½¬»ç¿îµå¸¦ ¼¼ÆÃÇÏ´Â ¿À¹ö¶óÀÌµùµÈ ÇÔ¼öÀÔ´Ï´Ù..
-// Å©¸®¿¡ÀÌÅÍ´Â ´ë½¬¾îÅÃ»ç¿îµå°¡ ³ª¿À¸é ¾ÈµË´Ï´Ù.
-function playDashAttackSound_CreatorMage(obj) 
+// ï¿½ë½¬ï¿½ï¿½ï¿½å¸¦ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ìµï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½ï¿½Ô´Ï´ï¿½..
+// Å©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í´ï¿½ ï¿½ë½¬ï¿½ï¿½ï¿½Ã»ï¿½ï¿½å°¡ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ÈµË´Ï´ï¿½.
+function playDashAttackSound_CreatorMage(obj)
 {
 	return 1;
 }
 
 
-// ¿À¹öµÈ ¾ÆÀÌÅÛÀ» Ã£±âÀ§ÇÑ ÇÔ¼ö ÀÔ´Ï´Ù.
+// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½ ï¿½Ô´Ï´ï¿½.
 function checkOverItemObject_CreatorMage(obj)
 {
 	if (!obj)
 		return null;
-	
-	
-	
+
+
+
 	local itemObj = null;
-	
+
 	local objMgr = obj.getObjectManager();
-	
+
 	if (objMgr)
 	{
 		itemObj = objMgr.getMeetItemObject(IMouse.GetXPos(), IMouse.GetYPos());
 	}
-	
+
 	return itemObj;
 }
 
 
 
 
-// Å©¸®¿¡ÀÌÅÍÀÇ Å¸ÀÔº° ½ºÅ³ÀÎµ¦½º¸¦ ¾ò½À´Ï´Ù.
+// è¯¥å‡½æ•°ç”¨äºæ ¹æ®åˆ›é€ è€…æ³•å¸ˆçš„ç±»å‹è·å–å¯¹åº”çš„æŠ€èƒ½ç´¢å¼•ã€‚
 function getTypeSkillIndex(obj, type)
 {
 	local idx = SKILL_CREATORFLAME;
@@ -953,8 +951,8 @@ function getTypeSkillIndex(obj, type)
 	case CREATOR_TYPE_WIND:
 		idx = SKILL_CREATORWIND;
 		break;
-	}	
-	
+	}
+
 	return idx;
 }
 
@@ -963,11 +961,11 @@ function drawMainCustomUI_CreatorMage(obj)
 	if (!obj)
 		return;
 	local sq_var = obj.getVar();
-			
-	// ½ºÅ³½½·Ô
+
+// æŠ€èƒ½æ•°é‡
 	local hud_creator_b_gauge = sq_var.GetAnimationMap("hud_creator_b_gauge", "Character/Mage/CreatorAnimation/ui/hud_creator_b_gauge.ani");
 	local hud_creator_b_select = sq_var.GetAnimationMap("hud_creator_b_select", "Character/Mage/CreatorAnimation/ui/hud_creator_b_select.ani");
-	
+
 	local skill_ui_index = 0;
 
 
@@ -975,69 +973,68 @@ function drawMainCustomUI_CreatorMage(obj)
 	local y = 588;
 	local offset = 36;
 
-	// ÆÇ±×¸®±â
-	local hudCreatorAni = sq_var.GetAnimationMap("hud_creator_back", "Character/Mage/CreatorAnimation/ui/hud_creator_back.ani");	
+// åŸºç¡€ç»˜åˆ¶å¼€å§‹
+	local hudCreatorAni = sq_var.GetAnimationMap("hud_creator_back", "Character/Mage/CreatorAnimation/ui/hud_creator_back.ani");
 	sq_DrawSpecificFrame(hudCreatorAni, x, y, false, 0, false, 1.0);
 	//
-	
-	// ½Î¿ìÀÚ°¡ ÀÖÀ» ¼ö ÀÖÀ¸¹Ç·Î ÀÌ°÷¿¡¼­ ¹èÆ²ÀÎÁö ¾Æ´ÑÁö¸¦ Ã¼Å©ÇÏ¿© 
-	// ¹èÆ²ÀÌ ¾Æ´Ñ °æ¿ì Ä¿¼­¿Í ui¸¦ Ç®¾îÁİ´Ï´Ù.
+// ç”±äºæ˜¯æ–°ç”¨æˆ·ç™»å½•ï¼Œå› æ­¤åœ¨æ­¤å¤„æ£€æŸ¥æ˜¯å¦ä¸æ˜¯æ•™ç¨‹çŠ¶æ€ï¼Œ
+// è‹¥ä¸æ˜¯æ•™ç¨‹çŠ¶æ€ï¼Œåˆ™æ˜¾ç¤ºå…‰æ ‡ UIã€‚
 	if (!IsInBattleCreator(obj))
 	{
 		local isEnable = isEnableCreatorBattleInUI();
-		
+
 		if (!isEnable)
 		{
 			unLockMouse(obj);
 		}
-		
+
 		//return;
 	}
-	
-	
-	
-	// ¼±ÅÃÇÑ Å×µÎ¸® ±×¸®±â
+
+
+
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½×µÎ¸ï¿½ ï¿½×¸ï¿½ï¿½ï¿½
 	if (getCreatorSkillStateSkillIndex(obj) != -1)
-	{	
+	{
 		local type = getCreatorSkillStateSkillIndex(obj);
-		
+
 		local skillmgr = obj.getSkillManager();
-		
+
 		local slot = -1;
 		if (skillmgr)
 		{
 			local index = getTypeSkillIndex(obj, type);
 			slot = skillmgr.getSlotindex(index);
 		}
-		
+
 		if (slot != -1)
-		{	
-			// ¼±ÅÃÁö ±×¸®±â
+		{
+			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½×¸ï¿½ï¿½ï¿½
 			sq_AnimationProc(hud_creator_b_select);
 			sq_drawCurrentFrame(hud_creator_b_select, x + (slot * offset), y, false);
 		}
 	}
-	
-	// °ÔÀÌÁö ±×¸®±â
+
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½×¸ï¿½ï¿½ï¿½
 	local hud_creator_b_gauge = sq_var.GetAnimationMap("hud_creator_b_gauge", "Character/Mage/CreatorAnimation/ui/hud_creator_b_gauge.ani");
 
-	// ¼Ó¼º½ºÅ³ °ÔÀÌÁö ±×¸®±â ºÎºĞÀÔ´Ï´Ù.	
-	
+	// ï¿½Ó¼ï¿½ï¿½ï¿½Å³ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½×¸ï¿½ï¿½ï¿½ ï¿½Îºï¿½ï¿½Ô´Ï´ï¿½.
+
 	local skillmgr = obj.getSkillManager();
-	
+
 	if (!skillmgr)
 		return;
-	
+
 	for (local i = CREATOR_TYPE_FLAME; i < CREATOR_TYPE_MAX; i++)
-	{	
+	{
 		local slot = -1;
-		
+
 		if (skillmgr)
 		{
 			local index = getTypeSkillIndex(obj, i);
 			slot = skillmgr.getSlotindex(index);
 		}
-	
+
 		if (slot != -1)
 		{
 			local appendage = getCreatorMageAppendageByType(obj, i);
@@ -1045,14 +1042,14 @@ function drawMainCustomUI_CreatorMage(obj)
 			{
 				local gaugeValue = 0;
 				local max_gaugeValue = 0;
-				
+
 				max_gaugeValue = appendage.sq_var.get_vector(I_MAX_COUNT);
-				
+
 				gaugeValue = appendage.sq_var.get_vector(I_REMAIN_COUNT);
-				local rate = gaugeValue.tofloat() / max_gaugeValue.tofloat();			
+				local rate = gaugeValue.tofloat() / max_gaugeValue.tofloat();
 				local rgb = getCreatorTypeColor(obj, i);
 				local alpha = sq_ALPHA(255);
-				hud_creator_b_gauge.setImageRate(rate, 1.0);	
+				hud_creator_b_gauge.setImageRate(rate, 1.0);
 				local gaugePosX = x - 87;
 				sq_DrawSpecificFrameEffect_SIMPLE(hud_creator_b_gauge, gaugePosX + (slot * offset), y, 0, rgb, alpha, true);
 			}
@@ -1069,26 +1066,26 @@ function onProcSkillShop_CreatorMage(obj, control)
 	//print(" control x:" + control.GetXPos() + " y:" + control.GetYPos());
 
 	local sq_var = obj.getVar();
-	// °ÔÀÌÁö ±×¸®±â
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½×¸ï¿½ï¿½ï¿½
 	local hud_creator_b_gauge = sq_var.GetAnimationMap("hud_creator_b_gauge", "Character/Mage/CreatorAnimation/ui/hud_creator_b_gauge.ani");
 
-	// ¼Ó¼º½ºÅ³ °ÔÀÌÁö ±×¸®±â ºÎºĞÀÔ´Ï´Ù.	
-	
+	// ï¿½Ó¼ï¿½ï¿½ï¿½Å³ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½×¸ï¿½ï¿½ï¿½ ï¿½Îºï¿½ï¿½Ô´Ï´ï¿½.
+
 	local skillmgr = obj.getSkillManager();
-	
+
 	if (!skillmgr)
 		return;
-	
+
 	for (local i = CREATOR_TYPE_FLAME; i < CREATOR_TYPE_MAX; i++)
-	{	
+	{
 		local slot = -1;
-		
+
 		if (skillmgr)
 		{
 			local index = getTypeSkillIndex(obj, i);
 			slot = skillmgr.getSlotindex(index);
 		}
-	
+
 		if (slot != -1)
 		{
 			local appendage = getCreatorMageAppendageByType(obj, i);
@@ -1096,14 +1093,14 @@ function onProcSkillShop_CreatorMage(obj, control)
 			{
 				local gaugeValue = 0;
 				local max_gaugeValue = 0;
-				
+
 				max_gaugeValue = appendage.sq_var.get_vector(I_MAX_COUNT);
-				
+
 				gaugeValue = appendage.sq_var.get_vector(I_REMAIN_COUNT);
-				local rate = gaugeValue.tofloat() / max_gaugeValue.tofloat();			
+				local rate = gaugeValue.tofloat() / max_gaugeValue.tofloat();
 				local rgb = getCreatorTypeColor(obj, i);
 				local alpha = sq_ALPHA(255);
-				hud_creator_b_gauge.setImageRate(rate, 1.0);	
+				hud_creator_b_gauge.setImageRate(rate, 1.0);
 				local gaugePosX = x;
 				sq_DrawSpecificFrameEffect_SIMPLE(hud_creator_b_gauge, gaugePosX + (slot * offset), y, 0, rgb, alpha, true);
 			}
@@ -1114,109 +1111,109 @@ function onProcSkillShop_CreatorMage(obj, control)
 
 function drawCustomUI_CreatorMage(obj)
 {
-	// ¸¶¿ì½º±×·¦ Ã³¸®
-	
+	// ï¿½ï¿½ï¿½ì½ºï¿½×·ï¿½ Ã³ï¿½ï¿½
+
 	if (!obj)
 		return;
-	
-	
+
+
 	if (!IsInBattleCreator(obj))
 	{
 		return;
 	}
-	// Ä¿¼­±×¸®±â	
-	// Ä¿¼­ ±×¸®±â ºÎºĞÀÔ´Ï´Ù.
-	
-	
+	// Ä¿ï¿½ï¿½ï¿½×¸ï¿½ï¿½ï¿½
+	// Ä¿ï¿½ï¿½ ï¿½×¸ï¿½ï¿½ï¿½ ï¿½Îºï¿½ï¿½Ô´Ï´ï¿½.
+
+
 	local isLock = sq_IsClipCursor();
 
-	
+
 	if (!isLock)
 	{
 		if (!sq_IsVisibleCursor())
 		{
 			sq_SetVisibleCursor(true);
 		}
-		
+
 		return;
 	}
 
-		
+
 	if (sq_IsVisibleCursor())
 	{
 		sq_SetVisibleCursor(false);
 	}
-	
-	local ani = obj.getVar().GetAnimationMap("NORMAL", 
-	"Character/Mage/Effect/Animation/CreatorMagicSphere/normal.ani"); // ÀÏ¹İÄ¿¼­
+
+	local ani = obj.getVar().GetAnimationMap("NORMAL",
+	"Character/Mage/Effect/Animation/CreatorMagicSphere/normal.ani"); // ï¿½Ï¹ï¿½Ä¿ï¿½ï¿½
 
 	local usingSkillIndex = getCreatorSkillStateSkillIndex(obj);
-	
+
 	if (usingSkillIndex == CREATOR_TYPE_DISTURB)
 	{
 		local stage = sq_GetObjectManagerStage(obj);
-		
+
 		if (!stage)
 			return;
-		
-		local control = stage.getMainControl();		
+
+		local control = stage.getMainControl();
 
 		if (control.IsRBDown())
-		{ // µå·Î¿ìÀÏ¶© Ä¿¼­¸¦ ¹Ù²ß´Ï´Ù.
-			ani = obj.getVar().GetAnimationMap("THROW", 
+		{ // ï¿½ï¿½Î¿ï¿½ï¿½Ï¶ï¿½ Ä¿ï¿½ï¿½ï¿½ï¿½ ï¿½Ù²ß´Ï´ï¿½.
+			ani = obj.getVar().GetAnimationMap("THROW",
 			"Character/Mage/Effect/Animation/CreatorMagicSphere/draw_cursor.ani"); //
 		}
 		else
 		{
-			ani = obj.getVar().GetAnimationMap("BLOCK", 
+			ani = obj.getVar().GetAnimationMap("BLOCK",
 			"Character/Mage/Effect/Animation/CreatorMagicSphere/block.ani"); //
 		}
 	}
 	else if (usingSkillIndex == CREATOR_TYPE_GUARDIAN)
 	{
-		ani = obj.getVar().GetAnimationMap("GUARD", 
+		ani = obj.getVar().GetAnimationMap("GUARD",
 		"Character/Mage/Effect/Animation/CreatorMagicSphere/guard.ani"); //
 	}
 	else if (usingSkillIndex == CREATOR_TYPE_ICE)
 	{
-		ani = obj.getVar().GetAnimationMap("ICE", 
+		ani = obj.getVar().GetAnimationMap("ICE",
 		"Character/Mage/Effect/Animation/CreatorMagicSphere/icesphere.ani"); //
 	}
 	else if (usingSkillIndex == CREATOR_TYPE_FLAME)
 	{
-		ani = obj.getVar().GetAnimationMap("FIRE", 
-			"Character/Mage/Effect/Animation/CreatorMagicSphere/firesphere.ani"); //		
+		ani = obj.getVar().GetAnimationMap("FIRE",
+			"Character/Mage/Effect/Animation/CreatorMagicSphere/firesphere.ani"); //
 	}
-	else if (usingSkillIndex == CREATOR_TYPE_WIND)	
+	else if (usingSkillIndex == CREATOR_TYPE_WIND)
 	{
-		ani = obj.getVar().GetAnimationMap("WIND", 
+		ani = obj.getVar().GetAnimationMap("WIND",
 		"Character/Mage/Effect/Animation/CreatorMagicSphere/wind.ani"); //
-	}		
+	}
 
 	local state = obj.getState();
 
 	if (state == STATE_ICESHIELD)
-	{	
-		ani = obj.getVar().GetAnimationMap("SHIELD", 
+	{
+		ani = obj.getVar().GetAnimationMap("SHIELD",
 		"Character/Mage/Effect/Animation/CreatorMagicSphere/shield_cursor_dodge.ani"); //
 	}
 	else if (state == STATE_FIREHURRICANE)
 	{
-		ani = obj.getVar().GetAnimationMap("HURRICANE", 
+		ani = obj.getVar().GetAnimationMap("HURRICANE",
 		"Character/Mage/Effect/Animation/CreatorMagicSphere/hurricane_cursor.ani"); //
 	}
-	
+
 	if (ani)
 	{
 		local posX = IMouse.GetXPos();
 		local posY = IMouse.GetYPos();
-		
+
 		sq_AnimationProc(ani);
 		sq_drawCurrentFrame(ani, posX, posY, false);
 	}
-	
-	
-	////////////// ¸ŞÀÎui
+
+
+	////////////// ï¿½ï¿½ï¿½ï¿½ui
 	if (getCreatorSkillStateSkillIndex(obj) == -1)
 		return;
 
@@ -1231,11 +1228,11 @@ function drawCustomUI_CreatorMage(obj)
 	local alpha = sq_ALPHA(200);
 	local baseRGB = sq_RGB(255,255,255);
 
-	// ÆÇ±×¸®±â
-	local main_gauge_b = sq_var.GetAnimationMap("main_gauge_b", 
-	"Character/Mage/CreatorAnimation/ui/main_gauge_b.ani");	
-	local main_gauge_b_select = sq_var.GetAnimationMap("main_gauge_b_select", 
-	"Character/Mage/CreatorAnimation/ui/main_gauge_b_select.ani");	
+	// ï¿½Ç±×¸ï¿½ï¿½ï¿½
+	local main_gauge_b = sq_var.GetAnimationMap("main_gauge_b",
+	"Character/Mage/CreatorAnimation/ui/main_gauge_b.ani");
+	local main_gauge_b_select = sq_var.GetAnimationMap("main_gauge_b_select",
+	"Character/Mage/CreatorAnimation/ui/main_gauge_b_select.ani");
 
 
 	sq_AnimationProc(main_gauge_b);
@@ -1243,64 +1240,64 @@ function drawCustomUI_CreatorMage(obj)
 	local currentFrameIndex = main_gauge_b.GetCurrentFrameIndex();
 	sq_DrawSpecificFrameEffect_SIMPLE(main_gauge_b, x, y, currentFrameIndex, baseRGB, alpha, false);
 	//sq_drawCurrentFrame(main_gauge_b, x, y, false);
-	
-	// °ÔÀÌÁö ±×¸®±â
+
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½×¸ï¿½ï¿½ï¿½
 	local hud_creator_b_gauge = sq_var.GetAnimationMap("hud_creator_b_gauge", "Character/Mage/CreatorAnimation/ui/hud_creator_b_gauge.ani");
-	
+
 	if (getCreatorSkillStateSkillIndex(obj) != -1)
 	{
-		local creator_guage_1 = sq_var.GetAnimationMap("creator_guage_1", "Character/Mage/CreatorAnimation/ui/creator_guage_1.ani");	
-		local creator_guage_2 = sq_var.GetAnimationMap("creator_guage_2", "Character/Mage/CreatorAnimation/ui/creator_guage_2.ani");	
-		local creator_guage_3 = sq_var.GetAnimationMap("creator_guage_3", "Character/Mage/CreatorAnimation/ui/creator_guage_3.ani");	
+		local creator_guage_1 = sq_var.GetAnimationMap("creator_guage_1", "Character/Mage/CreatorAnimation/ui/creator_guage_1.ani");
+		local creator_guage_2 = sq_var.GetAnimationMap("creator_guage_2", "Character/Mage/CreatorAnimation/ui/creator_guage_2.ani");
+		local creator_guage_3 = sq_var.GetAnimationMap("creator_guage_3", "Character/Mage/CreatorAnimation/ui/creator_guage_3.ani");
 		local creator_guage_4 = sq_var.GetAnimationMap("creator_guage_4", "Character/Mage/CreatorAnimation/ui/creator_guage_4.ani");
 		local type = getCreatorSkillStateSkillIndex(obj);
-		
+
 		local appendage = getCreatorMageAppendageByType(obj, type);
 		if (appendage)
 		{
 			local gaugeValue = 0;
 			local max_gaugeValue = 0;
-			
-		//I_REMAIN_COUNT <- 0 // ³²¾ÆÀÖ´Â ½ºÅ³°¹¼ö
-		//l_CHARGE_ON <- 1 // ÃæÀü Áß ÀÎÁö Ã¼Å©
-		//I_BEFORE_X <- 2 // ½Ã°£
-		//I_BEFORE_Y <- 3 // ½Ã°£
-		//I_MAX_COUNT <- 4 // ÃÖ´ëÃæÀü·®
-		//I_SIZE <- 5 // ½Ã°£
+
+		//I_REMAIN_COUNT <- 0 // ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½ï¿½Å³ï¿½ï¿½ï¿½ï¿½
+		//l_CHARGE_ON <- 1 // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ã¼Å©
+		//I_BEFORE_X <- 2 // ï¿½Ã°ï¿½
+		//I_BEFORE_Y <- 3 // ï¿½Ã°ï¿½
+		//I_MAX_COUNT <- 4 // ï¿½Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		//I_SIZE <- 5 // ï¿½Ã°ï¿½
 			max_gaugeValue = appendage.sq_var.get_vector(I_MAX_COUNT);
 			gaugeValue = appendage.sq_var.get_vector(I_REMAIN_COUNT);
 			local rate = gaugeValue.tofloat() / max_gaugeValue.tofloat();
 			local maxFrameIndex = 156;
 			local frameRate = maxFrameIndex.tofloat() * rate.tofloat();
-			
+
 			local frameIndex = maxFrameIndex - frameRate.tointeger();
-			
+
 			local rgb = getCreatorTypeColor(obj, type);
 
 			//local rgba = getCreatorTypeAlphaColor(obj, type, 50);
-			
+
 			sq_DrawSpecificFrameEffect_SIMPLE(creator_guage_1, x, y, frameIndex, rgb, alpha, true);
 			sq_DrawSpecificFrameEffect_SIMPLE(creator_guage_2, x, y, frameIndex, rgb, alpha, true);
 			sq_DrawSpecificFrameEffect_SIMPLE(creator_guage_3, x, y, frameIndex, rgb, alpha, true);
 			sq_DrawSpecificFrameEffect_SIMPLE(creator_guage_4, x, y, frameIndex, rgb, alpha, true);
 		}
 	}
-	
-	//¼±ÅÃÇÑ ½ºÅ³µé
-	local main_gauge_lb = sq_var.GetAnimationMap("main_gauge_lb", "Character/Mage/CreatorAnimation/ui/main_gauge_lb.ani");	
-	local main_gauge_rb = sq_var.GetAnimationMap("main_gauge_rb", "Character/Mage/CreatorAnimation/ui/main_gauge_rb.ani");	
+
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å³ï¿½ï¿½
+	local main_gauge_lb = sq_var.GetAnimationMap("main_gauge_lb", "Character/Mage/CreatorAnimation/ui/main_gauge_lb.ani");
+	local main_gauge_rb = sq_var.GetAnimationMap("main_gauge_rb", "Character/Mage/CreatorAnimation/ui/main_gauge_rb.ani");
 
 	//sq_DrawSpecificFrame(main_gauge_lb, x, y, false, 0, false, 1.0);
-	//sq_DrawSpecificFrame(main_gauge_rb, x, y, false, 0, false, 1.0);	
+	//sq_DrawSpecificFrame(main_gauge_rb, x, y, false, 0, false, 1.0);
 	sq_DrawSpecificFrameEffect_SIMPLE(main_gauge_lb, x, y, 0, baseRGB, alpha, false);
 	sq_DrawSpecificFrameEffect_SIMPLE(main_gauge_rb, x, y, 0, baseRGB, alpha, false);
 
-	
-	// ¼±ÅÃÇÑ ½ºÅ³ÀÎµ¦½º ±×¸®±â	
-	local main_gauge_b_select = sq_var.GetAnimationMap("main_gauge_b_select", "Character/Mage/CreatorAnimation/ui/main_gauge_b_select.ani");	
-	
+
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å³ï¿½Îµï¿½ï¿½ï¿½ ï¿½×¸ï¿½ï¿½ï¿½
+	local main_gauge_b_select = sq_var.GetAnimationMap("main_gauge_b_select", "Character/Mage/CreatorAnimation/ui/main_gauge_b_select.ani");
+
 	if (getCreatorSkillStateSkillIndex(obj) != -1)
-	{		
+	{
 		local off = 32;
 		local type = getCreatorSkillStateSkillIndex(obj);
 
@@ -1308,7 +1305,7 @@ function drawCustomUI_CreatorMage(obj)
 		if (skill_icon_mode == 1)
 		{
 			local hud_creatorskill_icon = getAniCreatorSkillOn(obj, type);
-			
+
 			sq_AnimationProc(hud_creatorskill_icon);
 			sq_drawCurrentFrame(hud_creatorskill_icon, x, y, false);
 			//sq_DrawCurrentFrameEffect_SIMPLE(hud_creatorskill_icon, x, y, baseRGB, alpha, false);
@@ -1316,23 +1313,23 @@ function drawCustomUI_CreatorMage(obj)
 		else if (skill_icon_mode == 2)
 		{
 			local hud_creatorskill_icon = getAniCreatorSkillOff(obj, type);
-			
+
 			sq_AnimationProc(hud_creatorskill_icon);
 			sq_drawCurrentFrame(hud_creatorskill_icon, x, y, false);
 			//sq_DrawCurrentFrameEffect_SIMPLE(hud_creatorskill_icon, x, y, baseRGB, alpha, false);
 		}
-		
-		
-		// ¼±ÅÃÇÑ ½ºÅ³¾ÆÀÌÄÜ ±×¸®±â
+
+
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½×¸ï¿½ï¿½ï¿½
 		local lbuttonSkl = getLButtonSkillByType(obj, type);
 		local rbuttonSkl = getRButtonSkillByType(obj, type);
-		
+
 		local ls = sq_GetSkill(obj, lbuttonSkl);
 		local rs = sq_GetSkill(obj, rbuttonSkl);
-		
+
 		local sx = x - 29;
 		local sy = y - 16;
-		
+
 		if (ls)
 		{
 			if (sq_GetSkillLevel(obj, lbuttonSkl) > 0)
@@ -1348,46 +1345,46 @@ function drawCustomUI_CreatorMage(obj)
 				sq_DrawSkillIcon(rs, sx + off, sy, alpha);
 			}
 		}
-		
-		// ¼±ÅÃÇßÀ»¶§
-		
+
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+
 		local stage = sq_GetObjectManagerStage(obj);
-		
+
 		if (!stage)
 			return;
-		
-		local control = stage.getMainControl();		
-		
+
+		local control = stage.getMainControl();
+
 		if (control.IsLBDown())
 		{
 			sq_AnimationProc(main_gauge_b_select);
 			sq_drawCurrentFrame(main_gauge_b_select, x, y, false);
 		}
-		else if(control.IsRBDown())	
+		else if(control.IsRBDown())
 		{
 			sq_AnimationProc(main_gauge_b_select);
 			sq_drawCurrentFrame(main_gauge_b_select, x + off, y, false);
 		}
-		
+
 	}
-	
-	
+
+
 }
 
 function onStartMap_CreatorMage(obj)
 {
 	if(!obj)
 		return;
-	
+
 	lockMouse(obj);
 
 	obj.getVar("dstpos").clear_vector();
-	
-	// ¹æÀÌ ³Ñ¾î°¬´Âµ¥ Èí¼ö ¾îÆæµğÁö°¡ ÀÖ´Ù¸é..
-	// »èÁ¦ÇØÁİ´Ï´Ù.
-	// ´ÙÀ½¹æ¿¡¼­µµ È¿°ú°¡ Áö¼ÓµÇ±â ¶§¹®ÀÔ´Ï´Ù.
+
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ¾î°¬ï¿½Âµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´Ù¸ï¿½..
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½İ´Ï´ï¿½.
+	// ï¿½ï¿½ï¿½ï¿½ï¿½æ¿¡ï¿½ï¿½ï¿½ï¿½ È¿ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ÓµÇ±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ô´Ï´ï¿½.
 	local appendage = CNSquirrelAppendage.sq_GetAppendage(obj, "Appendage/Character/ap_common_suck.nut");
-	
+
 	if (appendage)
 	{
 		appendage.sq_DeleteAppendages();
@@ -1398,20 +1395,20 @@ function onStartMap_CreatorMage(obj)
 
 function resetDungeonStart_CreatorMage(obj, moduleType, resetReason, isDeadTower, isResetSkillUserCount)
 {
-	if (!obj) return -1;	
+	if (!obj) return -1;
 
 	if (!obj.isMyControlObject())
 		return -1;
-		
-	local isReset = true; // ±âº»ÀûÀ¸·Ğ ÀüºÎ ¸®¼ÂÀÔ´Ï´Ù.
-	
+
+	local isReset = true; // ï¿½âº»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ô´Ï´ï¿½.
+
 	setCreatorSkillStateSkillIndex(obj, -1);
 	onAllChargeCreatorMageGauge(obj);
-	
+
 	if (sq_GetCurrentModuleType() == MODULE_TYPE_ROOM_LIST || sq_GetCurrentModuleType() == MODULE_TYPE_ENTRANCE || sq_GetCurrentModuleType() == MODULE_TYPE_SELECT_DUNGEON)
 	{
 		unLockMouse(obj);
-	}	
+	}
 	else
 	{
 		print(" game module:" + sq_GetCurrentModuleType());
@@ -1423,17 +1420,17 @@ function resetDungeonStart_CreatorMage(obj, moduleType, resetReason, isDeadTower
 	if (!sq_IsTowerDungeon())
 	{
 		for (local i = CREATOR_TYPE_FLAME; i < CREATOR_TYPE_MAX; i++)
-		{	
+		{
 			local slot = -1;
-		
+
 			local skillmgr = obj.getSkillManager();
-		
+
 			if (skillmgr)
 			{
 				local index = getTypeSkillIndex(obj, i);
 				slot = skillmgr.getSlotindex(index);
 			}
-	
+
 			if (slot != -1)
 			{
 				local appendage = getCreatorMageAppendageByType(obj, i);
@@ -1448,8 +1445,8 @@ function resetDungeonStart_CreatorMage(obj, moduleType, resetReason, isDeadTower
 			}
 		}
 	}
-	
-	
+
+
 	return 1;
 }
 
@@ -1458,7 +1455,7 @@ function onStartDungeon_CreatorMage(obj)
 {
 	if (!obj)
 		return;
-		
+
 	if (sq_IsMyCharacter(obj))
 	{
 		lockMouse(obj);
@@ -1466,11 +1463,11 @@ function onStartDungeon_CreatorMage(obj)
 		obj.getVar("lbdown").clear_timer_vector();
 		obj.getVar("lbdown").push_timer_vector();
 		obj.getVar("lbdown").push_timer_vector();
-				
+
 		local t = obj.getVar("lbdown").get_timer_vector(0);
 		t.setParameter(20, -1);
 		t.resetInstant(0);
-		
+
 		obj.getVar("lbdown").clear_ct_vector();
 		obj.getVar("lbdown").push_ct_vector();
 		local timer = obj.getVar("lbdown").get_ct_vector(0);
@@ -1478,13 +1475,13 @@ function onStartDungeon_CreatorMage(obj)
 		timer.Start(10000,0);
 		//////////////////////////////////////////////////////
 
-		// Å©·¹ÀÌÅÍÀÇ ¸ğµç ¼Ó¼º °ÔÀÌÁö ÃæÀüÀ» ½ÃÀÛÇÕ´Ï´Ù.
+		// Å©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ó¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.
 		onAllChargeCreatorMageGauge(obj);
 	}
 }
 
 
-// À©µµ¿ì°¡ È°¼ºÈ­ µÆÀ»¶§ È£ÃâµÇ´Â Äİ¹éÇÔ¼ö ÀÔ´Ï´Ù.
+// ï¿½ï¿½ï¿½ï¿½ï¿½ì°¡ È°ï¿½ï¿½È­ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È£ï¿½ï¿½Ç´ï¿½ ï¿½İ¹ï¿½ï¿½Ô¼ï¿½ ï¿½Ô´Ï´ï¿½.
 function onActiveWindow_CreatorMage(obj, activeState)
 {
 	if (!obj)
@@ -1505,7 +1502,7 @@ function onActiveWindow_CreatorMage(obj, activeState)
 	}
 }
 
-// À©µµ¿ì°¡ ºñÈ°¼ºÈ­ µÆÀ»¶§ È£ÃâµÇ´Â Äİ¹éÇÔ¼ö ÀÔ´Ï´Ù.
+// ï¿½ï¿½ï¿½ï¿½ï¿½ì°¡ ï¿½ï¿½È°ï¿½ï¿½È­ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È£ï¿½ï¿½Ç´ï¿½ ï¿½İ¹ï¿½ï¿½Ô¼ï¿½ ï¿½Ô´Ï´ï¿½.
 function onInActiveWindow_CreatorMage(obj)
 {
 	unLockMouse(obj);
@@ -1517,7 +1514,7 @@ function onChangeSkillEffect_CreatorMage(obj, skillIndex, reciveData)
 {
 	if (!obj)
 		return;
-	
+
 	if (skillIndex == SKILL_MGRAB)
 	{
 		onChangeSkillEffect_Mgrab(obj, skillIndex, reciveData);
@@ -1540,30 +1537,30 @@ function procAppend_CreatorMage(obj)
 	if (!obj.isMyControlObject())
 		return 0;
 
-	local STATE_ACTIVE = 1;		
-	
+	local STATE_ACTIVE = 1;
+
 	local cashState = sq_GetStateCashShop();
-	local isClipCursor = sq_IsClipCursor(); // Ä¿¼­°¡ °¤ÇôÀÖ´ÂÁö Ã¼Å©ÇÕ´Ï´Ù.
-	
+	local isClipCursor = sq_IsClipCursor(); // Ä¿ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ï¿½ï¿½ Ã¼Å©ï¿½Õ´Ï´ï¿½.
+
 	if (cashState == STATE_ACTIVE)
 	{
-		// ¼¼¶ó¼¥ÀÌ ¿­·È´Âµ¥ Ä¿¼­°¡ off¸ğµå°¡ µÇ¾î¼­´Â ¾ÈµË´Ï´Ù.
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½È´Âµï¿½ Ä¿ï¿½ï¿½ï¿½ï¿½ offï¿½ï¿½å°¡ ï¿½Ç¾î¼­ï¿½ï¿½ ï¿½ÈµË´Ï´ï¿½.
 		if (isClipCursor)
 			unLockMouse(obj);
 	}
 	else
 	{
-		// ¸¶¿ì½º¶ôÀÌ Ç®¸®Áö ¾ÊÀº °æ¿ì ¸¶Áö¸· ´øÀü Å¬¸®¾î»óÅÂÀÎÁö Ã¼Å©ÇØº¾´Ï´Ù.
+		// ï¿½ï¿½ï¿½ì½ºï¿½ï¿½ï¿½ï¿½ Ç®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã¼Å©ï¿½Øºï¿½ï¿½Ï´ï¿½.
 		if (sq_GetResultState() || sq_GetRewardState())
 		{
-			// °á°úÃ¢ÀÌ ³ª¿À´Â µ¿¾È¿¡µµ »óÀÚµîÀ» ºÎ¼Å¹ö¸®±â À§ÇØ
-			// ÀÌ¹ø¿£ ¿ªÀ¸·Î uiÈ°¼ºÈ­Å°¸¦ ´©¸£¸é ¸¶¿ì½º¸¦ Àá±Å¹ö¸³´Ï´Ù.
+			// ï¿½ï¿½ï¿½Ã¢ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½È¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½ ï¿½Î¼Å¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+			// ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ uiÈ°ï¿½ï¿½È­Å°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ì½ºï¿½ï¿½ ï¿½ï¿½Å¹ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.
 			local hotKey = sq_IsDownHotKeyCreatorCursor();
 
 			if (hotKey)
 			{
-				// uiÈ°¼ºÈ­Å°°¡ ´­¸°»óÅÂ¿¡¼­´Â Å¬¸³ÀÌ Ç®·ÁÀÖ´Ù¸é..
-				// ´Ù½Ã Àá±Å¹ö¸³´Ï´Ù.
+				// uiÈ°ï¿½ï¿½È­Å°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¿ï¿½ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ Ç®ï¿½ï¿½ï¿½Ö´Ù¸ï¿½..
+				// ï¿½Ù½ï¿½ ï¿½ï¿½Å¹ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.
 				if (!isClipCursor)
 					lockMouse(obj);
 			}
@@ -1578,31 +1575,31 @@ function procAppend_CreatorMage(obj)
 		}
 
 		if (IsInBattleCreator(obj))
-		{ // ÀüÀåÁßÀÌ¶ó¸é..
+		{ // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¶ï¿½ï¿½..
 			local hotKey = sq_IsDownHotKeyCreatorCursor();
 
 			if (hotKey)
 			{
-				// uiÈ°¼ºÈ­ Å°¸¦ ´©¸¥ »óÅÂ¿¡¾ù ¸¶¿ì½º°¡ Àá°å´ÂÁö Ã¼Å©ÇØº¾´Ï´Ù.
+				// uiÈ°ï¿½ï¿½È­ Å°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Â¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ì½ºï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã¼Å©ï¿½Øºï¿½ï¿½Ï´ï¿½.
 				if (isClipCursor)
 				{
-					// ¸¶¿ì½º°¡ Àá°å´Ù¸é
+					// ï¿½ï¿½ï¿½ì½ºï¿½ï¿½ ï¿½ï¿½ï¿½Ù¸ï¿½
 					unLockMouse(obj);
 				}
 			}
 			else
 			{
-				// ÇöÀç ¸¶¿ì½º ÁÂÇ¥°¡ À©µµ¿ì È­¸é¾ÈÂÊ¿¡ ÀÖ´Â Ã¼Å©ÇÕ´Ï´Ù.
+				// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ì½º ï¿½ï¿½Ç¥ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È­ï¿½ï¿½ï¿½ï¿½Ê¿ï¿½ ï¿½Ö´ï¿½ Ã¼Å©ï¿½Õ´Ï´ï¿½.
 				//print(" isClipCursor:" + isClipCursor);
 				if (!isClipCursor)
-				{ // ¸¶¿ì½º¶ôÀÌ Ç®¸° »óÅÂ¶ó¸é					
+				{ // ï¿½ï¿½ï¿½ì½ºï¿½ï¿½ï¿½ï¿½ Ç®ï¿½ï¿½ ï¿½ï¿½ï¿½Â¶ï¿½ï¿½
 					//print(" isopencreator:" + sq_IsOpenCreatorControlPopupWindows());
 					if (!sq_IsOpenCreatorControlPopupWindows())
 					{
 						if (sq_IsMousePtInWindowRect())
-						{ // ¸¶¿ì½º°¡ ³»ºÎ¿¡ ÁÂÇ¥¸¦ ÇâÇØÀÖ´Ù¸é..
-							// uiÈ°¼ºÈ­ Å°¸¦ ´©¸¥ »óÅÂ¿¡¼­ ¿ÜºÎÃ¤ÆÃÃ¢À» ´©¸£¸é ÀÏ½ÃÀûÀ¸·Î 
-							// uiÈ°¼ºÈ­ Å°°¡ false·Î µÇ´Âµ¥ ÀÌ¶§ ¸¶¿ì½º¶ôÀ» °É¾îÁÖ¸é ¾ÈµË´Ï´Ù.
+						{ // ï¿½ï¿½ï¿½ì½ºï¿½ï¿½ ï¿½ï¿½ï¿½Î¿ï¿½ ï¿½ï¿½Ç¥ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ö´Ù¸ï¿½..
+							// uiÈ°ï¿½ï¿½È­ Å°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Â¿ï¿½ï¿½ï¿½ ï¿½Üºï¿½Ã¤ï¿½ï¿½Ã¢ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+							// uiÈ°ï¿½ï¿½È­ Å°ï¿½ï¿½ falseï¿½ï¿½ ï¿½Ç´Âµï¿½ ï¿½Ì¶ï¿½ ï¿½ï¿½ï¿½ì½ºï¿½ï¿½ï¿½ï¿½ ï¿½É¾ï¿½ï¿½Ö¸ï¿½ ï¿½ÈµË´Ï´ï¿½.
 							lockMouse(obj);
 						}
 					}
@@ -1618,25 +1615,25 @@ function procAppend_CreatorMage(obj)
 		}
 	}
 
-		
+
 
 	return 1;
 }
 
 
-// °ø°İ°£°İÀ» Á¤ÇÏ±â À§ÇØ ÀÎÅÍ¹úÀ» Á¤ÇØ¼­ ¸®ÅÏÇÕ´Ï´Ù.
+// ï¿½ï¿½ï¿½İ°ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Í¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.
 function IsInterval(obj, interval)
 {
 	if (!obj)
 		return false;
 
-	// ±âº»°ø°İ Å¸ÀÌ¸Ó 
+	// ï¿½âº»ï¿½ï¿½ï¿½ï¿½ Å¸ï¿½Ì¸ï¿½
 	local t = obj.getVar().get_ct_vector(0);
 
 	if (!t)
 	{
 		obj.getVar().clear_ct_vector();
-		obj.getVar().push_ct_vector(); 
+		obj.getVar().push_ct_vector();
 		t = obj.getVar().get_ct_vector(0);
 		t.Reset();
 		t.Start(10000,0);
@@ -1646,7 +1643,7 @@ function IsInterval(obj, interval)
 
 	local currentT = t.Get();
 	if(currentT > interval)
-	{ 
+	{
 		t.Reset();
 		t.Start(10000,0);
 
@@ -1659,12 +1656,12 @@ function IsInterval(obj, interval)
 }
 
 
-// ¸¶¿ì½º¹öÆ°À» ´­·¶À» ¶§ Ã³¸®µÇ¾î¾ß ÇÏ´Â ½ºÅ³ÇÁ·Î¼¼½º ºÎºĞÀÔ´Ï´Ù.
+// ï¿½ï¿½ï¿½ì½ºï¿½ï¿½Æ°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ Ã³ï¿½ï¿½ï¿½Ç¾ï¿½ï¿½ ï¿½Ï´ï¿½ ï¿½ï¿½Å³ï¿½ï¿½ï¿½Î¼ï¿½ï¿½ï¿½ ï¿½Îºï¿½ï¿½Ô´Ï´ï¿½.
 function onMouseButtonDown_ProcSkill(obj, usingSkillIndex)
 {
 	if (!obj)
 		return;
-	
+
 	if (!obj.isMyControlObject())
 		return;
 
@@ -1673,11 +1670,11 @@ function onMouseButtonDown_ProcSkill(obj, usingSkillIndex)
 
 	if (!sq_IsClipCursor())
 		return;
-	
-	// Å»°ÍÀ» Å¸°í ÀÖÀ¸¸é ¸¶¿ì½º °ø°İÀ» ÇÒ ¼ö ¾ø½À´Ï´Ù.
+
+	// Å»ï¿½ï¿½ï¿½ï¿½ Å¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ì½º ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.
 	if (sq_IsRidingObject(obj))
 		return;
-	
+
 	local objectManager = obj.getObjectManager();
 
 	if (!objectManager)
@@ -1689,8 +1686,8 @@ function onMouseButtonDown_ProcSkill(obj, usingSkillIndex)
 	//print(" onMouseButtonDown_ProcSkill:" + usingSkillIndex);
 	if (usingSkillIndex == SKILL_WOODFENCE)
 	{
-		// ¿ìµåÆæ½ºÀÇ °æ¿ì´Â µå·¡±×¹æ½ÄÀÌ±â ¶§¹®¿¡ 
-		// ¿©±â¼­ Ã³¸®µÇÁö ¾Ê½À´Ï´Ù.
+		// ï¿½ï¿½ï¿½ï¿½æ½ºï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½å·¡ï¿½×¹ï¿½ï¿½ï¿½Ì±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		// ï¿½ï¿½ï¿½â¼­ Ã³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê½ï¿½ï¿½Ï´ï¿½.
 	}
 	else if (usingSkillIndex == SKILL_FIREWALL)
 	{
@@ -1700,21 +1697,21 @@ function onMouseButtonDown_ProcSkill(obj, usingSkillIndex)
 	else if (usingSkillIndex == SKILL_ICEROCK)
 	{
 		local consumeValue = getCreatorSkillConsumeValue(obj, usingSkillIndex);
-		
+
 		if (useCreatorSkill(obj, usingSkillIndex, xPos, yPos, consumeValue))
 			onMouseButtonDown_IceRock(obj);
 	}
 	else if (usingSkillIndex == SKILL_FIREMETEO)
 	{
 		local consumeValue = getCreatorSkillConsumeValue(obj, usingSkillIndex);
-		
+
 		if (useCreatorSkill(obj, usingSkillIndex, xPos, yPos, consumeValue))
 			onMouseButtonDown_FireMeteo(obj);
 	}
-	else if (usingSkillIndex == SKILL_ICEPLATE)	
+	else if (usingSkillIndex == SKILL_ICEPLATE)
 	{
 		local consumeValue = getCreatorSkillConsumeValue(obj, usingSkillIndex);
-		
+
 		if (useCreatorSkill(obj, usingSkillIndex, xPos, yPos, consumeValue))
 			onMouseButtonDown_IcePlate(obj);
 	}
@@ -1724,25 +1721,25 @@ function onMouseButtonDown_ProcSkill(obj, usingSkillIndex)
 		if (isExcute)
 		{
 			local consumeValue = getCreatorSkillConsumeValue(obj, usingSkillIndex);
-			
+
 			if (useCreatorSkill(obj, usingSkillIndex, xPos, yPos, consumeValue))
 			{
 				obj.sq_IntVectClear();
-				obj.sq_IntVectPush(SUB_STATE_FIREHURRICANE_0); // substate¼¼ÆÃ
+				obj.sq_IntVectPush(SUB_STATE_FIREHURRICANE_0); // substateï¿½ï¿½ï¿½ï¿½
 				obj.sq_AddSetStatePacket(STATE_FIREHURRICANE, STATE_PRIORITY_USER, true);
 			}
 		}
 	}
 	else if (usingSkillIndex == SKILL_ICESHIELD)
-	{	
+	{
 		if (obj.isExcutableState(SKILL_CREATORGUARDIAN))
 		{
 			local consumeValue = getCreatorSkillConsumeValue(obj, usingSkillIndex);
-			
+
 			if (useCreatorSkill(obj, usingSkillIndex, xPos, yPos, consumeValue))
 			{
 				obj.sq_IntVectClear();
-				obj.sq_IntVectPush(SUB_STATE_ICESHIELD_0); // substate¼¼ÆÃ
+				obj.sq_IntVectPush(SUB_STATE_ICESHIELD_0); // substateï¿½ï¿½ï¿½ï¿½
 				obj.sq_AddSetStatePacket(STATE_ICESHIELD, STATE_PRIORITY_USER, true);
 			}
 		}
@@ -1753,16 +1750,16 @@ function onMouseButtonDown_ProcSkill(obj, usingSkillIndex)
 		if (isExcute)
 		{
 			local consumeValue = getCreatorSkillConsumeValue(obj, usingSkillIndex);
-			
+
 			if (useCreatorSkill(obj, usingSkillIndex, xPos, yPos, consumeValue))
 			{
 				obj.sq_IntVectClear();
-				obj.sq_IntVectPush(SUB_STATE_WINDPRESS_0); // substate¼¼ÆÃ
+				obj.sq_IntVectPush(SUB_STATE_WINDPRESS_0); // substateï¿½ï¿½ï¿½ï¿½
 				obj.sq_AddSetStatePacket(STATE_WINDPRESS, STATE_PRIORITY_IGNORE_FORCE, true);
 			}
 		}
 	}
-	else if (usingSkillIndex == SKILL_WINDSTORM)	
+	else if (usingSkillIndex == SKILL_WINDSTORM)
 	{
 		local consumeValue = getCreatorSkillConsumeValue(obj, usingSkillIndex);
 
@@ -1776,71 +1773,71 @@ function onMouseButtonDown_ProcSkill(obj, usingSkillIndex)
 	}
 	else if (usingSkillIndex == SKILL_MGRAB)
 	{
-		// ÃÊ±âÈ­
+		// ï¿½Ê±ï¿½È­
 		setStateMouseGrab(obj);
 		grabThrowObject(obj);
 	}
 	else if (usingSkillIndex == -1)
 	{
-		// ÀÌ¿ÜÀÇ °æ¿ì ´ëÇ¥ÀûÀ¸·Î -1ÀÎ °æ¿ì¿¡´Â
-		// ±âº»°ø°İÀ¸·Î ÀüÈ¯ÇÕ´Ï´Ù.
+		// ï¿½Ì¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½Ç¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ -1ï¿½ï¿½ ï¿½ï¿½ì¿¡ï¿½ï¿½
+		// ï¿½âº»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯ï¿½Õ´Ï´ï¿½.
 
 		// http://jira.in.neople.co.kr/jira/browse/DNF-8531
-		// [Å©¸®¿¡ÀÌÅÍ] ¾ÆÀÌ½º ½Çµå¸¦ ½ÀµæÇÏÁö ¾ÊÀº »óÅÂ¿¡¼­ ÇÃ·¹ÀÓ Çã¸®ÄÉÀÎ »ç¿ë Áß ¿À¸¥ÂÊ Å¬¸¯À» ÇÒ °æ¿ì µ¥¹ÌÁö°¡ ³·¾ÆÁö´Â Çö»ó
+		// [Å©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½] ï¿½ï¿½ï¿½Ì½ï¿½ ï¿½Çµå¸¦ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Â¿ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½ï¿½ ï¿½ã¸®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		local state = obj.getState();
 		if (state == STATE_ICESHIELD || state == STATE_FIREHURRICANE)
 			return;
 
-		// ÆòÅ¸°ø°İÀ» ¾µ ¼ö ÀÖ´Â »óÈ²ÀÎÁö Ã¼Å©ÇÕ´Ï´Ù.
+		// ï¿½ï¿½Å¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½È²ï¿½ï¿½ï¿½ï¿½ Ã¼Å©ï¿½Õ´Ï´ï¿½.
 		if (!obj.isEnableBasicAttack())
 			return;
 
 
-		local hitInterval = 500; // °£°İ¼öÄ¡ (ms)
+		local hitInterval = 500; // ï¿½ï¿½ï¿½İ¼ï¿½Ä¡ (ms)
 		if (IsInterval(obj, hitInterval))
-		{ // ¹ß»çÇÏ°í ÀÌÈÄ ¹ß»ç °£°İÀÌ ¿äÃ»ÇÑ ¼öÄ¡ ÀÌÈÄ°¡ µÇ¾î¾ß ±âº»¹ß»ç°¡ °¡´ÉÇÕ´Ï´Ù. (¿¬¹ß¹æÁö)
+		{ // ï¿½ß»ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ß»ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã»ï¿½ï¿½ ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½Ä°ï¿½ ï¿½Ç¾ï¿½ï¿½ ï¿½âº»ï¿½ß»ç°¡ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½. (ï¿½ï¿½ï¿½ß¹ï¿½ï¿½ï¿½)
 			local objectManager = obj.getObjectManager();
-		
+
 			if (!objectManager)
 				return;
 
-			
+
 			local xPos = objectManager.getFieldXPos(IMouse.GetXPos(), ENUM_DRAWLAYER_NORMAL);
 			local yPos = objectManager.getFieldYPos(IMouse.GetYPos(), 0, ENUM_DRAWLAYER_NORMAL);
 			local zPos = 0;
-		
+
 			local hoverEnemyObject = getOverClickableEnemyObject(obj, IMouse.GetXPos(), IMouse.GetYPos());
-		
+
 			if (hoverEnemyObject)
 			{
-				yPos = hoverEnemyObject.getYPos();							
-			
+				yPos = hoverEnemyObject.getYPos();
+
 				if (hoverEnemyObject.getZPos() > 0)
 				{
 					zPos = hoverEnemyObject.getZPos();
 				}
-			
+
 				zPos = objectManager.getFieldZPos(IMouse.GetYPos(), yPos, ENUM_DRAWLAYER_NORMAL);
 			}
-		
+
 			sq_SetCurrentAttackInfo(obj, obj.sq_GetDefaultAttackInfo(0));
 			obj.applyBasicAttackUp(sq_GetCurrentAttackInfo(obj),STATE_ATTACK);
 			sq_SetCurrentAttackInfo(obj, sq_GetCurrentAttackInfo(obj));
 
 			obj.sq_StartWrite();
-			sq_BinaryWriteWord(0);		// ´õ¹Ì
+			sq_BinaryWriteWord(0);		// ï¿½ï¿½ï¿½ï¿½
 			sq_SendCreatePassiveObjectPacketPos(obj, 24353, 0, xPos, yPos, zPos);
 		}
 	}
 }
 
 
-// ¸¶¿ì½º ¹öÆ°ÀÌ ¾÷µÆÀ»¶§ Ã³¸®µÇ¾î¾ß ÇÏ´Â ½ºÅ³ÇÁ·Î¼¼½º ÀÔ´Ï´Ù.
+// ï¿½ï¿½ï¿½ì½º ï¿½ï¿½Æ°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ï¿½Ç¾ï¿½ï¿½ ï¿½Ï´ï¿½ ï¿½ï¿½Å³ï¿½ï¿½ï¿½Î¼ï¿½ï¿½ï¿½ ï¿½Ô´Ï´ï¿½.
 function onMouseButtonUp_ProcSkill(obj, usingSkillIndex)
 {
 	if (!obj)
 		return;
-	
+
 	if (usingSkillIndex == SKILL_MGRAB)
 	{
 		//onMouseButtonUp_Mgrab(obj);
@@ -1853,39 +1850,39 @@ function onMouseLeftButtonDown_CreatorMage(obj)
 {
 	if (!obj)
 		return;
-	
-	// Á×¾úÀ» ¶© µé¾î¿Í¼± ¾ÈµË´Ï´Ù.
+
+	// ï¿½×¾ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Í¼ï¿½ ï¿½ÈµË´Ï´ï¿½.
 	if (obj.isDead())
 		return;
 
 	local objectManager = obj.getObjectManager();
-	
+
 	if (!objectManager)
 		return;
-	
-	// ¸¶¿ì½º·Î ¿À¹öµÈ ¾ÆÀÌÅÛ
+
+	// ï¿½ï¿½ï¿½ì½ºï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	local overItem = obj.getOverItemObject();
-	
+
 	if (overItem)
 	{
-		// º¸¾È¸ğµâ¶§¹®¿¡ Àá½Ã ¾ÆÀÌÅÛÀÖ´Â ÁÂÇ¥·Î °¬´Ù°¡ µ¹¾Æ¿É´Ï´Ù.
+		// ï¿½ï¿½ï¿½È¸ï¿½â¶§ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½ï¿½Ç¥ï¿½ï¿½ ï¿½ï¿½ï¿½Ù°ï¿½ ï¿½ï¿½ï¿½Æ¿É´Ï´ï¿½.
 		local beforePosX = obj.getXPos();
 		local beforePosY = obj.getYPos();
 		local beforePosZ = obj.getZPos();
-		
+
 		local itemPosX = overItem.getXPos();
 		local itemPosY = overItem.getYPos();
 
 		sq_SetCurrentPos(obj, itemPosX, itemPosY, 0);
-		
+
 		obj.procGetItem();
-		
+
 		sq_SetCurrentPos(obj, beforePosX, beforePosY, beforePosZ);
 		return;
 	}
-	
+
 	local usingSkillIndex = getLButtonSkill(obj);
-	
+
 	onMouseButtonDown_ProcSkill(obj, usingSkillIndex);
 }
 
@@ -1894,34 +1891,34 @@ function onMouseLeftButtonUp_CreatorMage(obj)
 {
 	if (!obj)
 		return;
-	
-	// Á×¾úÀ» ¶© µé¾î¿Í¼± ¾ÈµË´Ï´Ù.
+
+	// ï¿½×¾ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Í¼ï¿½ ï¿½ÈµË´Ï´ï¿½.
 	if (obj.isDead())
 		return;
 
 	local usingSkillIndex = getLButtonSkill(obj);
-	
-	
+
+
 	onMouseButtonUp_ProcSkill(obj, usingSkillIndex);
 }
 
 function onMouseRightButtonDown_CreatorMage(obj)
 {
 	if (!obj)
-		return;	
+		return;
 
-	// Á×¾úÀ» ¶© µé¾î¿Í¼± ¾ÈµË´Ï´Ù.
+	// ï¿½×¾ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Í¼ï¿½ ï¿½ÈµË´Ï´ï¿½.
 	if (obj.isDead())
 		return;
 
 	local usingSkillIndex = getRButtonSkill(obj);
-	
-	//ÀÓ½Ã ÆË¾÷
+
+	//ï¿½Ó½ï¿½ ï¿½Ë¾ï¿½
 	//sq_OpenPopupWindow(379, 279, 499, 1000);
 	//
 
 	onMouseButtonDown_ProcSkill(obj, usingSkillIndex);
-	
+
 }
 
 
@@ -1930,14 +1927,14 @@ function onMouseRightButtonUp_CreatorMage(obj)
 	if (!obj)
 		return;
 
-	// Á×¾úÀ» ¶© µé¾î¿Í¼± ¾ÈµË´Ï´Ù.
+	// ï¿½×¾ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Í¼ï¿½ ï¿½ÈµË´Ï´ï¿½.
 	if (obj.isDead())
 		return;
 
 	local usingSkillIndex = getRButtonSkill(obj);
-	
-	onMouseButtonUp_ProcSkill(obj, usingSkillIndex);	
-		
+
+	onMouseButtonUp_ProcSkill(obj, usingSkillIndex);
+
 }
 
 
@@ -1945,8 +1942,8 @@ function onMouseMoveCharacter_CreatorMage(obj, x, y)
 {
 	if (!obj)
 		return;
-	
-	// Á×¾úÀ» ¶© µé¾î¿Í¼± ¾ÈµË´Ï´Ù.
+
+	// ï¿½×¾ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Í¼ï¿½ ï¿½ÈµË´Ï´ï¿½.
 	if (obj.isDead())
 		return;
 
@@ -1959,44 +1956,44 @@ function onMouseMoveCharacter_CreatorMage(obj, x, y)
 	if (!sq_IsClipCursor())
 		return;
 
-	// Å»°ÍÀ» Å¸°í ÀÖÀ¸¸é ¸¶¿ì½º °ø°İÀ» ÇÒ ¼ö ¾ø½À´Ï´Ù.
+	// Å»ï¿½ï¿½ï¿½ï¿½ Å¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ì½º ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.
 	if (sq_IsRidingObject(obj))
 		return;
-	
+
 	local stage = sq_GetObjectManagerStage(obj);
-	
+
 	if (!stage)
 		return;
-	
+
 	x = IMouse.GetXPos();
-	y = IMouse.GetYPos();	
-	
-	local control = stage.getMainControl();	
-	
+	y = IMouse.GetYPos();
+
+	local control = stage.getMainControl();
+
 	local usingSkillIndex = -1;
-	
+
 	if (control.IsLBDown())
 	{
 		usingSkillIndex = getLButtonSkill(obj);
 	}
-	else if(control.IsRBDown())	
+	else if(control.IsRBDown())
 	{
 		usingSkillIndex = getRButtonSkill(obj);
 	}
-	
-	// ÇöÀç ¾²°íÀÖ´Â ½ºÅ³ÀÌ ÀÖ´ÂÁö ÆÄ¾ÇÇØº¾´Ï´Ù.
+
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½ï¿½Å³ï¿½ï¿½ ï¿½Ö´ï¿½ï¿½ï¿½ ï¿½Ä¾ï¿½ï¿½Øºï¿½ï¿½Ï´ï¿½.
 	if (usingSkillIndex == SKILL_FIREWALL)
 	{
 		onMouseMoveCharacter_Firewall(obj, x, y);
 	}
-	else if (usingSkillIndex == SKILL_WOODFENCE)	
+	else if (usingSkillIndex == SKILL_WOODFENCE)
 	{
 		onMouseMoveCharacter_WoodFence(obj, x, y);
 	}
 	else if (usingSkillIndex == SKILL_MGRAB)
 	{
 	}
-	
+
 }
 
 
@@ -2006,9 +2003,9 @@ function drawAppend_CreatorMage(obj, isOver, x, y)
 	if (!obj.isMyControlObject())
 		return 0;
 
-	
+
 	return 0;
-	
+
 }
 
 
